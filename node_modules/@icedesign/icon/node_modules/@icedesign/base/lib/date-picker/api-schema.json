@@ -1,0 +1,1317 @@
+{
+  "name": "DatePicker",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "品牌样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "品牌样式前缀"
+    },
+    "defaultBase": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "默认的基准日期",
+      "docblock": "默认的基准日期"
+    },
+    "defaultValue": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "默认日期",
+      "docblock": "默认日期"
+    },
+    "value": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "日期值",
+      "docblock": "日期值"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "时间发生改变时的回调函数",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "时间发生改变时的回调函数\n@param {String} date       改变后的日期\n@param {String} formatDate 改变后的格式化日期",
+      "params": [
+        {
+          "name": "date",
+          "description": "改变后的日期",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "formatDate",
+          "description": "改变后的格式化日期",
+          "type": {
+            "name": "String"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "defaultOpen": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否默认展开",
+      "docblock": "是否默认展开"
+    },
+    "open": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否展开",
+      "docblock": "是否展开"
+    },
+    "onOpenChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "当面板展开状态改变时的回调函数",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "当面板展开状态改变时的回调函数\n@param {Boolean} open 面板的展开状态",
+      "params": [
+        {
+          "name": "open",
+          "description": "面板的展开状态",
+          "type": {
+            "name": "Boolean"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'small'",
+            "computed": false
+          },
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "输入框大小",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "输入框大小"
+    },
+    "language": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'en-us'",
+            "computed": false
+          },
+          {
+            "value": "'ar'",
+            "computed": false
+          },
+          {
+            "value": "'de'",
+            "computed": false
+          },
+          {
+            "value": "'es'",
+            "computed": false
+          },
+          {
+            "value": "'fr'",
+            "computed": false
+          },
+          {
+            "value": "'hi'",
+            "computed": false
+          },
+          {
+            "value": "'it'",
+            "computed": false
+          },
+          {
+            "value": "'ja'",
+            "computed": false
+          },
+          {
+            "value": "'ko'",
+            "computed": false
+          },
+          {
+            "value": "'pt'",
+            "computed": false
+          },
+          {
+            "value": "'ru'",
+            "computed": false
+          },
+          {
+            "value": "'zh-cn'",
+            "computed": false
+          },
+          {
+            "value": "'zh-hk'",
+            "computed": false
+          },
+          {
+            "value": "'zh-tw'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "语言",
+      "docblock": "语言"
+    },
+    "locale": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "国际化配置, [参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+      "docblock": "国际化配置, [参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+      "properties": []
+    },
+    "popupStyle": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "弹层面板样式",
+      "docblock": "弹层面板样式",
+      "properties": []
+    },
+    "popupAlign": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "弹层对齐方式",
+      "defaultValue": {
+        "value": "'tl tl'",
+        "computed": false
+      },
+      "docblock": "弹层对齐方式"
+    },
+    "popupOffset": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "弹层偏移",
+      "defaultValue": {
+        "value": "[0, 0]",
+        "computed": false
+      },
+      "docblock": "弹层偏移"
+    },
+    "format": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "func"
+          }
+        ]
+      },
+      "required": false,
+      "description": "输出日期值格式化",
+      "docblock": "输出日期值格式化"
+    },
+    "formater": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "日期格式化（可替代 format)",
+      "defaultValue": {
+        "value": "['YYYY-MM-DD', 'HH:mm:ss']",
+        "computed": false
+      },
+      "docblock": "日期格式化（可替代 format)"
+    },
+    "disabled": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否禁用",
+      "docblock": "是否禁用"
+    },
+    "hasClear": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否展示清空按钮",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否展示清空按钮"
+    },
+    "showTime": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "bool"
+          },
+          {
+            "name": "object"
+          }
+        ]
+      },
+      "required": false,
+      "description": "是否展示时间选择或传入 { defaultValue } 设置时间初值",
+      "docblock": "是否展示时间选择或传入 { defaultValue } 设置时间初值"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义组件样式",
+      "docblock": "自定义组件样式"
+    }
+  },
+  "methods": [],
+  "subComponents": [
+    {
+      "name": "MonthPicker",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "品牌样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "品牌样式前缀"
+        },
+        "defaultBase": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "默认的基准日期",
+          "docblock": "默认的基准日期"
+        },
+        "defaultValue": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "默认日期",
+          "docblock": "默认日期"
+        },
+        "value": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "日期值",
+          "docblock": "日期值"
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "日期发生改变时的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "日期发生改变时的回调\n@param {String} date       改变后的日期\n@param {String} formatDate 格式化的日期",
+          "params": [
+            {
+              "name": "date",
+              "description": "改变后的日期",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "formatDate",
+              "description": "格式化的日期",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "defaultOpen": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否默认展开",
+          "docblock": "是否默认展开"
+        },
+        "open": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否展开",
+          "docblock": "是否展开"
+        },
+        "onOpenChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "当面板展开变化时的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "当面板展开变化时的回调\n@param {Boolean} open 面板的展开状态",
+          "params": [
+            {
+              "name": "open",
+              "description": "面板的展开状态",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "size": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'small'",
+                "computed": false
+              },
+              {
+                "value": "'medium'",
+                "computed": false
+              },
+              {
+                "value": "'large'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "输入框大小",
+          "defaultValue": {
+            "value": "'medium'",
+            "computed": false
+          },
+          "docblock": "输入框大小"
+        },
+        "language": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'en-us'",
+                "computed": false
+              },
+              {
+                "value": "'ar'",
+                "computed": false
+              },
+              {
+                "value": "'de'",
+                "computed": false
+              },
+              {
+                "value": "'es'",
+                "computed": false
+              },
+              {
+                "value": "'fr'",
+                "computed": false
+              },
+              {
+                "value": "'hi'",
+                "computed": false
+              },
+              {
+                "value": "'it'",
+                "computed": false
+              },
+              {
+                "value": "'ja'",
+                "computed": false
+              },
+              {
+                "value": "'ko'",
+                "computed": false
+              },
+              {
+                "value": "'pt'",
+                "computed": false
+              },
+              {
+                "value": "'ru'",
+                "computed": false
+              },
+              {
+                "value": "'zh-cn'",
+                "computed": false
+              },
+              {
+                "value": "'zh-hk'",
+                "computed": false
+              },
+              {
+                "value": "'zh-tw'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "语言",
+          "docblock": "语言"
+        },
+        "locale": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "国际化配置, [参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+          "docblock": "国际化配置, [参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+          "properties": []
+        },
+        "popupStyle": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "弹层样式",
+          "docblock": "弹层样式",
+          "properties": []
+        },
+        "popupAlign": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "弹层对齐方式",
+          "defaultValue": {
+            "value": "'tl tl'",
+            "computed": false
+          },
+          "docblock": "弹层对齐方式"
+        },
+        "popupOffset": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "弹层偏移",
+          "defaultValue": {
+            "value": "[0, 0]",
+            "computed": false
+          },
+          "docblock": "弹层偏移"
+        },
+        "format": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "展开日期的格式",
+          "defaultValue": {
+            "value": "'YYYY-MM'",
+            "computed": false
+          },
+          "docblock": "展开日期的格式"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否禁用",
+          "docblock": "是否禁用"
+        },
+        "hasClear": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否有清空按钮",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否有清空按钮"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义组件样式",
+          "docblock": "自定义组件样式"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "RangePicker",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "品牌样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "品牌样式前缀"
+        },
+        "defaultBase": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "默认的基准日期",
+          "docblock": "默认的基准日期"
+        },
+        "defaultValue": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "默认日期值",
+          "docblock": "默认日期值"
+        },
+        "value": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "日期值",
+          "docblock": "日期值"
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "时间发生改变的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "时间发生改变的回调\n@param {Array} dateRange        选中的日期区间数组\n@param {Array} formatDateRnage  格式化后的选中的日期区间数组",
+          "params": [
+            {
+              "name": "dateRange",
+              "description": "选中的日期区间数组",
+              "type": {
+                "name": "Array"
+              }
+            },
+            {
+              "name": "formatDateRnage",
+              "description": "格式化后的选中的日期区间数组",
+              "type": {
+                "name": "Array"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onStartChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "开始日期变化时的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "开始日期变化时的回调\n@param {String} date 开始日期",
+          "params": [
+            {
+              "name": "date",
+              "description": "开始日期",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onEndChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "结束日期变化时的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "结束日期变化时的回调\n@param {String} date 结束日期",
+          "params": [
+            {
+              "name": "date",
+              "description": "结束日期",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "defaultOpen": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "默认是否展开",
+          "docblock": "默认是否展开"
+        },
+        "open": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否展开",
+          "docblock": "是否展开"
+        },
+        "onOpenChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "当面板展开状态改变时的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "当面板展开状态改变时的回调\n@param {Boolean} 面板的 open 状态",
+          "params": [
+            {
+              "name": "面板的",
+              "description": "open 状态",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "size": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'small'",
+                "computed": false
+              },
+              {
+                "value": "'medium'",
+                "computed": false
+              },
+              {
+                "value": "'large'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "输入框大小",
+          "defaultValue": {
+            "value": "'medium'",
+            "computed": false
+          },
+          "docblock": "输入框大小"
+        },
+        "language": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'en-us'",
+                "computed": false
+              },
+              {
+                "value": "'ar'",
+                "computed": false
+              },
+              {
+                "value": "'de'",
+                "computed": false
+              },
+              {
+                "value": "'es'",
+                "computed": false
+              },
+              {
+                "value": "'fr'",
+                "computed": false
+              },
+              {
+                "value": "'hi'",
+                "computed": false
+              },
+              {
+                "value": "'it'",
+                "computed": false
+              },
+              {
+                "value": "'ja'",
+                "computed": false
+              },
+              {
+                "value": "'ko'",
+                "computed": false
+              },
+              {
+                "value": "'pt'",
+                "computed": false
+              },
+              {
+                "value": "'ru'",
+                "computed": false
+              },
+              {
+                "value": "'zh-cn'",
+                "computed": false
+              },
+              {
+                "value": "'zh-hk'",
+                "computed": false
+              },
+              {
+                "value": "'zh-tw'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "语言",
+          "docblock": "语言"
+        },
+        "locale": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "国际化配置，[参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+          "docblock": "国际化配置，[参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+          "properties": []
+        },
+        "popupStyle": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "弹层样式",
+          "docblock": "弹层样式",
+          "properties": []
+        },
+        "popupAlign": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "弹层对其方式",
+          "defaultValue": {
+            "value": "'tl tl'",
+            "computed": false
+          },
+          "docblock": "弹层对其方式"
+        },
+        "popupOffset": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "弹层偏移",
+          "defaultValue": {
+            "value": "[0, 0]",
+            "computed": false
+          },
+          "docblock": "弹层偏移"
+        },
+        "format": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "func"
+              }
+            ]
+          },
+          "required": false,
+          "description": "输出日期的格式",
+          "docblock": "输出日期的格式"
+        },
+        "formater": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "日期值格式化（可替代 format）",
+          "defaultValue": {
+            "value": "['YYYY-MM-DD', 'HH:mm:ss']",
+            "computed": false
+          },
+          "docblock": "日期值格式化（可替代 format）"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否禁用",
+          "docblock": "是否禁用"
+        },
+        "hasClear": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否有清空按钮",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否有清空按钮"
+        },
+        "showTime": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "bool"
+              },
+              {
+                "name": "object"
+              }
+            ]
+          },
+          "required": false,
+          "description": "是否显示时间或传入 { defaultValue } 设置时间初值",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否显示时间或传入 { defaultValue } 设置时间初值"
+        },
+        "resetTime": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "重新选择时是否重置时间",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "重新选择时是否重置时间"
+        },
+        "ranges": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "用户预设的快捷选择的日期范围",
+          "defaultValue": {
+            "value": "{}",
+            "computed": false
+          },
+          "docblock": "用户预设的快捷选择的日期范围",
+          "properties": []
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义组件样式",
+          "docblock": "自定义组件样式"
+        }
+      },
+      "methods": [
+        {
+          "name": "normalizeValue",
+          "docblock": "规格化输入日期值\n@param {Array} value 输入日期值数组\n@return {Array} 返回 moment 包裹后的日期数组",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "value",
+              "description": "输入日期值数组",
+              "type": {
+                "name": "Array"
+              }
+            },
+            {
+              "name": "checkDisabled"
+            }
+          ],
+          "returns": {
+            "description": "返回 moment 包裹后的日期数组",
+            "type": {
+              "name": "Array"
+            }
+          },
+          "description": "规格化输入日期值"
+        },
+        {
+          "name": "parseValue",
+          "docblock": "从日期值中解析出日期范围对象\n@param {Array} value 规格化后的日期值\n@return {Object} { startDate, startTime, endDate, endTime, all }",
+          "modifiers": [],
+          "params": [
+            {
+              "name": "value",
+              "description": "规格化后的日期值",
+              "type": {
+                "name": "Array"
+              }
+            }
+          ],
+          "returns": {
+            "description": "{ startDate, startTime, endDate, endTime, all }",
+            "type": {
+              "name": "Object"
+            }
+          },
+          "description": "从日期值中解析出日期范围对象"
+        }
+      ]
+    },
+    {
+      "name": "YearPicker",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "品牌的样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "品牌的样式前缀"
+        },
+        "defaultBase": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "默认的基准日期",
+          "docblock": "默认的基准日期"
+        },
+        "defaultValue": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "默认日期",
+          "docblock": "默认日期"
+        },
+        "value": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "日期",
+          "docblock": "日期"
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "时间发生变化的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "时间发生变化的回调\n@param {String} date         改变后的日期\n@param {String} formateDate  格式化的日期",
+          "params": [
+            {
+              "name": "date",
+              "description": "改变后的日期",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "formateDate",
+              "description": "格式化的日期",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "defaultOpen": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "默认是否展开",
+          "docblock": "默认是否展开"
+        },
+        "open": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否展开",
+          "docblock": "是否展开"
+        },
+        "onOpenChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "当面板展开状态改变时的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "当面板展开状态改变时的回调\n@param {Boolean} open  面板的展开状态",
+          "params": [
+            {
+              "name": "open",
+              "description": "面板的展开状态",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "size": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'small'",
+                "computed": false
+              },
+              {
+                "value": "'medium'",
+                "computed": false
+              },
+              {
+                "value": "'large'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "输入框尺寸",
+          "defaultValue": {
+            "value": "'medium'",
+            "computed": false
+          },
+          "docblock": "输入框尺寸"
+        },
+        "language": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'en-us'",
+                "computed": false
+              },
+              {
+                "value": "'ar'",
+                "computed": false
+              },
+              {
+                "value": "'de'",
+                "computed": false
+              },
+              {
+                "value": "'es'",
+                "computed": false
+              },
+              {
+                "value": "'fr'",
+                "computed": false
+              },
+              {
+                "value": "'hi'",
+                "computed": false
+              },
+              {
+                "value": "'it'",
+                "computed": false
+              },
+              {
+                "value": "'ja'",
+                "computed": false
+              },
+              {
+                "value": "'ko'",
+                "computed": false
+              },
+              {
+                "value": "'pt'",
+                "computed": false
+              },
+              {
+                "value": "'ru'",
+                "computed": false
+              },
+              {
+                "value": "'zh-cn'",
+                "computed": false
+              },
+              {
+                "value": "'zh-hk'",
+                "computed": false
+              },
+              {
+                "value": "'zh-tw'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "语言",
+          "docblock": "语言"
+        },
+        "locale": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "国际化配置，[参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+          "docblock": "国际化配置，[参考](http://gitlab.alibaba-inc.com/next/date-picker/blob/master/src/locale/index.js)",
+          "properties": []
+        },
+        "popupStyle": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "弹层样式",
+          "docblock": "弹层样式",
+          "properties": []
+        },
+        "popupAlign": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "弹层对齐方式",
+          "defaultValue": {
+            "value": "'tl tl'",
+            "computed": false
+          },
+          "docblock": "弹层对齐方式"
+        },
+        "popupOffset": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "弹层偏移",
+          "defaultValue": {
+            "value": "[0, 0]",
+            "computed": false
+          },
+          "docblock": "弹层偏移"
+        },
+        "format": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "日期格式",
+          "defaultValue": {
+            "value": "'YYYY'",
+            "computed": false
+          },
+          "docblock": "日期格式"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否禁用",
+          "docblock": "是否禁用"
+        },
+        "hasClear": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否展示清空按钮",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否展示清空按钮"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义组件样式",
+          "docblock": "自定义组件样式"
+        }
+      },
+      "methods": []
+    }
+  ]
+}

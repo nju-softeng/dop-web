@@ -1,0 +1,147 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp; /* eslint-disable react/prop-types */
+
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _nextCheckbox = require('../../next-checkbox/lib/index.js');
+
+var _nextCheckbox2 = _interopRequireDefault(_nextCheckbox);
+
+var _menuItem = require('./menu-item.js');
+
+var _menuItem2 = _interopRequireDefault(_menuItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var noop = function noop() {};
+
+/** Menu.CheckboxItem */
+var CheckedMenuItem = (_temp = _class = function (_React$Component) {
+  _inherits(CheckedMenuItem, _React$Component);
+
+  function CheckedMenuItem(props) {
+    _classCallCheck(this, CheckedMenuItem);
+
+    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+
+    _this.onClick = _this.onClick.bind(_this);
+    return _this;
+  }
+
+  CheckedMenuItem.prototype.render = function render() {
+    var _props = this.props,
+        disabled = _props.disabled,
+        checked = _props.checked,
+        index = _props.index,
+        selectedKeys = _props.selectedKeys;
+
+    if (typeof checked === 'undefined') {
+      checked = selectedKeys.indexOf(index) > -1;
+    }
+    this.checked = checked;
+    return _react2['default'].createElement(
+      _menuItem2['default'],
+      _extends({}, this.props, { hasSelectedIcon: false, onClick: this.onClick, role: 'menuitemcheckbox' }),
+      _react2['default'].createElement(_nextCheckbox2['default'], { checked: checked, onChange: noop, disabled: disabled, tabIndex: '-1' }),
+      ' ',
+      this.props.children
+    );
+  };
+
+  CheckedMenuItem.prototype.onClick = function onClick(e) {
+    if (!this.props.disabled) {
+      this.props.onChange(!this.checked, e);
+    }
+  };
+
+  return CheckedMenuItem;
+}(_react2['default'].Component), _class._menuItem = true, _class.propTypes = {
+  /**
+   * 样式类名的品牌前缀
+   */
+  prefix: _propTypes2['default'].string,
+  /**
+   * 自定义类名
+   */
+  className: _propTypes2['default'].string,
+  /**
+   * 自定义内联样式
+   */
+  style: _propTypes2['default'].object,
+  /**
+   * 显示在菜单右侧的帮助文本，通常用于一些附加信息
+   */
+  helper: _propTypes2['default'].string,
+  /**
+   * 禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio
+   */
+  disabled: _propTypes2['default'].bool,
+  /**
+   * 当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高
+   */
+  selected: _propTypes2['default'].bool,
+  focused: _propTypes2['default'].bool,
+  /**
+   * 点击了菜单项触发的事件
+   * @param {String} key 当前菜单项的key值
+   * @param {Event} e DOM事件
+   */
+  onClick: _propTypes2['default'].func,
+  onKeyDown: _propTypes2['default'].func,
+  parent: _propTypes2['default'].any,
+  /**
+   * 是否显示选中图标
+   */
+  hasSelectedIcon: _propTypes2['default'].bool,
+  /**
+   * 是否显示缩进
+   */
+  needIndent: _propTypes2['default'].bool,
+  /**
+   * 默认是否选中当前菜单项
+   */
+  checked: _propTypes2['default'].bool,
+  /**
+   * 选择被改变的时候触发的事件
+   * @param {Boolean} checked 是否选中
+   */
+  onChange: _propTypes2['default'].func
+}, _class.defaultProps = {
+  helper: null,
+  disabled: false,
+  prefix: 'next-',
+  hasSelectedIcon: true,
+  needIndent: true,
+  onClick: noop,
+  onKeyDown: noop,
+  onMouseEnter: noop,
+  onMouseLeave: noop,
+  onChange: noop,
+  __checkboxItem: true
+}, _temp);
+CheckedMenuItem.displayName = 'CheckedMenuItem';
+exports['default'] = CheckedMenuItem;
+module.exports = exports['default'];

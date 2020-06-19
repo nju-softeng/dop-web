@@ -1,0 +1,404 @@
+{
+  "name": "Tab",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "activeKey": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "number"
+          },
+          {
+            "name": "string"
+          }
+        ]
+      },
+      "required": false,
+      "description": "被激活的选项卡的 key（受控）",
+      "docblock": "被激活的选项卡的 key（受控）"
+    },
+    "defaultActiveKey": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "number"
+          },
+          {
+            "name": "string"
+          }
+        ]
+      },
+      "required": false,
+      "description": "初始化时被激活的选项卡的 key（非受控）",
+      "docblock": "初始化时被激活的选项卡的 key（非受控）"
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'bar'",
+            "computed": false
+          },
+          {
+            "value": "'wrapped'",
+            "computed": false
+          },
+          {
+            "value": "'text'",
+            "computed": false
+          },
+          {
+            "value": "'capsule'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "类型",
+      "defaultValue": {
+        "value": "'bar'",
+        "computed": false
+      },
+      "docblock": "类型"
+    },
+    "animation": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否开启动效",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否开启动效"
+    },
+    "resDirection": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'horizontal'",
+            "computed": false
+          },
+          {
+            "value": "'vertical'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "多余项的展现方向",
+      "defaultValue": {
+        "value": "'horizontal'",
+        "computed": false
+      },
+      "docblock": "多余项的展现方向"
+    },
+    "tabPosition": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'top'",
+            "computed": false
+          },
+          {
+            "value": "'bottom'",
+            "computed": false
+          },
+          {
+            "value": "'left'",
+            "computed": false
+          },
+          {
+            "value": "'right'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航选项卡的位置，只适用于包裹型（wrapped）选项卡",
+      "defaultValue": {
+        "value": "'top'",
+        "computed": false
+      },
+      "docblock": "导航选项卡的位置，只适用于包裹型（wrapped）选项卡"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'small'",
+            "computed": false
+          },
+          {
+            "value": "'medium'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "尺寸",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "尺寸"
+    },
+    "closeable": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否可关闭选项卡，只支持 `bar` 和 `wrapped` 两种类型",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否可关闭选项卡，只支持 `bar` 和 `wrapped` 两种类型"
+    },
+    "triggerType": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'hover'",
+            "computed": false
+          },
+          {
+            "value": "'click'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "触发选项卡的方式",
+      "defaultValue": {
+        "value": "'click'",
+        "computed": false
+      },
+      "docblock": "触发选项卡的方式"
+    },
+    "lazyLoad": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否提前渲染好所有 TabPane 的内容",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否提前渲染好所有 TabPane 的内容"
+    },
+    "navStyle": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "导航条的附加样式",
+      "defaultValue": {
+        "value": "{}",
+        "computed": false
+      },
+      "docblock": "导航条的附加样式",
+      "properties": []
+    },
+    "contentStyle": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "内容区的附加样式",
+      "defaultValue": {
+        "value": "{}",
+        "computed": false
+      },
+      "docblock": "内容区的附加样式",
+      "properties": []
+    },
+    "tabBarExtraContent": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "导航栏附加内容",
+      "defaultValue": {
+        "value": "null",
+        "computed": false
+      },
+      "docblock": "导航栏附加内容"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "选项卡发生切换时的事件回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "选项卡发生切换时的事件回调\n@param {String} key 改变后的 key",
+      "params": [
+        {
+          "name": "key",
+          "description": "改变后的 key",
+          "type": {
+            "name": "String"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "选项卡被关闭时的事件回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "选项卡被关闭时的事件回调\n@param {String} key   关闭的选项卡的 key\n@param {Object} event Event 对象",
+      "params": [
+        {
+          "name": "key",
+          "description": "关闭的选项卡的 key",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "event",
+          "description": "Event 对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    }
+  },
+  "methods": [],
+  "subComponents": [
+    {
+      "name": "TabPane",
+      "props": {
+        "closeable": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "单个选项卡是否可关闭",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "单个选项卡是否可关闭"
+        },
+        "tabStyle": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "单个选项卡的补充样式",
+          "docblock": "单个选项卡的补充样式",
+          "properties": []
+        },
+        "tabClassName": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "单个选项卡的附加样式类",
+          "docblock": "单个选项卡的附加样式类"
+        },
+        "onClick": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "点击单个选项卡时触发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "点击单个选项卡时触发的回调\n@param {String} key 选项卡的 key",
+          "params": [
+            {
+              "name": "key",
+              "description": "选项卡的 key",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onMouseEnter": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "鼠标进入时触发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "鼠标进入时触发的回调\n@param {String} key 选项卡的 key",
+          "params": [
+            {
+              "name": "key",
+              "description": "选项卡的 key",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onMouseLeave": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "鼠标离开时出发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "鼠标离开时出发的回调\n@param {String} key 选项卡的 key",
+          "params": [
+            {
+              "name": "key",
+              "description": "选项卡的 key",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        }
+      },
+      "methods": []
+    }
+  ]
+}

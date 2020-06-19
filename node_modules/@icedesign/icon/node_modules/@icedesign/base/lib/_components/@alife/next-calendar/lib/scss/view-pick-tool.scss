@@ -1,0 +1,151 @@
+// 日期选择器
+// ========================================
+
+#{$calendar-prefix} {
+    &-header {
+        #{$calendar-prefix}-pick-tool {
+            padding: $s-2;
+            text-align: right;
+        }
+
+        #{$calendar-menu-prefix} {
+            text-align: left;
+        }
+
+        #{$calendar-prefix}-date-pick-tool,
+        #{$calendar-prefix}-range-pick-tool, {
+            height: $calendar-card-header-height;
+            line-height: $calendar-card-header-height;
+            background: $calendar-card-header-background;
+            padding: 0;
+            position: relative;
+            text-align: left;
+
+            a {
+                cursor: pointer;
+                color: $calendar-card-header-color;
+                transition: all .3s ease-in;
+            }
+            a:hover {
+                color: $calendar-card-header-hover-color;
+                transition: all .3s ease-out;
+            }
+
+            #{$calendar-icon-prefix} {
+                @include icon-size($calendar-card-header-icon-size);
+            }
+        }
+
+        #{$calendar-prefix}-pick-tool-block {
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            &-range {
+                width: 50%;
+                float: left;
+            }
+
+            &.enter-to-right {
+                animation: enterToRight .5s cubic-bezier(0.23, 1, 0.32, 1);
+                transition: all 1s ease;
+                position: relative;
+            }
+            &.enter-to-left {
+                animation: enterToLeft .5s cubic-bezier(0.23, 1, 0.32, 1);
+                transition: all 1s ease;
+                position: relative;
+            }
+        }
+
+        #{$calendar-prefix}-range-pick-tool {
+            &:after {
+                visibility: hidden;
+                display: block;
+                height: 0;
+                font-size: 0;
+                content: '\0020';
+                clear: both;
+            }
+        }
+
+        #{$calendar-prefix}-prev-decade-btn,
+        #{$calendar-prefix}-next-decade-btn,
+        #{$calendar-prefix}-prev-year-btn,
+        #{$calendar-prefix}-next-year-btn,
+        #{$calendar-prefix}-prev-month-btn,
+        #{$calendar-prefix}-next-month-btn {
+            position: absolute;
+            top: 0;
+            padding: 0 $s-1;
+            font-size: $font-size-subhead;
+            display: inline-block;
+            height: 100%;
+            font-weight: 300;
+            z-index: 1;
+        }
+
+        #{$calendar-prefix}-ym-select {
+            a {
+                font-size: $font-size-caption;
+                padding: 0 $s-1;
+                font-weight: 700;
+                display: inline-block;
+                color: $calendar-card-header-ym-color;
+            }
+        }
+
+        #{$calendar-prefix}-prev-decade-btn,
+        #{$calendar-prefix}-prev-year-btn {
+            left: $s-2;
+        }
+
+        #{$calendar-prefix}-prev-month-btn {
+            left: $s-7;
+        }
+
+        #{$calendar-prefix}-next-decade-btn,
+        #{$calendar-prefix}-next-year-btn {
+            right: $s-2;
+        }
+
+        #{$calendar-prefix}-next-month-btn {
+            right: $s-7;
+        }
+
+        #{$calendar-radio-prefix}-group {
+            margin-left: $s-2;
+            vertical-align: middle;
+        }
+
+        #{$calendar-select-prefix} {
+            margin-left: $s-1;
+            min-width: 0;
+            vertical-align: middle;
+            max-width: $s-20;
+
+            &.small {
+                font-size: $font-size-caption;
+            }
+
+            &.medium {
+                font-size: $font-size-body-1;
+            }
+        }
+    }
+
+    &-body {
+        padding: 8px;
+        border-top: $line-1 $line-solid $calendar-card-border-color;
+
+        #{$calendar-prefix}-table {
+            table-layout: fixed;
+            border: 0;
+            border-collapse: collapse;
+            background-color: transparent;
+            width: 100%;
+            height: auto;
+        }
+    }
+}

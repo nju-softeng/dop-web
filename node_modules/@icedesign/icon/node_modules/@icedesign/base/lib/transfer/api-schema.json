@@ -1,0 +1,268 @@
+{
+  "name": "Transfer",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "dataSource": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "object"
+        }
+      },
+      "required": false,
+      "description": "数据源",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "数据源"
+    },
+    "value": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "string"
+        }
+      },
+      "required": false,
+      "description": "（用于受控）当前值",
+      "docblock": "（用于受控）当前值"
+    },
+    "defaultValue": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "string"
+        }
+      },
+      "required": false,
+      "description": "（用于非受控）初始值",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "（用于非受控）初始值"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "值发生改变的时候触发的回调函数",
+      "docblock": "值发生改变的时候触发的回调函数\n@param {Array} value 右面板值\n@param {Array} data 右面板数据\n@param {Object} extra 额外参数\n@param {Array} extra.leftValue 左面板值\n@param {Array} extra.leftData 左面板数据\n@param {Array} extra.movedValue 发生移动的值\n@param {Object} extra.movedData 发生移动的数据\n@param {String} extra.direction 移动的方向，值为'left'或'right'",
+      "params": [
+        {
+          "name": "value",
+          "description": "右面板值",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "data",
+          "description": "右面板数据",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "extra",
+          "description": "额外参数",
+          "type": {
+            "name": "Object"
+          }
+        },
+        {
+          "name": "extra.leftValue",
+          "description": "左面板值",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "extra.leftData",
+          "description": "左面板数据",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "extra.movedValue",
+          "description": "发生移动的值",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "extra.movedData",
+          "description": "发生移动的数据",
+          "type": {
+            "name": "Object"
+          }
+        },
+        {
+          "name": "extra.direction",
+          "description": "移动的方向，值为'left'或'right'",
+          "type": {
+            "name": "String"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "showSearch": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示搜索框",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否显示搜索框"
+    },
+    "searchPlaceholder": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "搜索框占位符",
+      "defaultValue": {
+        "value": "'Search'",
+        "computed": false
+      },
+      "docblock": "搜索框占位符"
+    },
+    "titles": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "node"
+        }
+      },
+      "required": false,
+      "description": "左右面板标题",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "左右面板标题"
+    },
+    "operations": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "node"
+        }
+      },
+      "required": false,
+      "description": "向右向左移动按钮显示内容",
+      "defaultValue": {
+        "value": "[<Icon type=\"arrow-right\" />, <Icon type=\"arrow-left\" />]",
+        "computed": false
+      },
+      "docblock": "向右向左移动按钮显示内容"
+    },
+    "defaultLeftChecked": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "string"
+        }
+      },
+      "required": false,
+      "description": "左面板默认选中值",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "左面板默认选中值"
+    },
+    "defaultRightChecked": {
+      "type": {
+        "name": "arrayOf",
+        "value": {
+          "name": "string"
+        }
+      },
+      "required": false,
+      "description": "右面板默认选中值",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "右面板默认选中值"
+    },
+    "listStyle": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "左右面板列表自定义样式",
+      "docblock": "左右面板列表自定义样式",
+      "properties": []
+    },
+    "locale": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义国际化文案对象",
+      "docblock": "自定义国际化文案对象",
+      "properties": []
+    },
+    "language": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'zh-cn'",
+            "computed": false
+          },
+          {
+            "value": "'en-us'",
+            "computed": false
+          },
+          {
+            "value": "'zh-tw'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "自定义国际化语言",
+      "docblock": "自定义国际化语言"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

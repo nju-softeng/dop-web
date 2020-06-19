@@ -1,0 +1,206 @@
+{
+  "name": "Notice",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'prompt'",
+            "computed": false
+          },
+          {
+            "value": "'warning'",
+            "computed": false
+          },
+          {
+            "value": "'system'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "提示类型",
+      "defaultValue": {
+        "value": "'prompt'",
+        "computed": false
+      },
+      "docblock": "提示类型"
+    },
+    "shape": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'standalone'",
+            "computed": false
+          },
+          {
+            "value": "'addon'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "外观形状",
+      "defaultValue": {
+        "value": "'standalone'",
+        "computed": false
+      },
+      "docblock": "外观形状"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "尺寸大小",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "尺寸大小"
+    },
+    "title": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "标题",
+      "defaultValue": {
+        "value": "''",
+        "computed": false
+      },
+      "docblock": "标题"
+    },
+    "children": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "内容",
+      "docblock": "内容"
+    },
+    "defaultVisible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "默认是否显示",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "默认是否显示"
+    },
+    "visible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "当前是否显示",
+      "docblock": "当前是否显示"
+    },
+    "closable": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否可关闭",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否可关闭"
+    },
+    "onClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "关闭时的回调函数",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "关闭时的回调函数",
+      "params": [],
+      "returns": null
+    },
+    "afterClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "关闭后（动画播放完毕）的回调函数",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "关闭后（动画播放完毕）的回调函数",
+      "params": [],
+      "returns": null
+    },
+    "iconType": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义图标类型，支持Icon列表请参考[Icon组件](http://fusion-demo.alibaba-inc.com/components?type=next&themeId=next&name=icon#Icon-0)",
+      "docblock": "自定义图标类型，支持Icon列表请参考[Icon组件](http://fusion-demo.alibaba-inc.com/components?type=next&themeId=next&name=icon#Icon-0)"
+    },
+    "animation": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否开启动画",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否开启动画"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

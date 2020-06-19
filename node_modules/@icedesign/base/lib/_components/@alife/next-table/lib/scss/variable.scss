@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+////
+/// @module table: 表格
+/// @tag Table
+/// @category component
+/// @family table
+/// @varPrefix $table-
+/// @classPrefix {prefix}-table
+/// @order {"size/bounding": 10, "size/head": 11, "size/body": 12, "size/cell": 13, "size/cell empty": 14, "size/group list": 15, "statement/normal": 20, "statement/normal/bounding": 201, "statement/normal/head": 202, "statement/normal/head group": 203, "statement/normal/group header": 204, "statement/normal/row": 205, "statement/hover": 21, "statement/selected": 22, "statement/active": 23 }
+////
+
+// table variables
+// --------------------------------------------------
+
+$table-prefix: '.#{$css-prefix}table' !default;
+
+/// border width
+/// @namespace size/bounding
+$table-normal-border-width: $line-1 !default;
+/// border style
+/// @namespace statement/normal/bounding
+$table-normal-border-style: $line-solid !default;
+/// border
+/// @namespace statement/normal/bounding
+$table-normal-border-color: $color-line1-2 !default;
+
+/// background
+/// @namespace statement/normal/head
+$table-th-bg: $color-fill1-3 !default;
+/// background
+/// @namespace statement/normal/head group
+$table-group-th-bg: $color-fill1-3 !default;
+/// text
+/// @namespace statement/normal/head
+$table-th-color: $color-text1-4 !default;
+/// text
+/// @namespace size/head
+$table-th-font-size: $font-size-body-1 !default;
+/// text weight
+/// @namespace size/head
+$table-th-font-weight: $font-weight-2 !default;
+/// text
+/// @namespace size/body
+$table-body-font-size: $font-size-body-1 !default;
+/// padding (t, b)
+/// @namespace size/cell
+$table-cell-padding-top: $s-3 !default;
+/// padding (l, r)
+/// @namespace size/cell
+$table-cell-padding-left: $s-4 !default;
+/// padding
+/// @namespace size/cell empty
+$table-empty-padding: $s-8 !default;
+/// text
+/// @namespace statement/normal/cell empty
+$table-empty-color: $color-line1-4 !default;
+
+/// zebra deep color
+/// @namespace statement/normal/row
+$table-td-gray: $color-fill1-1 !default;
+/// zebra thin color
+/// @namespace statement/normal/row
+$table-td-normal: $color-white !default;
+
+/// background
+/// @namespace statement/hover/row
+$table-row-hover-bg: $color-brand1-2 !default;
+
+/// background
+/// @namespace statement/selected/row
+$table-row-selected-bg: $color-brand1-2 !default;
+
+/// margin (t, b)
+/// @namespace size/group list
+$table-group-split: $s-2 !default;
+/// background
+/// @namespace statement/normal/group header
+$table-group-header-bg: $color-fill1-3 !default;
+
+/// icon
+/// @namespace statement/normal/head
+$table-sort-color: $color-text1-4 !default;
+/// sort icon
+/// @namespace statement/active/head
+$table-sort-color-current: $color-brand1-6 !default;
+
+/// icon
+/// @namespace statement/disabled/expanded ctrl
+$table-expanded-ctrl-disabled-color: $color-text1-2 !default;
+
+/// sort icon
+/// @namespace size/head
+$table-sort-icon-size: $icon-xs !default;
+
+/// filter icon
+/// @namespace size/head
+$table-filter-icon-size: $icon-xs !default;
+
+/// expanded icon
+/// @namespace size/body
+$table-expanded-icon-size: $icon-xs !default;
+
+/// tree icon
+/// @namespace size/body
+$table-tree-expanded-icon-size: $icon-xs !default;

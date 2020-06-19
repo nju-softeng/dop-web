@@ -1,0 +1,41 @@
+////
+/// @module cascader-select: 级联选择
+/// @tag CascaderSelect
+/// @category component
+/// @family component
+/// @varPrefix $cascader-select-
+/// @classPrefix {prefix}-cascader-select
+/// @order {"size/dropdown":10,"statement/normal":10,"statement/normal/dropdown":100}
+////
+
+// cascader-select variables
+// --------------------------------------------------
+
+// unconfigurable
+$cascader-select-prefix: ".#{$css-prefix}cascader-select";
+
+// Size
+// ----------------------------------------
+
+/// item height
+/// @namespace size/dropdown
+$cascader-select-item-height: $s-8 !default;
+/// border width
+/// @namespace size/dropdown
+$cascader-select-border-width: $line-1 !default;
+
+// Statement
+// ----------------------------------------
+
+/// border color
+/// @namespace statement/normal/dropdown
+$cascader-select-border-color: $color-line1-1 !default;
+/// border style
+/// @namespace statement/normal/dropdown
+$cascader-select-border-style: $line-solid !default;
+/// corner
+/// @namespace statement/normal/dropdown
+$cascader-select-border-radius: $corner-0 !default;
+/// shadow
+/// @namespace statement/normal/dropdown
+$cascader-select-shadow: $shadow-1 !default;

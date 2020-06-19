@@ -1,0 +1,118 @@
+// 全屏模式
+// ========================================
+
+#{$calendar-prefix}-fullscreen {
+    & {
+        font-size: $calendar-fullscreen-font-size;
+        background: $color-white;
+    }
+
+    #{$calendar-prefix}-body {
+        border-top: none;
+    }
+
+    #{$calendar-prefix}-table {
+
+        #{$calendar-prefix}-th {
+            text-align: right;
+            padding-right: 12px;
+            padding-bottom: 5px;
+            border: 0;
+            line-height: 18px;
+            color: $calendar-fullscreen-week-color;
+
+            &-inner {
+                display: block;
+                font-weight: 400;
+            }
+        }
+
+        #{$calendar-prefix}-cell {
+            border: 0;
+            position: relative;
+        }
+
+        #{$calendar-prefix}-date,
+        #{$calendar-prefix}-month {
+            display: block;
+            margin: 0 4px;
+            padding: 4px 8px;
+            min-height: $s-20;
+            line-height: $calendar-fullscreen-font-size + 4;
+            text-align: right;
+            border-top: $calendar-fullscreen-cell-boder-top-width $line-solid;
+            background: $color-transparent;
+            transition: background .3s ease;
+
+            @include calendar-cell-state (
+                $calendar-fullscreen-cell-normal-background,
+                $calendar-fullscreen-cell-normal-color,
+                $calendar-fullscreen-cell-normal-border-color
+            );
+        }
+
+        #{$calendar-prefix}-cell-prev-month {
+            #{$calendar-prefix}-date {
+                @include calendar-cell-state (
+                    $calendar-fullscreen-cell-other-background,
+                    $calendar-fullscreen-cell-other-color,
+                    $calendar-fullscreen-cell-other-border-color
+                );
+            }
+        }
+
+        #{$calendar-prefix}-cell-next-month {
+            #{$calendar-prefix}-date {
+                @include calendar-cell-state (
+                    $calendar-fullscreen-cell-other-background,
+                    $calendar-fullscreen-cell-other-color,
+                    $calendar-fullscreen-cell-other-border-color
+                );
+            }
+        }
+
+        #{$calendar-prefix}-cell-selected {
+            #{$calendar-prefix}-date,
+            #{$calendar-prefix}-month {
+                @include calendar-cell-state (
+                    $calendar-fullscreen-cell-select-background,
+                    $calendar-fullscreen-cell-select-color,
+                    $calendar-fullscreen-cell-select-border-color
+                );
+            }
+        }
+
+        #{$calendar-prefix}-cell-disabled {
+            #{$calendar-prefix}-date {
+                cursor: not-allowed;
+
+                @include calendar-cell-state (
+                    $calendar-fullscreen-cell-disabled-background,
+                    $calendar-fullscreen-cell-disabled-color,
+                    $calendar-fullscreen-cell-disabled-border-color
+                );
+
+                &:hover {
+                    cursor: not-allowed;
+
+                    @include calendar-cell-state (
+                        $calendar-fullscreen-cell-disabled-background,
+                        $calendar-fullscreen-cell-disabled-color,
+                        $calendar-fullscreen-cell-disabled-border-color
+                    );
+                }
+            }
+        }
+
+        #{$calendar-prefix}-date:hover,
+        #{$calendar-prefix}-month:hover {
+            cursor: pointer;
+
+            @include calendar-cell-state (
+                $calendar-fullscreen-cell-hover-background,
+                $calendar-fullscreen-cell-hover-color,
+                $calendar-fullscreen-cell-hover-border-color
+            );
+        }
+    }
+}

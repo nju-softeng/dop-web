@@ -1,0 +1,18 @@
+#{$range-picker-prefix},
+#{$date-picker-prefix},
+#{$range-picker-prefix}-panel,
+#{$date-picker-prefix}-panel {
+    @include global-font;
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    &,
+    &:before,
+    &:after {
+        box-sizing: border-box;
+    }
+}

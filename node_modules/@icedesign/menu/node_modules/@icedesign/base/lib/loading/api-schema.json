@@ -1,0 +1,124 @@
+{
+  "name": "Loading",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "tip": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "自定义内容",
+      "docblock": "自定义内容"
+    },
+    "visible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "loading 状态, 默认 true",
+      "docblock": "loading 状态, 默认 true"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义class",
+      "docblock": "自定义class"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "shape": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "''",
+            "computed": false,
+            "description": "无"
+          },
+          {
+            "value": "'flower'",
+            "computed": false,
+            "description": "icon"
+          },
+          {
+            "value": "'fusion-reactor'",
+            "computed": false,
+            "description": "fusion矢量"
+          },
+          {
+            "value": "'dot-circle'",
+            "computed": false,
+            "description": "点圈"
+          }
+        ]
+      },
+      "required": false,
+      "description": "动画类型",
+      "defaultValue": {
+        "value": "''",
+        "computed": false
+      },
+      "docblock": "动画类型\n@enumdesc 无, icon, fusion矢量, 点圈",
+      "value": [
+        {
+          "value": "''",
+          "computed": false,
+          "description": "无"
+        },
+        {
+          "value": "'flower'",
+          "computed": false,
+          "description": "icon"
+        },
+        {
+          "value": "'fusion-reactor'",
+          "computed": false,
+          "description": "fusion矢量"
+        },
+        {
+          "value": "'dot-circle'",
+          "computed": false,
+          "description": "点圈"
+        }
+      ]
+    },
+    "color": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "动画颜色",
+      "docblock": "动画颜色"
+    },
+    "children": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "子元素",
+      "docblock": "子元素"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

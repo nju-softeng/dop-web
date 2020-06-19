@@ -1,0 +1,389 @@
+{
+  "name": "Nav",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'normal'",
+            "computed": false,
+            "description": "正常"
+          },
+          {
+            "value": "'primary'",
+            "computed": false,
+            "description": "主要"
+          },
+          {
+            "value": "'secondary'",
+            "computed": false,
+            "description": "次要"
+          },
+          {
+            "value": "'text'",
+            "computed": false,
+            "description": "文字"
+          },
+          {
+            "value": "'line'",
+            "computed": false,
+            "description": "线形"
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航类型",
+      "defaultValue": {
+        "value": "'normal'",
+        "computed": false
+      },
+      "docblock": "导航类型\n@enumdesc 正常, 主要, 次要, 文字, 线形",
+      "value": [
+        {
+          "value": "'normal'",
+          "computed": false,
+          "description": "正常"
+        },
+        {
+          "value": "'primary'",
+          "computed": false,
+          "description": "主要"
+        },
+        {
+          "value": "'secondary'",
+          "computed": false,
+          "description": "次要"
+        },
+        {
+          "value": "'text'",
+          "computed": false,
+          "description": "文字"
+        },
+        {
+          "value": "'line'",
+          "computed": false,
+          "description": "线形"
+        }
+      ]
+    },
+    "direction": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'hoz'",
+            "computed": false,
+            "description": "水平"
+          },
+          {
+            "value": "'ver'",
+            "computed": false,
+            "description": "垂直"
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航方向",
+      "defaultValue": {
+        "value": "'ver'",
+        "computed": false
+      },
+      "docblock": "导航方向\n@enumdesc 水平, 垂直",
+      "value": [
+        {
+          "value": "'hoz'",
+          "computed": false,
+          "description": "水平"
+        },
+        {
+          "value": "'ver'",
+          "computed": false,
+          "description": "垂直"
+        }
+      ]
+    },
+    "activeDirection": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "null",
+            "computed": false,
+            "description": "无"
+          },
+          {
+            "value": "'top'",
+            "computed": false,
+            "description": "上"
+          },
+          {
+            "value": "'bottom'",
+            "computed": false,
+            "description": "下"
+          },
+          {
+            "value": "'left'",
+            "computed": false,
+            "description": "左"
+          },
+          {
+            "value": "'right'",
+            "computed": false,
+            "description": "右"
+          }
+        ]
+      },
+      "required": false,
+      "description": "设置组件选中状态的active边方向",
+      "docblock": "设置组件选中状态的active边方向\n@enumdesc 无, 上, 下, 左, 右",
+      "value": [
+        {
+          "value": "null",
+          "computed": false,
+          "description": "无"
+        },
+        {
+          "value": "'top'",
+          "computed": false,
+          "description": "上"
+        },
+        {
+          "value": "'bottom'",
+          "computed": false,
+          "description": "下"
+        },
+        {
+          "value": "'left'",
+          "computed": false,
+          "description": "左"
+        },
+        {
+          "value": "'right'",
+          "computed": false,
+          "description": "右"
+        }
+      ]
+    },
+    "popupAlign": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'follow'",
+            "computed": false
+          },
+          {
+            "value": "'outside'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "Tree 展开时候右侧子item的对齐方式",
+      "defaultValue": {
+        "value": "'follow'",
+        "computed": false
+      },
+      "docblock": "Tree 展开时候右侧子item的对齐方式"
+    },
+    "triggerType": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'click'",
+            "computed": false
+          },
+          {
+            "value": "'hover'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "PopupItem触发方式",
+      "docblock": "PopupItem触发方式"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义class",
+      "docblock": "自定义class"
+    },
+    "iconOnly": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "控制icon是否展示",
+      "docblock": "控制icon是否展示"
+    },
+    "hasTooltip": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否有ToolTIps(仅在iconOnly=true时生效)",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否有ToolTIps(仅在iconOnly=true时生效)"
+    },
+    "hasArrow": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示右侧的箭头(仅在iconOnly=true时生效)",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否显示右侧的箭头(仅在iconOnly=true时生效)"
+    }
+  },
+  "methods": [],
+  "description": "继承自`Menu`的能力请查看`Menu`文档",
+  "subComponents": [
+    {
+      "name": "Group",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式前缀"
+        }
+      },
+      "methods": [],
+      "description": "继承自`Menu.Group`的能力请查看`Menu.Group`文档"
+    },
+    {
+      "name": "Item",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式前缀"
+        },
+        "icon": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "node"
+              }
+            ]
+          },
+          "required": false,
+          "description": "自定义图标，可以使用Icon的type, 也可以使用组件`<Icon type=\"your type\"/>`",
+          "docblock": "自定义图标，可以使用Icon的type, 也可以使用组件`<Icon type=\"your type\"/>`"
+        }
+      },
+      "methods": [],
+      "description": "继承自`Menu.Item`的能力请查看`Menu.Item`文档"
+    },
+    {
+      "name": "PopupItem",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式前缀"
+        },
+        "icon": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "node"
+              }
+            ]
+          },
+          "required": false,
+          "description": "自定义图标，可以使用Icon的type, 也可以使用组件`<Icon type=\"your type\"/>`",
+          "docblock": "自定义图标，可以使用Icon的type, 也可以使用组件`<Icon type=\"your type\"/>`"
+        }
+      },
+      "methods": [],
+      "description": "继承自`Menu.PopupItem`的能力请查看`Menu.PopupItem`文档"
+    },
+    {
+      "name": "SubNav",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式前缀"
+        },
+        "icon": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "node"
+              }
+            ]
+          },
+          "required": false,
+          "description": "自定义图标，可以使用Icon的type, 也可以使用组件`<Icon type=\"your type\"/>`",
+          "docblock": "自定义图标，可以使用Icon的type, 也可以使用组件`<Icon type=\"your type\"/>`"
+        }
+      },
+      "methods": [],
+      "description": "继承自`Menu.SubMenu`的能力请查看`Menu.SubMenu`文档"
+    }
+  ]
+}

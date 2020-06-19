@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+////
+/// @module search: 搜索条
+/// @tag Search
+/// @category component
+/// @family Search
+/// @varPrefix $search-
+/// @classPrefix {prefix}-search
+/// @order {"size/bounding":10,"size/input":11,"size/filter":12,"size/button":13,"statement/normal":10,"statement/normal/bounding":100,"statement/normal/input":101,"statement/normal/filter":102,"statement/normal/button":103,"statement/hover":11,"statement/hover/input":110,"statement/hover/button":111}
+////
+
+// Primary
+// ----------------------------------------
+
+/// height
+/// @namespace size/bounding
+$search-height-l: $s-15 !default;
+
+/// height
+/// @namespace size/bounding
+$search-height-m: $s-10 !default;
+
+/// border width
+/// @namespace size/input
+$search-border-width: $line-2 !default;
+
+/// corner
+/// @namespace statement/normal/bounding
+$search-border-radius: $corner-0 !default;
+
+/// border style
+/// @namespace statement/normal/input
+$search-border-style: $line-solid !default;
+
+/// border color
+/// @namespace statement/normal/input
+$search-border-color: $color-brand1-6 !default;
+
+$search-border: $search-border-width $search-border-style $search-border-color !default;
+
+/// padding(l)
+/// @namespace size/filter
+$search-filter-padding-left: $s-4 !default;
+
+/// padding(r)
+/// @namespace size/filter
+$search-filter-padding-right: $s-3 !default;
+
+/// text
+/// @namespace size/filter
+$search-filter-text: $s-4 !default;
+
+/// arrow size
+/// @namespace size/filter
+$search-filter-arrow-size: $icon-xs !default;
+
+/// arrow color
+/// @namespace statement/normal/filter
+$search-filter-arrow-color: $color-text1-4 !default;
+
+
+/// arrow padding
+/// @namespace size/filter
+$search-filter-arrow-padding-right: $s-2 !default;
+
+$search-filter-divider: $line-1 $line-solid $color-line1-1 !default;
+
+/// background
+/// @namespace statement/normal/filter
+$search-filter-background: $color-white !default;
+
+/// padding(l)
+/// @namespace size/input
+$search-textfield-padding-left: $s-2 !default;
+
+/// padding(r)
+/// @namespace size/input
+$search-textfield-padding-right: $s-2 !default;
+
+/// text
+/// @namespace statement/normal/input
+$search-textfield-text-color: $color-text1-2 !default;
+
+
+$search-textfield-text: $font-size-body-1 $search-textfield-text-color !default;
+
+/// background
+/// @namespace statement/normal/input
+$search-textfield-background: $color-white !default;
+
+/// padding (l)
+/// @namespace size/button
+$search-button-padding-left: $s-5 !default;
+
+/// padding (r)
+/// @namespace size/button
+$search-button-padding-right: $s-5 !default;
+
+/// text
+/// @namespace size/button
+$search-button-text-size: $font-size-subhead !default;
+/// text
+/// @namespace size/button
+$search-button-text-large-size: $font-size-subhead !default;
+
+/// text
+/// @namespace size/button
+$search-button-text-medium-size: $font-size-subhead !default;
+
+/// text
+/// @namespace size/button
+$search-button-text-small-size: $font-size-caption !default;
+
+/// text
+/// @namespace statement/normal/button
+$search-button-text-color: $color-white !default;
+
+/// icon
+/// @namespace size/button
+$search-button-icon-l: $icon-xl !default;
+
+/// icon
+/// @namespace size/button
+$search-button-icon-m: $icon-l !default;
+/// icon
+/// @namespace size/button
+$search-button-icon-s: $icon-xs !default;
+
+/// icon margin(l)
+/// @namespace size/button
+$search-button-icon-margin-left: $s-0 !default;
+
+/// icon margin(r)
+/// @namespace size/button
+$search-button-icon-margin-right: $s-1 !default;
+
+$search-button-icon-margin-top: $s-0 !default;
+$search-button-icon-margin-bottom: $s-0 !default;
+
+$search-button-icon-margin: $search-button-icon-margin-top $search-button-icon-margin-right $search-button-icon-margin-bottom $search-button-icon-margin-left !default;
+
+/// background
+/// @namespace statement/normal/button
+$search-button-background: $color-brand1-6 !default;
+
+/// background
+/// @namespace statement/hover/button
+$search-button-hover-background: $color-brand1-9 !default;
+
+/// text
+/// @namespace statement/normal/input
+$search-textfield-input-text-color: $color-text1-4 !default;
+
+/// icon
+/// @namespace statement/normal/button
+$search-button-icon-color: $color-white !default;
+
+$search-textfield-input-text: $font-size-body-1 $search-textfield-input-text-color !default;
+
+
+
+// Secondary
+// ----------------------------------------
+
+/// border width
+/// @namespace size/input
+$search-secondary-border-width: $line-1 !default;
+
+/// border style
+/// @namespace statement/normal/input
+$search-secondary-border-style: $line-solid !default;
+
+/// border color
+/// @namespace statement/normal/input
+$search-secondary-border-color: $color-line1-3 !default;
+
+
+/// border color
+/// @namespace statement/hover/input
+$search-secondary-hover-border-color: $color-line1-3 !default;
+
+
+$search-secondary-border: $search-secondary-border-width $search-secondary-border-style $search-secondary-border-color !default;
+
+
+
+
+// Normal
+// ----------------------------------------
+
+/// height
+/// @namespace size/bounding
+$search-normal-height-m: $s-7 !default;
+
+/// height
+/// @namespace size/bounding
+$search-normal-height-s: $s-5 !default;
+
+/// border width
+/// @namespace size/button
+$search-normal-border-width: $line-1 !default;
+
+/// border style
+/// @namespace statement/normal/button
+$search-normal-border-style: $line-solid !default;
+
+/// border color
+/// @namespace statement/normal/button
+$search-normal-border-color: $color-line1-3 !default;
+
+
+$search-normal-border: $search-normal-border-width $search-normal-border-style $search-normal-border-color !default;
+
+/// padding(l)
+/// @namespace size/input
+$search-normal-textfield-padding-left: $s-2 !default;
+
+/// padding(r)
+/// @namespace size/input
+$search-normal-textfield-padding-right: $s-2 !default;
+
+/// text
+/// @namespace statement/normal/input
+$search-normal-textfield-color: $color-text1-2 !default;
+
+$search-normal-textfield-text: $font-size-body-1 $search-normal-textfield-color !default;
+
+/// background
+/// @namespace statement/normal/input
+$search-normal-textfield-background: $color-white !default;
+
+/// padding(l)
+/// @namespace size/button
+$search-normal-button-padding-left-s: $s-1 !default;
+
+/// padding(l)
+/// @namespace size/button
+$search-normal-button-padding-left-m: $s-2 !default;
+
+/// padding(r)
+/// @namespace size/button
+$search-normal-button-padding-right-s: $s-1 !default;
+
+/// padding(r)
+/// @namespace size/button
+$search-normal-button-padding-right-m: $s-2 !default;
+
+/// text
+/// @namespace size/button
+$search-normal-button-text-size: $font-size-subhead !default;
+
+/// text
+/// @namespace statement/normal/button
+$search-normal-button-text-color: $color-text1-3 !default;
+
+/// icon
+/// @namespace size/button
+$search-normal-button-icon-size-m: $icon-s !default;
+
+/// icon
+/// @namespace statement/normal/button
+$search-normal-button-icon-color: $color-text1-3 !default;
+
+/// background
+/// @namespace statement/normal/button
+$search-normal-button-background: $color-fill1-1 !default;
+
+
+/// background
+/// @namespace statement/hover/button
+$search-normal-button-hover-background: $color-brand1-9 !default;
+
+/// border
+/// @namespace statement/hover/input
+$search-normal-hover-border-color: $color-brand1-6 !default;
+
+$search-normal-hover-border: $line-1 $line-solid $search-normal-hover-border-color !default;
+
+/// text
+/// @namespace statement/hover/input
+$search-normal-hover-textfield-input-text-color: $color-text1-4 !default;
+
+$search-normal-textfield-input-text: $font-size-body-1 $search-normal-hover-textfield-input-text-color !default;

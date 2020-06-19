@@ -1,0 +1,608 @@
+@charset "UTF-8";
+
+////
+/// @module nav: 导航
+/// @tag Nav
+/// @category component
+/// @family nav
+/// @varPrefix $nav-
+/// @classPrefix {prefix}-nav
+/// @order {"size/bounding":10,"size/select":11,"size/arrow down":12,"size/icon":13,"size/group":14,"statement/normal":10,"statement/hover":11,"statement/select":12,"statement/select/active":120,"statement/opened":13}
+////
+
+
+// nav variables
+// --------------------------------------------------
+
+$nav-prefixCls: '.#{$css-prefix}nav';
+$menu-prefixCls: '.#{$css-prefix}menu';
+
+/// text
+/// @namespace size/bounding
+$nav-hoz-font-size: $font-size-body-1 !default;
+
+/// text
+/// @namespace size/bounding
+$nav-ver-font-size: $font-size-body-1 !default;
+
+// primary hoz
+/// background
+/// @namespace statement/normal
+$nav-primary-hoz-bg-color: $color-text1-4 !default;
+/// background
+/// @namespace statement/hover
+$nav-primary-hoz-item-hover-bg-color: $color-black !default;
+/// text
+/// @namespace statement/hover
+$nav-primary-hoz-item-hover-text-color: $color-white !default;
+/// background
+/// @namespace statement/select
+$nav-primary-hoz-item-select-bg-color: $color-black !default;
+/// text
+/// @namespace statement/select
+$nav-primary-hoz-item-select-text-color: $color-white !default;
+/// line
+/// @namespace statement/select/active
+$nav-primary-hoz-item-active-color: $color-brand1-6 !default;
+/// active width
+/// @namespace size/select
+$nav-primary-hoz-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-primary-hoz-text-color: $color-white !default;
+/// height
+/// @namespace size/bounding
+$nav-primary-hoz-height: $s-11 !default;
+/// background
+/// @namespace statement/opened
+$nav-primary-hoz-item-opened-bg-color: $color-text1-4 !default;
+/// text
+/// @namespace statement/opened
+$nav-primary-hoz-item-opened-text-color: $color-white !default;
+/// padding (l, r)
+/// @namespace size/bounding
+$nav-primary-hoz-item-padding-lr: $s-5 !default;
+/// size
+/// @namespace size/arrow down
+$nav-primary-hoz-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-primary-hoz-icon-self-size: $icon-xs !default;
+/// margin (l)
+/// @namespace size/arrow down
+$nav-primary-hoz-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-primary-hoz-icon-self-margin: $s-1 !default;
+
+// primary ver
+/// background
+/// @namespace statement/normal
+$nav-primary-ver-bg-color: $color-text1-4 !default;
+/// background
+/// @namespace statement/hover
+$nav-primary-ver-item-hover-bg-color: $color-black !default;
+/// text
+/// @namespace statement/hover
+$nav-primary-ver-item-hover-text-color: $color-white !default;
+/// background
+/// @namespace statement/select
+$nav-primary-ver-item-select-bg-color: $color-black !default;
+/// text
+/// @namespace statement/select
+$nav-primary-ver-item-select-text-color: $color-white !default;
+/// line
+/// @namespace statement/select/active
+$nav-primary-ver-item-active-color: $color-brand1-6 !default;
+/// active width
+/// @namespace size/select
+$nav-primary-ver-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-primary-ver-text-color: $color-white !default;
+/// height
+/// @namespace size/bounding
+$nav-primary-ver-height: $s-12 !default;
+/// background
+/// @namespace statement/opened
+$nav-primary-ver-item-opened-bg-color: $color-text1-4 !default;
+/// text
+/// @namespace statement/opened
+$nav-primary-ver-item-opened-text-color: $color-white !default;
+/// size
+/// @namespace size/arrow down
+$nav-primary-ver-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-primary-ver-icon-self-size: $icon-xs !default;
+/// margin (l)
+/// @namespace size/arrow down
+$nav-primary-ver-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-primary-ver-icon-self-margin: $s-1 !default;
+
+// secondary hoz
+/// background
+/// @namespace statement/normal
+$nav-secondary-hoz-bg-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/hover
+$nav-secondary-hoz-item-hover-bg-color: $color-brand1-9 !default;
+/// text
+/// @namespace statement/hover
+$nav-secondary-hoz-item-hover-text-color: $color-white !default;
+/// background
+/// @namespace statement/select
+$nav-secondary-hoz-item-select-bg-color: $color-brand1-9 !default;
+/// text
+/// @namespace statement/select
+$nav-secondary-hoz-item-select-text-color: $color-white !default;
+/// line
+/// @namespace statement/select/active
+$nav-secondary-hoz-item-active-color: $color-brand1-9 !default;
+/// active width
+/// @namespace size/select
+$nav-secondary-hoz-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-secondary-hoz-text-color: $color-white !default;
+/// height
+/// @namespace size/bounding
+$nav-secondary-hoz-height: $s-11 !default;
+/// background
+/// @namespace statement/opened
+$nav-secondary-hoz-item-opened-bg-color: $color-brand1-6 !default;
+/// text
+/// @namespace statement/opened
+$nav-secondary-hoz-item-opened-text-color: $color-white !default;
+
+/// padding (l, r)
+/// @namespace size/bounding
+$nav-secondary-hoz-item-padding-lr: $s-5 !default;
+/// size
+/// @namespace size/arrow down
+$nav-secondary-hoz-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-secondary-hoz-icon-self-size: $icon-xs !default;
+
+/// margin (l)
+/// @namespace size/arrow down
+$nav-secondary-hoz-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-secondary-hoz-icon-self-margin: $s-1 !default;
+
+// secondary ver
+/// background
+/// @namespace statement/normal
+$nav-secondary-ver-bg-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/hover
+$nav-secondary-ver-item-hover-bg-color: $color-brand1-9 !default;
+/// text
+/// @namespace statement/hover
+$nav-secondary-ver-item-hover-text-color: $color-white !default;
+/// background
+/// @namespace statement/select
+$nav-secondary-ver-item-select-bg-color: $color-brand1-9 !default;
+/// text
+/// @namespace statement/select
+$nav-secondary-ver-item-select-text-color: $color-white !default;
+/// line
+/// @namespace statement/select/active
+$nav-secondary-ver-item-active-color: $color-brand1-9 !default;
+/// active width
+/// @namespace size/select
+$nav-secondary-ver-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-secondary-ver-text-color: $color-white !default;
+/// height
+/// @namespace size/bounding
+$nav-secondary-ver-height: $s-12 !default;
+/// background
+/// @namespace statement/opened
+$nav-secondary-ver-item-opened-bg-color: $color-brand1-6 !default;
+/// text
+/// @namespace statement/opened
+$nav-secondary-ver-item-opened-text-color: $color-white !default;
+/// size
+/// @namespace size/arrow down
+$nav-secondary-ver-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-secondary-ver-icon-self-size: $icon-xs !default;
+
+/// margin (l)
+/// @namespace size/arrow down
+$nav-secondary-ver-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-secondary-ver-icon-self-margin: $s-1 !default;
+
+// normal hoz
+/// background
+/// @namespace statement/normal
+$nav-normal-hoz-bg-color: $color-white !default;
+/// background
+/// @namespace statement/hover
+$nav-normal-hoz-item-hover-bg-color: $color-white !default;
+/// text
+/// @namespace statement/hover
+$nav-normal-hoz-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-normal-hoz-item-select-bg-color: $color-fill1-2 !default;
+/// text
+/// @namespace statement/select
+$nav-normal-hoz-item-select-text-color: $color-brand1-6 !default;
+/// line
+/// @namespace statement/select/active
+$nav-normal-hoz-item-active-color: $color-brand1-6 !default;
+/// active width
+/// @namespace size/select
+$nav-normal-hoz-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-normal-hoz-text-color: $color-text1-4 !default;
+/// border
+/// @namespace statement/normal
+$nav-normal-hoz-border-color: $color-line1-1 !default;
+/// border
+/// @namespace statement/normal
+$nav-normal-hoz-border-line: $line-1 !default;
+/// height
+/// @namespace size/bounding
+$nav-normal-hoz-height: $s-11 !default;
+/// background
+/// @namespace statement/opened
+$nav-normal-hoz-item-opened-bg-color: $color-white !default;
+/// text
+/// @namespace statement/opened
+$nav-normal-hoz-item-opened-text-color: $color-text1-4 !default;
+
+/// padding (l, r)
+/// @namespace size/bounding
+$nav-normal-hoz-item-padding-lr: $s-5 !default;
+/// size
+/// @namespace size/arrow down
+$nav-normal-hoz-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-normal-hoz-icon-self-size: $icon-xs !default;
+
+/// margin (l)
+/// @namespace size/arrow down
+$nav-normal-hoz-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-normal-hoz-icon-self-margin: $s-1 !default;
+
+// normal ver
+/// background
+/// @namespace statement/normal
+$nav-normal-ver-bg-color: $color-white !default;
+/// background
+/// @namespace statement/hover
+$nav-normal-ver-item-hover-bg-color: $color-white !default;
+/// text
+/// @namespace statement/hover
+$nav-normal-ver-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-normal-ver-item-select-bg-color: $color-fill1-2 !default;
+/// text
+/// @namespace statement/select
+$nav-normal-ver-item-select-text-color: $color-brand1-6 !default;
+/// line
+/// @namespace statement/select/active
+$nav-normal-ver-item-active-color: $color-brand1-6 !default;
+/// active width
+/// @namespace size/select
+$nav-normal-ver-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-normal-ver-text-color: $color-text1-4 !default;
+/// border
+/// @namespace statement/normal
+$nav-normal-ver-border-color: $color-line1-1 !default;
+/// border
+/// @namespace statement/normal
+$nav-normal-ver-border-line: $line-1 !default;
+/// height
+/// @namespace size/bounding
+$nav-normal-ver-height: $s-12 !default;
+/// background
+/// @namespace statement/opened
+$nav-normal-ver-item-opened-bg-color: $color-white !default;
+/// text
+/// @namespace statement/opened
+$nav-normal-ver-item-opened-text-color: $color-text1-4 !default;
+/// size
+/// @namespace size/arrow down
+$nav-normal-ver-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-normal-ver-icon-self-size: $icon-xs !default;
+
+/// margin (l)
+/// @namespace size/arrow down
+$nav-normal-ver-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-normal-ver-icon-self-margin: $s-1 !default;
+
+// line hoz
+/// background
+/// @namespace statement/normal
+$nav-line-hoz-bg-color: $color-transparent !default;
+/// background
+/// @namespace statement/hover
+$nav-line-hoz-item-hover-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/hover
+$nav-line-hoz-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-line-hoz-item-select-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/select
+$nav-line-hoz-item-select-text-color: $color-brand1-6 !default;
+/// line
+/// @namespace statement/select/active
+$nav-line-hoz-item-active-color: $color-brand1-6 !default;
+/// active width
+/// @namespace size/select
+$nav-line-hoz-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-line-hoz-text-color: $color-text1-4 !default;
+/// border
+/// @namespace statement/normal
+$nav-line-hoz-border-color: $color-line1-2 !default;
+/// border
+/// @namespace statement/normal
+$nav-line-hoz-border-line: $line-1 !default;
+/// height
+/// @namespace size/bounding
+$nav-line-hoz-height: $s-11 !default;
+/// background
+/// @namespace statement/opened
+$nav-line-hoz-item-opened-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/opened
+$nav-line-hoz-item-opened-text-color: $color-brand1-6 !default;
+
+/// padding (l, r)
+/// @namespace size/bounding
+$nav-line-hoz-item-padding-lr: $s-5 !default;
+/// size
+/// @namespace size/arrow down
+$nav-line-hoz-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-line-hoz-icon-self-size: $icon-xs !default;
+
+/// margin (l)
+/// @namespace size/arrow down
+$nav-line-hoz-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-line-hoz-icon-self-margin: $s-1 !default;
+
+// line ver
+/// background
+/// @namespace statement/normal
+$nav-line-ver-bg-color: $color-transparent !default;
+/// background
+/// @namespace statement/hover
+$nav-line-ver-item-hover-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/hover
+$nav-line-ver-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-line-ver-item-select-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/select
+$nav-line-ver-item-select-text-color: $color-brand1-6 !default;
+/// line
+/// @namespace statement/select/active
+$nav-line-ver-item-active-color: $color-brand1-6 !default;
+/// active width
+/// @namespace size/select
+$nav-line-ver-item-active-line: $line-2 !default;
+/// text
+/// @namespace statement/normal
+$nav-line-ver-text-color: $color-text1-4 !default;
+/// border
+/// @namespace statement/normal
+$nav-line-ver-border-color: $color-line1-2 !default;
+/// border
+/// @namespace statement/normal
+$nav-line-ver-border-line: $line-1 !default;
+/// height
+/// @namespace size/bounding
+$nav-line-ver-height: $s-12 !default;
+/// background
+/// @namespace statement/opened
+$nav-line-ver-item-opened-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/opened
+$nav-line-ver-item-opened-text-color: $color-text1-4 !default;
+/// size
+/// @namespace size/arrow down
+$nav-line-ver-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-line-ver-icon-self-size: $icon-xs !default;
+
+/// margin (l)
+/// @namespace size/arrow down
+$nav-line-ver-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-line-ver-icon-self-margin: $s-1 !default;
+
+// text  hoz
+/// background
+/// @namespace statement/normal
+$nav-text-hoz-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/normal
+$nav-text-hoz-text-color: $color-text1-4 !default;
+/// height
+/// @namespace size/bounding
+$nav-text-hoz-height: $s-11 !default;
+/// background
+/// @namespace statement/hover
+$nav-text-hoz-item-hover-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/hover
+$nav-text-hoz-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-text-hoz-item-select-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/select
+$nav-text-hoz-item-select-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/opened
+$nav-text-hoz-item-opened-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/opened
+$nav-text-hoz-item-opened-text-color: $color-brand1-6 !default;
+/// padding (l, r)
+/// @namespace size/bounding
+$nav-text-hoz-item-padding-lr: $s-5 !default;
+/// size
+/// @namespace size/arrow down
+$nav-text-hoz-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-text-hoz-icon-self-size: $icon-xs !default;
+/// margin (l)
+/// @namespace size/arrow down
+$nav-text-hoz-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-text-hoz-icon-self-margin: $s-1 !default;
+
+
+
+
+// text has no active line
+$nav-text-hoz-item-active-color: $color-brand1-6 !default;
+;
+
+
+// text ver
+/// background
+/// @namespace statement/normal
+$nav-text-ver-bg-color: $color-transparent !default;
+/// background
+/// @namespace statement/hover
+$nav-text-ver-item-hover-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/hover
+$nav-text-ver-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-text-ver-item-select-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/select
+$nav-text-ver-item-select-text-color: $color-brand1-6 !default;
+/// text
+/// @namespace statement/normal
+$nav-text-ver-text-color: $color-text1-4 !default;
+/// height
+/// @namespace size/bounding
+$nav-text-ver-height: $s-12 !default;
+/// background
+/// @namespace statement/opened
+$nav-text-ver-item-opened-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/opened
+$nav-text-ver-item-opened-text-color: $color-brand1-6 !default;
+/// size
+/// @namespace size/arrow down
+$nav-text-ver-icon-down-size: $icon-xs !default;
+/// size
+/// @namespace size/icon
+$nav-text-ver-icon-self-size: $icon-xs !default;
+/// margin (l)
+/// @namespace size/arrow down
+$nav-text-ver-icon-down-margin: $s-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$nav-text-ver-icon-self-margin: $s-1 !default;
+
+
+
+
+// text has no active line
+$nav-text-ver-item-active-color: $color-brand1-6 !default;
+;
+
+
+// iconOnly
+/// width
+/// @namespace size/bounding
+$nav-icononly-min-width: $s-15 !default;
+/// background
+/// @namespace statement/hover
+$nav-primary-icononly-item-hover-bg-color: $color-black !default;
+/// text
+/// @namespace statement/hover
+$nav-primary-icononly-item-hover-text-color: $color-white !default;
+/// background
+/// @namespace statement/select
+$nav-primary-icononly-item-select-bg-color: $color-black !default;
+/// text
+/// @namespace statement/select
+$nav-primary-icononly-item-select-text-color: $color-white !default;
+/// background
+/// @namespace statement/hover
+$nav-secondary-icononly-item-hover-bg-color: $color-brand1-9 !default;
+/// text
+/// @namespace statement/hover
+$nav-secondary-icononly-item-hover-text-color: $color-white !default;
+/// background
+/// @namespace statement/select
+$nav-secondary-icononly-item-select-bg-color: $color-brand1-9 !default;
+/// text
+/// @namespace statement/select
+$nav-secondary-icononly-item-select-text-color: $color-white !default;
+/// background
+/// @namespace statement/hover
+$nav-normal-icononly-item-hover-bg-color: $color-fill1-2 !default;
+/// text
+/// @namespace statement/hover
+$nav-normal-icononly-item-hover-text-color: $color-text1-4 !default;
+/// background
+/// @namespace statement/select
+$nav-normal-icononly-item-select-bg-color: $color-brand1-6 !default;
+/// text
+/// @namespace statement/select
+$nav-normal-icononly-item-select-text-color: $color-white !default;
+/// background
+/// @namespace statement/hover
+$nav-text-icononly-item-hover-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/hover
+$nav-text-icononly-item-hover-text-color: $color-brand1-6 !default;
+/// background
+/// @namespace statement/select
+$nav-text-icononly-item-select-bg-color: $color-transparent !default;
+/// text
+/// @namespace statement/select
+$nav-text-icononly-item-select-text-color: $color-brand1-6 !default;
+
+/// height
+/// @namespace size/group
+$nav-group-height: $s-10 !default;
+/// text
+/// @namespace size/group
+$nav-group-font-size: $font-size-subhead !default;

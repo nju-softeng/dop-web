@@ -1,0 +1,427 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _binaryReader = require('./binary-reader.js');
+
+var _binaryReader2 = _interopRequireDefault(_binaryReader);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* eslint-disable */
+
+
+var ExifParser = function () {
+    function ExifParser() {
+        _classCallCheck(this, ExifParser);
+
+        // Private ExifParser fields
+        this.data = new _binaryReader2['default']();
+        this.offsets = {};
+
+        this.tags = {
+            tiff: {
+                /*
+                 The image orientation viewed in terms of rows and columns.
+                  1 - The 0th row is at the visual top of the image, and the 0th column is the visual left-hand side.
+                 2 - The 0th row is at the visual top of the image, and the 0th column is the visual left-hand side.
+                 3 - The 0th row is at the visual top of the image, and the 0th column is the visual right-hand side.
+                 4 - The 0th row is at the visual bottom of the image, and the 0th column is the visual right-hand side.
+                 5 - The 0th row is at the visual bottom of the image, and the 0th column is the visual left-hand side.
+                 6 - The 0th row is the visual left-hand side of the image, and the 0th column is the visual top.
+                 7 - The 0th row is the visual right-hand side of the image, and the 0th column is the visual top.
+                 8 - The 0th row is the visual right-hand side of the image, and the 0th column is the visual bottom.
+                 9 - The 0th row is the visual left-hand side of the image, and the 0th column is the visual bottom.
+                 */
+                0x0112: 'Orientation',
+                0x8769: 'ExifIFDPointer',
+                0x8825: 'GPSInfoIFDPointer'
+            },
+            exif: {
+                0x9000: 'ExifVersion',
+                0xA001: 'ColorSpace',
+                0xA002: 'PixelXDimension',
+                0xA003: 'PixelYDimension',
+                0x9003: 'DateTimeOriginal',
+                0x829A: 'ExposureTime',
+                0x829D: 'FNumber',
+                0x8827: 'ISOSpeedRatings',
+                0x9201: 'ShutterSpeedValue',
+                0x9202: 'ApertureValue',
+                0x9207: 'MeteringMode',
+                0x9208: 'LightSource',
+                0x9209: 'Flash',
+                0xA402: 'ExposureMode',
+                0xA403: 'WhiteBalance',
+                0xA406: 'SceneCaptureType',
+                0xA404: 'DigitalZoomRatio',
+                0xA408: 'Contrast',
+                0xA409: 'Saturation',
+                0xA40A: 'Sharpness'
+            },
+            gps: {
+                0x0000: 'GPSVersionID',
+                0x0001: 'GPSLatitudeRef',
+                0x0002: 'GPSLatitude',
+                0x0003: 'GPSLongitudeRef',
+                0x0004: 'GPSLongitude'
+            }
+        };
+
+        this.tagDescs = {
+            'ColorSpace': {
+                1: 'sRGB',
+                0: 'Uncalibrated'
+            },
+
+            'MeteringMode': {
+                0: 'Unknown',
+                1: 'Average',
+                2: 'CenterWeightedAverage',
+                3: 'Spot',
+                4: 'MultiSpot',
+                5: 'Pattern',
+                6: 'Partial',
+                255: 'Other'
+            },
+
+            'LightSource': {
+                1: 'Daylight',
+                2: 'Fliorescent',
+                3: 'Tungsten',
+                4: 'Flash',
+                9: 'Fine weather',
+                10: 'Cloudy weather',
+                11: 'Shade',
+                12: 'Daylight fluorescent (D 5700 - 7100K)',
+                13: 'Day white fluorescent (N 4600 -5400K)',
+                14: 'Cool white fluorescent (W 3900 - 4500K)',
+                15: 'White fluorescent (WW 3200 - 3700K)',
+                17: 'Standard light A',
+                18: 'Standard light B',
+                19: 'Standard light C',
+                20: 'D55',
+                21: 'D65',
+                22: 'D75',
+                23: 'D50',
+                24: 'ISO studio tungsten',
+                255: 'Other'
+            },
+
+            'Flash': {
+                0x0000: 'Flash did not fire.',
+                0x0001: 'Flash fired.',
+                0x0005: 'Strobe return light not detected.',
+                0x0007: 'Strobe return light detected.',
+                0x0009: 'Flash fired, compulsory flash mode',
+                0x000D: 'Flash fired, compulsory flash mode, return light not detected',
+                0x000F: 'Flash fired, compulsory flash mode, return light detected',
+                0x0010: 'Flash did not fire, compulsory flash mode',
+                0x0018: 'Flash did not fire, auto mode',
+                0x0019: 'Flash fired, auto mode',
+                0x001D: 'Flash fired, auto mode, return light not detected',
+                0x001F: 'Flash fired, auto mode, return light detected',
+                0x0020: 'No flash function',
+                0x0041: 'Flash fired, red-eye reduction mode',
+                0x0045: 'Flash fired, red-eye reduction mode, return light not detected',
+                0x0047: 'Flash fired, red-eye reduction mode, return light detected',
+                0x0049: 'Flash fired, compulsory flash mode, red-eye reduction mode',
+                0x004D: 'Flash fired, compulsory flash mode, red-eye reduction mode, return light not detected',
+                0x004F: 'Flash fired, compulsory flash mode, red-eye reduction mode, return light detected',
+                0x0059: 'Flash fired, auto mode, red-eye reduction mode',
+                0x005D: 'Flash fired, auto mode, return light not detected, red-eye reduction mode',
+                0x005F: 'Flash fired, auto mode, return light detected, red-eye reduction mode'
+            },
+
+            'ExposureMode': {
+                0: 'Auto exposure',
+                1: 'Manual exposure',
+                2: 'Auto bracket'
+            },
+
+            'WhiteBalance': {
+                0: 'Auto white balance',
+                1: 'Manual white balance'
+            },
+
+            'SceneCaptureType': {
+                0: 'Standard',
+                1: 'Landscape',
+                2: 'Portrait',
+                3: 'Night scene'
+            },
+
+            'Contrast': {
+                0: 'Normal',
+                1: 'Soft',
+                2: 'Hard'
+            },
+
+            'Saturation': {
+                0: 'Normal',
+                1: 'Low saturation',
+                2: 'High saturation'
+            },
+
+            'Sharpness': {
+                0: 'Normal',
+                1: 'Soft',
+                2: 'Hard'
+            },
+
+            // GPS related
+            'GPSLatitudeRef': {
+                N: 'North latitude',
+                S: 'South latitude'
+            },
+
+            'GPSLongitudeRef': {
+                E: 'East longitude',
+                W: 'West longitude'
+            }
+        };
+    }
+
+    ExifParser.prototype._extractTags = function _extractTags(IFD_offset, tags2extract) {
+        var data = this.data,
+            offsets = this.offsets,
+            tagDescs = this.tagDescs;
+
+        var length = data.SHORT(IFD_offset),
+            i = void 0,
+            ii = void 0,
+            tag = void 0,
+            type = void 0,
+            count = void 0,
+            tagOffset = void 0,
+            offset = void 0,
+            value = void 0,
+            values = [],
+            hash = {};
+
+        for (i = 0; i < length; i++) {
+            // Set binary reader pointer to beginning of the next tag
+            offset = tagOffset = IFD_offset + 12 * i + 2;
+
+            tag = tags2extract[data.SHORT(offset)];
+
+            if (tag === undefined) {
+                continue; // Not the tag we requested
+            }
+
+            type = data.SHORT(offset += 2);
+            count = data.LONG(offset += 2);
+
+            offset += 4;
+            values = [];
+
+            switch (type) {
+                case 1: // BYTE
+                case 7:
+                    // UNDEFINED
+                    if (count > 4) {
+                        offset = data.LONG(offset) + offsets.tiffHeader;
+                    }
+
+                    for (ii = 0; ii < count; ii++) {
+                        values[ii] = data.BYTE(offset + ii);
+                    }
+                    break;
+                case 2:
+                    // STRING
+                    if (count > 4) {
+                        offset = data.LONG(offset) + offsets.tiffHeader;
+                    }
+
+                    hash[tag] = data.STRING(offset, count - 1);
+                    continue;
+                case 3:
+                    // SHORT
+                    if (count > 2) {
+                        offset = data.LONG(offset) + offsets.tiffHeader;
+                    }
+
+                    for (ii = 0; ii < count; ii++) {
+                        values[ii] = data.SHORT(offset + ii * 2);
+                    }
+                    break;
+                case 4:
+                    // LONG
+                    if (count > 1) {
+                        offset = data.LONG(offset) + offsets.tiffHeader;
+                    }
+
+                    for (ii = 0; ii < count; ii++) {
+                        values[ii] = data.LONG(offset + ii * 4);
+                    }
+                    break;
+                case 5:
+                    // RATIONAL
+                    offset = data.LONG(offset) + offsets.tiffHeader;
+
+                    for (ii = 0; ii < count; ii++) {
+                        values[ii] = data.LONG(offset + ii * 4) / data.LONG(offset + ii * 4 + 4);
+                    }
+                    break;
+                case 9:
+                    // SLONG
+                    offset = data.LONG(offset) + offsets.tiffHeader;
+
+                    for (ii = 0; ii < count; ii++) {
+                        values[ii] = data.SLONG(offset + ii * 4);
+                    }
+                    break;
+                case 10:
+                    // SRATIONAL
+                    offset = data.LONG(offset) + offsets.tiffHeader;
+
+                    for (ii = 0; ii < count; ii++) {
+                        values[ii] = data.SLONG(offset + ii * 4) / data.SLONG(offset + ii * 4 + 4);
+                    }
+                    break;
+                default:
+                    continue;
+            }
+
+            value = count == 1 ? values[0] : values;
+
+            if (tagDescs.hasOwnProperty(tag) && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) != 'object') {
+                hash[tag] = tagDescs[tag][value];
+            } else {
+                hash[tag] = value;
+            }
+        }
+
+        return hash;
+    };
+
+    ExifParser.prototype.init = function init(segment) {
+        var data = this.data,
+            offsets = this.offsets,
+            tags = this.tags;
+        // Reset internal data
+
+        offsets = {
+            tiffHeader: 10
+        };
+
+        if (segment === undefined || !segment.length) {
+            return false;
+        }
+
+        data.init(segment);
+
+        // Check if that's APP1 and that it has EXIF
+        if (data.SHORT(0) === 0xFFE1 && this.data.STRING(4, 5).toUpperCase() === 'EXIF\0') {
+            var Tiff = undefined;
+            var idx = this.offsets.tiffHeader;
+
+            // Set read order of multi-byte data
+            this.data.II(data.SHORT(idx) == 0x4949);
+
+            // Check if always present bytes are indeed present
+            if (data.SHORT(idx += 2) !== 0x002A) return false;
+
+            offsets['IFD0'] = offsets.tiffHeader + data.LONG(idx += 2);
+            Tiff = this._extractTags(offsets['IFD0'], tags.tiff);
+
+            offsets['exifIFD'] = 'ExifIFDPointer' in Tiff ? offsets.tiffHeader + Tiff.ExifIFDPointer : undefined;
+            offsets['gpsIFD'] = 'GPSInfoIFDPointer' in Tiff ? offsets.tiffHeader + Tiff.GPSInfoIFDPointer : undefined;
+
+            return true;
+        }
+        return false;
+    };
+
+    ExifParser.prototype.EXIF = function EXIF() {
+        var offsets = this.offsets,
+            tags = this.tags;
+        // Populate EXIF hash
+
+        var Exif = this._extractTags(offsets.exifIFD, tags.exif);
+
+        // Fix formatting of some tags
+        if (Exif.ExifVersion && Array.isArray(Exif.ExifVersion)) {
+            for (var i = 0, _exifVersion = ''; i < Exif.ExifVersion.length; i++) {
+                _exifVersion += String.fromCharCode(Exif.ExifVersion[i]);
+            }
+            Exif.ExifVersion = exifVersion;
+        }
+
+        return Exif;
+    };
+
+    ExifParser.prototype.GPS = function GPS() {
+        var offsets = this.offsets,
+            tags = this.tags;
+
+        var GPS = this._extractTags(offsets.gpsIFD, tags.gps);
+
+        // iOS devices (and probably some others) do not put in GPSVersionID tag (why?..)
+        // fixbug GPS.GPSVersionID maybe string add by david.chenz 2015.01.13
+        if (GPS.GPSVersionID && Array.isArray(GPS.GPSVersionID)) {
+            GPS.GPSVersionID = GPS.GPSVersionID.join('.');
+        }
+
+        return GPS;
+    };
+
+    ExifParser.prototype.setExif = function setExif(tag, value) {
+        var data = this.data,
+            offsets = this.offsets,
+            tags = this.tags;
+        // Right now only setting of width/height is possible
+
+        if (tag !== 'PixelXDimension' && tag !== 'PixelYDimension') {
+            return false;
+        }
+
+        var offset = void 0,
+            length = void 0,
+            tagOffset = void 0,
+            valueOffset = 0;
+
+        // If tag name passed translate into hex key
+        if (typeof tag === 'string') {
+            var tmpTags = tags['exif'];
+            for (var hex in tmpTags) {
+                if (tmpTags[hex] === tag) {
+                    tag = hex;
+                    break;
+                }
+            }
+        }
+        offset = offsets['exifIFD'];
+        length = data.SHORT(offset);
+
+        for (var i = 0; i < length; i++) {
+            tagOffset = offset + 12 * i + 2;
+
+            if (data.SHORT(tagOffset) == tag) {
+                valueOffset = tagOffset + 8;
+                break;
+            }
+        }
+
+        if (!valueOffset) {
+            return false;
+        }
+
+        data.LONG(valueOffset, value);
+        return true;
+    };
+
+    ExifParser.prototype.getBinary = function getBinary() {
+        return this.data.SEGMENT();
+    };
+
+    return ExifParser;
+}();
+
+exports['default'] = ExifParser;
+module.exports = exports['default'];

@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+////
+/// @module input: 输入框
+/// @tag input
+/// @category component
+/// @family input
+/// @varPrefix $input-
+/// @classPrefix {prefix}-input
+/// @order {"size/bounding":10,"size/feedback":11,"size/maxlen":12,"size/clear":13,"statement/normal":10,"statement/normal/addon":100,"statement/normal/feedback":101,"statement/normal/maxlen":102,"statement/normal/clear":103,"statement/disabled":11,"statement/hover":12,"statement/hover/clear":120,"statement/focus":13,"statement/error":14}
+////
+
+$input-prefix: '.#{$css-prefix}input';
+
+// 公共
+// --------------------------------------------------
+
+/// border
+/// @namespace size/bounding
+$input-border-width: $line-1 !default;
+
+/// background
+/// @namespace statement/normal
+$input-color-bg: $color-white !default;
+
+/// hint
+/// @namespace statement/normal
+$input-color-hint: $color-text1-2 !default;
+
+/// text
+/// @namespace statement/disabled
+$input-color-disabled: $color-text1-1 !default;
+
+/// border
+/// @namespace statement/disabled
+$input-color-border-disabled: $color-line1-1 !default;
+
+/// background
+/// @namespace statement/disabled
+$input-color-bg-disabled: $color-fill1-1 !default;
+
+
+// 单行
+// --------------------------------------------------
+
+/// text
+/// @namespace statement/normal
+$input-single-color: $color-text1-4 !default;
+
+/// border
+/// @namespace statement/normal
+$input-single-color-border: $color-line1-3 !default;
+
+/// border
+/// @namespace statement/hover
+$input-single-color-border-hover: $color-line1-4 !default;
+
+/// background
+/// @namespace statement/hover
+$input-single-color-bg-hover: $color-white !default;
+
+/// border
+/// @namespace statement/focus
+$input-single-color-border-focus: $color-brand2-6 !default;
+
+/// background
+/// @namespace statement/focus
+$input-single-color-bg-focus: $color-white !default;
+
+
+// 多行
+// --------------------------------------------------
+
+/// text
+/// @namespace statement/normal
+$input-multiple-color: $color-text1-4 !default;
+
+/// border
+/// @namespace statement/normal
+$input-multiple-color-border: $color-line1-3 !default;
+
+/// border
+/// @namespace statement/hover
+$input-multiple-color-border-hover: $color-line1-4 !default;
+
+/// background
+/// @namespace statement/hover
+$input-multiple-color-bg-hover: $color-white !default;
+
+/// focus
+/// @namespace statement/focus
+$input-multiple-color-border-focus: $color-brand2-6 !default;
+
+/// background
+/// @namespace statement/focus
+$input-multiple-color-bg-focus: $color-white !default;
+
+/// corner
+/// @namespace statement/normal
+$input-multiple-corner: $corner-0 !default;
+
+/// padding(l,r)
+/// @namespace size/bounding
+$input-multiple-size-padding-lr: $s-2 !default;
+
+/// padding(t,b)
+/// @namespace size/bounding
+$input-multiple-size-padding-tb: $s-1 !default;
+
+
+/// text
+/// @namespace size/bounding
+$input-multiple-font-size: $font-size-body-1 !default;
+
+
+/// corner
+/// @namespace statement/normal
+$input-multiple-corner: $corner-0 !default;
+
+// addon
+// --------------------------------------------------
+
+/// text
+/// @namespace statement/normal/addon
+$input-addon-color-bg: $color-fill1-1 !default;
+
+/// border
+/// @namespace statement/normal/addon
+$input-addon-color: $color-text1-2 !default;
+
+// large
+// --------------------------------------------------
+
+/// corner
+/// @namespace statement/normal
+$input-size-l-corner: $corner-0 !default;
+
+/// height
+/// @namespace size/bounding
+$input-size-l-height: $s-10 !default;
+
+// TODO: DELETE IN 1.0 VERSION
+$input-size-l-margin: $s-0 !default;
+
+/// padding
+/// @namespace size/bounding
+$input-size-l-padding: $s-2 !default;
+
+/// text
+/// @namespace size/bounding
+$input-size-l-font: $font-size-body-1 !default;
+
+// medium
+// --------------------------------------------------
+
+/// corner
+/// @namespace statement/normal
+$input-size-m-corner: $corner-0 !default;
+
+/// height
+/// @namespace size/bounding
+$input-size-m-height: $s-7 !default;
+
+// TODO: DELETE IN 1.0 VERSION
+$input-size-m-margin: $s-0 !default;
+
+/// padding
+/// @namespace size/bounding
+$input-size-m-padding: $s-2 !default;
+
+/// text
+/// @namespace size/bounding
+$input-size-m-font: $font-size-body-1 !default;
+
+// small
+// --------------------------------------------------
+
+/// corner
+/// @namespace statement/normal
+$input-size-s-corner: $corner-0 !default;
+
+/// height
+/// @namespace size/bounding
+$input-size-s-height: $s-5 !default;
+
+// TODO: DELETE IN 1.0 VERSION
+$input-size-s-margin: $s-0 !default;
+
+/// padding
+/// @namespace size/bounding
+$input-size-s-padding: $s-1 !default;
+
+
+/// text
+/// @namespace size/bounding
+$input-size-s-font: $font-size-body-1 !default;
+
+// feedback
+// --------------------------------------------------
+
+/// bottom
+/// @namespace size/feedback
+$input-size-feedback-bottom: $s-1 !default;
+
+/// icon size
+/// @namespace size/feedback
+$input-feedback-icon-size-s: $icon-xs !default;
+
+/// icon size
+/// @namespace size/feedback
+$input-feedback-icon-size-m: $icon-xs !default;
+
+/// icon size
+/// @namespace size/feedback
+$input-feedback-icon-size-l: $icon-xs !default;
+
+
+/// success
+/// @namespace statement/normal/feedback
+$input-success-feedback-color: $color-success-2 !default;
+
+/// border
+/// @namespace statement/error
+$input-color-feedback-border-error: $color-error-2 !default;
+
+// maxlen
+// --------------------------------------------------
+
+/// error
+/// @namespace statement/normal/maxlen
+$input-color-maxlen-error: $color-error-2 !default;
+
+/// text
+/// @namespace statement/normal/maxlen
+$input-color-maxlen: $color-text1-4 !default;
+
+/// text
+/// @namespace size/maxlen
+$input-font-size-maxlen: $font-size-caption !default;
+
+// clear
+// --------------------------------------------------
+
+/// background
+/// @namespace statement/normal/clear
+$input-clear-color: $color-text1-1 !default;
+
+/// background
+/// @namespace statement/hover/clear
+$input-clear-hover-color: $color-text1-2 !default;
+
+/// icon size
+/// @namespace size/clear
+$input-clear-s-icon-size: $icon-xs !default;
+
+/// icon size
+/// @namespace size/clear
+$input-clear-m-icon-size: $icon-s !default;
+
+/// icon size
+/// @namespace size/clear
+$input-clear-l-icon-size: $icon-m !default;

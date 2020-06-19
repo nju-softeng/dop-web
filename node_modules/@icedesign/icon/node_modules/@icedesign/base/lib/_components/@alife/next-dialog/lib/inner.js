@@ -1,0 +1,159 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp;
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _nextIcon = require('../../next-icon/lib/index.js');
+
+var _nextIcon2 = _interopRequireDefault(_nextIcon);
+
+var _nextUtil = require('../../next-util/lib/index.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var Children = _react2['default'].Children,
+    noop = function noop() {},
+    getPrivateDialogProperty = function getPrivateDialogProperty(name) {
+    return '_dialog' + (name.charAt(0).toUpperCase() + name.substr(1)) + 'Id';
+};
+var uuid = 0;
+
+var DialogInner = (_temp = _class = function (_React$Component) {
+    _inherits(DialogInner, _React$Component);
+
+    function DialogInner(props, context) {
+        _classCallCheck(this, DialogInner);
+
+        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props, context));
+
+        ['header', 'body', 'footer'].forEach(function (name) {
+            _this[getPrivateDialogProperty(name)] = 'dialog-' + name + '-' + uuid++;
+        });
+        return _this;
+    }
+
+    DialogInner.prototype.render = function render() {
+        var _classNames;
+
+        /* eslint-disable no-unused-vars, react/prop-types */
+        var _props = this.props,
+            children = _props.children,
+            className = _props.className,
+            footerAlign = _props.footerAlign,
+            closable = _props.closable,
+            role = _props.role,
+            others = _objectWithoutProperties(_props, ['children', 'className', 'footerAlign', 'closable', 'role']),
+            prefix = this.context.prefix || this.props.prefix,
+            content = this._getContent(),
+            cls = (0, _classnames2['default'])((_classNames = {}, _defineProperty(_classNames, prefix + 'dialog', true), _defineProperty(_classNames, footerAlign, footerAlign), _defineProperty(_classNames, className, className), _classNames)),
+            closeContent = closable ? _react2['default'].createElement(
+            'a',
+            { href: 'javascript:;', className: prefix + 'dialog-close',
+                onClick: this.onClose.bind(this) },
+            _react2['default'].createElement(_nextIcon2['default'], { type: 'close', size: 'small' })
+        ) : null;
+
+        others = (0, _nextUtil.pickAttrs)(others);
+
+        return _react2['default'].createElement(
+            'div',
+            _extends({}, others, {
+                className: cls,
+                role: role,
+                'aria-labelledby': content.header ? content.header.props.id : '' }),
+            content.header,
+            content.body,
+            content.footer,
+            closeContent
+        );
+    };
+
+    DialogInner.prototype._getContent = function _getContent() {
+        var _this2 = this;
+
+        var children = this.props.children,
+            result = {};
+
+        Children.forEach(children, function (child) {
+            if (child && child.type.dialogMark) {
+                var name = child.type.dialogMark.toLowerCase();
+                result[name] = _react2['default'].cloneElement(child, {
+                    ref: name,
+                    id: _this2[getPrivateDialogProperty(name)]
+                });
+            }
+        });
+        return result;
+    };
+
+    DialogInner.prototype.getHeader = function getHeader() {
+        return _reactDom2['default'].findDOMNode(this.refs.header);
+    };
+
+    DialogInner.prototype.getBody = function getBody() {
+        return _reactDom2['default'].findDOMNode(this.refs.body);
+    };
+
+    DialogInner.prototype.getFooter = function getFooter() {
+        return _reactDom2['default'].findDOMNode(this.refs.footer);
+    };
+
+    DialogInner.prototype.onClose = function onClose(e) {
+        this.props.onClose('fromCloseBtn');
+        e.preventDefault();
+    };
+
+    return DialogInner;
+}(_react2['default'].Component), _class.propTypes = {
+    prefix: _propTypes2['default'].string,
+    footerAlign: _propTypes2['default'].oneOf(['left', 'center', 'right']),
+    className: _propTypes2['default'].string,
+    closable: _propTypes2['default'].oneOfType([_propTypes2['default'].bool, _propTypes2['default'].string]),
+    children: _propTypes2['default'].any,
+    onClose: _propTypes2['default'].func
+}, _class.defaultProps = {
+    prefix: 'next-',
+    onClose: noop,
+    footerAlign: 'right',
+    role: 'dialog',
+    closable: true
+}, _class.contextTypes = {
+    prefix: _propTypes2['default'].string
+}, _temp);
+DialogInner.displayName = 'DialogInner';
+exports['default'] = DialogInner;
+module.exports = exports['default'];

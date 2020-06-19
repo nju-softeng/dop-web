@@ -1,0 +1,194 @@
+@import "../../next-core/lib/next.scss";
+@import "../../next-input/lib/scss/mixin.scss";
+
+@import "./scss/variable.scss";
+@import "./scss/normalize.scss";
+@import "./scss/mixin.scss";
+
+#{$time-picker-prefix} {
+    & {
+        position: relative;
+        display: inline-block;
+    }
+
+    #{$time-picker-icon-prefix} {
+        cursor: pointer;
+        position: absolute;
+        right: $time-picker-icon-right;
+        color: $time-picker-icon-color;
+
+        &:hover{
+            color: $time-picker-icon-color-hover;
+        }
+    }
+
+    #{$time-picker-input-prefix} {
+        width: $s-40;
+    }
+
+    &-size-small {
+        @include time-picker-trigger-size (
+            $time-picker-input-s-height,
+            $time-picker-input-s-font,
+            $time-picker-icon-s-size
+        );
+    }
+
+    &-size-medium {
+        @include time-picker-trigger-size (
+            $time-picker-input-m-height,
+            $time-picker-input-m-font,
+            $time-picker-icon-m-size
+        );
+    }
+
+    &-size-large {
+        @include time-picker-trigger-size (
+            $time-picker-input-l-height,
+            $time-picker-input-l-font,
+            $time-picker-icon-l-size
+        );
+    }
+
+    &-input {
+        display: block;
+        padding: 6px;
+        border-bottom: $line-1 $line-solid $time-picker-panel-border-color;
+        position: relative;
+
+        #{$time-picker-input-prefix} {
+            border: 1px solid $color-white;
+            width: 100%;
+        }
+    }
+}
+
+#{$time-picker-prefix}-panel-wrapper {
+    border: $line-1 $line-solid $time-picker-panel-border-color;
+    background: $time-picker-panel-background;
+    position: relative;
+    max-width: $time-picker-cell-width * 3;
+}
+
+#{$time-picker-prefix}-panel {
+    position: relative;
+    box-shadow: $time-picker-panel-shadow;
+
+    &-title {
+       display: flex;
+       font-size: $time-picker-cell-font-size;
+       color: #999;
+    }
+
+    &-title-cell {
+        display: inline-block;
+        border: $line-1 $line-solid $time-picker-panel-border-color;
+        border-width: 0 $line-1;
+        margin-left: -$line-1;
+        width: $time-picker-cell-width;
+        height: $time-picker-cell-height;
+        line-height: $time-picker-cell-height;
+        float: left\9;
+        text-align: center;
+        cursor: default;
+
+        &:first-child {
+            border-left: 0;
+            margin-left: 0;
+        }
+
+        &:last-child {
+            border-right: 0;
+        }
+   }
+
+    &-body {
+        display: flex;
+
+        &:after {
+            visibility: hidden;
+            display: block;
+            height: 0;
+            font-size: 0;
+            content: '\0020';
+            clear: both;
+        }
+    }
+}
+
+#{$time-picker-prefix}-select {
+    & {
+        font-size: $time-picker-cell-font-size;
+        border: $line-1 $line-solid $time-picker-panel-border-color;
+        border-width: 0 $line-1;
+        margin-left: -$line-1;
+        width: $time-picker-cell-width;
+        max-height: $time-picker-cell-height * 7;
+        overflow: auto;
+        position: relative;
+        float: left\9;
+    }
+
+    &:hover {
+        overflow-y: auto;
+    }
+
+    &:first-child {
+        border-left: 0;
+        margin-left: 0;
+    }
+
+    &:last-child {
+        border-right: 0;
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    li {
+        list-style: none;
+        margin: 0;
+        width: 100%;
+        height: $time-picker-cell-height;
+        line-height: $time-picker-cell-height;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.3s ease-out;
+
+        @include time-picker-cell-state (
+            $time-picker-cell-color,
+            $time-picker-cell-bg
+        )
+    }
+
+    li:hover {
+        @include time-picker-cell-state (
+            $time-picker-cell-hover-color,
+            $time-picker-cell-hover-bg
+        );
+    }
+
+    li#{$time-picker-prefix}-cell-selected {
+        font-weight: 700;
+
+        @include time-picker-cell-state (
+            $time-picker-cell-selected-color,
+            $time-picker-cell-selected-bg
+        );
+    }
+
+    li#{$time-picker-prefix}-cell-disabled {
+        cursor: not-allowed;
+
+        @include time-picker-cell-state (
+            $time-picker-cell-disabled-color,
+            $time-picker-cell-disabled-bg
+        );
+    }
+}
+

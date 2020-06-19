@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+////
+/// @module number-picker: 数字输入框
+/// @tag NumberPicker
+/// @category component
+/// @family number-picker
+/// @varPrefix $number-picker-
+/// @classPrefix {prefix}-number-picker
+/// @order {"statement/normal":10,"statement/normal/input":100,"statement/normal/handler":101,"statement/hover":11,"statement/hover/handler":110,"statement/disabled":12,"statement/disabled/handler":120,"size/bounding":10,"size/text":11,"size/input":12,"size/handler":13}
+////
+
+$number-picker-prefix: '.#{$css-prefix}number-picker';
+
+// number-picker variables
+// --------------------------------------------------
+
+// Normal
+
+/// text
+/// @namespace statement/normal/handler
+$number-picker-color: $color-text1-3 !default;
+/// background
+/// @namespace statement/normal/handler
+$number-picker-bg: $color-fill1-1 !default;
+
+/// border
+/// @namespace statement/normal/handler
+$number-picker-border-color: $color-line1-3 !default;
+
+/// border
+/// @namespace size/bounding
+$number-picker-border-width: $line-1 !default;
+
+/// text
+/// @namespace statement/hover/handler
+$number-picker-color-hover: $color-brand1-6 !default;
+/// border
+/// @namespace statement/hover/handler
+$number-picker-border-color-hover: $color-line1-4 !default;
+/// background
+/// @namespace statement/hover/handler
+$number-picker-bg-color-hover: $color-fill1-2 !default;
+
+/// text
+/// @namespace size/input
+$number-picker-font-size: $font-size-body-2 !default;
+
+/// text
+/// @namespace statement/disabled
+$number-picker-color-disabled: $color-text1-1 !default;
+/// background
+/// @namespace statement/disabled
+$number-picker-bg-disabled: $color-fill1-2 !default;
+/// border
+/// @namespace statement/disabled/handler
+$number-picker-border-color-disabled: $color-line1-1 !default;
+
+// Size
+
+/// width
+/// @namespace size/input
+$number-picker-width: $s-10 !default;
+/// height
+/// @namespace size/input
+$number-picker-height: $s-8 !default;
+
+/// width
+/// @namespace size/handler
+$number-picker-handler-width: $s-5 !default;
+/// corner
+/// @namespace size/handler
+$number-picker-handler-corner: $corner-0 !default;
+/// icon
+/// @namespace size/handler
+$number-picker-handler-icon-size: $icon-xxs !default;
+
+// 不可配置
+$number-picker-handler-margin-bottom: 2px !default;
+$number-picker-handler-margin-left: 2px !default;
+$number-picker-handler-height: ($number-picker-height + 2 * $number-picker-border-width - $number-picker-handler-margin-bottom) / 2;
+
+/// width
+/// @namespace size/input
+$number-picker-inline-width: $s-11 !default;
+/// height
+/// @namespace size/input
+$number-picker-inline-height: $s-7 !default;
+/// margin
+/// @namespace size/input
+/// @type length
+$number-picker-inline-input-margin: 2px !default;
+
+/// width
+/// @namespace size/handler
+$number-picker-inline-handler-width: $s-7 !default;
+/// height
+/// @namespace size/handler
+$number-picker-inline-handler-height: $s-7 !default;
+/// corner
+/// @namespace size/handler
+$number-picker-inline-handler-corner: $corner-0 !default;
+/// handler
+/// @namespace size/handler
+$number-picker-inline-handler-icon-size: $icon-xs !default;

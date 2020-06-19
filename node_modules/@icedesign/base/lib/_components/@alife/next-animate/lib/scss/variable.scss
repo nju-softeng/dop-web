@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+// animate variables
+// --------------------------------------------------
+
+
+$countDefault: 1 !default;
+
+$durationSmallDefault: .2s !default;
+$durationDefault: .3s !default;
+$durationBigDefault: .35s !default;
+
+$delayDefault: 0s !default;
+$functionDefault: cubic-bezier(0.23, 1, 0.32, 1) !default;
+$fillDefault: both;
+$visibilityDefault: hidden !default;
+
+$ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);

@@ -1,0 +1,159 @@
+////
+/// @group icon
+/// @module icon: 图标
+/// @type String
+/// @category style
+////
+
+// Icon
+// 根据 Alibaba Base DPL 设计实现
+
+/// icon font path 字体路径
+$icon-font-path: "//at.alicdn.com/t/font_t6jzs3l3nwtmaemi" !default;
+
+/// icon font name 自定义的icon font 名称
+$icon-font-name: "icon" !default;
+
+$icon-font-family: #{to-upper-case(str-slice($css-prefix, 1, 1))}#{str-slice($css-prefix, 2, str-length($css-prefix) - 1)}Icon !default;
+
+$icon-prefix: #{$css-prefix}icon  !default;
+
+// ------------------- 图标尺寸 ---------------------- //
+
+/// icon-xxs
+/// @export
+$icon-xxs: $s-2 !default;
+
+/// icon-xs
+/// @export
+$icon-xs: $s-3 !default;
+
+/// icon-s
+/// @export
+$icon-s: $s-4 !default;
+
+/// icon-m
+/// @export
+$icon-m: $s-5 !default;
+
+/// icon-l
+/// @export
+$icon-l: $s-6 !default;
+
+/// icon-xl
+/// @export
+$icon-xl: $s-8 !default;
+
+/// icon-xxl
+/// @export
+$icon-xxl: $s-12 !default;
+
+/// icon-xxxl
+/// @export
+$icon-xxxl: $s-16 !default;
+
+// ------------------- 图标 unicode 值 ---------------------- //
+
+//MEXT_ICON_START
+
+$icon-content-all: "\e662" !default;
+$icon-content-cart: "\e618" !default;
+$icon-content-comments: "\e605" !default;
+$icon-content-cry: "\e61a" !default;
+$icon-content-email: "\e663" !default;
+$icon-content-favorite: "\e60a" !default;
+$icon-content-folder: "\e61b" !default;
+$icon-content-form: "\e61c" !default;
+$icon-content-help: "\e61f" !default;
+$icon-content-refresh: "\e621" !default;
+$icon-content-set: "\e623" !default;
+$icon-content-training: "\e624" !default;
+$icon-content-account: "\e664" !default;
+$icon-content-atm: "\e626" !default;
+$icon-content-clock: "\e615" !default;
+$icon-content-attachment: "\e627" !default;
+$icon-content-3column: "\e628" !default;
+$icon-content-4column: "\e629" !default;
+$icon-content-discount: "\e62a" !default;
+$icon-content-service: "\e62b" !default;
+$icon-content-print: "\e62c" !default;
+$icon-content-box: "\e62d" !default;
+$icon-content-process: "\e62e" !default;
+$icon-content-bags: "\e62f" !default;
+$icon-content-electronics: "\e630" !default;
+$icon-content-gifts: "\e631" !default;
+$icon-content-lights: "\e632" !default;
+$icon-content-auto: "\e633" !default;
+$icon-content-browse: "\e634" !default;
+$icon-content-atm-away: "\e635" !default;
+$icon-content-scanning: "\e636" !default;
+$icon-content-compare: "\e637" !default;
+$icon-content-filter: "\e638" !default;
+$icon-content-pin: "\e639" !default;
+$icon-content-history: "\e63a" !default;
+$icon-content-similar-product: "\e63b" !default;
+$icon-content-link: "\e63c" !default;
+$icon-content-cut: "\e64a" !default;
+$icon-content-table: "\e63e" !default;
+$icon-content-nav-list: "\e63f" !default;
+$icon-content-image-text: "\e640" !default;
+$icon-content-text: "\e641" !default;
+$icon-content-move: "\e642" !default;
+$icon-content-subtract: "\e650" !default;
+$icon-content-dollar: "\e643" !default;
+$icon-content-office: "\e644" !default;
+$icon-content-operation: "\e645" !default;
+$icon-content-download: "\e646" !default;
+$icon-content-map: "\e647" !default;
+$icon-content-bad: "\e648" !default;
+$icon-content-good: "\e649" !default;
+$icon-content-skip: "\e64b" !default;
+$icon-content-play: "\e64c" !default;
+$icon-content-stop: "\e64d" !default;
+$icon-content-compass: "\e64e" !default;
+$icon-content-security: "\e64f" !default;
+$icon-content-share: "\e651" !default;
+$icon-content-store: "\e652" !default;
+$icon-content-phone: "\e653" !default;
+$icon-content-ellipsis: "\e654" !default;
+$icon-content-email-filling: "\e665" !default;
+$icon-content-favorites-filling: "\e666" !default;
+$icon-content-account-filling: "\e667" !default;
+$icon-content-credit-level: "\e65a" !default;
+$icon-content-credit-level-filling: "\e65c" !default;
+$icon-content-mobile-phone: "\e65d" !default;
+$icon-content-smile: "\e668" !default;
+$icon-content-personal-center: "\e669" !default;
+$icon-content-arrow-up-filling: "\e601" !default;
+$icon-content-arrow-right: "\e603" !default;
+$icon-content-arrow-left: "\e682" !default;
+$icon-content-arrow-down: "\e66b" !default;
+$icon-content-arrow-up: "\e66c" !default;
+$icon-content-add: "\e66f" !default;
+$icon-content-minus: "\e670" !default;
+$icon-content-delete-filling: "\e681" !default;
+$icon-content-edit: "\e613" !default;
+$icon-content-error: "\e672" !default;
+$icon-content-select: "\e673" !default;
+$icon-content-ashbin: "\e61e" !default;
+$icon-content-calendar: "\e620" !default;
+$icon-content-time: "\e622" !default;
+$icon-content-success: "\e674" !default;
+$icon-content-warning: "\e675" !default;
+$icon-content-search: "\e656" !default;
+$icon-content-display: "\e677" !default;
+$icon-content-category: "\e658" !default;
+$icon-content-prompt: "\e678" !default;
+$icon-content-arrow-down-filling: "\e65b" !default;
+$icon-content-sorting: "\e676" !default;
+$icon-content-ascending: "\e606" !default;
+$icon-content-descending: "\e608" !default;
+$icon-content-success-filling: "\e679" !default;
+$icon-content-picture: "\e60c" !default;
+$icon-content-close: "\e67a" !default;
+$icon-content-semi-select: "\e67b" !default;
+$icon-content-tag-subscript: "\e614" !default;
+$icon-content-survey: "\e65f" !default;
+$icon-content-loading: "\e67c" !default;
+$icon-content-arrow-double-left: "\e616" !default;
+$icon-content-arrow-double-right: "\e661" !default;

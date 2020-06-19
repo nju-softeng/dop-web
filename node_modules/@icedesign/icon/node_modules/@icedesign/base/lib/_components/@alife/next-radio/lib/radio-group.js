@@ -1,0 +1,228 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _class, _temp;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames2 = require('classnames');
+
+var _classnames3 = _interopRequireDefault(_classnames2);
+
+var _radio = require('./radio.js');
+
+var _radio2 = _interopRequireDefault(_radio);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+/**
+ * Radio.Group
+ * @order 2
+ */
+var RadioGroup = (_temp = _class = function (_Component) {
+    _inherits(RadioGroup, _Component);
+
+    function RadioGroup(props) {
+        _classCallCheck(this, RadioGroup);
+
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+        var value = '';
+        if ('value' in props) {
+            value = props.value;
+        } else if ('defaultValue' in props) {
+            value = props.defaultValue;
+        }
+        _this.state = {
+            value: value,
+            disabled: props.disabled //TODO:disabled 没有必要放在state里，后面要改掉
+        };
+        _this.onChange = _this.onChange.bind(_this);
+        return _this;
+    }
+
+    RadioGroup.prototype.getChildContext = function getChildContext() {
+        return {
+            __group__: true,
+            isButton: this.props.shape === 'button',
+            onChange: this.onChange,
+            selectedValue: this.state.value,
+            disabled: this.state.disabled
+        };
+    };
+
+    RadioGroup.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        var value = nextProps.value,
+            disabled = nextProps.disabled;
+
+
+        if ('value' in nextProps && 'disabled' in nextProps) {
+            if (value === undefined) {
+                value = '';
+            }
+            this.setState({
+                value: value,
+                disabled: disabled
+            });
+        } else if ('value' in nextProps) {
+            if (value === undefined) {
+                value = '';
+            }
+            this.setState({
+                value: value
+            });
+        } else if ('disabled' in nextProps) {
+            this.setState({
+                disabled: disabled
+            });
+        }
+    };
+
+    RadioGroup.prototype.onChange = function onChange(currentValue, e) {
+
+        if (!('value' in this.props)) {
+            this.setState({ value: currentValue });
+        }
+        this.props.onChange(currentValue, e);
+    };
+
+    RadioGroup.prototype.render = function render() {
+        var _this2 = this,
+            _classnames;
+
+        var _props = this.props,
+            className = _props.className,
+            shape = _props.shape,
+            size = _props.size,
+            id = _props.id,
+            style = _props.style;
+
+        var disabled = this.state.disabled;
+        var prefix = this.context.prefix || this.props.prefix;
+
+        var children = void 0;
+        if (this.props.children) {
+            children = this.props.children;
+        } else {
+            children = this.props.dataSource.map(function (item, index) {
+                var option = item;
+                if ((typeof item === 'undefined' ? 'undefined' : _typeof(item)) !== 'object') {
+                    option = {
+                        label: item,
+                        value: item,
+                        disabled: disabled
+                    };
+                }
+                var checked = _this2.state.value === option.value;
+                return _react2['default'].createElement(
+                    _radio2['default'],
+                    {
+                        key: index,
+                        value: option.value,
+                        checked: checked,
+                        disabled: disabled || option.disabled
+                    },
+                    option.label
+                );
+            });
+        }
+
+        var cls = (0, _classnames3['default'])((_classnames = {}, _defineProperty(_classnames, prefix + 'radio-group', true), _defineProperty(_classnames, prefix + 'radio-button', shape === 'button'), _defineProperty(_classnames, prefix + 'radio-button-' + size, shape === 'button'), _defineProperty(_classnames, className, !!className), _defineProperty(_classnames, 'disabled', disabled), _classnames));
+
+        return _react2['default'].createElement(
+            'div',
+            { id: id, className: cls, style: style },
+            children
+        );
+    };
+
+    return RadioGroup;
+}(_react.Component), _class.propTypes = {
+    /**
+     * 样式类名的品牌前缀
+     */
+    prefix: _propTypes2['default'].string,
+    /**
+     * 自定义类名
+     */
+    className: _propTypes2['default'].string,
+    /**
+     * 自定义内敛样式
+     */
+    style: _propTypes2['default'].object,
+    /**
+     * radio group的选中项的值
+     */
+    value: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].number, _propTypes2['default'].bool]),
+    /**
+     * radio group的默认值
+     */
+    defaultValue: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].number, _propTypes2['default'].bool]),
+    /**
+     * 选中值改变时的事件
+     * @param {String/Number} value 选中项的值
+     * @param {Event} e Dom 事件对象
+     */
+    onChange: _propTypes2['default'].func,
+    /**
+     * 表示radio被禁用
+     */
+    disabled: _propTypes2['default'].bool,
+    /**
+     * 可以设置成 button 展示形状
+     * @enumdesc 按钮状
+     */
+    shape: _propTypes2['default'].oneOf(['button']),
+    /**
+     * 与 `shape` 属性配套使用，shape设为button时有效
+     * @enumdesc 大, 中, 小
+     */
+    size: _propTypes2['default'].oneOf(['large', 'medium', 'small']),
+    /**
+     * 可选项列表, 数据项可为 String 或者 Object, 如 `['apple', 'pear', 'orange']`
+     */
+    dataSource: _propTypes2['default'].arrayOf(_propTypes2['default'].any),
+    id: _propTypes2['default'].string,
+    /**
+     * 通过子元素方式设置内部radio
+     */
+    children: _propTypes2['default'].oneOfType([_propTypes2['default'].arrayOf(_propTypes2['default'].element), _propTypes2['default'].element])
+
+}, _class.defaultProps = {
+    dataSource: [],
+    onChange: function onChange() {},
+    prefix: 'next-'
+}, _class.contextTypes = {
+    prefix: _propTypes2['default'].string
+}, _class.childContextTypes = {
+    onChange: _propTypes2['default'].func,
+    __group__: _propTypes2['default'].bool,
+    isButton: _propTypes2['default'].bool,
+    selectedValue: _propTypes2['default'].oneOfType([_propTypes2['default'].string, _propTypes2['default'].number, _propTypes2['default'].bool]),
+    disabled: _propTypes2['default'].bool
+}, _temp);
+RadioGroup.displayName = 'RadioGroup';
+exports['default'] = RadioGroup;
+module.exports = exports['default'];

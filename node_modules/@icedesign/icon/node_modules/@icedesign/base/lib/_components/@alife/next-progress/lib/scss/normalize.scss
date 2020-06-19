@@ -1,0 +1,5 @@
+#{$progress-prefix}-line,
+#{$progress-prefix}-circle {
+    @include global-font();
+    @include box-sizing();
+}

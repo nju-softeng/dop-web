@@ -1,0 +1,26 @@
+@import "../../next-core/lib/next.scss";
+@import "./scss/mixin.scss";
+@import "./scss/variable.scss";
+
+
+#{$tree-select-prefix} {
+    @include box-sizing;
+    @include global-font;
+
+    &-dropdown {
+        padding: $tree-select-padding-vertical 0;
+        background: $tree-select-background;
+        border: $tree-select-border-width $tree-select-border-style $tree-select-border-color;
+        border-radius: $tree-select-border-radius;
+        box-shadow: $tree-select-shadow;
+
+        .#{$css-prefix}select-search {
+            line-height: $s-7;
+        }
+
+        .#{$css-prefix}tree {
+            padding: 0;
+            margin: 0 $tree-select-padding-horizontal;
+        }
+    }
+}

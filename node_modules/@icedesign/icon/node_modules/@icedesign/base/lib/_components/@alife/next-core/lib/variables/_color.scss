@@ -1,0 +1,494 @@
+////
+/// @group color
+/// @module color: 颜色
+/// @type Color
+/// @category style
+////
+
+
+// ----------- 品牌主色 ----------- //
+
+/// brand1-1
+/// @group color-brand1
+/// @semantic 浅
+/// @export
+$color-brand1-1: #FFF0E6 !default;
+/// brand1-2
+/// @group color-brand1
+/// @export
+$color-brand1-2: #FFE3D1 !default;
+/// brand1-3
+/// @group color-brand1
+/// @export
+$color-brand1-3: #FFC8A3 !default;
+/// brand1-4
+/// @group color-brand1
+/// @export
+$color-brand1-4: #FFAC75 !default;
+/// brand1-5
+/// @group color-brand1
+/// @export
+$color-brand1-5: #FF8B3D !default;
+/// brand1-6
+/// @group color-brand1
+/// @semantic 常规
+/// @export
+$color-brand1-6: #FF6A00 !default;
+/// brand1-7
+/// @group color-brand1
+/// @export
+$color-brand1-7: #F75F00 !default;
+/// brand1-8
+/// @group color-brand1
+/// @export
+$color-brand1-8: #F05800 !default;
+/// brand1-9
+/// @group color-brand1
+/// @semantic 深
+/// @export
+$color-brand1-9: #E35300 !default;
+/// brand1-10
+/// @group color-brand1
+/// @export
+$color-brand1-10: #D64F00 !default;
+
+
+// ----------- 品牌副色 ----------- //
+
+/// brand2-1
+/// @group color-brand2
+/// @export
+$color-brand2-1: #E8F6FF !default;
+/// brand2-2
+/// @group color-brand2
+/// @export
+$color-brand2-2: #D3E9F7 !default;
+/// brand2-3
+/// @group color-brand2
+/// @export
+$color-brand2-3: #A6D3F0 !default;
+/// brand2-6
+/// @group color-brand2
+/// @export
+$color-brand2-6: #2192D9 !default;
+/// brand7-6
+/// @group color-brand7
+/// @export
+$color-brand7-6: #4F74B3 !default;
+/// brand7-9
+/// @group color-brand7
+/// @export
+$color-brand7-9: #2D559C !default;
+
+
+// ----------- 功能色 ----------- //
+
+// 成功
+
+/// success-1
+/// @group color-success
+/// @semantic 浅
+/// @export
+$color-success-1: #E8F9E8 !default;
+/// success-2
+/// @group color-success
+/// @semantic 常规
+/// @export
+$color-success-2: #1DC11D !default;
+/// success-3
+/// @group color-success
+/// @semantic 深
+/// @export
+$color-success-3: #0DA80D !default;
+
+// 提示
+
+/// notice-1
+/// @group color-notice
+/// @semantic 浅
+/// @export
+$color-notice-1: #DAEEFF !default;
+/// notice-2
+/// @group color-notice
+/// @semantic 常规
+/// @export
+$color-notice-2: #0089FD !default;
+/// notice-3
+/// @group color-notice
+/// @semantic 深
+/// @export
+$color-notice-3: #306AC9 !default;
+
+// 警告
+
+/// warning-1
+/// @group color-warning
+/// @semantic 浅
+/// @export
+$color-warning-1: #FFF1E8 !default;
+/// warning-2
+/// @group color-warning
+/// @semantic 常规
+/// @export
+$color-warning-2: #FFA033 !default;
+/// warning-3
+/// @group color-warning
+/// @semantic 深
+/// @export
+$color-warning-3: #EB7E10 !default;
+
+
+// 错误
+
+/// error-1
+/// @group color-error
+/// @semantic 浅
+/// @export
+$color-error-1: #FAE7E7 !default;
+/// error-2
+/// @group color-error
+/// @semantic 常规
+/// @export
+$color-error-2: #FF3333 !default;
+/// error-3
+/// @group color-error
+/// @semantic 深
+/// @export
+$color-error-3: #E61C1C !default;
+
+// 帮助
+
+/// help-1
+/// @group color-help
+/// @semantic 浅
+/// @export
+$color-help-1: #FDF5FF !default;
+/// help-2
+/// @group color-help
+/// @semantic 常规
+/// @export
+$color-help-2: #B921F3 !default;
+/// help-3
+/// @group color-help
+/// @semantic 深
+/// @export
+$color-help-3: #A116D9 !default;
+
+// 链接
+
+/// link-1
+/// @group color-link
+/// @semantic 默认
+/// @export
+$color-link-1: #2192D9 !default;
+/// link-2
+/// @group color-link
+/// @semantic 已访问
+/// @export
+$color-link-2: #0073bd !default;
+/// link-3
+/// @group color-link
+/// @semantic 鼠标滑过
+/// @export
+$color-link-3: #0B70AF !default;
+
+// 其它
+
+/// other-1
+/// @group color-other
+/// @export
+$color-other-1: #DAEEFF !default;
+/// other-2
+/// @group color-other
+/// @export
+$color-other-2: #0089FD !default;
+/// other-3
+/// @group color-other
+/// @export
+$color-other-3: #306AC9 !default;
+
+
+// ----------- 中立色 ----------- //
+
+// 预设
+
+/// white
+/// @semantic 纯白
+/// @export
+$color-white: #FFFFFF;
+/// black
+/// @semantic 纯黑
+/// @export
+$color-black: #000000;
+/// transparent
+/// @export
+$color-transparent: transparent;
+
+// 线条
+
+/// line1-1
+/// @group color-line1
+/// @semantic 浅
+/// @export
+$color-line1-1: #E6E7EB !default;
+/// line1-2
+/// @group color-line1
+/// @semantic 常规
+/// @export
+$color-line1-2: #DCDEE3 !default;
+/// line1-3
+/// @group color-line1
+/// @semantic 深
+/// @export
+$color-line1-3: #C4C6CF !default;
+/// line1-4
+/// @group color-line1
+/// @semantic 重
+/// @export
+$color-line1-4: #A0A2AD !default;
+
+
+// 填充
+
+/// fill1-1
+/// @group color-fill1
+/// @semantic 浅
+/// @export
+$color-fill1-1: #F7F8FA !default;
+/// fill1-2
+/// @group color-fill1
+/// @semantic 常规
+/// @export
+$color-fill1-2: #F2F3F7 !default;
+/// fill1-3
+/// @group color-fill1
+/// @semantic 深
+/// @export
+$color-fill1-3: #EBECF0 !default;
+/// fill1-4
+/// @group color-fill1
+/// @semantic 重
+/// @export
+$color-fill1-4: #DEEDED !default;
+
+// 文字
+
+/// text1-1
+/// @group color-text1
+/// @semantic 禁用/水印
+/// @export
+$color-text1-1: #CCCCCC !default;
+/// text1-2
+/// @group color-text1
+/// @semantic 脚注
+/// @export
+$color-text1-2: #999999 !default;
+/// text1-3
+/// @group color-text1
+/// @semantic 正文
+/// @export
+$color-text1-3: #666666 !default;
+/// text1-4
+/// @group color-text1
+/// @semantic 标题
+/// @export
+$color-text1-4: #333333 !default;
+/// text1-5
+/// @group color-text1
+/// @export
+$color-text1-5: #222222 !default;
+
+
+// Patch
+// ----------- 品牌色 patch ----------- //
+
+$color-b1-1: $color-brand1-1 !default;
+$color-b1-2: $color-brand1-2 !default;
+$color-b1-3: $color-brand1-3 !default;
+$color-b1-4: $color-brand1-4 !default;
+$color-b1-5: $color-brand1-5 !default;
+$color-b1-6: $color-brand1-6 !default;
+$color-b1-7: $color-brand1-7 !default;
+$color-b1-8: $color-brand1-8 !default;
+$color-b1-9: $color-brand1-9 !default;
+$color-b1-10: $color-brand1-10 !default;
+
+$color-b2-1: $color-brand2-1 !default;
+$color-b2-2: $color-brand2-2 !default;
+$color-b2-3: $color-brand2-3 !default;
+$color-b2-6: $color-brand2-6 !default;
+$color-b7-6: $color-brand7-6 !default;
+$color-b7-9: $color-brand7-9 !default;
+
+$color-b2-4: #7ABEE8 !default;
+$color-b2-5: #4DA8E1 !default;
+$color-b2-7: #1587D1 !default;
+$color-b2-8: #0A7EC9 !default;
+$color-b2-9: #0073BD !default;
+$color-b2-10: #006AB0 !default;
+
+$color-b3-1: #FFE2DB !default;
+$color-b3-2: #FFC8BF !default;
+$color-b3-3: #F7A394 !default;
+$color-b3-4: #ED8472 !default;
+$color-b3-5: #E3715D !default;
+$color-b3-6: #D9624E !default;
+$color-b3-7: #D15241 !default;
+$color-b3-8: #C43F31 !default;
+$color-b3-9: #BD3224 !default;
+$color-b3-10: #B32018 !default;
+
+$color-b4-1: #E7F5E5 !default;
+$color-b4-2: #CDEBC8 !default;
+$color-b4-3: #B0DEA9 !default;
+$color-b4-4: #92CC86 !default;
+$color-b4-5: #70B564 !default;
+$color-b4-6: #55A344 !default;
+$color-b4-7: #479635 !default;
+$color-b4-8: #3B8F28 !default;
+$color-b4-9: #358723 !default;
+$color-b4-10: #257D12 !default;
+
+$color-b5-1: #FEF7DA !default;
+$color-b5-2: #FFF2C2 !default;
+$color-b5-3: #FDE89D !default;
+$color-b5-4: #FFE27D !default;
+$color-b5-5: #FBD653 !default;
+$color-b5-6: #FACE32 !default;
+$color-b5-7: #F7BF25 !default;
+$color-b5-8: #F2B211 !default;
+$color-b5-9: #EDA807 !default;
+$color-b5-10: #E89A00 !default;
+
+$color-b6-1: #E9E6FA !default;
+$color-b6-2: #D5CFF7 !default;
+$color-b6-3: #B8AFED !default;
+$color-b6-4: #9F94E8 !default;
+$color-b6-5: #887BE3 !default;
+$color-b6-6: #6D5CDB !default;
+$color-b6-7: #5F4DD1 !default;
+$color-b6-8: #5240C7 !default;
+$color-b6-9: #4634BF !default;
+$color-b6-10: #3A27B5 !default;
+
+$color-b7-1: #E3EAF7 !default;
+$color-b7-2: #CCD9F0 !default;
+$color-b7-3: #AABEE0 !default;
+$color-b7-4: #84A1D1 !default;
+$color-b7-5: #6D8CC2 !default;
+$color-b7-7: #4369AB !default;
+$color-b7-8: #375EA3 !default;
+$color-b7-10: #224B94 !default;
+
+$color-b8-1: #FFEBEE !default;
+$color-b8-2: #FFD9E0 !default;
+$color-b8-3: #FFC2CE !default;
+$color-b8-4: #FFA3B6 !default;
+$color-b8-5: #FF89A1 !default;
+$color-b8-6: #F96985 !default;
+$color-b8-7: #F54E70 !default;
+$color-b8-8: #ED395D !default;
+$color-b8-9: #DE284C !default;
+$color-b8-10: #D1173F !default;
+
+
+
+
+// ----------- 功能色 patch ----------- //
+
+$color-f1-1: $color-warning-2 !default;
+$color-f1-2: $color-warning-1 !default;
+$color-f1-3: $color-warning-3 !default;
+
+$color-f2-1: $color-error-2 !default;
+$color-f2-2: $color-error-1 !default;
+$color-f2-3: $color-error-3 !default;
+
+$color-f3-1: $color-success-2 !default;
+$color-f3-2: $color-success-1 !default;
+$color-f3-3: $color-success-3 !default;
+
+$color-f4-1: $color-link-1 !default;
+$color-f4-2: $color-link-3 !default;
+$color-f4-3: $color-link-2 !default;
+
+$color-f5-1: $color-notice-2 !default;
+$color-f5-2: $color-notice-1 !default;
+$color-f5-3: $color-notice-3 !default;
+
+$color-f6-1: $color-other-2 !default;
+$color-f6-2: $color-other-1 !default;
+$color-f6-3: $color-other-3 !default;
+
+$color-f1-4: transparent !default;
+$color-f1-5: transparent !default;
+$color-f1-6: transparent !default;
+$color-f1-7: transparent !default;
+$color-f1-8: transparent !default;
+$color-f1-9: transparent !default;
+$color-f1-10: transparent !default;
+
+$color-f2-4: transparent !default;
+$color-f2-5: transparent !default;
+$color-f2-6: transparent !default;
+$color-f2-7: transparent !default;
+$color-f2-8: transparent !default;
+$color-f2-9: transparent !default;
+$color-f2-10: transparent !default;
+
+$color-f3-4: transparent !default;
+$color-f3-5: transparent !default;
+$color-f3-6: transparent !default;
+$color-f3-7: transparent !default;
+$color-f3-8: transparent !default;
+$color-f3-9: transparent !default;
+$color-f3-10: transparent !default;
+
+$color-f4-4: transparent !default;
+$color-f4-5: transparent !default;
+$color-f4-6: transparent !default;
+$color-f4-7: transparent !default;
+$color-f4-8: transparent !default;
+$color-f4-9: transparent !default;
+$color-f4-10: transparent !default;
+
+$color-f5-4: transparent !default;
+$color-f5-5: transparent !default;
+$color-f5-6: transparent !default;
+$color-f5-7: transparent !default;
+$color-f5-8: transparent !default;
+$color-f5-9: transparent !default;
+$color-f5-10: transparent !default;
+
+$color-f6-4: transparent !default;
+$color-f6-5: transparent !default;
+$color-f6-6: transparent !default;
+$color-f6-7: transparent !default;
+$color-f6-8: transparent !default;
+$color-f6-9: transparent !default;
+$color-f6-10: transparent !default;
+
+// ----------- 中立色 patch ----------- //
+
+$color-n1-1: $color-white !default;
+$color-n1-2: $color-fill1-1 !default;
+$color-n1-3: $color-fill1-2 !default;
+$color-n1-4: $color-fill1-3 !default;
+$color-n1-5: $color-line1-1 !default;
+$color-n1-6: $color-line1-2 !default;
+$color-n1-7: $color-line1-3 !default;
+$color-n1-8: $color-line1-4 !default;
+$color-n1-9: $color-black !default;
+$color-n1-10: $color-fill1-4 !default;
+
+$color-n2-1: $color-text1-1 !default;
+$color-n2-2: $color-text1-2 !default;
+$color-n2-3: $color-text1-3 !default;
+$color-n2-4: $color-text1-4 !default;
+$color-n2-5: $color-text1-5 !default;
+
+$color-n2-6: transparent !default;
+$color-n2-7: transparent !default;
+$color-n2-8: transparent !default;
+$color-n2-9: transparent !default;
+$color-n2-10: transparent !default;

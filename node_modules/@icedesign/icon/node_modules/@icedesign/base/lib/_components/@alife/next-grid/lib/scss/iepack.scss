@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+// Grid system
+// --------------------------------------------------
+
+@mixin col-width-ie($width) {
+    width: #{$width};
+}
+
+@mixin ie-pack {
+    width: 100%;
+    display: table;
+
+    .#{$css-prefix}col {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    &.#{$css-prefix}row-across {
+        margin-left: 0;
+        margin-right: 0;
+        > :first-child {
+            padding-left: 0;
+        }
+        > :last-child {
+            padding-right: 0;
+        }
+    }
+}

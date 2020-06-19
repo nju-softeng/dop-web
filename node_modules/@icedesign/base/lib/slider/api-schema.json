@@ -1,0 +1,400 @@
+{
+  "name": "Slider",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义传入的样式",
+      "docblock": "自定义传入的样式"
+    },
+    "adaptiveHeight": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否使用自适应高度",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否使用自适应高度"
+    },
+    "animation": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否开启动效",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否开启动效"
+    },
+    "arrows": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示箭头",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否显示箭头"
+    },
+    "arrowSize": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航箭头大小",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "导航箭头大小"
+    },
+    "arrowPos": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'inline'",
+            "computed": false
+          },
+          {
+            "value": "'outer'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航箭头位置",
+      "defaultValue": {
+        "value": "'inline'",
+        "computed": false
+      },
+      "docblock": "导航箭头位置"
+    },
+    "arrowDirection": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'horizontal'",
+            "computed": false
+          },
+          {
+            "value": "'vertical'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航箭头的方向",
+      "defaultValue": {
+        "value": "'horizontal'",
+        "computed": false
+      },
+      "docblock": "导航箭头的方向"
+    },
+    "nextArrow": {
+      "type": {
+        "name": "element"
+      },
+      "required": false,
+      "description": "向后箭头",
+      "defaultValue": {
+        "value": "null",
+        "computed": false
+      },
+      "docblock": "向后箭头"
+    },
+    "prevArrow": {
+      "type": {
+        "name": "element"
+      },
+      "required": false,
+      "description": "向后箭头",
+      "defaultValue": {
+        "value": "null",
+        "computed": false
+      },
+      "docblock": "向后箭头"
+    },
+    "autoplay": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否自动播放",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否自动播放"
+    },
+    "autoplaySpeed": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "自动播放的速度",
+      "defaultValue": {
+        "value": "3000",
+        "computed": false
+      },
+      "docblock": "自动播放的速度"
+    },
+    "centerMode": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否启用居中模式",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否启用居中模式"
+    },
+    "dots": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示导航锚点",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否显示导航锚点"
+    },
+    "dotsDirection": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'horizontal'",
+            "computed": false
+          },
+          {
+            "value": "'vertical'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "导航锚点到位置",
+      "defaultValue": {
+        "value": "'horizontal'",
+        "computed": false
+      },
+      "docblock": "导航锚点到位置"
+    },
+    "draggable": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否可拖拽",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否可拖拽"
+    },
+    "fade": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否使用淡入淡出效果",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否使用淡入淡出效果"
+    },
+    "infinite": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否使用无穷循环模式",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否使用无穷循环模式"
+    },
+    "initialSlide": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "初始被激活的轮播图",
+      "defaultValue": {
+        "value": "0",
+        "computed": false
+      },
+      "docblock": "初始被激活的轮播图"
+    },
+    "lazyLoad": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否启用懒加载",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否启用懒加载"
+    },
+    "slideDirection": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'horizontal'",
+            "computed": false
+          },
+          {
+            "value": "'vertical'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "轮播方向",
+      "defaultValue": {
+        "value": "'horizontal'",
+        "computed": false
+      },
+      "docblock": "轮播方向"
+    },
+    "slidesToShow": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "同时展示的图片数量",
+      "defaultValue": {
+        "value": "1",
+        "computed": false
+      },
+      "docblock": "同时展示的图片数量"
+    },
+    "slidesToScroll": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "同时滑动到图片数量",
+      "defaultValue": {
+        "value": "1",
+        "computed": false
+      },
+      "docblock": "同时滑动到图片数量"
+    },
+    "speed": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "轮播速度",
+      "defaultValue": {
+        "value": "500",
+        "computed": false
+      },
+      "docblock": "轮播速度"
+    },
+    "slickGoTo": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "跳转到指定的轮播图（受控）",
+      "docblock": "跳转到指定的轮播图（受控）"
+    },
+    "afterChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "轮播切换后的回调函数",
+      "defaultValue": {
+        "value": "null",
+        "computed": false
+      },
+      "docblock": "轮播切换后的回调函数\n@param {Number} index 当前幻灯片的索引",
+      "params": [
+        {
+          "name": "index",
+          "description": "当前幻灯片的索引",
+          "type": {
+            "name": "Number"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "beforeChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "轮播切换前的回调函数",
+      "defaultValue": {
+        "value": "null",
+        "computed": false
+      },
+      "docblock": "轮播切换前的回调函数\n@param {Number} currentIndex 当前幻灯片的索引\n@param {Number} nextIndex    下一张幻灯片的索引",
+      "params": [
+        {
+          "name": "currentIndex",
+          "description": "当前幻灯片的索引",
+          "type": {
+            "name": "Number"
+          }
+        },
+        {
+          "name": "nextIndex",
+          "description": "下一张幻灯片的索引",
+          "type": {
+            "name": "Number"
+          }
+        }
+      ],
+      "returns": null
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

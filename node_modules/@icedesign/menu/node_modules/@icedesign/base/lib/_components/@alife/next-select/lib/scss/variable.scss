@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+////
+/// @module select: 选择器
+/// @tag Select
+/// @category component
+/// @family selector
+/// @varPrefix $select-
+/// @classPrefix {prefix}-select
+/// @order {"statement/normal":10,"statement/normal/text":101,"statement/normal/hint":102,"statement/normal/bounding":100,"statement/normal/icon":103,"statement/normal/tag":104,"statement/normal/arrow":105,"statement/disabled":15,"statement/disabled/text":110,"statement/disabled/bounding":111,"statement/hover":11,"statement/hover/bounding":120,"statement/hover/text":121,"statement/focus":13,"statement/focus/bounding":130,"statement/active":14,"statement/active/bounding":140,"size/bounding":10,"size/icon":11,"size/text":12,"size/tag":13}
+////
+
+// select variables
+// --------------------------------------------------
+
+$select-prefix: '.#{$css-prefix}select';
+
+/// color
+/// @namespace statement/normal/text
+$select-color: $color-text1-4 !default;
+/// color
+/// @namespace statement/normal/hint
+$select-color-hint: $color-text1-2 !default;
+/// color
+/// @namespace statement/disabled/text
+$select-color-disabled: $color-text1-1 !default;
+
+/// corner
+/// @namespace statement/normal/bounding
+$select-border-radius: $corner-0 !default;
+
+/// border color
+/// @namespace statement/normal/bounding
+$select-color-border: $color-line1-3 !default;
+/// border color
+/// @namespace statement/hover/bounding
+$select-color-border-hover: $color-line1-4 !default;
+/// border color
+/// @namespace statement/focus/bounding
+$select-color-border-focus: $color-brand2-6 !default;
+/// border & arrow color
+/// @namespace statement/disabled/bounding
+$select-color-border-disabled: $color-line1-1 !default;
+/// border color
+/// @namespace statement/active/bounding
+$select-color-border-active: $color-brand2-6 !default;
+
+/// background
+/// @namespace statement/normal/bounding
+$select-color-bg: $color-white !default;
+/// background
+/// @namespace statement/disabled/bounding
+$select-color-bg-disabled: $color-fill1-1 !default;
+
+/// border width
+/// @namespace statement/normal/bounding
+$select-border-width: $line-1 !default;
+/// border style
+/// @namespace statement/normal/bounding
+$select-border-style: $line-solid !default;
+/// text
+/// @namespace size/bounding
+$select-font: $font-size-body-1 !default;
+/// color
+/// @namespace statement/normal/icon
+$select-icon-color: $color-line1-4 !default;
+
+/// background
+/// @namespace statement/normal/tag
+$select-color-item-bg: $color-fill1-3 !default;
+
+//large
+
+/// height
+/// @namespace size/bounding
+$select-large-height: $s-10 !default;
+
+/// padding (l, r)
+/// @namespace size/bounding
+$select-large-padding-lr: $s-2 !default;
+/// padding multiple (l)
+/// @namespace size/bounding
+$select-large-padding-multiple: $s-2 !default;
+/// padding multiple (t, b)
+/// @namespace size/bounding
+$select-large-padding-multiple-tb: $s-2 !default;
+/// size
+/// @namespace size/icon
+$select-icon-large-size: $icon-m !default;
+/// size
+/// @namespace size/text
+$select-large-font: $font-size-body-1 !default;
+
+//middle
+
+/// height
+/// @namespace size/bounding
+$select-middle-height: $s-7 !default;
+/// padding (l, r)
+/// @namespace size/bounding
+$select-middle-padding-lr: $s-2 !default;
+/// padding multiple (l)
+/// @namespace size/bounding
+$select-middle-padding-multiple: $s-1 !default;
+/// padding multiple (t, b)
+/// @namespace size/bounding
+$select-middle-padding-multiple-tb: $s-1 !default;
+/// size
+/// @namespace size/icon
+$select-icon-middle-size: $icon-s !default;
+/// size
+/// @namespace size/text
+$select-middle-font: $font-size-body-1 !default;
+
+//small
+/// height
+/// @namespace size/bounding
+$select-small-height: $s-5 !default;
+/// padding (l, r)
+/// @namespace size/bounding
+$select-small-padding-lr: $s-2 !default;
+/// padding multiple (l)
+/// @namespace size/bounding
+$select-small-padding-multiple: $s-1 !default;
+/// padding multiple (t, b)
+/// @namespace size/bounding
+$select-small-padding-multiple-tb: 2px !default;
+/// size
+/// @namespace size/icon
+$select-icon-small-size: $icon-xs !default;
+/// size
+/// @namespace size/text
+$select-small-font: $font-size-caption !default;
+
+//no border
+/// color
+/// @namespace statement/hover/text
+$select-no-border-hover-color: $color-brand1-6 !default;
+
+/// background
+/// @namespace statement/normal/arrow
+$select-box-bg: $color-fill1-1 !default;
+/// border color
+/// @namespace statement/normal/arrow
+$select-box-border-color: $color-line1-3 !default;
+
+
+$select-box-padding-large: $s-2;
+$select-box-padding-medium: $s-1;
+$select-box-padding-small: $s-1;
+$select-box-padding-small-tb: 2px;
+$select-box-split: $s-1;
+
+/// corner
+/// @namespace statement/normal/tag
+$select-item-border-radius: $corner-1 !default;
+
+/// margin (r)
+/// @namespace size/tag
+$select-item-margin-right: $s-1 !default;
+/// padding (l, r)
+/// @namespace size/tag
+$select-item-padding-hoz: $s-1 !default;
+/// padding (t, b)
+/// @namespace size/tag
+$select-item-padding-ver: $s-0 !default;

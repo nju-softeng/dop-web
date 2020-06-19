@@ -1,0 +1,293 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp; /* eslint-disable react/prop-types */
+
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames2 = require('classnames');
+
+var _classnames3 = _interopRequireDefault(_classnames2);
+
+var _nextIcon = require('../../next-icon/lib/index.js');
+
+var _nextIcon2 = _interopRequireDefault(_nextIcon);
+
+var _nextUtil = require('../../next-util/lib/index.js');
+
+var _nextOverlay = require('../../next-overlay/lib/index.js');
+
+var _nextAnimate = require('../../next-animate/lib/index.js');
+
+var _nextAnimate2 = _interopRequireDefault(_nextAnimate);
+
+var _container = require('./container.js');
+
+var _container2 = _interopRequireDefault(_container);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var Component = _container2['default'];
+var noop = function noop() {};
+
+/** Menu.Item */
+var MenuItem = (_temp = _class = function (_Component) {
+    _inherits(MenuItem, _Component);
+
+    function MenuItem(props, context) {
+        _classCallCheck(this, MenuItem);
+
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+
+        ['onClick', 'onKeyDown', 'onFocus', 'onMouseEnter', 'onMouseLeave'].forEach(function (method) {
+            _this[method] = _this[method].bind(_this);
+        });
+        var root = _this.getRoot();
+        if (!root) {
+            throw new Error('MenuItem should use under Menu.');
+        }
+        _this.root = root;
+        _this.Menu = root.constructor;
+        _this.SubMenu = root.constructor.SubMenu;
+        return _this;
+    }
+
+    MenuItem.prototype.componentDidMount = function componentDidMount() {
+        this._meta = _extends({
+            node: _reactDom2['default'].findDOMNode(this)
+        }, this.props);
+        this.pushMetaToParent();
+    };
+
+    MenuItem.prototype.componentDidUpdate = function componentDidUpdate() {
+        // We need update parent ref to avoid root update.
+        this.root = this.getRoot();
+        this.pushMetaToParent();
+    };
+
+    // If it have a parentMenu, we push meta to the parentMenu for keyboard navigation.
+
+
+    MenuItem.prototype.pushMetaToParent = function pushMetaToParent() {
+        var menu = this.getParentByFlag('_menu')[0];
+        menu && menu.addChildMeta(this._meta);
+    };
+
+    MenuItem.prototype.componentWillUnmount = function componentWillUnmount() {
+        var menu = this.getParentByFlag('_menu')[0];
+        menu && menu.removeChildMeta(this._meta);
+    };
+
+    MenuItem.prototype.render = function render() {
+        var _classnames;
+
+        var _props = this.props,
+            focused = _props.focused,
+            selected = _props.selected,
+            disabled = _props.disabled,
+            helper = _props.helper,
+            className = _props.className,
+            indentSize = _props.indentSize,
+            children = _props.children,
+            focusedKey = _props.focusedKey,
+            hasSelectedIcon = _props.hasSelectedIcon,
+            index = _props.index,
+            needIndent = _props.needIndent,
+            _props$style = _props.style,
+            style = _props$style === undefined ? {} : _props$style,
+            others = _objectWithoutProperties(_props, ['focused', 'selected', 'disabled', 'helper', 'className', 'indentSize', 'children', 'focusedKey', 'hasSelectedIcon', 'index', 'needIndent', 'style']),
+            prefix = this.getPrefix();
+
+        if (typeof selected === 'undefined') {
+            selected = this.root.state.selectedKeys.indexOf(index) > -1;
+        }
+
+        var cls = (0, _classnames3['default'])((_classnames = {}, _defineProperty(_classnames, prefix + 'menu-item', true), _defineProperty(_classnames, 'disabled', disabled), _defineProperty(_classnames, 'selected', selected), _defineProperty(_classnames, 'focused', index && focusedKey === index), _defineProperty(_classnames, className, className), _classnames)),
+            events = {
+            onClick: this.onClick,
+            onKeyDown: this.onKeyDown,
+            onFocus: this.onFocus,
+            onMouseEnter: this.onMouseEnter,
+            onMouseLeave: this.onMouseLeave
+        },
+            icon = _react2['default'].createElement(
+            _nextAnimate2['default'],
+            { animation: {
+                    appear: 'zoomIn',
+                    enter: 'zoomIn',
+                    leave: 'zoomOut'
+                } },
+            hasSelectedIcon && selected ? _react2['default'].createElement(_nextIcon2['default'], { type: 'select', className: prefix + 'menu-icon-select', size: 'xs', style: { left: (indentSize || 20) - 16 + 'px' } }) : null
+        );
+
+        helper = helper ? _react2['default'].createElement(
+            'em',
+            { className: prefix + 'menu-item-helper' },
+            helper
+        ) : null;
+        if (disabled) {
+            events = {
+                // // Avoid trigger menu onSelect events
+                onSelect: function onSelect(e) {
+                    e.stopPropagation();
+                },
+                onClick: function onClick(e) {
+                    e.stopPropagation();
+                }
+            };
+        }
+        others = (0, _nextUtil.pickAttrs)(others);
+        if (indentSize && needIndent === true) {
+            style.paddingLeft = indentSize;
+        }
+        return _react2['default'].createElement(
+            'li',
+            _extends({}, others, events, {
+                style: style,
+                tabIndex: disabled ? null : focused ? 0 : -1,
+                role: 'menuitem',
+                className: cls }),
+            children,
+            icon,
+            helper
+        );
+    };
+
+    MenuItem.prototype.onClick = function onClick(e) {
+        this.root.onItemClick(e, this.props.index, 'click', this);
+        // It will crash Popup or others component.
+        // We will adjust order of params at 2.x
+        this.props.onClick(this.props.index, e);
+        e.stopPropagation();
+    };
+
+    MenuItem.prototype.onKeyDown = function onKeyDown(e) {
+        var keyCode = e.keyCode;
+        this.props.onKeyDown(e);
+        if (keyCode === 32 || keyCode === 13) {
+            this.onClick(e);
+        }
+    };
+
+    MenuItem.prototype.onFocus = function onFocus(e) {
+        e.stopPropagation();
+    };
+
+    MenuItem.prototype.onMouseEnter = function onMouseEnter(e) {
+        this.root.onKeyNavNodeFocus(e);
+        this.root.focusChild(this._meta);
+        var parentMenu = this.getParentByType(this.Menu)[0];
+        if (parentMenu) {
+            var subMenu = parentMenu.getChildrenIncByType(this.SubMenu);
+            var popup = parentMenu.getChildrenIncByType(_nextOverlay.Popup);
+            subMenu.forEach(function (menu) {
+                menu.onContentMouseEnter();
+                if (menu.props.triggerType === 'hover') {
+                    menu.onSubMenuMouseLeave(e);
+                }
+            });
+            popup.forEach(function (p) {
+                p._onContentMouseEnter();
+                if (p.props.triggerType === 'hover') {
+                    p._onTriggerMouseLeave(e);
+                }
+            });
+        }
+        this.props.onMouseEnter(e);
+    };
+
+    MenuItem.prototype.onMouseLeave = function onMouseLeave(e) {
+        this.root.unFocusChild(this._meta);
+        this.props.onMouseLeave(e);
+    };
+
+    return MenuItem;
+}(Component), _class._menuItem = true, _class.propTypes = {
+    /**
+     * 样式类名的品牌前缀
+     */
+    prefix: _propTypes2['default'].string,
+    /**
+     * 自定义类名
+     */
+    className: _propTypes2['default'].string,
+    /**
+     * 自定义内联样式
+     */
+    style: _propTypes2['default'].object,
+    /**
+     * 显示在菜单右侧的帮助文本，通常用于一些附加信息
+     */
+    helper: _propTypes2['default'].string,
+    /**
+     * 禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio
+     */
+    disabled: _propTypes2['default'].bool,
+    /**
+     * 当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高
+     */
+    selected: _propTypes2['default'].bool,
+    focused: _propTypes2['default'].bool,
+    /**
+     * 点击了菜单项触发的事件
+     * @param {String} key 当前菜单项的key值
+     * @param {Event} e DOM事件
+     */
+    onClick: _propTypes2['default'].func,
+    onKeyDown: _propTypes2['default'].func,
+    parent: _propTypes2['default'].any,
+    /**
+     * 是否显示选中图标
+     */
+    hasSelectedIcon: _propTypes2['default'].bool,
+    /**
+     * 是否显示缩进
+     */
+    needIndent: _propTypes2['default'].bool
+}, _class.defaultProps = {
+    helper: null,
+    disabled: false,
+    prefix: 'next-',
+    hasSelectedIcon: true,
+    needIndent: true,
+    onClick: noop,
+    onKeyDown: noop,
+    onMouseEnter: noop,
+    onMouseLeave: noop
+}, _class.contextTypes = {
+    parentIndex: _propTypes2['default'].array,
+    parentLabel: _propTypes2['default'].array,
+    prefix: _propTypes2['default'].string
+}, _temp);
+MenuItem.displayName = 'MenuItem';
+exports['default'] = MenuItem;
+module.exports = exports['default'];

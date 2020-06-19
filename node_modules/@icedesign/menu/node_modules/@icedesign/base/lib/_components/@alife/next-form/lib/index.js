@@ -1,0 +1,20 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _form = require('./form.js');
+
+var _form2 = _interopRequireDefault(_form);
+
+var _formItem = require('./form-item.js');
+
+var _formItem2 = _interopRequireDefault(_formItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+_form2['default'].Item = _formItem2['default'];
+
+exports['default'] = _form2['default'];
+module.exports = exports['default'];

@@ -1,0 +1,221 @@
+// 卡片模式
+// ========================================
+
+#{$calendar-prefix}-card {
+    & {
+        font-size: $calendar-card-font-size;
+        background: $calendar-card-bg-color;
+    }
+
+    #{$calendar-prefix}-body {
+        &.enter-to-right {
+            tbody{
+                animation: enterToRight .5s cubic-bezier(0.23, 1, 0.32, 1);
+                transition: all 1s ease;
+                position: relative;
+            }
+
+        }
+        &.enter-to-left {
+            tbody {
+                animation: enterToLeft .5s cubic-bezier(0.23, 1, 0.32, 1);
+                transition: all 1s ease;
+                position: relative;
+            }
+        }
+    }
+
+    #{$calendar-prefix}-range-body {
+        padding: 0;
+
+        &-left,
+        &-right {
+            width: 50%;
+            float: left;
+            padding: $s-2;
+        }
+
+        @include clearfix;
+    }
+
+    #{$calendar-prefix}-th {
+        line-height: 18px;
+        padding: 0;
+        border: 0;
+        text-align: center;
+        color: $calendar-card-week-color;
+
+        &-inner {
+            display: block;
+            font-weight: 400;
+        }
+    }
+
+    #{$calendar-prefix}-date {
+        @include calendar-card-cell-size($s-1, $s-6, $s-6, $calendar-card-cell-date-border-radius);
+    }
+
+    #{$calendar-prefix}-month {
+        @include calendar-card-cell-size($s-2, $s-15, $s-6, $calendar-card-cell-month-border-radius);
+    }
+
+    #{$calendar-prefix}-year {
+        @include calendar-card-cell-size($s-2, $s-12, $s-6, $calendar-card-cell-year-border-radius);
+    }
+
+    #{$calendar-prefix}-cell {
+        position: relative;
+        text-align: center;
+    }
+
+    #{$calendar-prefix}-date,
+    #{$calendar-prefix}-month,
+    #{$calendar-prefix}-year {
+        & {
+            transition: all .3s ease-in;
+
+            @include calendar-cell-state (
+                $calendar-card-cell-normal-background,
+                $calendar-card-cell-normal-color,
+                $calendar-card-cell-normal-border-color
+            );
+        }
+
+        &:hover {
+            transition: all .3s ease-out;
+
+            @include calendar-cell-state (
+                $calendar-card-cell-hover-background,
+                $calendar-card-cell-hover-color,
+                $calendar-card-cell-hover-border-color
+            );
+        }
+    }
+
+    #{$calendar-prefix}-cell-prev-month {
+        #{$calendar-prefix}-date {
+            @include calendar-cell-state (
+                $calendar-card-cell-other-background,
+                $calendar-card-cell-other-color,
+                $calendar-card-cell-other-border-color
+            );
+        }
+    }
+
+    #{$calendar-prefix}-cell-next-month {
+        #{$calendar-prefix}-date {
+            @include calendar-cell-state (
+                $calendar-card-cell-other-background,
+                $calendar-card-cell-other-color,
+                $calendar-card-cell-other-border-color
+            );
+        }
+    }
+
+    #{$calendar-prefix}-cell-today {
+        #{$calendar-prefix}-date {
+            @include calendar-cell-state (
+                $calendar-card-cell-today-background,
+                $calendar-card-cell-today-color,
+                $calendar-card-cell-today-border-color
+            );
+        }
+    }
+
+    #{$calendar-prefix}-cell-range {
+        #{$calendar-prefix}-date {
+            & {
+                animation: cellZoomIn .4s cubic-bezier(0.23, 1, 0.32, 1);
+                transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+
+                @if $calendar-card-cell-date-border-radius == $corner-0 {
+                    border-radius: 0;
+                    width: auto;
+                }
+
+                @include calendar-cell-state (
+                    $calendar-card-cell-range-background,
+                    $calendar-card-cell-range-color,
+                    $calendar-card-cell-range-border-color
+                );
+            }
+            &:hover{
+                transition: all .3s ease-out;
+
+                @include calendar-cell-state (
+                    $calendar-card-cell-range-background,
+                    $calendar-card-cell-range-color,
+                    $calendar-card-cell-range-border-color
+                );
+            }
+        }
+    }
+
+    #{$calendar-prefix}-cell-selected {
+        #{$calendar-prefix}-date,
+        #{$calendar-prefix}-month,
+        #{$calendar-prefix}-year {
+            & {
+                animation: cellZoomIn .4s cubic-bezier(0.23, 1, 0.32, 1);
+                transition: all .4s cubic-bezier(0.23, 1, 0.32, 1);
+
+                @include calendar-cell-state (
+                    $calendar-card-cell-select-background,
+                    $calendar-card-cell-select-color,
+                    $calendar-card-cell-select-border-color
+                );
+            }
+            &:hover {
+                transition: all .3s ease-out;
+
+                @include calendar-cell-state (
+                    $calendar-card-cell-select-background,
+                    $calendar-card-cell-select-color,
+                    $calendar-card-cell-select-border-color
+                );
+            }
+        }
+    }
+
+    #{$calendar-prefix}-cell-disabled {
+        #{$calendar-prefix}-date,
+        #{$calendar-prefix}-month,
+        #{$calendar-prefix}-year {
+            & {
+                cursor: not-allowed;
+
+                @if $calendar-card-cell-date-border-radius == $corner-0 {
+                    border-radius: 0;
+                    width: auto;
+                }
+
+                @include calendar-cell-state (
+                    $calendar-card-cell-disabled-background,
+                    $calendar-card-cell-disabled-color,
+                    $calendar-card-cell-disabled-border-color
+                );
+            }
+            &:hover {
+                cursor: not-allowed;
+
+                @include calendar-cell-state (
+                    $calendar-card-cell-disabled-background,
+                    $calendar-card-cell-disabled-color,
+                    $calendar-card-cell-disabled-border-color
+                );
+            }
+        }
+    }
+
+    #{$calendar-prefix}-cell-range-mode#{$calendar-prefix}-cell-prev-month{
+        #{$calendar-prefix}-date {
+            display: none;
+        }
+    }
+
+    #{$calendar-prefix}-cell-range-mode#{$calendar-prefix}-cell-next-month{
+        #{$calendar-prefix}-date {
+            display: none;
+        }
+    }
+}

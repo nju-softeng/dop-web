@@ -1,0 +1,1 @@
+module.exports = require('../_components/@alife/next-form/lib/index.js');

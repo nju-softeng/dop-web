@@ -1,0 +1,1 @@
+module.exports = require('../_components/@alife/next-tree/lib/index.js');

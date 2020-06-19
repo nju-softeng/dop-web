@@ -1,0 +1,140 @@
+////
+/// @module dialog: 对话框
+/// @tag Dialog
+/// @category component
+/// @family dialog
+/// @varPrefix $dialog-
+/// @classPrefix {prefix}-dialog
+/// @order {"size/bounding": 10, "size/title": 100, "size/close": 101, "size/content": 200, "size/footer": 300, "statement/normal": 500, "statement/hover": 600, "statement/normal/bounding": 501, "statement/normal/title": 502,  "statement/normal/content": 503, "statement/normal/footer": 504}
+////
+
+// dialog variables
+// --------------------------------------------------
+
+$dialog-prefix: ".#{$css-prefix}dialog";
+
+// padding(deprecated)
+$dialog-padding: $s-5 !default;
+
+/// border
+/// @namespace size/bounding
+$dialog-border-width: $line-1 !default;
+/// shadow
+/// @namespace statement/normal/bounding
+$dialog-shadow: $shadow-1 !default;
+/// border
+/// @namespace statement/normal/bounding
+$dialog-border-color: $color-white !default;
+/// corner
+/// @namespace statement/normal/bounding
+$dialog-border-radius: $corner-0 !default;
+
+/// text
+/// @namespace size/title
+$dialog-title-font-size: $font-size-subhead !default;
+/// text
+/// @namespace statement/normal/title
+$dialog-title-color: $color-text1-4 !default;
+// title-padding-tb(deprecated)
+$dialog-title-padding-top-bottom: $s-5 !default;
+/// padding (t)
+/// @namespace size/title
+$dialog-title-padding-top: $s-5 !default;
+/// padding (b)
+/// @namespace size/title
+$dialog-title-padding-bottom: $s-0 !default;
+/// padding (l, r)
+/// @namespace size/title
+$dialog-title-padding-left-right: $s-5 !default;
+/// divider
+/// @namespace size/title
+$dialog-title-border-width: 1px !default;
+/// divider
+/// @namespace statement/normal/title
+$dialog-title-border-color: $color-transparent !default;
+/// background
+/// @namespace statement/normal/title
+$dialog-title-bg-color: $color-transparent !default;
+
+$dialog-footer-padding-top-bottom: $s-5 !default;
+/// padding (t)
+/// @namespace size/footer
+$dialog-footer-padding-top: $s-0 !default;
+/// padding (b)
+/// @namespace size/footer
+$dialog-footer-padding-bottom: $s-5 !default;
+/// padding (l, r)
+/// @namespace size/footer
+$dialog-footer-padding-left-right: $s-5 !default;
+/// divider
+/// @namespace size/footer
+$dialog-footer-border-width: 1px !default;
+/// divider
+/// @namespace statement/normal/footer
+$dialog-footer-border-color: $color-transparent !default;
+/// background
+/// @namespace statement/normal/footer
+$dialog-footer-bg-color: $color-transparent !default;
+
+/// text
+/// @namespace size/content
+$dialog-content-font-size: $font-size-body-1 !default;
+/// text
+/// @namespace statement/normal/content
+$dialog-content-color: $color-text1-4 !default;
+$dialog-content-padding: $s-5 !default;
+/// padding (t)
+/// @namespace size/content
+$dialog-content-padding-top: $s-5 !default;
+/// padding (b)
+/// @namespace size/content
+$dialog-content-padding-bottom: $s-5 !default;
+/// padding (l, r)
+/// @namespace size/content
+$dialog-content-padding-left-right: $s-5 !default;
+
+/// icon
+/// @namespace statement/normal/close
+$dialog-close-color: $color-text1-2 !default;
+/// icon
+/// @namespace statement/hover/close
+$dialog-close-color-hovered: $color-text1-4 !default;
+/// background
+/// @namespace statement/hover/close
+$dialog-close-bg-hovered: $color-transparent !default;
+/// position (r)
+/// @namespace size/close
+$dialog-close-right: $s-5 !default;
+/// position (t)
+/// @namespace size/close
+$dialog-close-top: $s-5 !default;
+/// size
+/// @namespace size/close
+$dialog-close-width: $s-5 !default;
+// height(deprecated)
+$dialog-close-height: $s-5 !default;
+/// icon
+/// @namespace size/close
+$dialog-close-size: $icon-s !default;
+
+$dialog-title-padding-right: $dialog-close-size + $dialog-title-padding-left-right + 10;
+
+/// text
+/// @namespace statement/normal/alert
+$dialog-alert-icon-color: $color-warning-2 !default;
+/// text
+/// @namespace statement/normal/confirm
+$dialog-confirm-icon-color: $color-warning-2 !default;
+
+/// background
+/// @namespace statement/normal/bounding
+$dialog-bg: $color-white !default;
+
+/// background
+/// @namespace statement/normal/mask
+$dialog-modal-bg: $color-black !default;
+
+/// opacity
+/// @namespace statement/normal/mask
+/// @type opacity
+$dialog-modal-opacity: 0.2 !default;

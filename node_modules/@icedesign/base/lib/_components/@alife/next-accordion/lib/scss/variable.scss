@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+////
+/// @module accordion: 手风琴
+/// @tag Accordion
+/// @category component
+/// @family accordion
+/// @varPrefix $accordion-
+/// @classPrefix {prefix}-accordion
+/// @order {"size/bounding":10,"size/title":11,"size/multi title":12,"size/icon":13,"size/content":14,"statement/normal":10,"statement/normal/title":100,"statement/normal/icon":101,"statement/normal/content":102,"statement/hover":11,"statement/hover/title":110,"statement/disabled":12,"statement/disabled/title":120}
+////
+
+$accordion-prefix: '.#{$css-prefix}accordion';
+
+// accordion variables
+// --------------------------------------------------
+
+
+// Common
+
+/// border width
+/// @namespace size/bounding
+$accordion-border-width: $line-1 !default;
+/// border
+/// @namespace statement/normal
+$accordion-border-color: $color-line1-2 !default;
+
+
+/// line height
+/// @namespace size/title
+$accordion-title-height : $s-10 !default;
+/// background
+/// @namespace statement/normal/title
+$accordion-title-bgcolor : $color-fill1-1 !default;
+/// background
+/// @namespace statement/hover/title
+$accordion-title-hover-bgcolor : $color-fill1-2 !default;
+/// background
+/// @namespace statement/disabled/title
+$accordion-title-disabled-bgcolor : $color-fill1-1 !default;
+/// text
+/// @namespace statement/normal/title
+$accordion-title-font-color : $color-text1-4 !default;
+/// text
+/// @namespace statement/disabled/title
+$accordion-title-font-disabled-color : $color-text1-1 !default;
+/// text
+/// @namespace size/title
+$accordion-title-font-size : $font-size-body-1 !default;
+/// line height
+/// @namespace size/multi title
+$accordion-title-mutli-line-height : $s-4 !default;
+/// padding(t,b)
+/// @namespace size/multi title
+$accordion-title-mutli-padding-y : $s-3 !default;
+
+/// size
+/// @namespace size/icon
+$accordion-icon-size : $icon-xxs !default;
+/// color
+/// @namespace statement/normal/icon
+$accordion-icon-color : $color-text1-4 !default;
+/// disabled
+/// @namespace statement/normal/icon
+$accordion-icon-disabled-color : $color-text1-1 !default;
+/// margin (r)
+/// @namespace size/icon
+$accordion-icon-margin-r : $s-1 !default;
+/// margin (l)
+/// @namespace size/icon
+$accordion-icon-margin-l : $s-3 !default;
+
+/// background
+/// @namespace statement/normal/content
+$accordion-content-bgcolor : $color-white !default;
+/// padding (l,r)
+/// @namespace size/content
+$accordion-content-padding-x : $s-4 !default;
+/// padding (t,b)
+/// @namespace size/content
+$accordion-content-padding-y : $s-3 !default;
+/// text
+/// @namespace size/content
+$accordion-content-font-size : $font-size-body-1 !default;
+/// text
+/// @namespace statement/normal/content
+$accordion-content-color : $color-text1-3 !default;

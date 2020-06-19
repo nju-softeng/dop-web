@@ -1,0 +1,150 @@
+{
+  "name": "Accordion",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "组件接受行内样式",
+      "docblock": "组件接受行内样式",
+      "properties": []
+    },
+    "dataSource": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "使用数据模型构建",
+      "docblock": "使用数据模型构建"
+    },
+    "singleShrink": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "如果这个属性为true, 在single为true时, 组件可以收起全部子元素",
+      "docblock": "如果这个属性为true, 在single为true时, 组件可以收起全部子元素"
+    },
+    "single": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否只能展开1个",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否只能展开1个"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "接收一个回调函数传递改变状态, 在使用dataSource时改回调需要产生改变组件才能生效",
+      "docblock": "接收一个回调函数传递改变状态, 在使用dataSource时改回调需要产生改变组件才能生效",
+      "params": [],
+      "returns": null
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "扩展class",
+      "docblock": "扩展class"
+    }
+  },
+  "methods": [],
+  "subComponents": [
+    {
+      "name": "Panel",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "docblock": "样式类名的品牌前缀"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "子组件接受行内样式",
+          "docblock": "子组件接受行内样式",
+          "properties": []
+        },
+        "expanded": {
+          "type": {
+            "name": "bool"
+          },
+          "required": true,
+          "description": "是否展开",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否展开"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": true,
+          "description": "是否禁止用户操作",
+          "docblock": "是否禁止用户操作"
+        },
+        "title": {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": "标题",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "docblock": "标题"
+        },
+        "multiTitle": {
+          "type": {
+            "name": "bool"
+          },
+          "required": true,
+          "description": "标题是否多行显示",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "标题是否多行显示"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "扩展class",
+          "docblock": "扩展class"
+        }
+      },
+      "methods": []
+    }
+  ]
+}

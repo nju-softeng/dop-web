@@ -1,0 +1,595 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _class, _temp;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _nextIcon = require('../../../next-icon/lib/index.js');
+
+var _nextIcon2 = _interopRequireDefault(_nextIcon);
+
+var _nextCheckbox = require('../../../next-checkbox/lib/index.js');
+
+var _nextCheckbox2 = _interopRequireDefault(_nextCheckbox);
+
+var _nextAnimate = require('../../../next-animate/lib/index.js');
+
+var _nextAnimate2 = _interopRequireDefault(_nextAnimate);
+
+var _nextUtil = require('../../../next-util/lib/index.js');
+
+var _nextDom = require('../../../next-dom/lib/index.js');
+
+var _util = require('../util/index.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var browserUa = typeof window !== 'undefined' ? (0, _util.browser)(window.navigator) : '';
+var ieOrEdge = /.*(IE|Edge).+/.test(browserUa);
+var isRoot = function isRoot(pos) {
+    return (/^0-(\d)+$/.test(pos)
+    );
+};
+// for react-hot-loader
+// eslint-disable-next-line
+var isTreeNode = function isTreeNode(type) {
+    return type && (type === TreeNode || type.__proto__ === TreeNode.__proto__);
+};
+
+/**
+ * Tree.Node
+ */
+var TreeNode = (_temp = _class = function (_Component) {
+    _inherits(TreeNode, _Component);
+
+    function TreeNode(props, context) {
+        _classCallCheck(this, TreeNode);
+
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+
+        ['onExpand', 'onCheck', 'onContextMenu', 'onMouseEnter', 'onMouseLeave', 'onDragStart', 'onDragEnter', 'onDragOver', 'onDragLeave', 'onDrop', 'onSelect', 'onEditFinish'].forEach(function (m) {
+            _this[m] = _this[m].bind(_this);
+        });
+
+        _this.clickTimer = null;
+        _this.state = {
+            dataLoading: false,
+            editMode: false,
+            title: props.title || props.label
+        };
+        return _this;
+    }
+
+    TreeNode.prototype.componentDidMount = function componentDidMount() {
+        if (!this.props.root._treeNodeInstances) {
+            this.props.root._treeNodeInstances = [];
+        }
+        this.props.root._treeNodeInstances.push(this);
+    };
+
+    TreeNode.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        if ('title' in nextProps) {
+            this.setState({
+                title: nextProps.title
+            });
+        } else if ('label' in nextProps) {
+            this.setState({
+                title: nextProps.label
+            });
+        }
+
+        this.expandedChanged = nextProps.expanded !== this.props.expanded;
+    };
+
+    TreeNode.prototype.componentDidUpdate = function componentDidUpdate() {
+        if (this.refs.selectInput) {
+            this.refs.selectInput.focus();
+        }
+    };
+
+    TreeNode.prototype.getPrefix = function getPrefix() {
+        return this.context.prefix || this.props.prefix;
+    };
+
+    TreeNode.prototype.onCheck = function onCheck() {
+        this.props.root.onCheck(this);
+    };
+
+    TreeNode.prototype.onSelect = function onSelect() {
+        this.props.root.onSelect(this);
+    };
+
+    TreeNode.prototype.onEditFinish = function onEditFinish(info) {
+        this.props.root.onEditFinish(info);
+    };
+
+    TreeNode.prototype.onMouseEnter = function onMouseEnter(e) {
+        e.preventDefault();
+        this.props.root.onMouseEnter(e, this);
+    };
+
+    TreeNode.prototype.onMouseLeave = function onMouseLeave(e) {
+        e.preventDefault();
+        this.props.root.onMouseLeave(e, this);
+    };
+
+    TreeNode.prototype.onContextMenu = function onContextMenu(e) {
+        e.preventDefault();
+        this.props.root.onContextMenu(e, this);
+    };
+
+    TreeNode.prototype.onDragStart = function onDragStart(e) {
+        e.stopPropagation();
+
+        this.props.root.onDragStart(e, this);
+
+        e.dataTransfer.setData('text/plain', 'firefox-need-it');
+    };
+
+    TreeNode.prototype.onDragEnter = function onDragEnter(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        this.props.root.onDragEnter(e, this);
+    };
+
+    TreeNode.prototype.onDragOver = function onDragOver(e) {
+        if (this.props.root.canDrop(this)) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.props.root.onDragOver(e, this);
+            return false;
+        }
+    };
+
+    TreeNode.prototype.onDragLeave = function onDragLeave(e) {
+        e.stopPropagation();
+        this.props.root.onDragLeave(e, this);
+    };
+
+    TreeNode.prototype.onDrop = function onDrop(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        this.props.root.onDrop(e, this);
+    };
+
+    TreeNode.prototype.onExpand = function onExpand() {
+        var _this2 = this;
+
+        var callbackPromise = this.props.root.onExpand(this);
+        if (callbackPromise && (typeof callbackPromise === 'undefined' ? 'undefined' : _typeof(callbackPromise)) === 'object') {
+            var setLoading = function setLoading(dataLoading) {
+                _this2.setState({ dataLoading: dataLoading });
+            };
+            setLoading(true);
+            callbackPromise.then(function () {
+                setLoading(false);
+            }, function () {
+                setLoading(false);
+            });
+        }
+    };
+
+    TreeNode.prototype.onKeyDown = function onKeyDown(e) {
+        e.preventDefault();
+    };
+
+    TreeNode.prototype.renderRightAngle = function renderRightAngle() {
+        var prefix = this.getPrefix();
+        var _props = this.props,
+            showLine = _props.showLine,
+            pos = _props.pos;
+
+        return showLine && !isRoot(pos) ? _react2['default'].createElement('span', { className: prefix + 'tree-right-angle' }) : null;
+    };
+
+    TreeNode.prototype.renderSwitcher = function renderSwitcher() {
+        var _classNames;
+
+        var prefix = this.getPrefix();
+        var _props2 = this.props,
+            showLine = _props2.showLine,
+            disabled = _props2.disabled,
+            expanded = _props2.expanded;
+
+
+        var lineState = showLine ? 'line' : 'noline';
+        var wrapperProps = {
+            className: (0, _classnames2['default'])((_classNames = {}, _defineProperty(_classNames, prefix + 'tree-switcher', true), _defineProperty(_classNames, prefix + 'tree-switcher-' + lineState, true), _defineProperty(_classNames, prefix + 'tree-switcher-' + lineState + '-close', !showLine && !expanded), _defineProperty(_classNames, 'disabled', disabled), _classNames)),
+            onClick: disabled ? null : this.onExpand,
+            key: 'switcher'
+        };
+        var iconProps = {
+            className: prefix + 'tree-switcher-icon',
+            type: showLine ? expanded ? 'minus' : 'add' : 'arrow-down'
+        };
+
+        return _react2['default'].createElement(
+            'span',
+            wrapperProps,
+            this.renderRightAngle(),
+            _react2['default'].createElement(_nextIcon2['default'], iconProps)
+        );
+    };
+
+    TreeNode.prototype.renderNoopSwitcher = function renderNoopSwitcher() {
+        var _classNames2;
+
+        var prefix = this.getPrefix();
+        var _props3 = this.props,
+            showLine = _props3.showLine,
+            pos = _props3.pos;
+
+
+        var lineState = showLine ? 'line' : 'noline';
+        var switcherCls = (0, _classnames2['default'])((_classNames2 = {}, _defineProperty(_classNames2, prefix + 'tree-switcher', true), _defineProperty(_classNames2, prefix + 'tree-switcher-noop-' + lineState, true), _defineProperty(_classNames2, prefix + 'tree-switcher-noop-line-noroot', showLine && !isRoot(pos)), _classNames2));
+
+        return _react2['default'].createElement(
+            'span',
+            { className: switcherCls, key: 'noopSwitcher' },
+            this.renderRightAngle()
+        );
+    };
+
+    TreeNode.prototype.renderCheckbox = function renderCheckbox() {
+        var _props4 = this.props,
+            checked = _props4.checked,
+            halfChecked = _props4.halfChecked,
+            disabled = _props4.disabled,
+            disableCheckbox = _props4.disableCheckbox;
+
+
+        return _react2['default'].createElement(_nextCheckbox2['default'], { key: 'checkbox', checked: checked, indeterminate: halfChecked, disabled: disableCheckbox || disabled, onChange: this.onCheck });
+    };
+
+    TreeNode.prototype.renderSelectHandle = function renderSelectHandle() {
+        var _classNames3,
+            _classNames4,
+            _this3 = this;
+
+        var prefix = this.getPrefix();
+        var _props5 = this.props,
+            expanded = _props5.expanded,
+            loadData = _props5.loadData,
+            showIcon = _props5.showIcon,
+            editable = _props5.editable,
+            disabled = _props5.disabled,
+            selected = _props5.selected,
+            draggable = _props5.draggable,
+            selectable = _props5.selectable,
+            onRightClick = _props5.onRightClick,
+            onMouseEnter = _props5.onMouseEnter,
+            onMouseLeave = _props5.onMouseLeave;
+        var _state = this.state,
+            dataLoading = _state.dataLoading,
+            editMode = _state.editMode,
+            title = _state.title;
+
+        var expandedState = expanded ? 'open' : 'close';
+
+        var iconEleCls = (0, _classnames2['default'])((_classNames3 = {}, _defineProperty(_classNames3, prefix + 'tree-icon', true), _defineProperty(_classNames3, prefix + 'tree-icon-loading', dataLoading), _defineProperty(_classNames3, prefix + 'tree-icon-' + expandedState, true), _classNames3));
+        var domProps = {};
+        var inputProps = {};
+
+        domProps.className = (0, _classnames2['default'])((_classNames4 = {}, _defineProperty(_classNames4, prefix + 'tree-node-handle', true), _defineProperty(_classNames4, prefix + 'tree-node-handle-selected', !disabled && selected), _defineProperty(_classNames4, prefix + 'tree-node-handle-disabled', disabled), _classNames4));
+        inputProps.className = prefix + 'tree-node-input';
+
+        if (!disabled) {
+            if (editable) {
+                domProps.onDoubleClick = function (e) {
+                    e.preventDefault();
+
+                    _this3.setState({
+                        title: e.currentTarget.textContent,
+                        editMode: true
+                    });
+                };
+            }
+            if (selectable) {
+                domProps.onClick = function (e) {
+                    e.preventDefault();
+
+                    _this3.onSelect();
+                };
+            }
+
+            if (onRightClick) {
+                domProps.onContextMenu = this.onContextMenu;
+            }
+            if (onMouseEnter) {
+                domProps.onMouseEnter = this.onMouseEnter;
+            }
+            if (onMouseLeave) {
+                domProps.onMouseLeave = this.onMouseLeave;
+            }
+            if (draggable) {
+                if (ieOrEdge) {
+                    domProps.href = '#';
+                }
+                domProps.draggable = true;
+                domProps['aria-grabbed'] = true;
+                domProps.onDragStart = this.onDragStart;
+            }
+
+            inputProps.defaultValue = title;
+
+            inputProps.onBlur = function (e) {
+                _this3.setState({
+                    editMode: false,
+                    title: e.currentTarget.value || title
+                });
+
+                _this3.onEditFinish({
+                    key: _this3.props.eventKey,
+                    title: e.currentTarget.value || title,
+                    label: e.currentTarget.value || title
+                });
+            };
+        }
+
+        return editMode ? _react2['default'].createElement('input', _extends({ ref: 'selectInput', key: 'selectInput' }, inputProps)) : _react2['default'].createElement(
+            'a',
+            _extends({ ref: 'selectHandle', key: 'selectHandle' }, domProps, { title: typeof title === 'string' ? title : '' }),
+            showIcon || loadData && dataLoading ? _react2['default'].createElement('span', { className: iconEleCls }) : null,
+            title
+        );
+    };
+
+    TreeNode.prototype.renderChildren = function renderChildren() {
+        var prefix = this.getPrefix();
+        var _props6 = this.props,
+            expanded = _props6.expanded,
+            children = _props6.children,
+            showLine = _props6.showLine,
+            last = _props6.last,
+            root = _props6.root,
+            pos = _props6.pos;
+
+        var animation = this.props.root.props.animation;
+
+        this.renderFirst = 1;
+        var newChildren = children;
+        var allTreeNode = void 0;
+
+        if (Array.isArray(children)) {
+            allTreeNode = children.every(function (item) {
+                return isTreeNode(item.type);
+            });
+        }
+        if (!children || isTreeNode(children.type) || allTreeNode) {
+            var _classNames5;
+
+            var cls = (0, _classnames2['default'])((_classNames5 = {}, _defineProperty(_classNames5, prefix + 'tree-child-tree', true), _defineProperty(_classNames5, prefix + 'tree-line', showLine && !last), _defineProperty(_classNames5, 'temp-hide', animation && this.expandedChanged && expanded), _classNames5));
+
+            newChildren = expanded && children ? _react2['default'].createElement(
+                'ul',
+                { className: cls },
+                _react2['default'].Children.map(children, function (item, index) {
+                    return root.renderTreeNode(item, index, pos);
+                }, root)
+            ) : null;
+
+            if (animation) {
+                var animationHooks = {
+                    enter: function enter(node, done) {
+                        _nextDom.classList.addClass(node, 'out-screen');
+                        _nextDom.classList.removeClass(node, 'temp-hide');
+                        var height = node.offsetHeight + 'px';
+                        _nextDom.classList.addClass(node, 'child-tree-enter');
+                        _nextDom.classList.removeClass(node, 'out-screen');
+                        setTimeout(function () {
+                            _nextDom.classList.addClass(node, 'child-tree-enter-active');
+                            _nextDom.style.set(node, 'height', height);
+                        }, 10);
+
+                        var called = false;
+                        // eslint-disable-next-line
+                        var timer = void 0;
+                        var onExpandInDownTransitionEnd = function onExpandInDownTransitionEnd(e) {
+                            if (e.target === node) {
+                                if (timer) {
+                                    clearTimeout(timer);
+                                }
+                                if (called) {
+                                    return;
+                                }
+                                called = true;
+                                ['child-tree-enter', 'child-tree-enter-active', 'child-tree-leave', 'child-tree-leave-active'].forEach(function (className) {
+                                    _nextDom.classList.removeClass(node, className);
+                                });
+                                _nextDom.style.set(node, 'height', null);
+                                _nextDom.events.off(node, _nextUtil.support.transition.end, onExpandInDownTransitionEnd);
+                                done();
+                            }
+                        };
+                        _nextDom.events.on(node, _nextUtil.support.transition.end, onExpandInDownTransitionEnd);
+                        timer = setTimeout(onExpandInDownTransitionEnd.bind(null, { target: node }), 260);
+                    },
+                    leave: function leave(node, done) {
+                        var height = node.offsetHeight + 'px';
+                        _nextDom.style.set(node, 'height', height);
+                        _nextDom.classList.addClass(node, 'child-tree-leave');
+                        setTimeout(function () {
+                            _nextDom.classList.addClass(node, 'child-tree-leave-active');
+                            _nextDom.style.set(node, 'height', 0);
+                        }, 10);
+
+                        var called = false;
+                        // eslint-disable-next-line
+                        var timer = void 0;
+                        var onExpandOutUpTransitionEnd = function onExpandOutUpTransitionEnd(e) {
+                            if (e.target === node) {
+                                if (timer) {
+                                    clearTimeout(timer);
+                                }
+                                if (called) {
+                                    return;
+                                }
+                                called = true;
+                                ['child-tree-enter', 'child-tree-enter-active', 'child-tree-leave', 'child-tree-leave-active'].forEach(function (className) {
+                                    _nextDom.classList.removeClass(node, className);
+                                });
+                                _nextDom.style.set(node, 'height', null);
+                                _nextDom.events.off(node, _nextUtil.support.transition.end, onExpandOutUpTransitionEnd);
+                                done();
+                            }
+                        };
+                        _nextDom.events.on(node, _nextUtil.support.transition.end, onExpandOutUpTransitionEnd);
+                        timer = setTimeout(onExpandOutUpTransitionEnd.bind(null, { target: node }), 310);
+                    }
+                };
+
+                newChildren = _react2['default'].createElement(
+                    _nextAnimate2['default'],
+                    { useTransition: true, animation: animationHooks, animationAppear: false },
+                    newChildren
+                );
+            }
+        }
+
+        return newChildren;
+    };
+
+    TreeNode.prototype.render = function render() {
+        var _classNames6;
+
+        var prefix = this.getPrefix();
+
+        var _props7 = this.props,
+            className = _props7.className,
+            loadData = _props7.loadData,
+            isLeaf = _props7.isLeaf,
+            title = _props7.title,
+            children = _props7.children,
+            disabled = _props7.disabled,
+            filterTreeNode = _props7.filterTreeNode,
+            dragOver = _props7.dragOver,
+            dragOverGapTop = _props7.dragOverGapTop,
+            dragOverGapBottom = _props7.dragOverGapBottom,
+            checkable = _props7.checkable,
+            others = _objectWithoutProperties(_props7, ['className', 'loadData', 'isLeaf', 'title', 'children', 'disabled', 'filterTreeNode', 'dragOver', 'dragOverGapTop', 'dragOverGapBottom', 'checkable']);
+
+        title && _nextUtil.log.deprecated('title', 'label', 'Tree.Node');
+
+        var canRenderSwitcher = children || loadData && !isLeaf;
+        var newChildren = this.renderChildren();
+
+        var liProps = {};
+        if (this.props.root.props.draggable) {
+            liProps.onDragEnter = this.onDragEnter;
+            liProps.onDragOver = this.onDragOver;
+            liProps.onDragLeave = this.onDragLeave;
+            liProps.onDrop = this.onDrop;
+        }
+
+        var liCls = (0, _classnames2['default'])((_classNames6 = {}, _defineProperty(_classNames6, prefix + 'tree-node', true), _defineProperty(_classNames6, prefix + 'tree-node-disabled', disabled), _defineProperty(_classNames6, className, className), _defineProperty(_classNames6, 'drag-over', dragOver), _defineProperty(_classNames6, 'drag-over-gap-top', dragOverGapTop), _defineProperty(_classNames6, 'drag-over-gap-bottom', dragOverGapBottom), _defineProperty(_classNames6, 'filter-node', filterTreeNode(this)), _classNames6));
+
+        var topHalf = [canRenderSwitcher ? this.renderSwitcher() : this.renderNoopSwitcher(), checkable ? this.renderCheckbox() : null, this.renderSelectHandle()];
+        if (this.props.root.props.isLabelBlock) {
+            topHalf = _react2['default'].createElement(
+                'div',
+                { className: prefix + 'tree-node-top-half' },
+                topHalf
+            );
+        }
+
+        return _react2['default'].createElement(
+            'li',
+            _extends({}, (0, _nextUtil.pickAttrs)(others), liProps, { ref: 'li', className: liCls }),
+            topHalf,
+            newChildren
+        );
+    };
+
+    return TreeNode;
+}(_react.Component), _class.isTreeNode = 1, _class.contextTypes = {
+    prefix: _propTypes2['default'].string
+}, _class.propTypes = {
+    /**
+     * 样式类名的品牌前缀
+     */
+    prefix: _propTypes2['default'].string,
+    /**
+     * 自定义类名
+     */
+    className: _propTypes2['default'].string,
+    /**
+     * 自定义内联样式
+     */
+    style: _propTypes2['default'].object,
+    /**
+     * 树节点
+     */
+    children: _propTypes2['default'].node,
+    // TODO: deprecated in 1.0 release
+    title: _propTypes2['default'].node,
+    /**
+     * 节点文本内容
+     */
+    label: _propTypes2['default'].node,
+    /**
+     * 单独设置是否支持选中，覆盖Tree的selectable
+     */
+    selectable: _propTypes2['default'].bool,
+    /**
+     * 单独设置是否支持编辑，覆盖Tree的editable
+     */
+    editable: _propTypes2['default'].bool,
+    /**
+     * 单独设置是否支持拖拽，覆盖Tree的draggable
+     */
+    draggable: _propTypes2['default'].bool,
+    /**
+     * 是否禁止节点响应
+     */
+    disabled: _propTypes2['default'].bool,
+    /**
+     * 是否禁止勾选节点复选框
+     */
+    disableCheckbox: _propTypes2['default'].bool,
+    /**
+     * 是否是叶子节点，设置loadData时生效
+     */
+    isLeaf: _propTypes2['default'].bool,
+    expanded: _propTypes2['default'].bool,
+    root: _propTypes2['default'].object
+}, _class.defaultProps = {
+    label: '---',
+    disabled: false,
+    disableCheckbox: false,
+    isLeaf: false
+}, _temp);
+TreeNode.displayName = 'TreeNode';
+exports['default'] = TreeNode;
+module.exports = exports['default'];

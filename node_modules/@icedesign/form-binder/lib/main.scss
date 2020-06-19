@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.this-field-has-error {
+  border-color: red !important;
+  * {
+    border-color: red !important;
+  }
+}

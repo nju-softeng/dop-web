@@ -1,0 +1,259 @@
+////
+/// @module calendar: 日历
+/// @tag Calendar
+/// @category component
+/// @family calendar
+/// @varPrefix $calendar-
+/// @classPrefix {prefix}-calendar
+/// @order {"size/cell":10,"size/header":11,"size/footer":12,"statement/normal":10,"statement/normal/content header":100,"statement/normal/cell":101,"statement/normal/bounding":102,"statement/normal/header":103,"statement/normal/footer":104,"statement/hover":11,"statement/hover/cell":110,"statement/hover/header":111,"statement/hover/footer":112,"statement/select":12,"statement/select/cell":120,"statement/last month":13,"statement/last month/cell":130,"statement/disabled":14,"statement/disabled/cell":140,"statement/range":15,"statement/range/cell":150,"statement/today":16,"statement/today/cell":160}
+////
+
+
+$calendar-prefix: '.' + $css-prefix + 'calendar';
+
+$calendar-select-prefix: '.' + $css-prefix + 'select';
+
+$calendar-radio-prefix: '.' + $css-prefix + 'radio';
+
+$calendar-icon-prefix: '.' + $css-prefix +  'icon';
+
+$calendar-menu-prefix: '.' + $css-prefix + 'menu';
+
+// 全屏模式
+// ----------------------------------------
+
+/// text
+/// @namespace size/cell
+$calendar-fullscreen-font-size: $font-size-body-2 !default;
+
+/// border (t)
+/// @namespace size/cell
+$calendar-fullscreen-cell-boder-top-width: $line-2 !default;
+
+/// text
+/// @namespace statement/normal/content header
+$calendar-fullscreen-week-color: $color-black !default;
+
+/// background
+/// @namespace statement/normal/cell
+$calendar-fullscreen-cell-normal-background: $color-white !default;
+
+/// text
+/// @namespace statement/normal/cell
+$calendar-fullscreen-cell-normal-color: $color-text1-3 !default;
+
+/// border color
+/// @namespace statement/normal/cell
+$calendar-fullscreen-cell-normal-border-color: $color-text1-1 !default;
+
+/// background
+/// @namespace statement/hover/cell
+$calendar-fullscreen-cell-hover-background: $color-brand1-1 !default;
+
+/// text
+/// @namespace statement/hover/cell
+$calendar-fullscreen-cell-hover-color: $color-brand1-6 !default;
+
+/// border color
+/// @namespace statement/hover/cell
+$calendar-fullscreen-cell-hover-border-color: $color-brand1-6 !default;
+
+/// background
+/// @namespace statement/select/cell
+$calendar-fullscreen-cell-select-background: $color-brand1-1 !default;
+
+/// text
+/// @namespace statement/select/cell
+$calendar-fullscreen-cell-select-color: $color-brand1-6 !default;
+
+/// border color
+/// @namespace statement/select/cell
+$calendar-fullscreen-cell-select-border-color: $color-brand1-6 !default;
+
+/// background
+/// @namespace statement/last month/cell
+$calendar-fullscreen-cell-other-background: $color-white !default;
+
+/// text
+/// @namespace statement/last month/cell
+$calendar-fullscreen-cell-other-color: $color-text1-1 !default;
+
+/// border color
+/// @namespace statement/last month/cell
+$calendar-fullscreen-cell-other-border-color: $color-text1-1 !default;
+
+/// background
+/// @namespace statement/disabled/cell
+$calendar-fullscreen-cell-disabled-background: $color-fill1-2 !default;
+
+/// text
+/// @namespace statement/disabled/cell
+$calendar-fullscreen-cell-disabled-color: $color-text1-1 !default;
+
+/// border color
+/// @namespace statement/disabled/cell
+$calendar-fullscreen-cell-disabled-border-color: $color-text1-1 !default;
+
+// 卡片模式 cell
+// ----------------------------------------
+
+/// text
+/// @namespace size/cell
+$calendar-card-font-size: $font-size-caption !default;
+
+/// date cell corner
+/// @namespace size/cell
+$calendar-card-cell-date-border-radius: $corner-1 !default;
+
+/// month cell corner
+/// @namespace size/cell
+$calendar-card-cell-month-border-radius: $corner-1 !default;
+
+/// year cell corner
+/// @namespace size/cell
+$calendar-card-cell-year-border-radius: $corner-1 !default;
+
+/// background
+/// @namespace statement/normal/bounding
+$calendar-card-bg-color: $color-white !default;
+
+/// border color (b)
+/// @namespace statement/normal/header
+$calendar-card-border-color: $color-line1-1 !default;
+
+/// cell corner
+/// @namespace statement/normal/cell
+$calendar-card-cell-corner: $corner-0 !default;
+
+/// background
+/// @namespace statement/normal/cell
+$calendar-card-cell-normal-background: $color-white !default;
+
+/// text
+/// @namespace statement/normal/cell
+$calendar-card-cell-normal-color: $color-text1-3 !default;
+
+/// border color
+/// @namespace statement/normal/cell
+$calendar-card-cell-normal-border-color: $color-white !default;
+
+/// background
+/// @namespace statement/hover/cell
+$calendar-card-cell-hover-background: $color-brand1-1 !default;
+
+/// text
+/// @namespace statement/hover/cell
+$calendar-card-cell-hover-color: $color-brand1-6 !default;
+
+/// border color
+/// @namespace statement/hover/cell
+$calendar-card-cell-hover-border-color: $color-brand1-1 !default;
+
+/// background
+/// @namespace statement/select/cell
+$calendar-card-cell-select-background: $color-brand1-6 !default;
+
+/// text
+/// @namespace statement/select/cell
+$calendar-card-cell-select-color: $color-white !default;
+
+/// border color
+/// @namespace statement/select/cell
+$calendar-card-cell-select-border-color: $color-brand1-6 !default;
+
+/// background
+/// @namespace statement/last month/cell
+$calendar-card-cell-other-background: $color-white !default;
+
+/// text
+/// @namespace statement/last month/cell
+$calendar-card-cell-other-color: $color-text1-1 !default;
+
+/// border color
+/// @namespace statement/last month/cell
+$calendar-card-cell-other-border-color: $color-white !default;
+
+/// background
+/// @namespace statement/disabled/cell
+$calendar-card-cell-disabled-background: $color-fill1-2 !default;
+
+/// text
+/// @namespace statement/disabled/cell
+$calendar-card-cell-disabled-color: $color-text1-1 !default;
+
+/// border color
+/// @namespace statement/disabled/cell
+$calendar-card-cell-disabled-border-color: $color-fill1-2 !default;
+
+/// background
+/// @namespace statement/range/cell
+$calendar-card-cell-range-background: $color-brand1-1 !default;
+
+/// text
+/// @namespace statement/range/cell
+$calendar-card-cell-range-color: $color-brand1-6 !default;
+
+/// border color
+/// @namespace statement/range/cell
+$calendar-card-cell-range-border-color: $color-brand1-1 !default;
+
+/// background
+/// @namespace statement/today/cell
+$calendar-card-cell-today-background: $color-white !default;
+
+/// text
+/// @namespace statement/today/cell
+$calendar-card-cell-today-color: $color-brand1-6 !default;
+
+/// border color
+/// @namespace statement/today/cell
+$calendar-card-cell-today-border-color: $color-brand1-6 !default;
+
+
+
+// 卡片模式 header footer
+// ----------------------------------------
+
+/// height
+/// @namespace size/header
+$calendar-card-header-height: $s-8 !default;
+
+/// icon
+/// @namespace size/header
+$calendar-card-header-icon-size: $icon-xxs !default;
+
+/// background
+/// @namespace statement/normal/header
+$calendar-card-header-background: $color-white !default;
+
+/// arrow (l, r)
+/// @namespace statement/hover/header
+$calendar-card-header-hover-color: $color-brand1-6 !default;
+
+/// arrow (l, r)
+/// @namespace statement/normal/header
+$calendar-card-header-color: $color-text1-2 !default;
+
+/// year text
+/// @namespace statement/normal/header
+$calendar-card-header-ym-color: $color-text1-4 !default;
+
+/// text
+/// @namespace statement/normal/content header
+$calendar-card-week-color: $color-text1-2 !default;
+
+/// height
+/// @namespace size/footer
+$calendar-card-footer-height: $s-8 !default;
+
+/// text
+/// @namespace statement/normal/footer
+$calendar-card-footer-color: $color-text1-3 !default;
+
+/// background
+/// @namespace statement/normal/footer
+$calendar-card-footer-background: $color-white !default;
+
+/// text
+/// @namespace statement/hover/footer
+$calendar-card-footer-hover-color: $color-brand1-6 !default;

@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+@import "../../next-core/lib/next.scss";
+@import "./scss/function.scss";
+@import "./scss/mixin.scss";
+@import "./scss/placeholder.scss";
+@import "./scss/variable.scss";
+
+#{$form-prefix} {
+
+    @include box-sizing;
+    @include global-font;
+
+    .#{$css-prefix}row {
+        padding: 0;
+    }
+    .#{$css-prefix}col {
+        padding: 0;
+        padding-right: 4px;
+    }
+    &-item {
+        margin-bottom: $form-item-vertical-split-medium;
+        #{$form-prefix}-item {
+            margin-bottom: 0;
+            display: block;
+        }
+
+        &.has-error {
+            #{$form-prefix}-item-control {
+                /* 这里应该让组件接受status="error" api*/
+                .#{$css-prefix}input, .#{$css-prefix}number-picker-input, .#{$css-prefix}select, .#{$css-prefix}range-picker {
+                    border-color: $form-error-color;
+                }
+            }
+            #{$form-prefix}-item-explain {
+                color: $form-error-color;
+            }
+            #{$form-prefix}-item-inset {
+                border-color: $form-error-color;
+            }
+        }
+    }
+    &-item-control {
+        position: relative;
+        #{$form-prefix}-text-align {
+            margin: 0;
+        }
+        > .#{$css-prefix}input-group, > .#{$css-prefix}input {
+            width: 100%;
+        }
+    }
+    &-item-label {
+        display: inline-block;
+        vertical-align: top;
+        color: $form-label-color;
+        min-height: 20px;
+        margin: 0;
+
+        &[required]:before {
+            display: inline-block;
+            margin-right: 4px;
+            content: "*";
+            font-family: SimSun;
+            color: $form-label-required-color;
+        }
+    }
+
+    &-item-explain {
+        margin-top: $form-explain-margin-top;
+        font-size: $form-explain-font-size;
+        color: $form-explain-color;
+    }
+
+    &-hoz {
+        #{$form-prefix}-item {
+            display: inline-block;
+            margin-right: $form-item-horizontal-split;
+            vertical-align: top;
+            margin-bottom: $form-item-hoz-split-medium;
+        }
+    }
+
+    &-left {
+        @include labelAlignLeft();
+        &.ver #{$form-prefix}-item-inset .#{$css-prefix}select {
+            width: 100%;
+        }
+    }
+    &-top {
+        #{$form-prefix}-item-label {
+            margin-bottom: $form-label-vertical-split-medium;
+        }
+    }
+    &-item-inset {
+        border: $form-inset-border-width solid $form-inset-border-color;
+        border-radius: $form-inset-corner;
+
+        #{$form-prefix}-item-label {
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: $form-inset-padding-r;
+            padding-right: $form-inset-padding-r;
+            text-align: right;
+            color: $form-inset-label-color;
+            margin-bottom: 0;
+        }
+        #{$form-prefix}-item-control {
+            font-size: 0;
+        }
+
+        .#{$css-prefix}input, .#{$css-prefix}select {
+            border-color: transparent !important;
+        }
+    }
+
+    &-label-left {
+        #{$form-prefix}-item-label {
+            text-align: left;
+
+            &[required]:before {
+                display: none;
+            }
+            &[required]:after {
+                display: inline-block;
+                margin-left: 4px;
+                content: "*";
+                font-family: SimSun;
+                color: $form-label-required-color;
+            }
+        }
+    }
+    &-label-right {
+        #{$form-prefix}-item-label {
+            text-align: right;
+        }
+    }
+}

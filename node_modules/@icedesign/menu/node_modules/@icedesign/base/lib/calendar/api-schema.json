@@ -1,0 +1,326 @@
+{
+  "name": "Calendar",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式品牌前缀"
+    },
+    "base": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "基准日期",
+      "docblock": "基准日期"
+    },
+    "value": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "选中的日期值",
+      "docblock": "选中的日期值"
+    },
+    "mode": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'month'",
+            "computed": false
+          },
+          {
+            "value": "'year'",
+            "computed": false
+          },
+          {
+            "value": "'decade'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "面板选择模式",
+      "defaultValue": {
+        "value": "'month'",
+        "computed": false
+      },
+      "docblock": "面板选择模式"
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'fullscreen'",
+            "computed": false
+          },
+          {
+            "value": "'card'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "类型",
+      "defaultValue": {
+        "value": "'fullscreen'",
+        "computed": false
+      },
+      "docblock": "类型"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "日期改变时的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "日期改变时的回调\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义样式类",
+      "docblock": "自定义样式类"
+    },
+    "dateCellRender": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "自定义日期渲染函数",
+      "docblock": "自定义日期渲染函数\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象\n@returns {Function}",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "Function"
+        }
+      }
+    },
+    "monthCellRender": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "自定义月份渲染函数",
+      "docblock": "自定义月份渲染函数\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象\n@returns {Function}",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "Function"
+        }
+      }
+    },
+    "yearCellRender": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "自定义年份渲染函数",
+      "docblock": "自定义年份渲染函数\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象\n@returns {Function}",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "Function"
+        }
+      }
+    },
+    "disabledDate": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "不可选择的日期",
+      "docblock": "不可选择的日期\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象\n@returns {Boolean}",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "Boolean"
+        }
+      }
+    },
+    "disabledMonth": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "不可选择的月份",
+      "docblock": "不可选择的月份\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象\n@returns {Boolean}",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "Boolean"
+        }
+      }
+    },
+    "disabledYear": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "不可选择的年份",
+      "docblock": "不可选择的年份\n@param {Object} calendarDate 对应 Calendar 返回的自定义日期对象\n@returns {Boolean}",
+      "params": [
+        {
+          "name": "calendarDate",
+          "description": "对应 Calendar 返回的自定义日期对象",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "Boolean"
+        }
+      }
+    },
+    "language": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'en-us'",
+            "computed": false
+          },
+          {
+            "value": "'ar'",
+            "computed": false
+          },
+          {
+            "value": "'de'",
+            "computed": false
+          },
+          {
+            "value": "'es'",
+            "computed": false
+          },
+          {
+            "value": "'fr'",
+            "computed": false
+          },
+          {
+            "value": "'hi'",
+            "computed": false
+          },
+          {
+            "value": "'it'",
+            "computed": false
+          },
+          {
+            "value": "'ja'",
+            "computed": false
+          },
+          {
+            "value": "'ko'",
+            "computed": false
+          },
+          {
+            "value": "'pt'",
+            "computed": false
+          },
+          {
+            "value": "'ru'",
+            "computed": false
+          },
+          {
+            "value": "'zh-cn'",
+            "computed": false
+          },
+          {
+            "value": "'zh-hk'",
+            "computed": false
+          },
+          {
+            "value": "'zh-tw'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "多语言选择",
+      "docblock": "多语言选择"
+    },
+    "locale": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "国际化配置",
+      "docblock": "国际化配置",
+      "properties": []
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

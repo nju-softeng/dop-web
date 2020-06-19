@@ -1,0 +1,206 @@
+{
+  "name": "Breadcrumb",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "children": {
+      "type": {
+        "name": "custom",
+        "raw": "(props, propName) => {\n    React.Children.forEach(props[propName], child => {\n        if (child.type !== Item) {\n            throw new Error('Breadcrumb\\'s children must be Breadcrumb.Item!');\n        }\n    });\n}"
+      },
+      "required": false,
+      "description": "面包屑子节点 ，需传入 Breadcrumb.Item",
+      "docblock": "面包屑子节点 ，需传入 Breadcrumb.Item"
+    },
+    "maxNode": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "面包屑显示的最多个数，超出的部分会被隐藏",
+      "docblock": "面包屑显示的最多个数，超出的部分会被隐藏"
+    },
+    "separator": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "分隔符，可以是文本，也可以是 Icon",
+      "defaultValue": {
+        "value": "<Icon size=\"xs\" type=\"arrow-right\" />",
+        "computed": false
+      },
+      "docblock": "分隔符，可以是文本，也可以是 Icon"
+    }
+  },
+  "methods": [],
+  "subComponents": [
+    {
+      "name": "Item",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": "面包屑节点内容",
+          "docblock": "面包屑节点内容"
+        },
+        "link": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "面包屑节点链接，如果设置这个属性，则该节点为`<a />` ，否则是`<span />`",
+          "docblock": "面包屑节点链接，如果设置这个属性，则该节点为`<a />` ，否则是`<span />`"
+        }
+      },
+      "methods": [],
+      "order": 1
+    },
+    {
+      "name": "Keyword",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": "关键字内容",
+          "docblock": "关键字内容"
+        }
+      },
+      "methods": [],
+      "order": 2
+    },
+    {
+      "name": "Number",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "children": {
+          "type": {
+            "name": "node"
+          },
+          "required": false,
+          "description": "数字内容",
+          "docblock": "数字内容"
+        }
+      },
+      "methods": [],
+      "order": 3
+    }
+  ]
+}

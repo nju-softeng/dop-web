@@ -1,0 +1,166 @@
+////
+/// @module pagination: 分页器
+/// @tag Pagination
+/// @category component
+/// @family pagination
+/// @varPrefix $pagination-
+/// @classPrefix {prefix}-pagination
+/// @order {"size/item":10,"size/ellipsis":11,"size/display":12,"size/jump":13,"size/size selector":14,"statement/normal":10,"statement/normal/ellipsis":100,"statement/normal/display":101,"statement/normal/jump":102,"statement/normal/size selector":103,"statement/selected":11,"statement/selected/item":110}
+////
+
+// pagination variables
+// --------------------------------------------------
+
+// unconfigurable
+$pagination-prefix: ".#{$css-prefix}pagination";
+
+// Size:Medium
+// ----------------------------------------
+
+/// margin (l, r)
+/// @namespace size/item
+$pagination-item-split: $s-1 !default;
+
+/// text
+/// @namespace size/ellipsis
+$pagination-ellipsis-font-size: $font-size-body-1 !default;
+
+/// current text
+/// @namespace size/display
+$pagination-current-font-size: $font-size-body-1 !default;
+
+/// total text
+/// @namespace size/display
+$pagination-total-font-size: $font-size-body-1 !default;
+
+/// text
+/// @namespace size/jump
+$pagination-jump-font-size: $font-size-body-1 !default;
+
+/// input width
+/// @namespace size/jump
+$pagination-input-width: $s-9 !default;
+
+/// input margin (l, r)
+/// @namespace size/jump
+$pagination-input-margin: $s-1 !default;
+
+/// title margin (r)
+/// @namespace size/size selector
+$pagination-size-selector-title-margin-right: $s-1 !default;
+
+/// number padding
+/// @namespace size/size selector
+$pagination-size-selector-number-padding: $s-3 !default;
+
+/// filter height
+/// @namespace size/size selector
+$pagination-size-selector-filter-height: $s-7 !default;
+
+// Size:Large
+// ----------------------------------------
+
+/// text
+/// @namespace size/ellipsis
+$pagination-large-ellipsis-font-size: $font-size-subhead !default;
+
+/// current text
+/// @namespace size/display
+$pagination-large-current-font-size: $font-size-subhead !default;
+
+/// total text
+/// @namespace size/display
+$pagination-large-total-font-size: $font-size-subhead !default;
+
+/// input width
+/// @namespace size/jump
+$pagination-large-input-width: $s-12 !default;
+
+/// text
+/// @namespace size/jump
+$pagination-large-jump-font-size: $font-size-subhead !default;
+
+/// number padding
+/// @namespace size/size selector
+$pagination-large-size-selector-number-padding: $s-4 !default;
+
+/// filter height
+/// @namespace size/size selector
+$pagination-large-size-selector-filter-height: $s-10 !default;
+
+// Size:Small
+// ----------------------------------------
+
+/// text
+/// @namespace size/ellipsis
+$pagination-small-ellipsis-font-size: $font-size-caption !default;
+
+/// current text
+/// @namespace size/display
+$pagination-small-current-font-size: $font-size-caption !default;
+
+/// total text
+/// @namespace size/display
+$pagination-small-total-font-size: $font-size-caption !default;
+
+/// input width
+/// @namespace size/jump
+$pagination-small-input-width: $s-7 !default;
+
+/// text
+/// @namespace size/jump
+$pagination-small-jump-font-size: $font-size-caption !default;
+
+/// number padding
+/// @namespace size/size selector
+$pagination-small-size-selector-number-padding: $s-2 !default;
+
+/// filter height
+/// @namespace size/size selector
+$pagination-small-size-selector-filter-height: $s-5 !default;
+
+// Statement:Normal
+// ----------------------------------------
+
+/// text
+/// @namespace statement/normal/ellipsis
+$pagination-ellipsis-color: $color-text1-4 !default;
+
+/// current text
+/// @namespace statement/normal/display
+$pagination-current-color: $color-brand1-6 !default;
+
+/// total text
+/// @namespace statement/normal/display
+$pagination-total-color: $color-text1-4 !default;
+
+/// text
+/// @namespace statement/normal/jump
+$pagination-jump-color: $color-text1-2 !default;
+
+/// title text
+/// @namespace statement/normal/size selector
+$pagination-size-selector-title-color: $color-text1-2 !default;
+
+/// filter text
+/// @namespace statement/normal/size selector
+$pagination-size-selector-filter-color: $color-text1-3 !default;
+
+/// filter current text
+/// @namespace statement/normal/size selector
+$pagination-size-selector-filter-current-color: $color-brand1-6 !default;
+
+// Statement:Selected
+// ----------------------------------------
+
+/// text
+/// @namespace statement/selected/item
+$pagination-item-current-color: $color-brand1-6 !default;
+
+/// border color
+/// @namespace statement/selected/item
+$pagination-item-current-border-color: $color-brand1-6 !default;
+
+/// background
+/// @namespace statement/selected/item
+$pagination-item-current-bg: $color-fill1-1 !default;

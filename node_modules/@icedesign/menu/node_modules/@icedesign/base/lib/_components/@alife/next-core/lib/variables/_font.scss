@@ -1,0 +1,249 @@
+@import "../util/_mixins.scss";
+
+////
+/// @group font
+/// @module font: 字体
+/// @type String
+/// @category style
+/// @export
+////
+
+// Font & Typography
+// 根据 Alibaba Base DPL(BASE DPL) 设计规范实现
+// 字体主要解决的是内容可读性以及信息的层级表达，同时选择不同的字体来传达不同的设计风格的统一性和整体性，从而在阅读的舒适性上达到平衡。
+// -------------------------------
+
+$font-custom-path: "//i.alicdn.com/artascope-font/20160419204543/font/" !default;
+$font-custom-name: Roboto !default;
+$font-name-thin: roboto-thin !default;
+$font-name-light: roboto-light !default;
+$font-name-regular: roboto-regular !default;
+$font-name-medium: roboto-medium !default;
+$font-name-bold: roboto-bold !default;
+$font-name-bolder: roboto-bolder !default;
+$font-lineheight-base: 1.2857142;
+
+$font-face-name-default: "#{$font-custom-name}";
+$font-face-url-default: "#{$font-custom-path}#{$font-name-thin}.eot";
+
+
+// ------------------- font-face ------------------- //
+
+$font-face1-name: $font-face-name-default !default;
+$font-face1-url: $font-face-url-default !default;
+$font-face2-name: $font-face-name-default !default;
+$font-face2-url: $font-face-url-default !default;
+$font-face3-name: $font-face-name-default !default;
+$font-face3-url: $font-face-url-default !default;
+@include font-face-handler($font-face1-name, $font-face1-url);
+@include font-face-handler($font-face2-name, $font-face2-url);
+@include font-face-handler($font-face3-name, $font-face3-url);
+
+// ------------------- font-family ------------------- //
+
+/// family
+/// @semantic 字体
+/// @export
+$font-family-base: Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Microsoft YaHei" !default;
+
+$font-family-en: Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial !default;
+$font-family-zh: "Microsoft YaHei", SimSun, Arial !default !default;
+
+// ------------------- font-weight ------------------- //
+
+/// light
+/// @semantic 细体
+/// @export weightcore
+$font-weight-1: lighter !default;
+/// regular
+/// @semantic 常规
+/// @export weightcore
+$font-weight-2: normal !default;
+/// bold
+/// @semantic 粗体
+/// @export weightcore
+$font-weight-3: bold !default;
+
+$font-weight-thin: 200 !default;
+$font-weight-medium: 500 !default;
+$font-weight-bolder: bolder !default;
+
+// ------------------- font-size ------------------- //
+
+/// display-3
+/// @semantic 运营标题-大
+/// @export size
+$font-size-display-3: 56px !default;
+
+/// display-2
+/// @semantic 运营标题-中
+/// @export size
+$font-size-display-2: 48px !default;
+
+/// display-1
+/// @semantic 运营标题-小
+/// @export size
+$font-size-display-1: 36px !default;
+
+/// headline
+/// @semantic 大字标题
+/// @export size
+$font-size-headline: 24px !default;
+
+/// title
+/// @semantic 标题
+/// @export size
+$font-size-title: 20px !default;
+
+/// subhead
+/// @semantic 副标题
+/// @export size
+$font-size-subhead: 16px !default;
+
+/// body-2
+/// @semantic 正文-加粗
+/// @export size
+$font-size-body-2: 14px !default;
+
+/// body-1
+/// @semantic 正文-常规
+/// @export size
+$font-size-body-1: 14px !default;
+
+/// caption
+/// @semantic 水印文本
+/// @export size
+$font-size-caption: 12px !default;
+
+// ------------------- line-height ------------------- //
+
+/// lineheight-1
+/// @semantic 密集
+/// @export lineheight
+/// @type Number
+$font-lineheight-1: 1 !default;
+
+/// lineheight-2
+/// @semantic 常规
+/// @export lineheight
+/// @type Number
+$font-lineheight-2: 1.5 !default;
+
+/// lineheight-3
+/// @semantic 舒适
+/// @export lineheight
+/// @type Number
+$font-lineheight-3: 1.6 !default;
+
+/// lineheight-4
+/// @semantic 宽松
+/// @export lineheight
+/// @type Number
+$font-lineheight-4: 1.8 !default;
+
+/// lineheight-5
+/// @semantic 宽敞
+/// @export lineheight
+/// @type Number
+$font-lineheight-5: 2 !default;
+
+// Patch
+// ----------- 字体 patch ----------- //
+
+$font-weight-core-light: $font-weight-1 !default;
+$font-weight-core-thin: $font-weight-thin !default;
+$font-weight-core-regular: $font-weight-2 !default;
+$font-weight-core-medium: $font-weight-medium !default;
+$font-weight-core-bold: $font-weight-3 !default;
+$font-weight-core-bolder: $font-weight-bolder !default;
+$font-weight-base-display3: $font-weight-core-regular !default;
+$font-weight-base-display2: $font-weight-core-regular !default;
+$font-weight-base-display1: $font-weight-core-regular !default;
+$font-weight-base-headline: $font-weight-core-medium !default;
+$font-weight-base-title: $font-weight-core-medium !default;
+$font-weight-base-subhead: $font-weight-core-regular !default;
+$font-weight-base-body2: $font-weight-core-medium !default;
+$font-weight-base-body1: $font-weight-core-regular !default;
+$font-weight-base-caption: $font-weight-core-regular !default;
+
+$font-size-base-display3: $font-size-display-3 !default;
+$font-size-base-display2: $font-size-display-2 !default;
+$font-size-base-display1: $font-size-display-1 !default;
+$font-size-base-headline: $font-size-headline !default;
+$font-size-base-title: $font-size-title !default;
+$font-size-base-subhead: $font-size-subhead !default;
+$font-size-base-body2: $font-size-body-2 !default;
+$font-size-base-body1: $font-size-body-1 !default;
+$font-size-base-caption: $font-size-caption !default;
+
+$font-lineheight-base-display3: 84px !default;
+$font-lineheight-base-display2: 68px !default;
+$font-lineheight-base-display1: 54px !default;
+$font-lineheight-base-headline: 36px !default;
+$font-lineheight-base-title: 30px !default;
+$font-lineheight-base-subhead: 24px !default;
+$font-lineheight-base-body2: 20px !default;
+$font-lineheight-base-body1: 20px !default;
+$font-lineheight-base-caption: 18px !default;
+
+// ----------- 以下变量后期将弃用, 请勿使用 ----------- //
+
+$font-size-en-display3: 56px !default;
+$font-size-en-display2: 48px !default;
+$font-size-en-display1: 36px !default;
+$font-size-en-headline: 24px !default;
+$font-size-en-title: 20px !default;
+$font-size-en-subhead: 16px !default;
+$font-size-en-body2: 14px !default;
+$font-size-en-body1: 14px !default;
+$font-size-en-caption: 12px !default;
+
+$font-lineheight-en-display3: 84px !default;
+$font-lineheight-en-display2: 68px !default;
+$font-lineheight-en-display1: 54px !default;
+$font-lineheight-en-headline: 36px !default;
+$font-lineheight-en-title: 30px !default;
+$font-lineheight-en-subhead: 24px !default;
+$font-lineheight-en-body2: 20px !default;
+$font-lineheight-en-body1: 20px !default;
+$font-lineheight-en-caption: 18px !default;
+
+$font-weight-en-display3: $font-weight-core-regular !default;
+$font-weight-en-display2: $font-weight-core-regular !default;
+$font-weight-en-display1: $font-weight-core-regular !default;
+$font-weight-en-headline: $font-weight-core-medium !default;
+$font-weight-en-title: $font-weight-core-medium !default;
+$font-weight-en-subhead: $font-weight-core-regular !default;
+$font-weight-en-body2: $font-weight-core-medium !default;
+$font-weight-en-body1: $font-weight-core-regular !default;
+$font-weight-en-caption: $font-weight-core-regular !default;
+
+$font-size-zh-display3: 56px !default;
+$font-size-zh-display2: 48px !default;
+$font-size-zh-display1: 36px !default;
+$font-size-zh-headline: 24px !default;
+$font-size-zh-title: 20px !default;
+$font-size-zh-subhead: 16px !default;
+$font-size-zh-body2: 14px !default;
+$font-size-zh-body1: 14px !default;
+$font-size-zh-caption: 12px !default;
+
+$font-lineheight-zh-display3: 84px !default;
+$font-lineheight-zh-display2: 68px !default;
+$font-lineheight-zh-display1: 54px !default;
+$font-lineheight-zh-headline: 36px !default;
+$font-lineheight-zh-title: 30px !default;
+$font-lineheight-zh-subhead: 24px !default;
+$font-lineheight-zh-body2: 25px !default;
+$font-lineheight-zh-body1: 25px !default;
+$font-lineheight-zh-caption: 18px !default;
+
+$font-weight-zh-display3: $font-weight-core-regular !default;
+$font-weight-zh-display2: $font-weight-core-regular !default;
+$font-weight-zh-display1: $font-weight-core-regular !default;
+$font-weight-zh-headline: $font-weight-core-bold !default;
+$font-weight-zh-title: $font-weight-core-bold !default;
+$font-weight-zh-subhead: $font-weight-core-regular !default;
+$font-weight-zh-body2: $font-weight-core-bold !default;
+$font-weight-zh-body1: $font-weight-core-regular !default;
+$font-weight-zh-caption: $font-weight-core-regular !default;

@@ -1,0 +1,119 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp; /**
+                    * Created by xiachi on 17/2/10.
+                    */
+
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _nextIcon = require('../../next-icon/lib/index.js');
+
+var _nextIcon2 = _interopRequireDefault(_nextIcon);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _alignMap = require('./alignMap.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var alignMap = _alignMap.normalMap;
+
+var noop = function noop() {};
+
+var BalloonInner = (_temp = _class = function (_React$Component) {
+    _inherits(BalloonInner, _React$Component);
+
+    function BalloonInner() {
+        _classCallCheck(this, BalloonInner);
+
+        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    }
+
+    BalloonInner.prototype.render = function render() {
+        var _classNames;
+
+        var _props = this.props,
+            prefix = _props.prefix,
+            closable = _props.closable,
+            className = _props.className,
+            style = _props.style,
+            __isTooltip = _props.__isTooltip,
+            align = _props.align,
+            type = _props.type,
+            onClose = _props.onClose,
+            alignment = _props.alignment,
+            children = _props.children,
+            others = _objectWithoutProperties(_props, ['prefix', 'closable', 'className', 'style', '__isTooltip', 'align', 'type', 'onClose', 'alignment', 'children']);
+
+        alignMap = alignment === 'normal' ? _alignMap.normalMap : _alignMap.edgeMap;
+        prefix = this.context.prefix || prefix;
+        prefix = prefix + 'balloon';
+        if (__isTooltip) {
+            prefix = prefix + '-tooltip';
+        }
+        var classes = (0, _classnames2['default'])((_classNames = {}, _defineProperty(_classNames, '' + prefix, true), _defineProperty(_classNames, prefix + '-' + type, type), _defineProperty(_classNames, prefix + '-medium', true), _defineProperty(_classNames, prefix + '-' + alignMap[align].arrow, alignMap[align]), _defineProperty(_classNames, prefix + '-closable', closable), _defineProperty(_classNames, className, className), _classNames));
+        return _react2['default'].createElement(
+            'div',
+            _extends({ className: classes, style: style }, others),
+            closable ? _react2['default'].createElement(
+                'a',
+                { href: 'javascript:void(0);', className: prefix + '-close',
+                    onClick: onClose },
+                _react2['default'].createElement(_nextIcon2['default'], { type: 'close', size: 'small' })
+            ) : null,
+            children
+        );
+    };
+
+    return BalloonInner;
+}(_react2['default'].Component), _class.contextTypes = {
+    prefix: _propTypes2['default'].string
+}, _class.propTypes = {
+    prefix: _propTypes2['default'].string,
+    closable: _propTypes2['default'].bool,
+    children: _propTypes2['default'].any,
+    className: _propTypes2['default'].string,
+    alignment: _propTypes2['default'].string,
+    onClose: _propTypes2['default'].func,
+    style: _propTypes2['default'].any,
+    align: _propTypes2['default'].oneOf(['t', 'r', 'b', 'l', 'tl', 'tr', 'bl', 'br', 'lt', 'lb', 'rt', 'rb']),
+    type: _propTypes2['default'].string,
+    __isTooltip: _propTypes2['default'].bool
+}, _class.defaultProps = {
+    prefix: 'next-',
+    closable: true,
+    onClose: noop,
+    align: 'b',
+    type: 'normal',
+    alignment: 'normal'
+}, _temp);
+BalloonInner.displayName = 'BalloonInner';
+exports['default'] = BalloonInner;
+module.exports = exports['default'];

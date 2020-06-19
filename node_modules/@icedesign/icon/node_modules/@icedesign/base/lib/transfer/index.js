@@ -1,0 +1,1 @@
+module.exports = require('../_components/@alife/next-transfer/lib/index.js');

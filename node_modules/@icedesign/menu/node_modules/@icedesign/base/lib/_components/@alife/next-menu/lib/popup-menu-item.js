@@ -1,0 +1,280 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp2; /* eslint-disable react/prop-types */
+
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactDom = require('react-dom');
+
+var _nextOverlay = require('../../next-overlay/lib/index.js');
+
+var _nextUtil = require('../../next-util/lib/index.js');
+
+var _nextDom = require('../../next-dom/lib/index.js');
+
+var _nextIcon = require('../../next-icon/lib/index.js');
+
+var _nextIcon2 = _interopRequireDefault(_nextIcon);
+
+var _classnames2 = require('classnames');
+
+var _classnames3 = _interopRequireDefault(_classnames2);
+
+var _menuItem = require('./menu-item.js');
+
+var _menuItem2 = _interopRequireDefault(_menuItem);
+
+var _container = require('./container.js');
+
+var _container2 = _interopRequireDefault(_container);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var makeChain = _nextUtil.func.makeChain;
+var Component = _container2['default'];
+
+/** Menu.PopupItem */
+var PopupMenuItem = (_temp2 = _class = function (_Component) {
+    _inherits(PopupMenuItem, _Component);
+
+    function PopupMenuItem() {
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, PopupMenuItem);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, _Component.call.apply(_Component, [this].concat(args))), _this), _this.onVisibleChange = function (visible, type) {
+            var childrenIndexes = _this.getChildrenByType(PopupMenuItem).map(function (child) {
+                return child.props.index || child.key;
+            }),
+                parentIndexes = _this.getParentByType(PopupMenuItem).map(function (parent) {
+                return parent.props.index || parent.key;
+            }),
+                openKeys = _this.getRoot().state.openKeys,
+                childVisible = childrenIndexes.some(function (index) {
+                return openKeys.indexOf(index) > -1;
+            });
+
+            var indexes = [_this.props.index];
+            // 如果是隐藏该弹出菜单
+            // 且这个隐藏是因为鼠标移出了其弹出内容区域或者点击了document
+            // 需要将其父菜单一并隐藏
+            if (!visible && !_this._openByKeyBoard && ['fromContent', 'docClick'].indexOf(type) > -1) {
+                indexes = indexes.concat(parentIndexes);
+            }
+            if (!(!visible && childVisible)) {
+                indexes.forEach(function (index) {
+                    _this.getRoot().onOpen(index, visible);
+                });
+                _this._openByKeyBoard = false;
+            }
+        }, _this.onKeyDown = function (e) {
+            if (e.keyCode === _nextUtil.keyCode.RIGHT_ARROW) {
+                _this.getRoot().onOpen(_this.props.index, true);
+                _this._openByKeyBoard = true;
+            }
+        }, _this.syncWidth = function () {
+            var autoWidth = _this.props.autoWidth;
+
+
+            if (autoWidth) {
+                var menuItemNode = _this.getMenuItemNode();
+                var contentNode = _this.getContentNode();
+                var menuItemWidth = menuItemNode.clientWidth;
+                var contentNodeWidth = contentNode.clientWidth;
+                if (menuItemWidth > contentNodeWidth) {
+                    _nextDom.style.set(contentNode, 'width', menuItemWidth + 'px');
+                }
+            }
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    PopupMenuItem.prototype.getChildContext = function getChildContext() {
+        var parentIndex = normalizeInfo(this.context, 'parentIndex', this.props.index),
+            parentLabel = normalizeInfo(this.context, 'parentLabel', this.props.label || this.props.children);
+
+        return {
+            parentIndex: parentIndex,
+            parentLabel: parentLabel
+        };
+    };
+
+    PopupMenuItem.prototype.render = function render() {
+        var _classnames;
+
+        var _props = this.props,
+            className = _props.className,
+            label = _props.label,
+            animation = _props.animation,
+            children = _props.children,
+            openKeys = _props.openKeys,
+            selectedKeys = _props.selectedKeys,
+            index = _props.index,
+            focusedKey = _props.focusedKey,
+            direction = _props.direction,
+            hasSelectedIcon = _props.hasSelectedIcon,
+            others = _objectWithoutProperties(_props, ['className', 'label', 'animation', 'children', 'openKeys', 'selectedKeys', 'index', 'focusedKey', 'direction', 'hasSelectedIcon']),
+            prefix = this.getPrefix(),
+            visible = 'visible' in this.props ? this.props.visible : openKeys.indexOf(index) > -1,
+            cls = (0, _classnames3['default'])((_classnames = {}, _defineProperty(_classnames, prefix + 'menu-popup-item', true), _defineProperty(_classnames, 'opened', visible), _defineProperty(_classnames, className, className), _classnames)),
+            child = _react2['default'].Children.only(children),
+            hasPopup = child ? true : null,
+            item = _react2['default'].createElement(
+            _menuItem2['default'],
+            { openKeys: openKeys,
+                selectedKeys: selectedKeys,
+                focusedKey: focusedKey,
+                index: index,
+                hasSelectedIcon: hasSelectedIcon,
+                className: cls, 'aria-haspopup': hasPopup, parent: this,
+                onKeyDown: this.onKeyDown, onBlur: this.onBlur },
+            label,
+            direction === 'hoz' ? _react2['default'].createElement(_nextIcon2['default'], { type: 'arrow-down', size: 'xs' }) : _react2['default'].createElement(_nextIcon2['default'], { type: 'arrow-right', size: 'xs' })
+        ),
+            cloneChild = _react2['default'].cloneElement(child, {
+            onKeyDown: makeChain(this._onChildKeyDown.bind(this), child.props.onKeyDown),
+            parent: this,
+            openKeys: openKeys,
+            selectedKeys: selectedKeys
+        });
+
+        var alignAndOffset = this.getAlignAndOffset();
+
+        return _react2['default'].createElement(
+            _nextOverlay.Popup,
+            _extends({}, others, alignAndOffset, {
+                trigger: item,
+                visible: visible,
+                animation: animation,
+                onOpen: this.syncWidth,
+                autoFocus: false,
+                ref: 'popup',
+                onVisibleChange: this.onVisibleChange }),
+            cloneChild
+        );
+    };
+
+    PopupMenuItem.prototype._onChildKeyDown = function _onChildKeyDown(e) {
+        if (e.keyCode === _nextUtil.keyCode.LEFT_ARROW) {
+            this.getRoot().onOpen(this.props.index, false);
+        }
+    };
+
+    PopupMenuItem.prototype.getAlignAndOffset = function getAlignAndOffset() {
+        var _props2 = this.props,
+            align = _props2.align,
+            offset = _props2.offset,
+            direction = _props2.direction,
+            result = {
+            hoz: {
+                align: 'tl bl',
+                offset: [0, 0]
+            },
+            ver: {
+                align: 'tl tr',
+                offset: [2, 0]
+            }
+        };
+
+        if (typeof align !== 'undefined') {
+            result[direction].align = align;
+        }
+        if (typeof offset !== 'undefined') {
+            result[direction].offset = offset;
+        }
+        return result[direction];
+    };
+
+    PopupMenuItem.prototype.getContentNode = function getContentNode() {
+        return this.refs.popup.overlay.getContentNode();
+    };
+
+    PopupMenuItem.prototype.getMenuItemNode = function getMenuItemNode() {
+        return (0, _reactDom.findDOMNode)(this.refs.popup.refs.trigger);
+    };
+
+    return PopupMenuItem;
+}(Component), _class._menuItem = true, _class._popupMenuItem = true, _class.propTypes = {
+    /**
+     * 样式类名的品牌前缀
+     */
+    prefix: _propTypes2['default'].string,
+    /**
+     * 自定义类名
+     */
+    className: _propTypes2['default'].string,
+    /**
+     * 自定义内联样式
+     */
+    style: _propTypes2['default'].object,
+    /**
+     * 禁用当前菜单项, 被禁用不会触发事件
+     */
+    disabled: _propTypes2['default'].bool,
+    /**
+     * 菜单项的标签
+     */
+    label: _propTypes2['default'].any,
+    /**
+     * 是否自动让弹出层的宽度和菜单项保持一致，逻辑是如果弹出层的宽度比菜单项小的话和菜单项保持一致，如果宽度大于菜单项则不做处理
+     */
+    autoWidth: _propTypes2['default'].bool
+}, _class.defaultProps = {
+    disabled: false,
+    label: 'popup-item',
+    autoWidth: false,
+    prefix: 'next-'
+}, _class.contextTypes = {
+    parentIndex: _propTypes2['default'].array,
+    parentLabel: _propTypes2['default'].array,
+    prefix: _propTypes2['default'].string
+}, _class.childContextTypes = {
+    parentIndex: _propTypes2['default'].array,
+    parentLabel: _propTypes2['default'].array
+}, _temp2);
+PopupMenuItem.displayName = 'PopupMenuItem';
+exports['default'] = PopupMenuItem;
+
+
+function normalizeInfo(context, name, value) {
+    var meta = void 0;
+    if (context[name]) {
+        meta = [].concat(_toConsumableArray(context[name]));
+        meta.push(value);
+    } else {
+        meta = [value];
+    }
+    return meta;
+}
+module.exports = exports['default'];

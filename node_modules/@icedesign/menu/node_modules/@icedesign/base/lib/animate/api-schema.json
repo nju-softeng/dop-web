@@ -1,0 +1,101 @@
+{
+  "name": "Animate",
+  "props": {
+    "animation": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "object"
+          }
+        ]
+      },
+      "required": false,
+      "description": "配置动画的播放方式, 详见[animation](#animation)",
+      "defaultValue": {
+        "value": "{\n    appear: noop,\n    enter: noop,\n    leave: noop\n}",
+        "computed": false
+      },
+      "docblock": "配置动画的播放方式, 详见[animation](#animation)"
+    },
+    "afterAppear": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在初始动画播放完毕触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "在初始动画播放完毕触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "afterEnter": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在进场动画播放完毕触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "在进场动画播放完毕触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "afterLeave": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在离开动画播放完毕触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "在离开动画播放完毕触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "component": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "在针对多个子节点播放动画的时候包裹的标签",
+      "docblock": "在针对多个子节点播放动画的时候包裹的标签"
+    },
+    "singleMode": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否是有单个节点，如果有多个动画的孩子节点，设置该选项为false",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否是有单个节点，如果有多个动画的孩子节点，设置该选项为false"
+    },
+    "animationAppear": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否在初始的时候播放动画",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否在初始的时候播放动画"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

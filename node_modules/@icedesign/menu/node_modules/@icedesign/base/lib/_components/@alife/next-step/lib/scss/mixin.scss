@@ -1,0 +1,71 @@
+// item尺寸
+// ----------------------------------------
+
+@mixin step-item-size(
+    $height: auto,
+    $width: auto,
+    $margin-left: 0,
+    $margin-right: 0
+) {
+    height: $height;
+    line-height: $height;
+    margin-left: $margin-left;
+    margin-right: $margin-right;
+}
+
+// item状态
+// ----------------------------------------
+
+@mixin step-item-state(
+    $shape: 'circle',
+    $background: $color-white,
+    $title-color: $color-black,
+    $icon-color: $color-black,
+    $tail-color: $color-black,
+    $icon-border-color: $color-black,
+    $content-color: $color-black
+) {
+    #{$step-prefix}-item-tail {
+        &-overlay {
+            background: $tail-color;
+        }
+
+        &-underlay {
+            background: #ccc;
+        }
+    }
+
+    & > #{$step-prefix}-item-container {
+
+        & > #{$step-prefix}-item-title {
+            color: $title-color;
+        }
+
+        #{$step-prefix}-item-node {
+            color: $icon-color;
+        }
+
+        #{$step-prefix}-item-node-circle {
+            background: $background;
+            border-color: $icon-border-color;
+        }
+
+        #{$step-prefix}-item-node-dot {
+            background: $background;
+            border-color: $icon-border-color;
+        }
+    }
+
+    @if ($shape == 'arrow') {
+        background: $background;
+
+        &:before {
+            border: $step-arrow-item-border-width solid $background;
+            border-left-color: transparent;
+        }
+
+        &:after {
+            border-left-color: $background;
+        }
+    }
+}

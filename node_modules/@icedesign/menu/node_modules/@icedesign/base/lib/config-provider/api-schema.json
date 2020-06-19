@@ -1,0 +1,27 @@
+{
+  "name": "ConfigProvider",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "children": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "子Element",
+      "docblock": "子Element"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

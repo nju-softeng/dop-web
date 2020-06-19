@@ -1,0 +1,722 @@
+{
+  "name": "Overlay",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "visible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示浮层, 如果此属性为false，浮层不会被渲染",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否显示浮层, 如果此属性为false，浮层不会被渲染"
+    },
+    "canCloseByEsc": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否支持esc按键关闭浮层",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否支持esc按键关闭浮层"
+    },
+    "canCloseByOutSideClick": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "点击浮层外的区域是否关闭浮层",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "点击浮层外的区域是否关闭浮层"
+    },
+    "canCloseByMask": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "点击遮罩区域是否关闭浮层",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "点击遮罩区域是否关闭浮层"
+    },
+    "animation": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "object"
+          },
+          {
+            "name": "bool"
+          }
+        ]
+      },
+      "required": false,
+      "description": "配置动画的播放方式",
+      "defaultValue": {
+        "value": "{\n    in: 'expandInDown',\n    out: 'expandOutUp'\n}",
+        "computed": false
+      },
+      "docblock": "配置动画的播放方式\n@param {String} in 进场动画\n@param {String} out 出场动画"
+    },
+    "target": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "配置浮层定位的参照元素",
+      "defaultValue": {
+        "value": "Position.VIEWPORT",
+        "computed": true
+      },
+      "docblock": "配置浮层定位的参照元素"
+    },
+    "align": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "bool"
+          }
+        ]
+      },
+      "required": false,
+      "description": "浮层相对于target的定位, 详见开发指南的[定位部分](#定位)",
+      "defaultValue": {
+        "value": "'tl bl'",
+        "computed": false
+      },
+      "docblock": "浮层相对于target的定位, 详见开发指南的[定位部分](#定位)"
+    },
+    "offset": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "浮层相对于target定位的微调",
+      "defaultValue": {
+        "value": "[0, 0]",
+        "computed": false
+      },
+      "docblock": "浮层相对于target定位的微调"
+    },
+    "beforeClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层关闭前触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层关闭前触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "onClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层关闭后触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层关闭后触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "afterClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层关闭后触发的事件, 如果有动画，则在动画结束后触发",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层关闭后触发的事件, 如果有动画，则在动画结束后触发",
+      "params": [],
+      "returns": null
+    },
+    "beforeOpen": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层打开前触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层打开前触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "onOpen": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层打开后触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层打开后触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "afterOpen": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层打开后触发的事件, 如果有动画，则在动画结束后触发",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层打开后触发的事件, 如果有动画，则在动画结束后触发",
+      "params": [],
+      "returns": null
+    },
+    "onRequestClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层请求关闭触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层请求关闭触发的事件\n@param {String} reason 浮层关闭的来源\n@param {Event} e DOM事件",
+      "params": [
+        {
+          "name": "reason",
+          "description": "浮层关闭的来源",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "e",
+          "description": "DOM事件",
+          "type": {
+            "name": "Event"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "beforePosition": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层定位完成前触发的事件",
+      "docblock": "浮层定位完成前触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "onPosition": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层定位完成后触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "浮层定位完成后触发的事件\n@param {Object} config 定位的参数\n@param {Object} node 定位的元素",
+      "params": [
+        {
+          "name": "config",
+          "description": "定位的参数",
+          "type": {
+            "name": "Object"
+          }
+        },
+        {
+          "name": "node",
+          "description": "定位的元素",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "autoFocus": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "浮层打开的时候是否让里面的元素自动获取焦点",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "浮层打开的时候是否让里面的元素自动获取焦点"
+    },
+    "hasMask": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示遮罩",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否显示遮罩"
+    },
+    "cache": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "隐藏时是否保留子节点",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "隐藏时是否保留子节点"
+    },
+    "safeNode": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "安全节点,当点击document的时候, 如果包含该节点则不会关闭浮层, 如果是函数需要返回ref, 如果是字符串则是该DOM的id, 也可以直接传入DOM节点",
+      "docblock": "安全节点,当点击document的时候, 如果包含该节点则不会关闭浮层, 如果是函数需要返回ref, 如果是字符串则是该DOM的id, 也可以直接传入DOM节点"
+    },
+    "wrapperClassName": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "浮层的根节点的样式类",
+      "docblock": "浮层的根节点的样式类"
+    },
+    "container": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "指定渲染组件的容器",
+      "docblock": "指定渲染组件的容器"
+    },
+    "shouldUpdatePosition": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "强制更新定位信息",
+      "docblock": "强制更新定位信息"
+    },
+    "needAdjust": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否自动调整定位的位置",
+      "docblock": "是否自动调整定位的位置"
+    },
+    "disableScroll": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否禁用页面滚动",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否禁用页面滚动"
+    }
+  },
+  "methods": [],
+  "subComponents": [
+    {
+      "name": "Gateway",
+      "props": {
+        "container": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "指定渲染children的容器",
+          "defaultValue": {
+            "value": "() => document.body",
+            "computed": false
+          },
+          "docblock": "指定渲染children的容器"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "Popup",
+      "props": {
+        "align": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "弹层相对于target的定位, 详见开发指南的[定位部分](#定位)",
+          "defaultValue": {
+            "value": "'tl bl'",
+            "computed": false
+          },
+          "docblock": "弹层相对于target的定位, 详见开发指南的[定位部分](#定位)"
+        },
+        "offset": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "弹层相对于target定位的微调",
+          "defaultValue": {
+            "value": "[0, 0]",
+            "computed": false
+          },
+          "docblock": "弹层相对于target定位的微调"
+        },
+        "trigger": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "触发弹层显示或者隐藏的元素",
+          "defaultValue": {
+            "value": "<div></div>",
+            "computed": false
+          },
+          "docblock": "触发弹层显示或者隐藏的元素"
+        },
+        "triggerType": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "触发弹层显示的类型",
+          "defaultValue": {
+            "value": "'hover'",
+            "computed": false
+          },
+          "docblock": "触发弹层显示的类型"
+        },
+        "visible": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "弹层当前显示的状态",
+          "docblock": "弹层当前显示的状态"
+        },
+        "defaultVisible": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "弹层默认显示的状态",
+          "docblock": "弹层默认显示的状态"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "设置此属性，弹层无法打开",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "设置此属性，弹层无法打开"
+        },
+        "delay": {
+          "type": {
+            "name": "number"
+          },
+          "required": false,
+          "description": "弹层在触发以后的延时显示",
+          "defaultValue": {
+            "value": "200",
+            "computed": false
+          },
+          "docblock": "弹层在触发以后的延时显示"
+        },
+        "canCloseByOutSideClick": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "点击浮层外的区域是否关闭浮层",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "点击浮层外的区域是否关闭浮层"
+        },
+        "onVisibleChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "弹层在显示和隐藏触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "弹层在显示和隐藏触发的事件\n@param {Boolean} visible 弹层是否隐藏和显示\n@param {String} type 触发弹层显示和隐藏的来源\n@param {Event} e DOM事件",
+          "params": [
+            {
+              "name": "visible",
+              "description": "弹层是否隐藏和显示",
+              "type": {
+                "name": "Boolean"
+              }
+            },
+            {
+              "name": "type",
+              "description": "触发弹层显示和隐藏的来源",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "e",
+              "description": "DOM事件",
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "autoFocus": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "浮层打开的时候是否让里面的元素自动获取焦点",
+          "docblock": "浮层打开的时候是否让里面的元素自动获取焦点"
+        },
+        "animation": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "配置动画的播放方式",
+          "defaultValue": {
+            "value": "{\n    in: 'expandInDown',\n    out: 'expandOutUp'\n}",
+            "computed": false
+          },
+          "docblock": "配置动画的播放方式\n@param {String} in 进场动画\n@param {String} out 出场动画",
+          "properties": []
+        },
+        "target": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "配置弹层定位的参照元素",
+          "docblock": "配置弹层定位的参照元素"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "Position",
+      "props": {
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "target": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "定位参照的元素",
+          "docblock": "定位参照的元素"
+        },
+        "contentNode": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "定位的目标元素",
+          "docblock": "定位的目标元素"
+        },
+        "align": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "bool"
+              }
+            ]
+          },
+          "required": false,
+          "description": "定位的方式, 详见开发指南的[定位部分](#定位)",
+          "defaultValue": {
+            "value": "'tl bl'",
+            "computed": false
+          },
+          "docblock": "定位的方式, 详见开发指南的[定位部分](#定位)"
+        },
+        "offset": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "相对于target定位的微调",
+          "defaultValue": {
+            "value": "[0, 0]",
+            "computed": false
+          },
+          "docblock": "相对于target定位的微调"
+        },
+        "beforePosition": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "定位完成前触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "定位完成前触发的事件",
+          "params": [],
+          "returns": null
+        },
+        "onPosition": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "定位完成后触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "定位完成后触发的事件\n@param {Object} config 定位的参数\n@param {Object} node 定位的元素",
+          "params": [
+            {
+              "name": "config",
+              "description": "定位的参数",
+              "type": {
+                "name": "Object"
+              }
+            },
+            {
+              "name": "node",
+              "description": "定位的元素",
+              "type": {
+                "name": "Object"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "needAdjust": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否自动调整定位的位置",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否自动调整定位的位置"
+        },
+        "needListenResize": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否监听Resize事件",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否监听Resize事件"
+        },
+        "shouldUpdatePosition": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "强制更新定位信息",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "强制更新定位信息"
+        },
+        "isRtl": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "对齐方式",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "对齐方式"
+        }
+      },
+      "methods": []
+    }
+  ]
+}

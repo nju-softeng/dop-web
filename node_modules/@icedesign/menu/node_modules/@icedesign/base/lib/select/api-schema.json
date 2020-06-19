@@ -1,0 +1,1114 @@
+{
+  "name": "Select",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "container": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "func"
+          }
+        ]
+      },
+      "required": false,
+      "description": "弹层挂载容器节点",
+      "docblock": "弹层挂载容器节点"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'small'",
+            "computed": false
+          },
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "选择器的尺寸",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "选择器的尺寸"
+    },
+    "shape": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'normal'",
+            "computed": false
+          },
+          {
+            "value": "'arrow-only'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "选择器的形状",
+      "defaultValue": {
+        "value": "'normal'",
+        "computed": false
+      },
+      "docblock": "选择器的形状"
+    },
+    "placeholder": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "没有值的时候的占位符",
+      "defaultValue": {
+        "value": "''",
+        "computed": false
+      },
+      "docblock": "没有值的时候的占位符"
+    },
+    "value": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "array"
+          },
+          {
+            "name": "node"
+          },
+          {
+            "name": "object"
+          }
+        ]
+      },
+      "required": false,
+      "description": "当前值",
+      "docblock": "当前值"
+    },
+    "defaultValue": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "array"
+          },
+          {
+            "name": "node"
+          },
+          {
+            "name": "object"
+          }
+        ]
+      },
+      "required": false,
+      "description": "初始默认值",
+      "docblock": "初始默认值"
+    },
+    "visible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "当前弹层是否显示",
+      "docblock": "当前弹层是否显示"
+    },
+    "defaultVisible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "弹层初始是否显示",
+      "docblock": "弹层初始是否显示"
+    },
+    "disabled": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否禁用",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否禁用"
+    },
+    "dataSource": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "传入的数据，可以动态渲染子项,详见[dataSource的使用](#dataSource的使用)",
+      "docblock": "传入的数据，可以动态渲染子项,详见[dataSource的使用](#dataSource的使用)"
+    },
+    "multiple": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否是多选",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否是多选"
+    },
+    "fillProps": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "填充到选择框里面的值",
+      "defaultValue": {
+        "value": "'label'",
+        "computed": false
+      },
+      "docblock": "填充到选择框里面的值"
+    },
+    "showSearch": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示顶部的搜索框",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否显示顶部的搜索框"
+    },
+    "filterBy": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在输入的时候过滤的函数,仅在filterLocal为true时候有效",
+      "docblock": "在输入的时候过滤的函数,仅在filterLocal为true时候有效\n@param {String} filterValue 筛选值\n@param {Object} option 选项\n@return {Boolean} 是否保留当前选项",
+      "params": [
+        {
+          "name": "filterValue",
+          "description": "筛选值",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "option",
+          "description": "选项",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": {
+        "description": "是否保留当前选项",
+        "type": {
+          "name": "Boolean"
+        }
+      }
+    },
+    "filterLocal": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否使用本地过滤,在数据源为远程的时候需要关闭此选项",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否使用本地过滤,在数据源为远程的时候需要关闭此选项"
+    },
+    "hasArrow": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示右侧的箭头",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否显示右侧的箭头"
+    },
+    "autoWidth": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "下拉菜单是否与选择器对齐",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "下拉菜单是否与选择器对齐"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "Select发生改变的时候触发的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "Select发生改变的时候触发的回调\n@param {String} value 数据\n@param {Object} option 选项",
+      "params": [
+        {
+          "name": "value",
+          "description": "数据",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "option",
+          "description": "选项",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onSearch": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在搜索框中输入触发的事件，仅在showSearch为true时候有效",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "在搜索框中输入触发的事件，仅在showSearch为true时候有效\n@param {String} value 搜索值",
+      "params": [
+        {
+          "name": "value",
+          "description": "搜索值",
+          "type": {
+            "name": "String"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "hasClear": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示清空按钮，该按钮可以清空select的value, 该属性仅在单选模式下有效",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否显示清空按钮，该按钮可以清空select的value, 该属性仅在单选模式下有效"
+    },
+    "popupClassName": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "弹出层的样式类",
+      "docblock": "弹出层的样式类"
+    },
+    "popupProps": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "弹出层的属性",
+      "docblock": "弹出层的属性",
+      "properties": []
+    },
+    "onVisibleChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "弹层显示或隐藏的时候触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "弹层显示或隐藏的时候触发的事件\n@param {Boolean} visible 弹层是否隐藏和显示",
+      "params": [
+        {
+          "name": "visible",
+          "description": "弹层是否隐藏和显示",
+          "type": {
+            "name": "Boolean"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onOpen": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "弹层显示时触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "弹层显示时触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "onClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "弹层隐藏时触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "弹层隐藏时触发的事件",
+      "params": [],
+      "returns": null
+    },
+    "locale": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义国际化文案对象",
+      "defaultValue": {
+        "value": "{\n    selectPlaceHolder: '请选择',\n    comboboxPlaceHolder: '请输入'\n}",
+        "computed": false
+      },
+      "docblock": "自定义国际化文案对象\n@property {String} selectPlaceHolder 请选择的提示文案\n@property {String} comboboxPlaceHolder 请输入的提示文案",
+      "properties": [
+        {
+          "name": "selectPlaceHolder",
+          "description": "请选择的提示文案",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "comboboxPlaceHolder",
+          "description": "请输入的提示文案",
+          "type": {
+            "name": "String"
+          }
+        }
+      ]
+    },
+    "language": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'en-us'",
+            "computed": false
+          },
+          {
+            "value": "'zh-cn'",
+            "computed": false
+          },
+          {
+            "value": "'zh-tw'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "自定义国际化语言",
+      "docblock": "自定义国际化语言"
+    }
+  },
+  "methods": [],
+  "subComponents": [
+    {
+      "name": "Combobox",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "container": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "func"
+              }
+            ]
+          },
+          "required": false,
+          "description": "弹层挂载容器节点",
+          "docblock": "弹层挂载容器节点"
+        },
+        "size": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'small'",
+                "computed": false
+              },
+              {
+                "value": "'medium'",
+                "computed": false
+              },
+              {
+                "value": "'large'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "选择器的尺寸",
+          "defaultValue": {
+            "value": "'medium'",
+            "computed": false
+          },
+          "docblock": "选择器的尺寸"
+        },
+        "shape": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'normal'",
+                "computed": false
+              },
+              {
+                "value": "'arrow-only'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "选择器的形状",
+          "defaultValue": {
+            "value": "'normal'",
+            "computed": false
+          },
+          "docblock": "选择器的形状"
+        },
+        "placeholder": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "没有值的时候的占位符",
+          "defaultValue": {
+            "value": "''",
+            "computed": false
+          },
+          "docblock": "没有值的时候的占位符"
+        },
+        "value": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "array"
+              },
+              {
+                "name": "node"
+              },
+              {
+                "name": "object"
+              }
+            ]
+          },
+          "required": false,
+          "description": "当前值",
+          "docblock": "当前值"
+        },
+        "defaultValue": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "array"
+              },
+              {
+                "name": "node"
+              },
+              {
+                "name": "object"
+              }
+            ]
+          },
+          "required": false,
+          "description": "初始默认值",
+          "docblock": "初始默认值"
+        },
+        "visible": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "当前弹层是否显示",
+          "docblock": "当前弹层是否显示"
+        },
+        "defaultVisible": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "弹层初始是否显示",
+          "docblock": "弹层初始是否显示"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否禁用",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否禁用"
+        },
+        "dataSource": {
+          "type": {
+            "name": "array"
+          },
+          "required": false,
+          "description": "传入的数据，可以动态渲染子项,详见[dataSource的使用](#dataSource的使用)",
+          "docblock": "传入的数据，可以动态渲染子项,详见[dataSource的使用](#dataSource的使用)"
+        },
+        "multiple": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否是多选",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否是多选"
+        },
+        "tags": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否启用标签模式, 仅在多选时有效,效果是除了自动提示外的选项, 也可以使用输入的文字作为标签",
+          "docblock": "是否启用标签模式, 仅在多选时有效,效果是除了自动提示外的选项, 也可以使用输入的文字作为标签"
+        },
+        "fillProps": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "填充到选择框里面的值",
+          "defaultValue": {
+            "value": "'value'",
+            "computed": false
+          },
+          "docblock": "填充到选择框里面的值"
+        },
+        "showSearch": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示顶部的搜索框",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否显示顶部的搜索框"
+        },
+        "filterBy": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "在输入的时候过滤的函数,仅在filterLocal为true时候有效",
+          "docblock": "在输入的时候过滤的函数,仅在filterLocal为true时候有效\n@param {String} filterValue 筛选值\n@param {Object} option 选项\n@return {Boolean} 是否保留当前选项",
+          "params": [
+            {
+              "name": "filterValue",
+              "description": "筛选值",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "option",
+              "description": "选项",
+              "type": {
+                "name": "Object"
+              }
+            }
+          ],
+          "returns": {
+            "description": "是否保留当前选项",
+            "type": {
+              "name": "Boolean"
+            }
+          }
+        },
+        "filterLocal": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否使用本地过滤,在数据源为远程的时候需要关闭此选项",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否使用本地过滤,在数据源为远程的时候需要关闭此选项"
+        },
+        "hasArrow": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示右侧的箭头",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示右侧的箭头"
+        },
+        "autoWidth": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "下拉菜单是否与选择器对齐",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "下拉菜单是否与选择器对齐"
+        },
+        "hiddenSelected": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "选择后是否立即隐藏菜单，单选是默认隐藏的，因此该选项只在多选的时候有效",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "选择后是否立即隐藏菜单，单选是默认隐藏的，因此该选项只在多选的时候有效"
+        },
+        "onInputUpdate": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "Combobox在用户输入的时候触发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "Combobox在用户输入的时候触发的回调\n@param {String} value 输入值",
+          "params": [
+            {
+              "name": "value",
+              "description": "输入值",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onInputFocus": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "Combobox获取焦点的时候触发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "Combobox获取焦点的时候触发的回调\n@param {Event} e DOM事件对象\n@param {Boolean} clickByUser 是否用户点击",
+          "params": [
+            {
+              "name": "e",
+              "description": "DOM事件对象",
+              "type": {
+                "name": "Event"
+              }
+            },
+            {
+              "name": "clickByUser",
+              "description": "是否用户点击",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onInputBlur": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "Combobox失去焦点的时候触发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "Combobox失去焦点的时候触发的回调\n@param {Event} e DOM事件对象\n@param {String} inputValue 输入值",
+          "params": [
+            {
+              "name": "e",
+              "description": "DOM事件对象",
+              "type": {
+                "name": "Event"
+              }
+            },
+            {
+              "name": "inputValue",
+              "description": "输入值",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onInputEnter": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "Combobox回车的时候触发的回调",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "Combobox回车的时候触发的回调\n@param {Event} e DOM事件对象",
+          "params": [
+            {
+              "name": "e",
+              "description": "DOM事件对象",
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "Combobox发生改变的时候触发的回调, 注意在输入的时候该事件不会被触发，如果需要监听输入的事件请使用onInputUpdate",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "Combobox发生改变的时候触发的回调, 注意在输入的时候该事件不会被触发，如果需要监听输入的事件请使用onInputUpdate\n@param {String} value 数据\n@param {Object} option 选项",
+          "params": [
+            {
+              "name": "value",
+              "description": "数据",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "option",
+              "description": "选项",
+              "type": {
+                "name": "Object"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onSearch": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "在搜索框中输入触发的事件，仅在showSearch为true时候有效",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "在搜索框中输入触发的事件，仅在showSearch为true时候有效\n@param {String} value 搜索值",
+          "params": [
+            {
+              "name": "value",
+              "description": "搜索值",
+              "type": {
+                "name": "String"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "hasClear": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示清空按钮，该按钮可以清空select的value, 该属性仅在单选模式下有效",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否显示清空按钮，该按钮可以清空select的value, 该属性仅在单选模式下有效"
+        },
+        "popupClassName": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "弹出层的样式类",
+          "docblock": "弹出层的样式类"
+        },
+        "popupProps": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "弹出层的属性",
+          "docblock": "弹出层的属性",
+          "properties": []
+        },
+        "onVisibleChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "弹层显示或隐藏的时候触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "弹层显示或隐藏的时候触发的事件\n@param {Boolean} visible 弹层是否隐藏和显示",
+          "params": [
+            {
+              "name": "visible",
+              "description": "弹层是否隐藏和显示",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "onOpen": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "弹层显示时触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "弹层显示时触发的事件",
+          "params": [],
+          "returns": null
+        },
+        "onClose": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "弹层隐藏时触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "弹层隐藏时触发的事件",
+          "params": [],
+          "returns": null
+        },
+        "locale": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义国际化文案对象",
+          "defaultValue": {
+            "value": "{\n    selectPlaceHolder: '请选择',\n    comboboxPlaceHolder: '请输入'\n}",
+            "computed": false
+          },
+          "docblock": "自定义国际化文案对象\n@property {String} selectPlaceHolder 请选择的提示文案\n@property {String} comboboxPlaceHolder 请输入的提示文案",
+          "properties": [
+            {
+              "name": "selectPlaceHolder",
+              "description": "请选择的提示文案",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "comboboxPlaceHolder",
+              "description": "请输入的提示文案",
+              "type": {
+                "name": "String"
+              }
+            }
+          ]
+        },
+        "language": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'en-us'",
+                "computed": false
+              },
+              {
+                "value": "'zh-cn'",
+                "computed": false
+              },
+              {
+                "value": "'zh-tw'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "自定义国际化语言",
+          "docblock": "自定义国际化语言"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "OptionGroup",
+      "props": {
+        "label": {
+          "type": {
+            "name": "union",
+            "value": [
+              {
+                "name": "string"
+              },
+              {
+                "name": "node"
+              }
+            ]
+          },
+          "required": false,
+          "description": "设置分组的文案",
+          "docblock": "设置分组的文案"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "Option",
+      "props": {
+        "value": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "选项值",
+          "docblock": "选项值"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否禁用",
+          "docblock": "是否禁用"
+        }
+      },
+      "methods": []
+    }
+  ]
+}

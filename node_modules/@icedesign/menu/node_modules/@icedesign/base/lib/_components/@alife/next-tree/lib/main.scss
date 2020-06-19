@@ -1,0 +1,304 @@
+@import "../../next-core/lib/next.scss";
+
+@import "./scss/variable.scss";
+@import "./scss/normalize.scss";
+@import "./scss/mixin.scss";
+
+#{$tree-prefix} {
+    margin: 0;
+    /* TODO remove in 1.0 release*/
+    padding: $s-1;
+
+    & > &-node:first-child {
+        margin-top: 0;
+    }
+
+    &-node {
+        padding: 0;
+        margin-top: $tree-node-margin;
+        list-style: none;
+        white-space: nowrap;
+        outline: 0;
+
+        &-handle {
+            display: inline-block;
+            height: $tree-node-title-height;
+            line-height: $tree-node-title-height;
+            margin: 0 $tree-node-title-margin;
+            padding: 0 $tree-node-title-padding;
+            border-radius: $tree-node-title-border-radius;
+            cursor: pointer;
+            text-decoration: none;
+            vertical-align: middle;
+            transition: all cubic-bezier(0.23, 1, 0.32, 1) 300ms;
+            font-size: $tree-node-title-font-size;
+
+            span {
+                display: inline-block;
+            }
+
+            @include tree-node-state($tree-node-normal-color, $tree-node-normal-background);
+        }
+
+        &-handle:hover {
+            @include tree-node-state($tree-node-hover-color, $tree-node-hover-background);
+        }
+
+        &-handle-selected {
+            @include tree-node-state($tree-node-selected-color, $tree-node-selected-background);
+        }
+
+        &-handle-disabled,
+        &-handle-disabled:hover {
+            @include tree-node-state($tree-node-disabled-color, $tree-node-disabled-background);
+        }
+
+        &-input {
+            margin: 0 $tree-node-title-margin;
+            padding: 1px 3px;
+            border: 1px solid $color-line1-3;
+            height: $tree-node-title-height;
+            line-height: $tree-node-title-height;
+            font-size: 12px;
+            outline: none;
+
+            &:focus {
+                border-color: $color-brand2-6;
+            }
+        }
+
+        &-handle[draggable],
+        &-handle[draggable='true'] {
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -khtml-user-drag: element;
+            -webkit-user-drag: element;
+        }
+
+        &-disabled {
+            > a,
+            > .#{$css-prefix}tree-switcher,
+            > .#{$css-prefix}tree-node-top-half > a,
+            > .#{$css-prefix}tree-node-top-half > .#{$css-prefix}tree-switcher {
+                color: $tree-node-disabled-color;
+                background: $tree-node-disabled-background;
+                cursor: not-allowed;
+            }
+        }
+
+        &.drag-over {
+            > a,
+            > .#{$css-prefix}tree-node-top-half > a {
+                background-color: $color-brand1-6;
+                color: white;
+                opacity: 0.8;
+            }
+        }
+
+        &.drag-over-gap-top {
+            > a,
+            > .#{$css-prefix}tree-node-top-half > a {
+                border-top: 2px $color-brand1-6 solid;
+            }
+        }
+
+        &.drag-over-gap-bottom {
+            > a,
+            > .#{$css-prefix}tree-node-top-half > a {
+                border-bottom: 2px $color-brand1-6 solid;
+            }
+        }
+
+        &.filter-node {
+            > a {
+                color: $color-error-2 !important;
+                font-weight: bold !important;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin-left: $tree-child-indent;
+            padding: 0;
+        }
+
+        &-top-half {
+            display: flex;
+            align-items: center;
+
+            .#{$css-prefix}tree-node-handle {
+                flex: 1 1 auto;
+            }
+        }
+    }
+
+    &-with-line &-node li:not(:last-child) {
+        margin-left: $tree-child-indent-left;
+        border-left: $tree-line;
+        padding-left: $tree-child-indent-right;
+    }
+
+    &-icon {
+        margin: 0;
+        width: $s-4;
+        height: $tree-node-title-height;
+        line-height: $tree-node-title-height;
+        display: inline-block;
+        vertical-align: middle;
+        border: 0 none;
+        cursor: pointer;
+        outline: none;
+    }
+
+    &-icon-loading {
+        &:after {
+            content: $icon-content-loading;
+            display: inline-block;
+            font-family: $icon-font-family;
+            font-size: $icon-xs;
+            -webkit-animation: loadingCircle 2s infinite linear;
+            animation: loadingCircle 2s infinite linear;
+        }
+    }
+
+    &-switcher {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: $tree-switch-margint-right;
+        user-select: none;
+    }
+
+    &-switcher-noline {
+        width: $tree-switch-arrow-size;
+        height: $tree-switch-arrow-size;
+        line-height: $tree-switch-arrow-size;
+        cursor: pointer;
+
+        #{$tree-prefix}-switcher-icon {
+            @include icon-size($tree-switch-arrow-size);
+            transition: transform cubic-bezier(0.23, 1, 0.32, 1) 300ms;
+            color: $tree-switch-arrow-color;
+        }
+
+        &:not(.disabled):hover {
+            #{$tree-prefix}-switcher-icon {
+                color: $tree-switch-hover-arrow-color;
+            }
+        }
+    }
+
+    &-switcher-noline-close #{$tree-prefix}-switcher-icon {
+        @include icon-size(
+            $size: $tree-switch-arrow-size,
+            $transform: rotate(-90deg)
+        );
+    }
+
+    &-switcher-line {
+        width: $tree-switch-size;
+        height: $tree-switch-size;
+        line-height: $tree-switch-size - $tree-switch-border-width * 2;
+        border: $tree-switch-border-width $line-solid $tree-switch-border-color;
+        border-radius: $tree-switch-corner;
+        background-color: $tree-switch-bg-color;
+        cursor: pointer;
+
+        #{$tree-prefix}-switcher-icon {
+            @include icon-size($tree-switch-icon-size, ($tree-switch-size - $tree-switch-icon-size - $tree-switch-border-width * 2) / 2);
+            color: $tree-switch-icon-color;
+
+            &:before {
+                vertical-align: text-bottom;
+            }
+        }
+
+        &:not(.disabled):hover {
+            border-color: $tree-switch-hover-border-color;
+            background-color: $tree-switch-hover-bg-color;
+
+            #{$tree-prefix}-switcher-icon {
+                color: $tree-switch-hover-icon-color;
+            }
+        }
+    }
+
+    @media screen\0 {
+        &-switcher-line {
+            line-height: $tree-switch-size;
+        }
+    }
+
+    &-switcher-noop-noline {
+        width: $tree-switch-arrow-size;
+        height: $tree-switch-arrow-size;
+    }
+
+    &-switcher-noop-line {
+        width: $tree-switch-size;
+        height: $tree-switch-size;
+    }
+
+    &-switcher-noop-line-noroot {
+        height: 0;
+        border-left: $tree-line;
+        border-right: $tree-line;
+        border-bottom: $tree-line;
+
+        #{$tree-prefix}-right-angle {
+            bottom: -$tree-line-width;
+        }
+    }
+
+    &-right-angle {
+        position: absolute;
+        bottom: ($tree-switch-size - $tree-switch-border-width * 2 - $tree-line-width) / 2;
+        left: - ($tree-child-indent-right + $tree-line-width + $tree-switch-border-width);
+        display: block;
+        width: $tree-child-indent-right + $tree-line-width;
+        height: ($tree-node-title-height - $tree-line-width) / 2 + $tree-node-margin + ($tree-node-title-height - $tree-switch-size) / 2 + $tree-line-width;
+        border-left: $tree-line;
+        border-bottom: $tree-line;
+    }
+
+    &-child-tree {
+        &.temp-hide {
+            display: none;
+        }
+        &.out-screen {
+            position: absolute;
+            top: 0;
+            left: -9999px;
+        }
+        &.child-tree-enter {
+            overflow: hidden;
+            height: 0;
+            opacity: 0;
+        }
+        &.child-tree-enter-active {
+            transition: all cubic-bezier(0.23, 1, 0.32, 1) 300ms;
+            opacity: 1;
+        }
+        &.child-tree-leave {
+            overflow: hidden;
+            opacity: 1;
+        }
+
+        &.child-tree-leave-active {
+            transition: all cubic-bezier(0.23, 1, 0.32, 1) 250ms;
+            opacity: 0;
+        }
+    }
+
+    &-icon-open,
+    &-icon-close {
+        margin-right: $s-1 / 2;
+        vertical-align: top;
+    }
+}

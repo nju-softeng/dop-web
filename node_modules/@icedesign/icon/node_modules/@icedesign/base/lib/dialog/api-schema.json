@@ -1,0 +1,307 @@
+{
+  "name": "Dialog",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "title": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "对话框的标题",
+      "docblock": "对话框的标题"
+    },
+    "footer": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "bool"
+          },
+          {
+            "name": "string"
+          },
+          {
+            "name": "node"
+          }
+        ]
+      },
+      "required": false,
+      "description": "传入底部的内容",
+      "docblock": "传入底部的内容"
+    },
+    "footerAlign": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'left'",
+            "computed": false
+          },
+          {
+            "value": "'center'",
+            "computed": false
+          },
+          {
+            "value": "'right'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "底部按钮的对齐方式",
+      "defaultValue": {
+        "value": "'right'",
+        "computed": false
+      },
+      "docblock": "底部按钮的对齐方式"
+    },
+    "visible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "控制对话框是否可见",
+      "docblock": "控制对话框是否可见"
+    },
+    "hasMask": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否需要mask",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否需要mask"
+    },
+    "closable": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "bool"
+          }
+        ]
+      },
+      "required": false,
+      "description": "'esc, mask, close', 详见[closable](#closable)",
+      "defaultValue": {
+        "value": "'esc,close'",
+        "computed": false
+      },
+      "docblock": "'esc, mask, close', 详见[closable](#closable)"
+    },
+    "shouldUpdatePosition": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否强制更新dialog的位置，在`isFullScreen`为true且align为`cc cc`的时候无效",
+      "docblock": "是否强制更新dialog的位置，在`isFullScreen`为true且align为`cc cc`的时候无效"
+    },
+    "align": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "number"
+          }
+        ]
+      },
+      "required": false,
+      "description": "浮层自定义位置",
+      "defaultValue": {
+        "value": "'cc cc'",
+        "computed": false
+      },
+      "docblock": "浮层自定义位置"
+    },
+    "animation": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "object"
+          },
+          {
+            "name": "bool"
+          }
+        ]
+      },
+      "required": false,
+      "description": "配置动画的播放方式",
+      "defaultValue": {
+        "value": "{\n    in: 'fadeInDown',\n    out: 'fadeOutUp'\n}",
+        "computed": false
+      },
+      "docblock": "配置动画的播放方式\n@param {String} in 进场动画\n@param {String} out 出场动画"
+    },
+    "onClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在点击关闭按钮的时候触发的函数",
+      "docblock": "在点击关闭按钮的时候触发的函数",
+      "params": [],
+      "returns": null
+    },
+    "afterClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "浮层关闭后触发的事件, 如果有动画，则在动画结束后触发",
+      "docblock": "浮层关闭后触发的事件, 如果有动画，则在动画结束后触发",
+      "params": [],
+      "returns": null
+    },
+    "onOk": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在点击Ok按钮的时候触发的函数",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "在点击Ok按钮的时候触发的函数",
+      "params": [],
+      "returns": null
+    },
+    "onCancel": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "在点击Cancel按钮的时候触发的函数",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "在点击Cancel按钮的时候触发的函数",
+      "params": [],
+      "returns": null
+    },
+    "minMargin": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "当dialog过高的时候距离viewport的最小边距,在`isFullScreen`下无效。",
+      "defaultValue": {
+        "value": "40",
+        "computed": false
+      },
+      "docblock": "当dialog过高的时候距离viewport的最小边距,在`isFullScreen`下无效。"
+    },
+    "autoFocus": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "当dialog弹出的时候是否自动获取焦点",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "当dialog弹出的时候是否自动获取焦点"
+    },
+    "locale": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义国际化文案对象",
+      "docblock": "自定义国际化文案对象\n@property {String} ok 确认按钮文案\n@property {String} cancel 取消按钮文案",
+      "properties": [
+        {
+          "name": "ok",
+          "description": "确认按钮文案",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "cancel",
+          "description": "取消按钮文案",
+          "type": {
+            "name": "String"
+          }
+        }
+      ]
+    },
+    "language": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'en-us'",
+            "computed": false
+          },
+          {
+            "value": "'zh-cn'",
+            "computed": false
+          },
+          {
+            "value": "'zh-tw'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "自定义国际化语言",
+      "docblock": "自定义国际化语言"
+    },
+    "isFullScreen": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否是启用使用CSS定位模式的对话框, 在该模式下面无需通过`shouldUpdatePosition`来进行重新定位。",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否是启用使用CSS定位模式的对话框, 在该模式下面无需通过`shouldUpdatePosition`来进行重新定位。"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

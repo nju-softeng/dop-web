@@ -1,0 +1,126 @@
+@import "../../next-core/lib/next.scss";
+
+@import "./scss/variable.scss";
+@import "./scss/mixin.scss";
+
+#{$cascader-prefix} {
+    @include box-sizing;
+    @include global-font;
+
+    display: inline-block;
+    overflow: auto;
+    border: $cascader-menu-border-width $line-solid $cascader-menu-border-color;
+    border-radius: $cascader-menu-border-radius;
+
+    &-inner {
+        @include clearfix;
+
+        &.has-right-border {
+            border-right: $cascader-menu-border-width $line-solid $cascader-menu-border-color;
+        }
+    }
+
+    &-menu-wrapper {
+        float: left;
+        padding: $cascader-menu-padding-top-bottom 0;
+        background-color: $cascader-menu-item-background-color;
+
+        & + & {
+            border-left: $cascader-menu-border-width $line-solid $cascader-menu-border-color;
+        }
+    }
+
+    &-menu {
+        position: relative;
+        min-width: $s-25;
+        height: $cascader-menu-item-height * 6;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow: auto;
+
+        &-item {
+            position: relative;
+            height: $cascader-menu-item-height;
+            font-size: $cascader-menu-item-font-size;
+            line-height: $cascader-menu-item-height;
+            cursor: pointer;
+            overflow: hidden;
+
+            @include cascaderMenuItemState(
+                $cascader-menu-item-color,
+                $cascader-menu-item-background-color,
+                $cascader-menu-icon-select-color,
+                $cascader-menu-icon-expand-color
+            );
+
+            &:hover,
+            &.expanded {
+                @include cascaderMenuItemState(
+                    $cascader-menu-item-hover-color,
+                    $cascader-menu-item-hover-background-color,
+                    $cascader-menu-icon-hover-select-color,
+                    $cascader-menu-icon-hover-expand-color
+                );
+            }
+
+            &.disabled, &:hover.disabled {
+                @include cascaderMenuItemState(
+                    $cascader-menu-item-disabled-color,
+                    $cascader-menu-item-background-color,
+                    $cascader-menu-item-disabled-color,
+                    $cascader-menu-item-disabled-color
+                );
+                cursor: not-allowed;
+            }
+        }
+
+        &-item-label {
+            display: inline-block;
+            vertical-align: middle;
+
+            &.ellipsis {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                word-wrap: normal;
+            }
+        }
+
+        &-icon-selected.#{$css-prefix}icon {
+            position: absolute;
+            top: 0;
+            left: ($cascader-menu-padding-left - $cascader-menu-icon-select-size) / 2;
+            @include icon-size($cascader-menu-icon-select-size);
+        }
+
+        &-icon-expand {
+            float: right;
+            @include icon-size(
+                $size: $cascader-menu-icon-expand-size,
+                $marginLeft: $s-2
+            );
+        }
+
+        &-icon-loading {
+            float: right;
+            @include icon-size(
+                $size: $icon-xs,
+                $marginLeft: $s-2
+            );
+        }
+
+        &-checkbox {
+            margin-right: $cascader-menu-checkbox-margin-right;
+        }
+    }
+
+    &:not(.multiple) &-menu-item {
+        padding-left: $cascader-menu-padding-left;
+        padding-right: $cascader-menu-padding-right;
+    }
+
+    &.multiple &-menu-item  {
+        padding: 0 $cascader-menu-multiple-padding-right-left;
+    }
+}

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+////
+/// @module menu: 菜单
+/// @tag Menu
+/// @category component
+/// @family menu
+/// @varPrefix $menu-
+/// @classPrefix {prefix}-menu
+/// @order {"size/bounding":10,"size/group title":11,"size/divider":12,"size/text":13,"size/icon":14,"size/sub menu":15,"statement/normal":10,"statement/normal/text":103,"statement/normal/item":101,"statement/normal/arrow":102,"statement/normal/bounding":100,"statement/normal/divider":104,"statement/normal/icon":105,"statement/hover":11,"statement/hover/text":110,"statement/hover/item":111,"statement/hover/arrow":112,"statement/focused":12,"statement/focused/text":122,"statement/focused/item":121,"statement/focused/bounding":120,"statement/selected":13,"statement/selected/text":130,"statement/selected/item":131,"statement/selected/icon":132,"statement/disabled":14,"statement/disabled/text":140}
+////
+
+$menu-prefixCls: '.#{$css-prefix}menu';
+
+$menu-width: $s-1 * 50;
+
+/// padding (t, b)
+/// @namespace size/bounding
+$menu-padding-vertical: $s-3 !default;
+/// padding (l, r)
+/// @namespace size/bounding
+$menu-padding-horizontal: $s-5 !default;
+
+/// padding (l, r)
+/// @namespace size/group title
+$menu-padding-title-horizontal: $s-3 !default;
+
+/// margin (t, b)
+/// @namespace size/divider
+$menu-divider-margin-ver: $s-2 !default;
+/// margin (l, r)
+/// @namespace size/divider
+$menu-divider-margin-hoz: $s-5 !default;
+/// text
+/// @namespace size/text
+$menu-font-size: $font-size-body-1 !default;
+/// line height
+/// @namespace size/text
+$menu-line-height: $s-7 !default;
+/// margin (l, r)
+/// @namespace size/icon
+$menu-icon-margin: $s-1 !default;
+
+/// color
+/// @namespace statement/normal/text
+$menu-color: $color-text1-4 !default;
+/// color
+/// @namespace statement/hover/text
+$menu-color-hover: $color-text1-4 !default;
+/// color
+/// @namespace statement/focused/text
+$menu-color-focused: $color-text1-4 !default;
+/// color
+/// @namespace statement/selected/text
+$menu-color-selected: $color-text1-4 !default;
+/// color
+/// @namespace statement/disabled/text
+$menu-color-disabled: $color-text1-1 !default;
+/// background
+/// @namespace statement/normal/item
+$menu-background: $color-white !default;
+/// background
+/// @namespace statement/selected/item
+$menu-background-selected: $color-white !default;
+/// background
+/// @namespace statement/hover/item
+$menu-background-hover: $color-fill1-2 !default;
+/// background
+/// @namespace statement/focused/item
+$menu-background-focused: $color-fill1-2 !default;
+/// color
+/// @namespace statement/normal/arrow
+$menu-arrow-color: $color-text1-1 !default;
+/// color
+/// @namespace statement/hover/arrow
+$menu-arrow-color-hover: $color-text1-1 !default;
+
+/// shadow
+/// @namespace statement/normal/bounding
+$menu-shadow: $shadow-1 !default;
+/// shadow
+/// @namespace statement/focused/bounding
+$menu-shadow-focus: $shadow-2 !default;
+
+/// border style
+/// @namespace statement/normal/bounding
+$menu-border-style: $line-solid !default;
+/// border width
+/// @namespace size/bounding
+$menu-border-width: $line-1 !default;
+
+/// border color
+/// @namespace statement/normal/bounding
+$menu-border-color: $color-line1-1 !default;
+
+/// corner
+/// @namespace size/bounding
+$menu-border-radius: $corner-0 !default;
+
+/// border color
+/// @namespace statement/normal/divider
+$menu-divider-border-color: $color-line1-1 !default;
+
+/// color
+/// @namespace statement/normal/icon
+$menu-icon-color: $color-text1-1 !default;
+/// size
+/// @namespace size/icon
+$menu-icon-size: $icon-xs !default;
+
+/// color
+/// @namespace statement/selected/icon
+$menu-icon-selected-color: $color-brand1-6 !default;
+
+/// text
+/// @namespace size/sub menu
+$menu-submenu-title-size: $font-size-body-1 !default;

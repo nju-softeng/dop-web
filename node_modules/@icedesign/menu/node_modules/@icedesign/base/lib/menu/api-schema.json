@@ -1,0 +1,1082 @@
+{
+  "name": "Menu",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "selectedKeys": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "array"
+          },
+          {
+            "name": "node"
+          }
+        ]
+      },
+      "required": false,
+      "description": "当前选中的菜单项, 设置此属性，组件的选中变为受控状态",
+      "docblock": "当前选中的菜单项, 设置此属性，组件的选中变为受控状态"
+    },
+    "defaultSelectedKeys": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "array"
+          },
+          {
+            "name": "node"
+          }
+        ]
+      },
+      "required": false,
+      "description": "初始化选中的菜单项，只在组件初次render的时候生效",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "初始化选中的菜单项，只在组件初次render的时候生效"
+    },
+    "selectMode": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'single'",
+            "computed": false
+          },
+          {
+            "value": "'multiple'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "菜单选择的模式，支持单选和多选",
+      "docblock": "菜单选择的模式，支持单选和多选"
+    },
+    "openKeys": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "array"
+          },
+          {
+            "name": "node"
+          }
+        ]
+      },
+      "required": false,
+      "description": "当前打开的菜单项，设置此属性，组件的打开变为受控状态",
+      "docblock": "当前打开的菜单项，设置此属性，组件的打开变为受控状态"
+    },
+    "defaultOpenKeys": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "array"
+          },
+          {
+            "name": "node"
+          }
+        ]
+      },
+      "required": false,
+      "description": "初始化打开的菜单项，只在组件初次render的时候生效",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "初始化打开的菜单项，只在组件初次render的时候生效"
+    },
+    "openMode": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'single'",
+            "computed": false
+          },
+          {
+            "value": "'multiple'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "子菜单同时打开模式，是多个还是一个",
+      "defaultValue": {
+        "value": "'multiple'",
+        "computed": false
+      },
+      "docblock": "子菜单同时打开模式，是多个还是一个"
+    },
+    "shallowSelect": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "如果此属性为true，表明只会选中第一级的菜单",
+      "docblock": "如果此属性为true，表明只会选中第一级的菜单"
+    },
+    "onSelect": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "选中/取消选中了任意MenuItem",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "选中/取消选中了任意MenuItem\n@param {Array} selectedKeys 选中的菜单的key\n@param {MenuItem} menuItem 当前点击的菜单项的实例\n@param {Object} meta 选中菜单项的上下级关系",
+      "params": [
+        {
+          "name": "selectedKeys",
+          "description": "选中的菜单的key",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "menuItem",
+          "description": "当前点击的菜单项的实例",
+          "type": {
+            "name": "MenuItem"
+          }
+        },
+        {
+          "name": "meta",
+          "description": "选中菜单项的上下级关系",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onDeselect": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "取消选中的菜单项",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "取消选中的菜单项\n@param {String} selectedKey 取消选中的菜单项的key",
+      "params": [
+        {
+          "name": "selectedKey",
+          "description": "取消选中的菜单项的key",
+          "type": {
+            "name": "String"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onClick": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "点击菜单项触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "点击菜单项触发的事件\n@param {Array} selectedKeys 点击的菜单项的key\n@param {MenuItem} menuItem 当前点击的菜单项的实例\n@param {Object} meta 选中菜单项的上下级关系",
+      "params": [
+        {
+          "name": "selectedKeys",
+          "description": "点击的菜单项的key",
+          "type": {
+            "name": "Array"
+          }
+        },
+        {
+          "name": "menuItem",
+          "description": "当前点击的菜单项的实例",
+          "type": {
+            "name": "MenuItem"
+          }
+        },
+        {
+          "name": "meta",
+          "description": "选中菜单项的上下级关系",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onOpen": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "打开子菜单的时候触发的事件",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "打开子菜单的时候触发的事件\n@param {Array} openKeys 打开的子菜单的key",
+      "params": [
+        {
+          "name": "openKeys",
+          "description": "打开的子菜单的key",
+          "type": {
+            "name": "Array"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "hasIcon": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否带有菜单的图标",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否带有菜单的图标"
+    },
+    "indentSize": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "级联菜单下面缩进的尺寸",
+      "defaultValue": {
+        "value": "20",
+        "computed": false
+      },
+      "docblock": "级联菜单下面缩进的尺寸"
+    },
+    "header": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "配置菜单的头部",
+      "docblock": "配置菜单的头部"
+    },
+    "footer": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "配置菜单的底部",
+      "docblock": "配置菜单的底部"
+    },
+    "multipleCol": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否启用多列模式",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否启用多列模式"
+    },
+    "autoFocusFirstItem": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否让第一个菜单自动获取焦点",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "是否让第一个菜单自动获取焦点"
+    },
+    "autoFocus": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否启用设置焦点功能",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否启用设置焦点功能"
+    },
+    "focusedKey": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "焦点项索引值",
+      "docblock": "焦点项索引值"
+    },
+    "direction": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'ver'",
+            "computed": false
+          },
+          {
+            "value": "'hoz'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "菜单的方向",
+      "defaultValue": {
+        "value": "'ver'",
+        "computed": false
+      },
+      "docblock": "菜单的方向"
+    }
+  },
+  "methods": [
+    {
+      "name": "_getLastChild",
+      "docblock": "获取最后一个直系子级\n@returns {*}\n@private",
+      "modifiers": [],
+      "params": [],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "mixed"
+        }
+      },
+      "description": "获取最后一个直系子级"
+    },
+    {
+      "name": "_getNextChild",
+      "docblock": "获取当前子级的下一个子级\n@returns {*}\n@private",
+      "modifiers": [],
+      "params": [],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "mixed"
+        }
+      },
+      "description": "获取当前子级的下一个子级"
+    },
+    {
+      "name": "_getPrevChild",
+      "docblock": "获取当前子级的上一个子级\n@returns {*}\n@private",
+      "modifiers": [],
+      "params": [],
+      "returns": {
+        "description": null,
+        "type": {
+          "name": "mixed"
+        }
+      },
+      "description": "获取当前子级的上一个子级"
+    }
+  ],
+  "subComponents": [
+    {
+      "name": "CheckboxItem",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "helper": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "显示在菜单右侧的帮助文本，通常用于一些附加信息",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          },
+          "docblock": "显示在菜单右侧的帮助文本，通常用于一些附加信息"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio"
+        },
+        "selected": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高",
+          "docblock": "当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高"
+        },
+        "onClick": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "点击了菜单项触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "点击了菜单项触发的事件\n@param {String} key 当前菜单项的key值\n@param {Event} e DOM事件",
+          "params": [
+            {
+              "name": "key",
+              "description": "当前菜单项的key值",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "e",
+              "description": "DOM事件",
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "hasSelectedIcon": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示选中图标",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示选中图标"
+        },
+        "needIndent": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示缩进",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示缩进"
+        },
+        "checked": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "默认是否选中当前菜单项",
+          "docblock": "默认是否选中当前菜单项"
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "选择被改变的时候触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "选择被改变的时候触发的事件\n@param {Boolean} checked 是否选中",
+          "params": [
+            {
+              "name": "checked",
+              "description": "是否选中",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "Divider",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "Group",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "label": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "分组的标签",
+          "defaultValue": {
+            "value": "'menu-group'",
+            "computed": false
+          },
+          "docblock": "分组的标签"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "Item",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "helper": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "显示在菜单右侧的帮助文本，通常用于一些附加信息",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          },
+          "docblock": "显示在菜单右侧的帮助文本，通常用于一些附加信息"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio"
+        },
+        "selected": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高",
+          "docblock": "当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高"
+        },
+        "onClick": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "点击了菜单项触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "点击了菜单项触发的事件\n@param {String} key 当前菜单项的key值\n@param {Event} e DOM事件",
+          "params": [
+            {
+              "name": "key",
+              "description": "当前菜单项的key值",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "e",
+              "description": "DOM事件",
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "hasSelectedIcon": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示选中图标",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示选中图标"
+        },
+        "needIndent": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示缩进",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示缩进"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "PopupItem",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "禁用当前菜单项, 被禁用不会触发事件",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "禁用当前菜单项, 被禁用不会触发事件"
+        },
+        "label": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "菜单项的标签",
+          "defaultValue": {
+            "value": "'popup-item'",
+            "computed": false
+          },
+          "docblock": "菜单项的标签"
+        },
+        "autoWidth": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否自动让弹出层的宽度和菜单项保持一致，逻辑是如果弹出层的宽度比菜单项小的话和菜单项保持一致，如果宽度大于菜单项则不做处理",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "是否自动让弹出层的宽度和菜单项保持一致，逻辑是如果弹出层的宽度比菜单项小的话和菜单项保持一致，如果宽度大于菜单项则不做处理"
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "RadioItem",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "style": {
+          "type": {
+            "name": "object"
+          },
+          "required": false,
+          "description": "自定义内联样式",
+          "docblock": "自定义内联样式",
+          "properties": []
+        },
+        "helper": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "显示在菜单右侧的帮助文本，通常用于一些附加信息",
+          "defaultValue": {
+            "value": "null",
+            "computed": false
+          },
+          "docblock": "显示在菜单右侧的帮助文本，通常用于一些附加信息"
+        },
+        "disabled": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "禁用当前菜单项, 被禁用不会触发事件, 也无法选中Checkbox/Radio"
+        },
+        "selected": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高",
+          "docblock": "当前的菜单项是否被选中, 优先级比Menu传入的selectedKeys要高"
+        },
+        "onClick": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "点击了菜单项触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "点击了菜单项触发的事件\n@param {String} key 当前菜单项的key值\n@param {Event} e DOM事件",
+          "params": [
+            {
+              "name": "key",
+              "description": "当前菜单项的key值",
+              "type": {
+                "name": "String"
+              }
+            },
+            {
+              "name": "e",
+              "description": "DOM事件",
+              "type": {
+                "name": "Event"
+              }
+            }
+          ],
+          "returns": null
+        },
+        "hasSelectedIcon": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示选中图标",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示选中图标"
+        },
+        "needIndent": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "是否显示缩进",
+          "defaultValue": {
+            "value": "true",
+            "computed": false
+          },
+          "docblock": "是否显示缩进"
+        },
+        "checked": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "默认是否选中当前菜单项",
+          "docblock": "默认是否选中当前菜单项"
+        },
+        "onChange": {
+          "type": {
+            "name": "func"
+          },
+          "required": false,
+          "description": "选择被改变的时候触发的事件",
+          "defaultValue": {
+            "value": "() => {}",
+            "computed": false
+          },
+          "docblock": "选择被改变的时候触发的事件\n@param {Boolean} checked 是否选中",
+          "params": [
+            {
+              "name": "checked",
+              "description": "是否选中",
+              "type": {
+                "name": "Boolean"
+              }
+            }
+          ],
+          "returns": null
+        }
+      },
+      "methods": []
+    },
+    {
+      "name": "SubMenu",
+      "props": {
+        "prefix": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "样式类名的品牌前缀",
+          "defaultValue": {
+            "value": "'next-'",
+            "computed": false
+          },
+          "docblock": "样式类名的品牌前缀"
+        },
+        "className": {
+          "type": {
+            "name": "string"
+          },
+          "required": false,
+          "description": "自定义类名",
+          "docblock": "自定义类名"
+        },
+        "label": {
+          "type": {
+            "name": "any"
+          },
+          "required": false,
+          "description": "子菜单的标签",
+          "defaultValue": {
+            "value": "'sub-item'",
+            "computed": false
+          },
+          "docblock": "子菜单的标签"
+        },
+        "visible": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "设置子菜单的显示状态",
+          "docblock": "设置子菜单的显示状态"
+        },
+        "mode": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'inline'",
+                "computed": false
+              },
+              {
+                "value": "'popup'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "设置子菜单表现的形式",
+          "defaultValue": {
+            "value": "'inline'",
+            "computed": false
+          },
+          "docblock": "设置子菜单表现的形式"
+        },
+        "triggerType": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'click'",
+                "computed": false
+              },
+              {
+                "value": "'hover'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "设置子菜单显示触发的类型",
+          "defaultValue": {
+            "value": "'click'",
+            "computed": false
+          },
+          "docblock": "设置子菜单显示触发的类型"
+        },
+        "selectable": {
+          "type": {
+            "name": "bool"
+          },
+          "required": false,
+          "description": "设置子菜单的label是否可以被选中",
+          "defaultValue": {
+            "value": "false",
+            "computed": false
+          },
+          "docblock": "设置子菜单的label是否可以被选中"
+        },
+        "align": {
+          "type": {
+            "name": "enum",
+            "value": [
+              {
+                "value": "'outside'",
+                "computed": false
+              },
+              {
+                "value": "'follow'",
+                "computed": false
+              }
+            ]
+          },
+          "required": false,
+          "description": "设置子菜单的跟随类型",
+          "defaultValue": {
+            "value": "'follow'",
+            "computed": false
+          },
+          "docblock": "设置子菜单的跟随类型"
+        }
+      },
+      "methods": []
+    }
+  ]
+}

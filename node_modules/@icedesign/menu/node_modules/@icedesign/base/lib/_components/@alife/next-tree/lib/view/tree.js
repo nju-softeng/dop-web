@@ -1,0 +1,832 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _util = require('../util/index.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+// TODO 1.x halfChecked => indeterminate
+
+/**
+ * Tree
+ */
+var Tree = (_temp = _class = function (_Component) {
+    _inherits(Tree, _Component);
+
+    function Tree(props, context) {
+        _classCallCheck(this, Tree);
+
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props, context));
+
+        ['onKeyDown', 'onCheck'].forEach(function (m) {
+            _this[m] = _this[m].bind(_this);
+        });
+        _this.checkedKeysChange = true;
+
+        _this.state = {
+            expandedKeys: _this.getDefaultExpandedKeys(props),
+            checkedKeys: _this.getDefaultCheckedKeys(props),
+            selectedKeys: _this.getDefaultSelectedKeys(props),
+            dragNodesKeys: '',
+            dragOverNodeKey: '',
+            dropNodeKey: ''
+        };
+        return _this;
+    }
+
+    Tree.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        var expandedKeys = this.getDefaultExpandedKeys(nextProps, true);
+        var checkedKeys = this.getDefaultCheckedKeys(nextProps, true);
+        var selectedKeys = this.getDefaultSelectedKeys(nextProps, true);
+        var st = {};
+        if (expandedKeys) {
+            st.expandedKeys = expandedKeys;
+        }
+        if (checkedKeys) {
+            if (nextProps.checkedKeys === this.props.checkedKeys) {
+                this.checkedKeysChange = false;
+            } else {
+                this.checkedKeysChange = true;
+            }
+            st.checkedKeys = checkedKeys;
+        }
+        if (selectedKeys) {
+            st.selectedKeys = selectedKeys;
+        }
+        this.setState(st);
+    };
+
+    Tree.prototype.getPrefix = function getPrefix() {
+        return this.context.prefix || this.props.prefix;
+    };
+
+    Tree.prototype.onDragStart = function onDragStart(e, treeNode) {
+        this.dragNode = treeNode;
+        this.dragNodesKeys = this.getDragNodes(treeNode);
+        var st = {
+            dragNodesKeys: this.dragNodesKeys
+        };
+        var expandedKeys = this.getExpandedKeys(treeNode, false);
+        if (expandedKeys) {
+            this.getRawExpandedKeys();
+            st.expandedKeys = expandedKeys;
+        }
+        this.setState(st);
+        this.props.onDragStart({
+            event: e,
+            node: treeNode
+        });
+    };
+
+    Tree.prototype.onDragEnterGap = function onDragEnterGap(e, treeNode) {
+        var offsetTop = (0, _util.getOffset)(treeNode.refs.selectHandle).top;
+        var offsetHeight = treeNode.refs.selectHandle.offsetHeight;
+        var pageY = e.pageY;
+        var gapHeight = 2;
+        if (pageY > offsetTop + offsetHeight - gapHeight) {
+            this.dropPosition = 1;
+            return 1;
+        }
+        if (pageY < offsetTop + gapHeight) {
+            this.dropPosition = -1;
+            return -1;
+        }
+        this.dropPosition = 0;
+        return 0;
+    };
+
+    Tree.prototype.onDragEnter = function onDragEnter(e, treeNode) {
+        var enterGap = this.onDragEnterGap(e, treeNode);
+        if (this.dragNode.props.eventKey === treeNode.props.eventKey && enterGap === 0) {
+            this.setState({
+                dragOverNodeKey: ''
+            });
+            return;
+        }
+        var st = {
+            dragOverNodeKey: treeNode.props.eventKey
+        };
+        var expandedKeys = this.getExpandedKeys(treeNode, true);
+        if (expandedKeys) {
+            this.getRawExpandedKeys();
+            st.expandedKeys = expandedKeys;
+        }
+        this.setState(st);
+        this.props.onDragEnter({
+            event: e,
+            node: treeNode,
+            expandedKeys: expandedKeys && [].concat(_toConsumableArray(expandedKeys)) || [].concat(_toConsumableArray(this.state.expandedKeys))
+        });
+    };
+
+    Tree.prototype.onDragOver = function onDragOver(e, treeNode) {
+        this.props.onDragOver({ event: e, node: treeNode });
+    };
+
+    Tree.prototype.onDragLeave = function onDragLeave(e, treeNode) {
+        this.props.onDragLeave({ event: e, node: treeNode });
+    };
+
+    Tree.prototype.onDrop = function onDrop(e, treeNode) {
+        var key = treeNode.props.eventKey;
+        this.setState({
+            dragOverNodeKey: '',
+            dropNodeKey: key
+        });
+        if (this.dragNodesKeys.indexOf(key) > -1) {
+            return false;
+        }
+
+        var res = _extends({
+            event: e
+        }, this.generateDropParams(treeNode));
+        if ('expandedKeys' in this.props) {
+            res.rawExpandedKeys = this._rawExpandedKeys && [].concat(_toConsumableArray(this._rawExpandedKeys)) || [].concat(_toConsumableArray(this.state.expandedKeys));
+        }
+        this.props.onDrop(res);
+    };
+
+    Tree.prototype.canDrop = function canDrop(treeNode) {
+        var params = this.generateDropParams(treeNode);
+        return this.props.canDrop(params);
+    };
+
+    Tree.prototype.generateDropParams = function generateDropParams(treeNode) {
+        var posArr = treeNode.props.pos.split('-');
+        return {
+            dragNode: this.dragNode,
+            dragNodesKeys: [].concat(_toConsumableArray(this.dragNodesKeys)),
+            node: treeNode,
+            dropPosition: this.dropPosition + Number(posArr[posArr.length - 1]),
+            dropToGap: this.dropPosition !== 0
+        };
+    };
+
+    Tree.prototype.onExpand = function onExpand(treeNode) {
+        var _this2 = this;
+
+        var expanded = !treeNode.props.expanded;
+        var controlled = 'expandedKeys' in this.props;
+        var expandedKeys = [].concat(_toConsumableArray(this.state.expandedKeys));
+        var index = expandedKeys.indexOf(treeNode.props.eventKey);
+        if (expanded && index === -1) {
+            expandedKeys.push(treeNode.props.eventKey);
+        } else if (!expanded && index > -1) {
+            expandedKeys.splice(index, 1);
+        }
+        if (!controlled) {
+            this.setState({ expandedKeys: expandedKeys });
+        }
+        this.props.onExpand(expandedKeys, { node: treeNode, expanded: expanded });
+
+        if (expanded && this.props.loadData) {
+            return this.props.loadData(treeNode).then(function () {
+                if (!controlled) {
+                    _this2.setState({ expandedKeys: expandedKeys });
+                }
+            });
+        }
+    };
+
+    Tree.prototype.onCheck = function onCheck(treeNode) {
+        var _this3 = this;
+
+        var checked = !treeNode.props.checked;
+        if (treeNode.props.halfChecked) {
+            checked = true;
+        }
+        var key = treeNode.props.eventKey;
+        var checkedKeys = [].concat(_toConsumableArray(this.state.checkedKeys));
+        var index = checkedKeys.indexOf(key);
+
+        var newSt = {
+            event: 'check',
+            node: treeNode,
+            checked: checked
+        };
+
+        if (this.props.checkStrictly && 'checkedKeys' in this.props) {
+            if (checked && index === -1) {
+                checkedKeys.push(key);
+            }
+            if (!checked && index > -1) {
+                checkedKeys.splice(index, 1);
+            }
+            newSt.checkedNodes = [];
+            (0, _util.loopAllChildren)(this.props.children, function (item, ind, pos, keyOrPos) {
+                if (checkedKeys.indexOf(keyOrPos) !== -1) {
+                    newSt.checkedNodes.push(item);
+                }
+            });
+            this.props.onCheck((0, _util.getStrictlyValue)(checkedKeys, this.props.checkedKeys.halfChecked), newSt);
+        } else {
+            if (checked && index === -1) {
+                this.treeNodesStates[treeNode.props.pos].checked = true;
+                var checkedPositions = [];
+                Object.keys(this.treeNodesStates).forEach(function (i) {
+                    if (_this3.treeNodesStates[i].checked) {
+                        checkedPositions.push(i);
+                    }
+                });
+                (0, _util.handleCheckState)(this.treeNodesStates, (0, _util.filterParentPosition)(checkedPositions), true);
+            }
+            if (!checked) {
+                this.treeNodesStates[treeNode.props.pos].checked = false;
+                this.treeNodesStates[treeNode.props.pos].halfChecked = false;
+                (0, _util.handleCheckState)(this.treeNodesStates, [treeNode.props.pos], false);
+            }
+            var checkKeys = (0, _util.getCheck)(this.treeNodesStates);
+            newSt.checkedNodes = checkKeys.checkedNodes;
+            newSt.checkedNodesPositions = checkKeys.checkedNodesPositions;
+            newSt.halfCheckedKeys = checkKeys.halfCheckedKeys;
+            this.checkKeys = checkKeys;
+
+            checkedKeys = checkKeys.checkedKeys;
+            this._checkedKeys = [].concat(_toConsumableArray(checkedKeys));
+            if (!('checkedKeys' in this.props)) {
+                this.setState({
+                    checkedKeys: checkedKeys
+                });
+            }
+            this.props.onCheck(checkedKeys, newSt);
+        }
+    };
+
+    Tree.prototype.onSelect = function onSelect(treeNode) {
+        var props = this.props;
+        var selectedKeys = [].concat(_toConsumableArray(this.state.selectedKeys));
+        var eventKey = treeNode.props.eventKey;
+        var index = selectedKeys.indexOf(eventKey);
+        var selected = void 0;
+        if (index !== -1) {
+            selected = false;
+            selectedKeys.splice(index, 1);
+        } else {
+            selected = true;
+            if (!props.multiple) {
+                selectedKeys.length = 0;
+            }
+            selectedKeys.push(eventKey);
+        }
+        var selectedNodes = [];
+        if (selectedKeys.length) {
+            (0, _util.loopAllChildren)(this.props.children, function (item) {
+                if (selectedKeys.indexOf(item.key) !== -1) {
+                    selectedNodes.push(item);
+                }
+            });
+        }
+        var newSt = {
+            event: 'select',
+            node: treeNode,
+            selected: selected,
+            selectedNodes: selectedNodes
+        };
+        if (!('selectedKeys' in this.props)) {
+            this.setState({
+                selectedKeys: selectedKeys
+            });
+        }
+        props.onSelect(selectedKeys, newSt);
+    };
+
+    Tree.prototype.onEditFinish = function onEditFinish(info) {
+        this.props.onEditFinish(info);
+    };
+
+    Tree.prototype.onMouseEnter = function onMouseEnter(e, treeNode) {
+        this.props.onMouseEnter({ event: e, node: treeNode });
+    };
+
+    Tree.prototype.onMouseLeave = function onMouseLeave(e, treeNode) {
+        this.props.onMouseLeave({ event: e, node: treeNode });
+    };
+
+    Tree.prototype.onContextMenu = function onContextMenu(e, treeNode) {
+        this.props.onRightClick({ event: e, node: treeNode });
+    };
+
+    Tree.prototype.onKeyDown = function onKeyDown(e) {
+        e.preventDefault();
+    };
+
+    Tree.prototype.getFilterExpandedKeys = function getFilterExpandedKeys(props, expandKeyProp, expandAll) {
+        var keys = props[expandKeyProp];
+        var expandedPositionArr = [];
+        if (props.autoExpandParent) {
+            (0, _util.loopAllChildren)(props.children, function (item, index, pos, newKey) {
+                if (keys.indexOf(newKey) > -1) {
+                    expandedPositionArr.push(pos);
+                }
+            });
+        }
+        var filterExpandedKeys = [];
+        (0, _util.loopAllChildren)(props.children, function (item, index, pos, newKey) {
+            if (expandAll) {
+                filterExpandedKeys.push(newKey);
+            } else if (props.autoExpandParent) {
+                expandedPositionArr.forEach(function (p) {
+                    if ((p.split('-').length > pos.split('-').length && (0, _util.isInclude)(pos.split('-'), p.split('-')) || pos === p) && filterExpandedKeys.indexOf(newKey) === -1) {
+                        filterExpandedKeys.push(newKey);
+                    }
+                });
+            }
+        });
+        return filterExpandedKeys.length ? filterExpandedKeys : keys;
+    };
+
+    Tree.prototype.getDefaultExpandedKeys = function getDefaultExpandedKeys(props, willReceiveProps) {
+        var expandedKeys = willReceiveProps ? undefined : this.getFilterExpandedKeys(props, 'defaultExpandedKeys', props.defaultExpandAll);
+        if ('expandedKeys' in props) {
+            expandedKeys = (props.autoExpandParent ? this.getFilterExpandedKeys(props, 'expandedKeys', false) : props.expandedKeys) || [];
+        }
+        return expandedKeys;
+    };
+
+    Tree.prototype.getDefaultCheckedKeys = function getDefaultCheckedKeys(props, willReceiveProps) {
+        var checkedKeys = willReceiveProps ? undefined : props.defaultCheckedKeys;
+        if ('checkedKeys' in props) {
+            checkedKeys = props.checkedKeys || [];
+            if (props.checkStrictly) {
+                if (props.checkedKeys.checked) {
+                    checkedKeys = props.checkedKeys.checked;
+                } else if (!Array.isArray(props.checkedKeys)) {
+                    checkedKeys = [];
+                }
+            }
+        }
+        return checkedKeys;
+    };
+
+    Tree.prototype.getDefaultSelectedKeys = function getDefaultSelectedKeys(props, willReceiveProps) {
+        var getKeys = function getKeys(keys) {
+            if (props.multiple) {
+                return [].concat(_toConsumableArray(keys));
+            }
+            if (keys.length) {
+                return [keys[0]];
+            }
+            return keys;
+        };
+        var selectedKeys = willReceiveProps ? undefined : getKeys(props.defaultSelectedKeys);
+        if ('selectedKeys' in props) {
+            selectedKeys = getKeys(props.selectedKeys);
+        }
+        return selectedKeys;
+    };
+
+    Tree.prototype.getRawExpandedKeys = function getRawExpandedKeys() {
+        if (!this._rawExpandedKeys && 'expandedKeys' in this.props) {
+            this._rawExpandedKeys = [].concat(_toConsumableArray(this.state.expandedKeys));
+        }
+    };
+
+    Tree.prototype.getDragNodes = function getDragNodes(treeNode) {
+        var dragNodesKeys = [];
+        var tPArr = treeNode.props.pos.split('-');
+        (0, _util.loopAllChildren)(this.props.children, function (item, index, pos, newKey) {
+            var pArr = pos.split('-');
+            if (treeNode.props.pos === pos || tPArr.length < pArr.length && (0, _util.isInclude)(tPArr, pArr)) {
+                dragNodesKeys.push(newKey);
+            }
+        });
+        return dragNodesKeys;
+    };
+
+    Tree.prototype.getExpandedKeys = function getExpandedKeys(treeNode, expand) {
+        var key = treeNode.props.eventKey;
+        var expandedKeys = this.state.expandedKeys;
+        var expandedIndex = expandedKeys.indexOf(key);
+        var exKeys = void 0;
+        if (expandedIndex > -1 && !expand) {
+            exKeys = [].concat(_toConsumableArray(expandedKeys));
+            exKeys.splice(expandedIndex, 1);
+            return exKeys;
+        }
+        if (expand && expandedKeys.indexOf(key) === -1) {
+            return expandedKeys.concat([key]);
+        }
+    };
+
+    Tree.prototype.filterTreeNode = function filterTreeNode(treeNode) {
+        var filterTreeNode = this.props.filterTreeNode;
+        if (typeof filterTreeNode !== 'function' || treeNode.props.disabled) {
+            return false;
+        }
+        return filterTreeNode.call(this, treeNode);
+    };
+
+    Tree.prototype.renderTreeNode = function renderTreeNode(child, index) {
+        var level = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+        var pos = level + '-' + index;
+        var key = child.key || pos;
+        var state = this.state;
+        var props = this.props;
+
+        var selectable = props.selectable;
+        var editable = props.editable;
+        var draggable = props.draggable;
+
+        if (child.props.hasOwnProperty('selectable')) {
+            selectable = child.props.selectable;
+        }
+        if (child.props.hasOwnProperty('editable')) {
+            editable = child.props.editable;
+        }
+        if (child.props.hasOwnProperty('draggable')) {
+            draggable = child.props.draggable;
+        }
+
+        var cloneProps = {
+            ref: 'treeNode-' + key,
+            root: this,
+            eventKey: key,
+            pos: pos,
+            selectable: selectable,
+            editable: editable,
+            loadData: props.loadData,
+            onMouseEnter: props.onMouseEnter,
+            onMouseLeave: props.onMouseLeave,
+            onRightClick: props.onRightClick,
+            prefix: this.getPrefix(),
+            showLine: props.showLine,
+            showIcon: props.showIcon,
+            draggable: draggable,
+            dragOver: state.dragOverNodeKey === key && this.dropPosition === 0,
+            dragOverGapTop: state.dragOverNodeKey === key && this.dropPosition === -1,
+            dragOverGapBottom: state.dragOverNodeKey === key && this.dropPosition === 1,
+            expanded: state.expandedKeys.indexOf(key) !== -1,
+            selected: state.selectedKeys.indexOf(key) !== -1,
+            filterTreeNode: this.filterTreeNode.bind(this)
+        };
+        if (props.checkable) {
+            cloneProps.checkable = _react2['default'].createElement('span', { className: 'next-tree-checkbox-inner' });
+            if (props.checkStrictly) {
+                if (state.checkedKeys) {
+                    cloneProps.checked = state.checkedKeys.indexOf(key) !== -1 || false;
+                }
+                if (props.checkedKeys.halfChecked) {
+                    cloneProps.halfChecked = props.checkedKeys.halfChecked.indexOf(key) !== -1 || false;
+                } else {
+                    cloneProps.halfChecked = false;
+                }
+            } else {
+                if (this.checkedKeys) {
+                    cloneProps.checked = this.checkedKeys.indexOf(key) !== -1 || false;
+                }
+                cloneProps.halfChecked = this.halfCheckedKeys.indexOf(key) !== -1;
+            }
+
+            if (this.treeNodesStates[pos]) {
+                cloneProps = _extends({}, cloneProps, this.treeNodesStates[pos].siblingPosition);
+            }
+        }
+        return _react2['default'].cloneElement(child, cloneProps);
+    };
+
+    Tree.prototype.render = function render() {
+        var _classNames,
+            _this4 = this;
+
+        var prefix = this.getPrefix();
+        // eslint-disable-next-line
+        var _props = this.props,
+            propsPrefix = _props.prefix,
+            className = _props.className,
+            focusable = _props.focusable,
+            checkable = _props.checkable,
+            loadData = _props.loadData,
+            showLine = _props.showLine,
+            checkStrictly = _props.checkStrictly,
+            children = _props.children,
+            _treeNodesStates = _props._treeNodesStates,
+            enableCheckedCache = _props.enableCheckedCache;
+
+
+        var domProps = {
+            className: (0, _classnames2['default'])((_classNames = {}, _defineProperty(_classNames, prefix + 'tree', true), _defineProperty(_classNames, prefix + 'tree-with-line', showLine), _defineProperty(_classNames, className, className), _classNames)),
+            role: 'tree-node'
+        };
+
+        if (focusable) {
+            domProps.tabIndex = '0';
+            domProps.onKeyDown = this.onKeyDown;
+        }
+
+        if (checkable && (this.checkedKeysChange || loadData || !enableCheckedCache)) {
+            if (checkStrictly) {
+                this.treeNodesStates = {};
+                (0, _util.loopAllChildren)(children, function (item, index, pos, keyOrPos, siblingPosition) {
+                    _this4.treeNodesStates[pos] = {
+                        siblingPosition: siblingPosition
+                    };
+                });
+            } else if (_treeNodesStates) {
+                this.treeNodesStates = _treeNodesStates.treeNodesStates;
+                this.halfCheckedKeys = _treeNodesStates.halfCheckedKeys;
+                this.checkedKeys = _treeNodesStates.checkedKeys;
+            } else {
+                var checkedKeys = this.state.checkedKeys;
+                var checkKeys = void 0;
+                if (enableCheckedCache && !loadData && this.checkKeys && this._checkedKeys && (0, _util.arraysEqual)(this._checkedKeys, checkedKeys)) {
+                    checkKeys = this.checkKeys;
+                } else {
+                    var checkedPositions = [];
+                    this.treeNodesStates = {};
+                    (0, _util.loopAllChildren)(children, function (item, index, pos, keyOrPos, siblingPosition) {
+                        _this4.treeNodesStates[pos] = {
+                            node: item,
+                            key: keyOrPos,
+                            checked: false,
+                            halfChecked: false,
+                            siblingPosition: siblingPosition
+                        };
+                        if (checkedKeys.indexOf(keyOrPos) !== -1) {
+                            _this4.treeNodesStates[pos].checked = true;
+                            checkedPositions.push(pos);
+                        }
+                    });
+                    (0, _util.handleCheckState)(this.treeNodesStates, (0, _util.filterParentPosition)(checkedPositions), true);
+                    checkKeys = (0, _util.getCheck)(this.treeNodesStates);
+                }
+                this.halfCheckedKeys = checkKeys.halfCheckedKeys;
+                this.checkedKeys = checkKeys.checkedKeys;
+            }
+        }
+
+        return _react2['default'].createElement(
+            'ul',
+            _extends({}, domProps, { unselectable: true, ref: 'tree' }),
+            _react2['default'].Children.map(children, function (child, index) {
+                return _this4.renderTreeNode(child, index);
+            })
+        );
+    };
+
+    return Tree;
+}(_react.Component), _class.contextTypes = {
+    prefix: _propTypes2['default'].string
+}, _class.propTypes = {
+    /**
+     * 样式类名的品牌前缀
+     */
+    prefix: _propTypes2['default'].string,
+    /**
+     * 自定义类名
+     */
+    className: _propTypes2['default'].string,
+    /**
+     * 自定义内联样式
+     */
+    style: _propTypes2['default'].object,
+    /**
+     * 树节点
+     */
+    children: _propTypes2['default'].node,
+    /**
+     * 是否显示树的线
+     */
+    showLine: _propTypes2['default'].bool,
+    /**
+     * 是否支持选中节点
+     */
+    selectable: _propTypes2['default'].bool,
+    /**
+     * （用于受控）当前选中节点key的数组
+     */
+    selectedKeys: _propTypes2['default'].arrayOf(_propTypes2['default'].string),
+    /**
+     * （用于非受控）默认选中节点key的数组
+     */
+    defaultSelectedKeys: _propTypes2['default'].arrayOf(_propTypes2['default'].string),
+    /**
+     * 选中或取消选中节点时触发的回调函数
+     * @param {Array} selectedKeys 选中节点key的数组
+     * @param {Object} extra 额外参数
+     * @param {Array} extra.selectedNodes 选中节点的数组
+     * @param {ReactElement} extra.node 当前操作的节点
+     * @param {Boolean} extra.selected 当前操作是否是选中
+     * @param {String} extra.event 当前操作的类型，值为'select'
+     */
+    onSelect: _propTypes2['default'].func,
+    /**
+     * 是否支持多选
+     */
+    multiple: _propTypes2['default'].bool,
+    /**
+     * 是否支持勾选节点的复选框
+     */
+    checkable: _propTypes2['default'].bool,
+    /**
+     * （用于受控）当前勾选复选框节点key的数组或`{checked: Array, halfChecked: Array}`的对象
+     */
+    checkedKeys: _propTypes2['default'].oneOfType([_propTypes2['default'].arrayOf(_propTypes2['default'].string), _propTypes2['default'].object]),
+    /**
+     * （用于非受控）默认勾选复选框节点key的数组
+     */
+    defaultCheckedKeys: _propTypes2['default'].arrayOf(_propTypes2['default'].string),
+    /**
+     * 勾选节点复选框是否完全受控（父子节点选中状态不再关联）
+     */
+    checkStrictly: _propTypes2['default'].bool,
+    /**
+     * 是否启用勾选节点复选框的缓存来提高性能，如果dataSource需要被动态更新，请将其设置为false
+     */
+    enableCheckedCache: _propTypes2['default'].bool,
+    /**
+     * 勾选或取消勾选复选框时触发的回调函数
+     * @param {Array} checkedKeys 勾选复选框节点key的数组
+     * @param {Object} extra 额外参数
+     * @param {Array} extra.checkedNodes 勾选复选框节点的数组
+     * @param {Array} extra.checkedNodesPositions 包含有勾选复选框节点和其位置的对象的数组
+     * @param {Array} extra.halfCheckedKeys 半选复选框节点key的数组
+     * @param {ReactElement} extra.node 当前操作的节点
+     * @param {Boolean} extra.checked 当前操作是否是勾选
+     * @param {String} extra.event 当前操作的类型，值为'check'
+     */
+    onCheck: _propTypes2['default'].func,
+    /**
+     * （用于受控）当前展开的节点key的数组
+     */
+    expandedKeys: _propTypes2['default'].arrayOf(_propTypes2['default'].string),
+    /**
+     * （用于非受控）默认展开的节点key的数组
+     */
+    defaultExpandedKeys: _propTypes2['default'].arrayOf(_propTypes2['default'].string),
+    /**
+     * 是否默认展开所有节点
+     */
+    defaultExpandAll: _propTypes2['default'].bool,
+    /**
+     * 是否自动展开父节点
+     */
+    autoExpandParent: _propTypes2['default'].bool,
+    /**
+     * 展开或收起节点时触发的回调函数
+     * @param {Array} expandedKeys 展开的节点key的数组
+     * @param {Object} extra 额外参数
+     * @param {ReactElement} extra.node 当前操作的节点
+     * @param {Boolean} extra.expanded 当前操作是否是展开
+     */
+    onExpand: _propTypes2['default'].func,
+    /**
+     * 是否支持编辑节点内容
+     */
+    editable: _propTypes2['default'].bool,
+    /**
+     * 编辑节点内容完成时触发的回调函数
+     * @param {String} key 编辑节点的key
+     * @param {String} label 编辑节点完成时节点的文本
+     */
+    onEditFinish: _propTypes2['default'].func,
+    /**
+     * 是否支持拖拽节点
+     */
+    draggable: _propTypes2['default'].bool,
+    /**
+     * 开始拖拽节点时触发的回调函数
+     * @param {Object} info 拖拽信息
+     * @param {Object} info.event 事件对象
+     * @param {ReactElement} info.node 拖拽的节点
+     */
+    onDragStart: _propTypes2['default'].func,
+    /**
+     * 拖拽节点进入目标节点时触发的回调函数
+     * @param {Object} info 拖拽信息
+     * @param {Object} info.event 事件对象
+     * @param {ReactElement} info.node 目标节点
+     * @param {Array} info.expandedKeys 当前展开的节点key的数组
+     */
+    onDragEnter: _propTypes2['default'].func,
+    /**
+     * 拖拽节点在目标节点上移动的时候触发的回调函数
+     * @param {Object} info 拖拽信息
+     * @param {Object} info.event 事件对象
+     * @param {ReactElement} info.node 目标节点
+     */
+    onDragOver: _propTypes2['default'].func,
+    /**
+     * 拖拽节点离开目标节点时触发的回调函数
+     * @param {Object} info 拖拽信息
+     * @param {Object} info.event 事件对象
+     * @param {ReactElement} info.node 目标节点
+     */
+    onDragLeave: _propTypes2['default'].func,
+    /**
+     * 拖拽节点放入目标节点内或前后触发的回调函数
+     * @param {Object} info 拖拽信息
+     * @param {Object} info.event 事件对象
+     * @param {ReactElement} info.node 目标节点
+     * @param {ReactElement} info.dragNode 拖拽的节点
+     * @param {Array} info.dragNodesKeys 拖拽的节点和其子节点key的数组
+     * @param {Number} info.dropPosition 拖拽的节点在拖拽后被放置在当前层级的位置
+     * @param {Boolean} info.dropToGap 是否被放置在目标节点的前后（没有被放置在目标节点内部）
+     */
+    onDrop: _propTypes2['default'].func,
+    /**
+     * 节点是否可被作为拖拽的目标节点
+     * @param {Object} info 拖拽信息
+     * @param {ReactElement} info.node 目标节点
+     * @param {ReactElement} info.dragNode 拖拽的节点
+     * @param {Array} info.dragNodesKeys 拖拽的节点和其子节点key的数组
+     * @param {Number} info.dropPosition 拖拽的节点在拖拽后被放置在当前层级的位置
+     * @param {Boolean} info.dropToGap 是否被放置在目标节点的前后（没有被放置在目标节点内部）
+     * @return {Boolean} 是否可以被当作目标节点
+     */
+    canDrop: _propTypes2['default'].func,
+    /**
+     * 异步加载数据的函数
+     * @param {ReactElement} node 被点击展开的节点
+     */
+    loadData: _propTypes2['default'].func,
+    /**
+     * 按需筛选高亮节点
+     * @param {ReactElement} node 待筛选的节点
+     * @return {Boolean} 是否被筛选中
+     */
+    filterTreeNode: _propTypes2['default'].func,
+    /**
+     * 右键点击节点时触发的回调函数
+     * @param {Object} event 事件对象
+     * @param {ReactElement} node 点击的节点
+     */
+    onRightClick: _propTypes2['default'].func,
+    /**
+     * 设置节点是否占满剩余空间，一般用于统一在各节点右侧添加元素(借助flex实现，暂时只支持ie10+)
+     */
+    isLabelBlock: _propTypes2['default'].bool,
+    /**
+     * 是否开启展开收起动画
+     */
+    animation: _propTypes2['default'].bool,
+    showIcon: _propTypes2['default'].bool,
+    _treeNodesStates: _propTypes2['default'].object,
+    onMouseEnter: _propTypes2['default'].func,
+    onMouseLeave: _propTypes2['default'].func
+}, _class.defaultProps = {
+    prefix: 'next-',
+    showLine: false,
+    showIcon: false,
+    selectable: true,
+    editable: false,
+    multiple: false,
+    checkable: false,
+    checkStrictly: false,
+    enableCheckedCache: true,
+    draggable: false,
+    autoExpandParent: true,
+    defaultExpandAll: false,
+    defaultExpandedKeys: [],
+    defaultCheckedKeys: [],
+    defaultSelectedKeys: [],
+    onExpand: function onExpand() {},
+    onCheck: function onCheck() {},
+    onSelect: function onSelect() {},
+    onDragStart: function onDragStart() {},
+    onDragEnter: function onDragEnter() {},
+    onDragOver: function onDragOver() {},
+    onDragLeave: function onDragLeave() {},
+    onDrop: function onDrop() {},
+    canDrop: function canDrop() {
+        return true;
+    },
+    onEditFinish: function onEditFinish() {},
+    isLabelBlock: false,
+    animation: true
+}, _temp);
+Tree.displayName = 'Tree';
+exports['default'] = Tree;
+module.exports = exports['default'];

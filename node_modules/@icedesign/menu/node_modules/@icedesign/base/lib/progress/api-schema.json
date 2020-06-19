@@ -1,0 +1,159 @@
+{
+  "name": "Progress",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式的品牌前缀"
+    },
+    "shape": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'circle'",
+            "computed": false
+          },
+          {
+            "value": "'line'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "形态",
+      "defaultValue": {
+        "value": "'line'",
+        "computed": false
+      },
+      "docblock": "形态"
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'normal'",
+            "computed": false
+          },
+          {
+            "value": "'progressive'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "类型",
+      "defaultValue": {
+        "value": "'normal'",
+        "computed": false
+      },
+      "docblock": "类型"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'small'",
+            "computed": false
+          },
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "尺寸",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "尺寸"
+    },
+    "percent": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "所占百分比",
+      "defaultValue": {
+        "value": "0",
+        "computed": false
+      },
+      "docblock": "所占百分比"
+    },
+    "suffix": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "进度条上的说明内容",
+      "docblock": "进度条上的说明内容"
+    },
+    "showInfo": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否展示内容",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否展示内容"
+    },
+    "state": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'success'",
+            "computed": false
+          },
+          {
+            "value": "'error'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "状态",
+      "docblock": "状态"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义样式名",
+      "docblock": "自定义样式名"
+    },
+    "animation": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否开启动效",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否开启动效"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

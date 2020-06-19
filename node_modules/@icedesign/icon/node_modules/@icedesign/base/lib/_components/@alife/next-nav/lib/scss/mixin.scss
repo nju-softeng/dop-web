@@ -1,0 +1,188 @@
+// nav mixins
+// --------------------------------------------------
+
+@mixin navTypeColor(
+    $bgColor,$hoverBgColor,$hoverColor,$selectBgColor,$selectColor, $activeColor, $textColor,
+    $itemOpenedBgColor, $itemOpenedColor
+) {
+    #{$nav-prefixCls}-menu {
+        border: none;
+        background-color: $bgColor;
+        color: $textColor;
+
+        #{$nav-prefixCls}-item {
+            background-color: $bgColor;
+            color: $textColor;
+            a {
+                color: $textColor;
+                text-decoration: none;
+            }
+            i + a {
+              display: inline-block;
+            }
+            &:before {
+                background-color: $activeColor;
+            }
+            &.opened, &.focused, &:hover {
+                background-color: $hoverBgColor;
+                color: $hoverColor;
+                > a, .#{$css-prefix}icon-arrow-down {
+                    color: $hoverColor;
+                }
+            }
+            &.selected {
+                background-color: $selectBgColor;
+                color: $selectColor;
+                > a, .#{$css-prefix}icon-arrow-down {
+                    color: $selectColor;
+                }
+            }
+            &.disabled {
+              background-color: $bgColor;
+              color: $textColor;
+            }
+        }
+
+        // SubNav 嵌套
+        #{$nav-prefixCls}-subnav {
+            #{$menu-prefixCls}-submenu-title {
+                background-color: $bgColor;
+                color: $textColor;
+            }
+            &.selected > #{$menu-prefixCls}-submenu-title {
+                background-color: $selectBgColor;
+                color: $selectColor;
+            }
+            &.opened > #{$menu-prefixCls}-submenu-title {
+                background-color: $itemOpenedBgColor;
+                color: $itemOpenedColor;
+            }
+            &.focused > #{$menu-prefixCls}-submenu-title {
+                background-color: $hoverBgColor;
+                color: $hoverColor;
+            }
+            #{$menu-prefixCls}-submenu-title:hover {
+                background-color: $hoverBgColor;
+                color: $hoverColor;
+                a {
+                    color: $hoverColor;
+                }
+            }
+        }
+    }
+}
+
+
+@mixin navIconOnlyColor( $hoverBgColor,$hoverColor,$selectBgColor,$selectColor) {
+    #{$nav-prefixCls}-menu {
+        #{$nav-prefixCls}-item {
+            &.opened, &.focused, &:hover {
+                background-color: $hoverBgColor;
+                color: $hoverColor;
+                a {
+                    color: $hoverColor;
+                }
+            }
+            &.selected {
+                background-color: $selectBgColor;
+                color: $selectColor;
+                a {
+                    color: $selectColor;
+                }
+            }
+        }
+
+        // SubNav 嵌套
+        #{$nav-prefixCls}-subnav {
+            &.selected #{$menu-prefixCls}-submenu-title {
+                background-color: $selectBgColor;
+                color: $selectColor;
+            }
+            &.focused #{$menu-prefixCls}-submenu-title {
+                background-color: $hoverBgColor;
+                color: $hoverColor;
+            }
+            #{$menu-prefixCls}-submenu-title:hover {
+                background-color: $hoverBgColor;
+                color: $hoverColor;
+            }
+        }
+    }
+}
+
+@mixin navTypeSize(
+    $height,
+    $direction: 'hoz',
+    $iconDownSize:$icon-xs,
+    $iconSelfSize:$icon-xs,
+    $iconDownMargin: $s-1,
+    $iconSelfMargin: $s-1,
+    $padding: 0
+) {
+    #{$nav-prefixCls}-menu {
+        #{$nav-prefixCls}-item {
+            @if $direction == 'hoz' {
+                height: $height;
+                padding: 0 $padding;
+            }
+            line-height: $height;
+
+            .#{$css-prefix}icon {
+                @include icon-size(
+                    $size: $iconSelfSize,
+                    $marginRight: $iconSelfMargin
+                );
+            }
+
+            .#{$css-prefix}icon-arrow-down {
+                @include icon-size(
+                    $size: $iconDownSize,
+                    $marginLeft: $iconDownMargin
+                );
+            }
+        }
+    }
+}
+
+@mixin navActive($line, $direction: 'hoz') {
+    #{$nav-prefixCls}-item, #{$nav-prefixCls}-popup-item, #{$nav-prefixCls}-subnav {
+        &:before {
+            @if $direction == 'hoz' {
+                height: $line;
+            } @else {
+                width: $line;
+            }
+        }
+    }
+}
+
+// active状态 和 边框重叠
+@mixin navActiveBorder($borderLine, $direction: 'hoz') {
+    @if $direction == 'hoz' {
+        &.top {
+            #{$nav-prefixCls}-item, #{$nav-prefixCls}-subnav, #{$nav-prefixCls}-popup-item {
+                &:before {
+                    top: -$borderLine;
+                }
+            }
+        }
+        &.bottom {
+            #{$nav-prefixCls}-item, #{$nav-prefixCls}-subnav, #{$nav-prefixCls}-popup-item {
+                &:before {
+                    bottom: -$borderLine;
+                }
+            }
+        }
+    } @else {
+        &.left {
+            #{$nav-prefixCls}-item:before {
+                left: -$borderLine;
+            }
+        }
+        &.right {
+            #{$nav-prefixCls}-item:before {
+                right: -$borderLine;
+            }
+        }
+    }
+}

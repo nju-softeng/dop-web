@@ -1,0 +1,239 @@
+{
+  "name": "TimePicker",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式的品牌前缀"
+    },
+    "placeholder": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "输入框提示文案",
+      "docblock": "输入框提示文案"
+    },
+    "defaultValue": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "默认时间",
+      "docblock": "默认时间"
+    },
+    "value": {
+      "type": {
+        "name": "any"
+      },
+      "required": false,
+      "description": "时间",
+      "docblock": "时间"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "时间值改变时的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "时间值改变时的回调\n@param {String} date 日期值\n@param {String} formatDate 格式化后的日期值",
+      "params": [
+        {
+          "name": "date",
+          "description": "日期值",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "formatDate",
+          "description": "格式化后的日期值",
+          "type": {
+            "name": "String"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "defaultOpen": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "默认是否展开",
+      "docblock": "默认是否展开"
+    },
+    "open": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "展开",
+      "docblock": "展开"
+    },
+    "onOpenChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "展开状态改变时的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "展开状态改变时的回调\n@param {Boolean} open 是否展开",
+      "params": [
+        {
+          "name": "open",
+          "description": "是否展开",
+          "type": {
+            "name": "Boolean"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "format": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "展示的时间格式，目前只支持 24 小时值",
+      "defaultValue": {
+        "value": "'HH:mm:ss'",
+        "computed": false
+      },
+      "docblock": "展示的时间格式，目前只支持 24 小时值"
+    },
+    "disabled": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "禁用全部操作",
+      "docblock": "禁用全部操作"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'small'",
+            "computed": false
+          },
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "输入框尺寸",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "输入框尺寸"
+    },
+    "popupStyle": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "弹层样式",
+      "docblock": "弹层样式",
+      "properties": []
+    },
+    "popupAlign": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "弹层对齐方式",
+      "defaultValue": {
+        "value": "'tl tl'",
+        "computed": false
+      },
+      "docblock": "弹层对齐方式"
+    },
+    "popupOffset": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "弹层偏移",
+      "defaultValue": {
+        "value": "[0, 0]",
+        "computed": false
+      },
+      "docblock": "弹层偏移"
+    },
+    "disabledHours": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "禁止选择指定分小时\nFunction() => Array",
+      "docblock": "禁止选择指定分小时\nFunction() => Array",
+      "params": [],
+      "returns": null
+    },
+    "disabledMinutes": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "禁止选择指定分钟\nFunction() => Array",
+      "docblock": "禁止选择指定分钟\nFunction() => Array",
+      "params": [],
+      "returns": null
+    },
+    "disabledSeconds": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "禁止选择部分秒\nFunction() => Array",
+      "docblock": "禁止选择部分秒\nFunction() => Array",
+      "params": [],
+      "returns": null
+    },
+    "hasClear": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示清空按钮",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否显示清空按钮"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定样式名",
+      "docblock": "自定样式名"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

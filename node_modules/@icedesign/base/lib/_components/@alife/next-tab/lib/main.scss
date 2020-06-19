@@ -1,0 +1,456 @@
+@charset "UTF-8";
+
+@import "../../next-core/lib/next.scss";
+@import "./scss/variable.scss";
+@import "./scss/mixin.scss";
+@import "./scss/placeholder.scss";
+
+#{$tab-prefix} {
+    position: relative;
+    overflow: hidden;
+
+    @include box-sizing;
+    @include clearfix;
+
+    &-bar {
+        outline: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    &-nav-container {
+        overflow: hidden;
+        position: relative;
+        white-space: nowrap;
+        line-height: 1.5;
+        @include clearfix;
+    }
+
+    &-nav-wrap {
+        overflow: hidden;
+    }
+
+    &-nav-scroll {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    &-nav {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        transition: all 0.4s $ease-out-quint;
+
+        &-enter,
+        &-appear {
+            animation: fadeInLeft .4s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+            animation-fill-mode: both;
+        }
+
+        &-leave {
+            animation: fadeOutLeft .2s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+            animation-fill-mode: both;
+        }
+    }
+
+    &-tab {
+        display: inline-block;
+        position: relative;
+        transition: all 0.4s $ease-out-quint;
+
+        &-inner {
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            transition: all 0.4s $ease-out-quint;
+        }
+
+        &.active {
+            z-index: 1;
+        }
+    }
+
+    &-content {
+        position: relative;
+        overflow: hidden;
+        min-height: $tab-content-min-height; /* obsolete*/
+    }
+
+    &-vertical {
+        & > #{$tab-prefix}-bar {
+            #{$tab-prefix}-tab {
+                display: block;
+            }
+        }
+    }
+
+    &-tabpane {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+
+    /* Icon*/
+    /* -----------------*/
+    &-tab-down,
+    &-tab-prev,
+    &-tab-next {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        color: $tab-icon-color-normal;
+        cursor: pointer;
+
+        &:hover {
+            color: $tab-icon-color-hover;
+        }
+
+        &.disabled {
+            pointer-events: none;
+            cursor: not-allowed;
+            color: $tab-icon-color-disabled;
+        }
+    }
+
+    &-tab-next {
+        right: $tab-bar-next-icon-positon-right;
+    }
+    &-tab-prev {
+        right: $tab-bar-prev-icon-positon-right;
+    }
+    &-tab-down {
+        right: $tab-bar-down-icon-positon-right;
+    }
+
+    /* Size*/
+    /* -----------------*/
+    &-medium {
+        @include tabs-size(
+                $tab-bar-height-size-m,
+                $tab-bar-padding-size-m,
+                $tab-bar-text-size-m,
+                $tab-bar-control-icon-size-m,
+                $tab-container-padding-left-m,
+                $tab-content-padding-m
+        );
+    }
+
+    &-small {
+        @include tabs-size(
+                $tab-bar-height-size-s,
+                $tab-bar-padding-size-s,
+                $tab-bar-text-size-s,
+                $tab-bar-control-icon-size-s,
+                $tab-container-padding-left-s,
+                $tab-content-padding-s
+        )
+    }
+
+    /* shape: bar(strip)*/
+    /* -----------------*/
+
+    &-strip {
+        & > #{$tab-prefix}-bar {
+
+            border-bottom: $tab-strip-divider-line;
+
+            #{$tab-prefix}-nav-container {
+                margin-bottom: -$tab-strip-divider-border-width;
+
+                #{$tab-prefix}-tab {
+
+                    @include tabs-tab-statement(
+                        $tab-strip-text-color-normal,   // text color
+                        $tab-strip-text-color-hover,
+                        $tab-strip-text-color-selected,
+                        $tab-strip-text-color-disabled,
+                        transparent,                    // bg color
+                        transparent,
+                        transparent,
+                        transparent,
+                        $tab-strip-ink-bar-color        // active bar
+                    );
+
+                    @include tabs-tab-inkbar($tab-strip-ink-bar-width, 0px, 0, 0px, 'bottom');
+
+                    @include tabs-tab-close-icon(
+                        $tab-close-icon-color,
+                        $tab-close-icon-color-hover,
+                        $tab-close-icon-color-selected,
+                        $tab-close-icon-color-disabled,
+                        $tab-close-icon-margin-left
+                    );
+                }
+            }
+        }
+
+        & > #{$tab-prefix}-content {
+
+            @include tabs-content-statement(
+                $tab-strip-content-text-color,
+                $tab-strip-content-bg-color
+            );
+        }
+    }
+
+    /* Shape: wrapped*/
+    /* ---------------------*/
+    &-wrapped {
+        & > #{$tab-prefix}-bar {
+            background: $tab-wrapped-bar-bg-color;
+
+            #{$tab-prefix}-tab {
+                @include tabs-tab-statement(
+                    $tab-wrapped-text-color,
+                    $tab-wrapped-text-color-hover,
+                    $tab-wrapped-text-color-selected,
+                    $tab-wrapped-text-color-disabled,
+                    $tab-wrapped-bg-color,
+                    $tab-wrapped-bg-color-hover,
+                    $tab-wrapped-bg-color-selected,
+                    $tab-wrapped-bg-color-disabled,
+                    $tab-wrapped-ink-bar-color
+                );
+
+                @include tabs-tab-close-icon(
+                    $tab-close-icon-color,
+                    $tab-close-icon-color-hover,
+                    $tab-close-icon-color-selected,
+                    $tab-close-icon-color-disabled,
+                    $tab-close-icon-margin-left
+                );
+            }
+        }
+
+        & > #{$tab-prefix}-content {
+            border: $tab-wrapped-content-border;
+
+            @include tabs-content-statement(
+                $tab-wrapped-content-text-color,
+                $tab-wrapped-content-bg-color
+            );
+        }
+
+        /*-----------------*/
+        /* tabPosition: top|bottom|left|right*/
+        /*-----------------*/
+
+        /* position: top*/
+        &#{$tab-prefix}-top {
+
+            & > #{$tab-prefix}-bar {
+
+                #{$tab-prefix}-tab {
+                    margin-right: $tab-wrapped-tab-margin-right;
+
+                    @include tabs-tab-border(
+                        $tab-wrapped-bar-border,
+                        null,
+                        $tab-wrapped-tab-top-border-radius,
+                        $tab-wrapped-border-line-color-hover,
+                        null,
+                        null,
+                        $tab-wrapped-bg-color-selected,
+                        null
+                    );
+
+                    @include tabs-tab-inkbar(
+                        $tab-wrapped-ink-bar-width,
+                        $tab-wrapped-border-line-width,
+                        -$tab-wrapped-border-line-width,
+                        $tab-wrapped-tab-corner-radius,
+                        'top'
+                    );
+                }
+            }
+
+            & > #{$tab-prefix}-content {
+                top: -$tab-wrapped-content-position-top;
+            }
+        }
+
+        /* position: bottom*/
+        &#{$tab-prefix}-bottom {
+
+            & > #{$tab-prefix}-bar {
+
+                #{$tab-prefix}-tab {
+                    margin-right: $tab-wrapped-tab-margin-right;
+
+                    @include tabs-tab-border(
+                        $tab-wrapped-bar-border,
+                        null,
+                        $tab-wrapped-tab-bottom-border-radius,
+                        $tab-wrapped-border-line-color-hover,
+                        $tab-wrapped-bg-color-selected,
+                        null,
+                        null,
+                        null
+                    );
+
+                    @include tabs-tab-inkbar(
+                        $tab-wrapped-ink-bar-width,
+                        $tab-wrapped-border-line-width,
+                        -$tab-wrapped-border-line-width,
+                        $tab-wrapped-tab-corner-radius,
+                        'bottom'
+                    );
+                }
+            }
+
+            & > #{$tab-prefix}-content {
+                top: $tab-wrapped-content-position-top;
+            }
+        }
+
+        /* position: left*/
+        &#{$tab-prefix}-left {
+            & > #{$tab-prefix}-bar {
+                float: left;
+
+                #{$tab-prefix}-tab {
+                    float: none;
+                    margin-bottom: $tab-wrapped-tab-margin-bottom;
+
+                    @include tabs-tab-border(
+                        $tab-wrapped-bar-border,
+                        null,
+                        $tab-wrapped-tab-left-border-radius,
+                        $tab-wrapped-border-line-color-hover,
+                        null,
+                        $tab-wrapped-bg-color-selected,
+                        null,
+                        null
+                    );
+
+                    @include tabs-tab-inkbar($tab-wrapped-ink-bar-width, $tab-wrapped-border-line-width, -$tab-wrapped-border-line-width, $tab-wrapped-tab-corner-radius, 'left');
+                }
+            }
+
+            & > #{$tab-prefix}-content {
+                right: $tab-wrapped-content-position-right;
+            }
+        }
+
+        /* position: right*/
+        &#{$tab-prefix}-right {
+            & > #{$tab-prefix}-bar {
+                float: right;
+
+                #{$tab-prefix}-tab {
+                    float: none;
+                    margin-bottom: $tab-wrapped-tab-margin-bottom;
+
+                    @include tabs-tab-border(
+                        $tab-wrapped-bar-border,
+                        null,
+                        $tab-wrapped-tab-right-border-radius,
+                        $tab-wrapped-border-line-color-hover,
+                        null,
+                        null,
+                        null,
+                        $tab-wrapped-bg-color-selected
+                    );
+
+                    @include tabs-tab-inkbar($tab-wrapped-ink-bar-width, $tab-wrapped-border-line-width, -$tab-wrapped-border-line-width, $tab-wrapped-tab-corner-radius, 'right');
+                }
+            }
+
+            & > #{$tab-prefix}-content {
+                right: -$tab-wrapped-content-position-right;
+            }
+        }
+    }
+
+    &-capsule {
+        & > #{$tab-prefix}-bar {
+
+            #{$tab-prefix}-tab {
+                border-top: $tab-capsule-tab-border;
+                border-bottom: $tab-capsule-tab-border;
+                border-left: $tab-capsule-tab-border;
+
+                &:first-child {
+                    border-radius: $tab-capsule-corner-radius 0 0 $tab-capsule-corner-radius;
+                }
+
+                &:last-child {
+                    border-radius: 0 $tab-capsule-corner-radius $tab-capsule-corner-radius 0;
+                    border-right: $tab-capsule-tab-border;
+                }
+
+                &.active {
+                    margin-right: -$tab-capsule-tab-border-line-width;
+                    border-color: $tab-capsule-tab-border-line-color-active;
+                }
+
+                @include tabs-tab-statement(
+                    $tab-capsule-text-color,
+                    $tab-capsule-text-color-hover,
+                    $tab-capsule-text-color-selected,
+                    $tab-capsule-text-color-disabled,
+                    $tab-capsule-bg-color,
+                    $tab-capsule-bg-color-hover,
+                    $tab-capsule-bg-color-selected,
+                    $tab-capsule-bg-color-disabled,
+                    $color-transparent
+                );
+            }
+        }
+
+        & > #{$tab-prefix}-content {
+            @include tabs-content-statement(
+                $tab-capsule-content-text-color,
+                $tab-capsule-content-bg-color
+            );
+        }
+    }
+
+    /* Shape: text*/
+    /* -------------------*/
+
+    &-text {
+        & > #{$tab-prefix}-bar {
+
+            #{$tab-prefix}-tab {
+                @include tabs-tab-statement(
+                    $tab-text-text-color-normal,
+                    $tab-text-text-color-hover,
+                    $tab-text-text-color-selected,
+                    $tab-text-text-color-disabled,
+                    transparent, // no bg
+                    transparent, // no hover bg
+                    transparent, // no selected bg
+                    transparent, // no disabled bg
+                    transparent  // active border-color
+                );
+
+                &:after {
+                    content: ' ';
+                    position: absolute;
+                    width: $tab-text-item-sep-width;
+                    background-color: $tab-text-item-sep-color;
+                }
+
+                &:first-child:after {
+                    display: none;
+                }
+            }
+        }
+
+        & > #{$tab-prefix}-content {
+            @include tabs-content-statement(
+                $tab-text-content-text-color,
+                $tab-text-content-bg-color
+            );
+        }
+    }
+}

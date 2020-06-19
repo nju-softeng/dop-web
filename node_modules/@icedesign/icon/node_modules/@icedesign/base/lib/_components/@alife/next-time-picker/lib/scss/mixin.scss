@@ -1,0 +1,33 @@
+@mixin time-picker-trigger-size (
+    $height,
+    $font-size,
+    $icon-size
+) {
+    width: $s-40;
+
+    #{$time-picker-input-prefix} {
+        width: 100%;
+        display: inline-block;
+        border-radius: $time-picker-input-border-radius;
+
+        input {
+            @include inputSize($height, 0, $s-2, $font-size);
+            border-radius: $time-picker-input-border-radius;
+        }
+    }
+
+    #{$time-picker-icon-prefix} {
+        height: $height;
+        line-height: $height;
+
+        @include icon-size($icon-size);
+    }
+}
+
+@mixin time-picker-cell-state (
+    $color,
+    $background
+) {
+    color: $color;
+    background: $background;
+}

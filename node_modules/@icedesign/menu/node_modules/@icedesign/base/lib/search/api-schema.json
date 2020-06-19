@@ -1,0 +1,304 @@
+{
+  "name": "Search",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "size": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "大小，可选 `primary/secondary` 可选择 `medium/large`; `normal` 可选择 `small/medium`",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "大小，可选 `primary/secondary` 可选择 `medium/large`; `normal` 可选择 `small/medium`"
+    },
+    "filter": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "前置下拉框,default为默认选中项 `[{text:'Products', value:'Products',default: true},{text:'Suppliers',valuse:'Suppliers'}]`",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "前置下拉框,default为默认选中项 `[{text:'Products', value:'Products',default: true},{text:'Suppliers',valuse:'Suppliers'}]`"
+    },
+    "hasIcon": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "搜索按钮图标",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "搜索按钮图标"
+    },
+    "searchText": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "搜索按钮文案",
+      "defaultValue": {
+        "value": "'Search'",
+        "computed": false
+      },
+      "docblock": "搜索按钮文案"
+    },
+    "combox": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "定制下拉框,适合业务特殊定制",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "定制下拉框,适合业务特殊定制"
+    },
+    "inputWidth": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "number"
+          }
+        ]
+      },
+      "required": false,
+      "description": "搜索框宽度",
+      "defaultValue": {
+        "value": "'auto'",
+        "computed": false
+      },
+      "docblock": "搜索框宽度"
+    },
+    "overlayVisible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "与combox配合使用,控制定制下拉框的展现",
+      "docblock": "与combox配合使用,控制定制下拉框的展现"
+    },
+    "dataSource": {
+      "type": {
+        "name": "array"
+      },
+      "required": false,
+      "description": "下拉提示框:历史搜索/搜索建议 `[{label:'',value:'',disabled:true}]`",
+      "defaultValue": {
+        "value": "[]",
+        "computed": false
+      },
+      "docblock": "下拉提示框:历史搜索/搜索建议 `[{label:'',value:'',disabled:true}]`"
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'primary'",
+            "computed": false
+          },
+          {
+            "value": "'secondary'",
+            "computed": false
+          },
+          {
+            "value": "'normal'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "类型",
+      "defaultValue": {
+        "value": "'primary'",
+        "computed": false
+      },
+      "docblock": "类型"
+    },
+    "value": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "number"
+          }
+        ]
+      },
+      "required": false,
+      "description": "数值",
+      "docblock": "数值"
+    },
+    "defaultValue": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "搜索框默认值 (不适用于Combox)",
+      "docblock": "搜索框默认值 (不适用于Combox)"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式名称",
+      "docblock": "样式名称"
+    },
+    "placeholder": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "默认提示",
+      "docblock": "默认提示"
+    },
+    "onInputFocus": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "input获取焦点的时候触发的回调",
+      "defaultValue": {
+        "value": "function() {\n}",
+        "computed": false
+      },
+      "docblock": "input获取焦点的时候触发的回调",
+      "params": [],
+      "returns": null
+    },
+    "onInputBlur": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "input失去焦点的时候触发的回调",
+      "defaultValue": {
+        "value": "function() {\n}",
+        "computed": false
+      },
+      "docblock": "input失去焦点的时候触发的回调",
+      "params": [],
+      "returns": null
+    },
+    "onSearch": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "点击搜索按钮触发的回调",
+      "defaultValue": {
+        "value": "function() {\n}",
+        "computed": false
+      },
+      "docblock": "点击搜索按钮触发的回调\n@param {Object} object {filter:'',key:''}",
+      "params": [
+        {
+          "name": "object",
+          "description": "{filter:'',key:''}",
+          "type": {
+            "name": "Object"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "输入关键字时的回掉",
+      "defaultValue": {
+        "value": "function() {\n}",
+        "computed": false
+      },
+      "docblock": "输入关键字时的回掉",
+      "params": [],
+      "returns": null
+    },
+    "onFilterChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "Filter改变时的回掉（filterValue）",
+      "defaultValue": {
+        "value": "function() {\n}",
+        "computed": false
+      },
+      "docblock": "Filter改变时的回掉（filterValue）",
+      "params": [],
+      "returns": null
+    },
+    "autoWidth": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "搜索框100%自适应父容器",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "搜索框100%自适应父容器"
+    },
+    "filterAutoWidth": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "filter的下拉菜单是否与选择器对齐",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "filter的下拉菜单是否与选择器对齐"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义样式",
+      "docblock": "自定义样式",
+      "properties": []
+    },
+    "container": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "指定渲染combox的容器",
+      "docblock": "指定渲染combox的容器"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

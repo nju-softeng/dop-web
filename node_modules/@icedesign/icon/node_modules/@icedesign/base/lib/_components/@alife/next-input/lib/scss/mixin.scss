@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+// input
+// --------------------------------------------------
+
+// Placeholder text
+@mixin inputPlaceholder($color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+
+@mixin inputBounding(){
+    display: inline-table;
+    border-collapse: separate;
+    overflow: visible;
+
+    border: $input-border-width $line-solid $color-line1-1;
+}
+
+@mixin inputDisabled() {
+    color: $input-color-disabled;
+    border-color: $input-color-border-disabled;
+    background-color: $input-color-bg-disabled;
+
+    cursor: not-allowed;
+    &:hover{
+        border-color: $input-color-border-disabled;
+        background-color: $input-color-bg-disabled;
+    }
+}
+
+@mixin inputState(
+    $colorBorder,
+    $colorBorderHover,
+    $colorBorderFocus,
+    $colorBgHover: $color-white,
+    $colorBgFocus: $color-white
+){
+    border-color: $colorBorder;
+
+    &:hover{
+        border-color: $colorBorderHover;
+        background-color: $colorBgHover;
+    }
+    &.focus{
+        border-color: $colorBorderFocus;
+        background-color: $colorBgFocus;
+    }
+}
+
+@mixin inputSize(
+    $height,
+    $margin,
+    $padding,
+    $fontSize
+){
+    height: $height - 2;
+    line-height: ($height - 2)\0;
+    margin: $margin;
+    padding: 0 $padding;
+    font-size: $fontSize;
+    &:placeholder{
+        font-size: $fontSize;
+    }
+}
+
+@mixin inputAddonState($color, $bgColor, $borderColor){
+    color: $color;
+    background-color: $bgColor;
+    font-weight: normal;
+    text-align: center;
+    border: 1px solid $borderColor;
+
+    &.#{$css-prefix}input-addon-before{
+        border-bottom-right-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+
+    &.#{$css-prefix}input-addon-after {
+        border-bottom-left-radius: 0 !important;
+        border-top-left-radius: 0 !important;
+    }
+}
+
+@mixin inputAddonSize(
+    $height,
+    $padding,
+    $fontSize,
+    $borderRadius
+){
+    display: table-cell;
+    height: $height;
+    padding: 0 $padding;
+    font-size: $fontSize;
+    line-height: $height - 2;
+    vertical-align: middle;
+    border-radius: $borderRadius;
+}
+
+@mixin inputBorderRadius($size){
+    border-radius: $size;
+    input {
+        border-radius: $size;
+    }
+    #{$input-prefix}-control {
+        border-radius: 0 $size $size 0;
+    }
+}
+
+@mixin inputClearIconSize($size){
+    .#{$css-prefix}icon-delete-filling {
+        @include icon-size($size);
+    }
+}
+
+@mixin inputFeedbackIconSize($size){
+    .#{$css-prefix}icon-success {
+        @include icon-size($size);
+    }
+    .#{$css-prefix}icon-loading {
+        @include icon-size($size);
+    }
+}

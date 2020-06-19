@@ -1,0 +1,150 @@
+{
+  "name": "Feedback",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式类名的品牌前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式类名的品牌前缀"
+    },
+    "className": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "自定义类名",
+      "docblock": "自定义类名"
+    },
+    "style": {
+      "type": {
+        "name": "object"
+      },
+      "required": false,
+      "description": "自定义内联样式",
+      "docblock": "自定义内联样式",
+      "properties": []
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'success'",
+            "computed": false
+          },
+          {
+            "value": "'error'",
+            "computed": false
+          },
+          {
+            "value": "'prompt'",
+            "computed": false
+          },
+          {
+            "value": "'help'",
+            "computed": false
+          },
+          {
+            "value": "'loading'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "反馈类型",
+      "defaultValue": {
+        "value": "'success'",
+        "computed": false
+      },
+      "docblock": "反馈类型"
+    },
+    "shape": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'inline'",
+            "computed": false
+          },
+          {
+            "value": "'addon'",
+            "computed": false
+          },
+          {
+            "value": "'toast'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "反馈外观",
+      "defaultValue": {
+        "value": "'inline'",
+        "computed": false
+      },
+      "docblock": "反馈外观"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "反馈大小",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "反馈大小"
+    },
+    "title": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "标题",
+      "defaultValue": {
+        "value": "''",
+        "computed": false
+      },
+      "docblock": "标题"
+    },
+    "children": {
+      "type": {
+        "name": "node"
+      },
+      "required": false,
+      "description": "内容",
+      "docblock": "内容"
+    },
+    "visible": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否显示",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否显示"
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

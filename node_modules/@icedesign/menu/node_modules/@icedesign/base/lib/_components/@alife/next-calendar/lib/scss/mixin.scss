@@ -1,0 +1,84 @@
+@keyframes cellZoomIn {
+    0% {
+        transform: scale(.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes cellHover {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes enterToLeft {
+    0% {
+        transform: translate(-40%);
+        opacity: 0;
+    }
+    50% {
+        opacity: .6;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0%);
+    }
+}
+
+@keyframes enterToRight {
+    0% {
+        transform: translate(40%);
+        opacity: 0;
+    }
+    50% {
+        opacity: .6;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0%);
+    }
+}
+
+// 状态
+// ----------------------------------------
+@mixin calendar-cell-state( 
+    $background, 
+    $color, 
+    $border-color
+) {
+    background: $background;
+    color: $color;
+    border-color: $border-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 卡片模式单元尺寸
+// ----------------------------------------
+@mixin calendar-card-cell-size( 
+    $margin-tb, 
+    $width, 
+    $height, 
+    $corner: 0
+) {
+    display: block;
+    width: $width;
+    height: $height;
+    margin: 0 auto;
+    margin-top: $margin-tb;
+    margin-bottom: $margin-tb;
+    text-align: center;
+    border-radius: $corner;
+    line-height: $height - 2;
+    border: $line-1 $line-solid;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}

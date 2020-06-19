@@ -1,0 +1,312 @@
+{
+  "name": "Tag",
+  "props": {
+    "prefix": {
+      "type": {
+        "name": "string"
+      },
+      "required": false,
+      "description": "样式前缀",
+      "defaultValue": {
+        "value": "'next-'",
+        "computed": false
+      },
+      "docblock": "样式前缀"
+    },
+    "shape": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'selectable'",
+            "computed": false
+          },
+          {
+            "value": "'deletable'",
+            "computed": false
+          },
+          {
+            "value": "'interactive'",
+            "computed": false
+          },
+          {
+            "value": "'link'",
+            "computed": false
+          },
+          {
+            "value": "'readonly'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "标签的形态",
+      "defaultValue": {
+        "value": "'selectable'",
+        "computed": false
+      },
+      "docblock": "标签的形态"
+    },
+    "type": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'normal'",
+            "computed": false
+          },
+          {
+            "value": "'primary'",
+            "computed": false
+          },
+          {
+            "value": "'secondary'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "标签的类型",
+      "defaultValue": {
+        "value": "'normal'",
+        "computed": false
+      },
+      "docblock": "标签的类型"
+    },
+    "size": {
+      "type": {
+        "name": "enum",
+        "value": [
+          {
+            "value": "'medium'",
+            "computed": false
+          },
+          {
+            "value": "'small'",
+            "computed": false
+          },
+          {
+            "value": "'large'",
+            "computed": false
+          }
+        ]
+      },
+      "required": false,
+      "description": "标签的尺寸（large 尺寸为兼容表单场景 large = medium）",
+      "defaultValue": {
+        "value": "'medium'",
+        "computed": false
+      },
+      "docblock": "标签的尺寸（large 尺寸为兼容表单场景 large = medium）"
+    },
+    "disabled": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "标签是否禁用",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "标签是否禁用"
+    },
+    "count": {
+      "type": {
+        "name": "number"
+      },
+      "required": false,
+      "description": "标签附加显示的重复次数",
+      "docblock": "标签附加显示的重复次数"
+    },
+    "selected": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "选择型标签是否被选中（受控）",
+      "docblock": "选择型标签是否被选中（受控）"
+    },
+    "defaultSelected": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "选型型标签默认是否被选中（非受控）",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "选型型标签默认是否被选中（非受控）"
+    },
+    "closed": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "可删除标签是否被关闭（受控）",
+      "docblock": "可删除标签是否被关闭（受控）"
+    },
+    "defaultClosed": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "可删除标签默认是否被关闭（非受控）",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "可删除标签默认是否被关闭（非受控）"
+    },
+    "marked": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "互动型标签是否被标记过（受控）",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      },
+      "docblock": "互动型标签是否被标记过（受控）"
+    },
+    "value": {
+      "type": {
+        "name": "union",
+        "value": [
+          {
+            "name": "string"
+          },
+          {
+            "name": "array"
+          },
+          {
+            "name": "object"
+          },
+          {
+            "name": "bool"
+          }
+        ]
+      },
+      "required": false,
+      "description": "标签暂存的值",
+      "docblock": "标签暂存的值"
+    },
+    "animation": {
+      "type": {
+        "name": "bool"
+      },
+      "required": false,
+      "description": "是否开启动效",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      },
+      "docblock": "是否开启动效"
+    },
+    "onChange": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "互动型标签被 mark 的数量变化时的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "互动型标签被 mark 的数量变化时的回调\n@param {Number} count 被标记的次数",
+      "params": [
+        {
+          "name": "count",
+          "description": "被标记的次数",
+          "type": {
+            "name": "Number"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "可删除标签被关闭时的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "可删除标签被关闭时的回调\n@param {String} value 值\n@param {Boolean} closed 是否关闭状态",
+      "params": [
+        {
+          "name": "value",
+          "description": "值",
+          "type": {
+            "name": "String"
+          }
+        },
+        {
+          "name": "closed",
+          "description": "是否关闭状态",
+          "type": {
+            "name": "Boolean"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "onSelect": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "可选择标签被选中时的回调",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "可选择标签被选中时的回调\n@param {Boolean} selected 是否被选择",
+      "params": [
+        {
+          "name": "selected",
+          "description": "是否被选择",
+          "type": {
+            "name": "Boolean"
+          }
+        }
+      ],
+      "returns": null
+    },
+    "afterAppear": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "标签出现后执行的回调\nFunction() => void",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "标签出现后执行的回调\nFunction() => void",
+      "params": [],
+      "returns": null
+    },
+    "afterClose": {
+      "type": {
+        "name": "func"
+      },
+      "required": false,
+      "description": "标签关闭后执行的回调\nFunction() => void",
+      "defaultValue": {
+        "value": "() => {}",
+        "computed": false
+      },
+      "docblock": "标签关闭后执行的回调\nFunction() => void",
+      "params": [],
+      "returns": null
+    }
+  },
+  "methods": [],
+  "subComponents": []
+}

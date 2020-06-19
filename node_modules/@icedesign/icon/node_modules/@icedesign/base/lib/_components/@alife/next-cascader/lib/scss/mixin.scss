@@ -1,0 +1,17 @@
+@mixin cascaderMenuItemState(
+	$color,
+	$bgColor,
+	$selectIconColor,
+    $expandIconColor
+) {
+    color: $color;
+    background-color: $bgColor;
+
+    #{$cascader-prefix}-menu-icon-selected {
+        color: $selectIconColor;
+    }
+
+    #{$cascader-prefix}-menu-icon-expanded {
+        color: $expandIconColor;
+    }
+}

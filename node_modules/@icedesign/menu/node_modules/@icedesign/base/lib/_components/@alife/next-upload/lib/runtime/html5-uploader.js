@@ -1,0 +1,419 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports['default'] = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _class, _temp;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _nextUtil = require('../../../next-util/lib/index.js');
+
+var _request = require('./request.js');
+
+var _request2 = _interopRequireDefault(_request);
+
+var _util = require('../util/index.js');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
+
+var empty = function empty() {};
+
+/**
+ * Upload.Core
+ * @description 为了开放基础上传能力，独立向外提供了 Core 模块。使用该模块可以实现基本的上传功能，跟业务 UI 分离，满足业务自定义 UI 的需求
+ */
+var Html5Uploader = (_temp = _class = function (_Component) {
+    _inherits(Html5Uploader, _Component);
+
+    function Html5Uploader(props) {
+        _classCallCheck(this, Html5Uploader);
+
+        var _this = _possibleConstructorReturn(this, _Component.call(this, props));
+
+        _this.reqs = {};
+        _this.state = {
+            uid: (0, _util.uid)()
+        };
+
+        /* eslint-disable */
+        ['onClick', 'onKeyDown', 'onFileDrop', 'onChange'].map(function (fn) {
+            _this[fn] = _this[fn].bind(_this);
+        });
+        /* eslint-enable */
+        return _this;
+    }
+
+    Html5Uploader.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+        if (nextProps.dataTransfer) {
+            this.uploadFiles(nextProps.dataTransfer);
+        }
+    };
+
+    Html5Uploader.prototype.componentWillUnmount = function componentWillUnmount() {
+        this.abort();
+    };
+
+    /**
+     * 上传文件变化
+     * @param  {SyntheticEvent} e
+     * @return {void}
+     */
+
+
+    Html5Uploader.prototype.onChange = function onChange(e) {
+        var files = e.target.files;
+        this.uploadFiles(files);
+        this.reset();
+    };
+
+    Html5Uploader.prototype.reset = function reset() {
+        this.setState({
+            uid: (0, _util.uid)()
+        });
+    };
+
+    Html5Uploader.prototype.abort = function abort(file) {
+        var reqs = this.reqs;
+
+        if (file) {
+            var _uid = file;
+            if (file && file.uid) {
+                _uid = file.uid;
+            }
+            if (reqs[_uid]) {
+                reqs[_uid].abort();
+                delete reqs[_uid];
+            }
+        } else {
+            Object.keys(reqs).forEach(function (uid) {
+                if (reqs[uid]) {
+                    reqs[uid].abort();
+                }
+                delete reqs[uid];
+            });
+        }
+    };
+
+    /**
+     * 点击上传按钮
+     * @return {void}
+     */
+
+
+    Html5Uploader.prototype.onClick = function onClick() {
+        var el = this.refs.file;
+        if (!el) {
+            return;
+        }
+        el.click();
+        el.value = '';
+    };
+
+    /**
+     * 键盘事件
+     * @param  {SyntheticEvent} e
+     * @return {void}
+     */
+
+
+    Html5Uploader.prototype.onKeyDown = function onKeyDown(e) {
+        if (e.key === 'Enter') {
+            this.onClick();
+        }
+    };
+
+    /**
+     * 拖拽
+     * @param  {SyntheticEvent} e
+     * @return {void}
+     */
+
+
+    Html5Uploader.prototype.onFileDrop = function onFileDrop(e) {
+        if (e.type === 'dragover') {
+            return e.preventDefault();
+        }
+
+        var files = e.dataTransfer.files;
+        this.uploadFiles(files);
+        e.preventDefault();
+    };
+
+    /**
+     * 上传文件列表
+     * @param  {File} files - 文件列表
+     * @return {void}
+     */
+
+
+    Html5Uploader.prototype.uploadFiles = function uploadFiles(files) {
+        var _this2 = this;
+
+        // TODO: fileList 只是给最大上传个数做控制的, 1.X版本看看是否有其他控制方式
+        var _props = this.props,
+            limit = _props.limit,
+            fileList = _props.fileList;
+
+        var len = files.length;
+        var filesArr = Array.prototype.slice.call(files);
+        var filesTemp = [];
+
+        // 控制最大上传个数
+        if (limit && limit > len + fileList.length) {
+            filesTemp = filesArr.slice(0, len);
+        } else if (limit && limit > fileList.length) {
+            filesTemp = filesArr.slice(0, limit - fileList.length);
+        } else if (limit) {
+            filesTemp = [];
+        } else {
+            // 不限制上传个数情况
+            filesTemp = filesArr;
+        }
+
+        if (len > 0) {
+            filesTemp.forEach(function (file) {
+                file.uid = (0, _util.uid)();
+                _this2.upload(file);
+            });
+        }
+    };
+
+    /**
+     * 上传文件
+     * @param  {File} file - 文件
+     * @return {void}
+     */
+
+
+    Html5Uploader.prototype.upload = function upload(file) {
+        var _this3 = this;
+
+        var beforeUpload = this.props.beforeUpload;
+
+        if (!beforeUpload) {
+            return this.post(file);
+        }
+
+        var before = beforeUpload(file);
+        if (before && before.then) {
+            before.then(function (result) {
+                if (result !== false) {
+                    _this3.post(file);
+                }
+            })['catch'](function () {});
+        } else if (before !== false) {
+            this.post(file);
+        } else if (before === false) {
+            file.status = 'error';
+        }
+    };
+
+    Html5Uploader.prototype.resize = function resize(file, cb) {
+        var resize = this.props.resize;
+
+
+        if (resize && /\.(png|jpg|jpeg)$/i.test(file.name)) {
+            var imageType = /\.png$/i.test(file.name) ? 'image/png' : 'image/jpeg';
+            return (0, _util.scaleImage)(file, resize, imageType, cb);
+        }
+        cb(file);
+    };
+
+    Html5Uploader.prototype.post = function post(file) {
+        var _this4 = this;
+
+        var _props2 = this.props,
+            action = _props2.action,
+            name = _props2.name,
+            multipart = _props2.multipart,
+            headers = _props2.headers,
+            withCredentials = _props2.withCredentials,
+            _onProgress = _props2.onProgress,
+            _onSuccess = _props2.onSuccess,
+            _onError = _props2.onError,
+            _onAbort = _props2.onAbort;
+
+
+        var data = this.props.data || multipart;
+        if (typeof data === 'function') {
+            data = data(file);
+        }
+
+        var uid = file.uid;
+
+        this.resize(file, function (bin) {
+            _this4.reqs[uid] = (0, _request2['default'])({
+                action: action,
+                filename: name,
+                file: file,
+                bin: bin,
+                data: data,
+                headers: headers,
+                withCredentials: withCredentials,
+                onProgress: function onProgress(e) {
+                    _onProgress(e, file);
+                },
+                onSuccess: function onSuccess(ret) {
+                    delete _this4.reqs[uid];
+                    _onSuccess(ret, file);
+                },
+                onError: function onError(err, ret) {
+                    delete _this4.reqs[uid];
+                    _onError(err, ret, file);
+                },
+                onAbort: function onAbort(e) {
+                    _onAbort(e, file);
+                }
+            });
+        });
+        this.props.onStart([file]);
+    };
+
+    Html5Uploader.prototype.render = function render() {
+        var _props3 = this.props,
+            accept = _props3.accept,
+            multiple = _props3.multiple,
+            children = _props3.children,
+            id = _props3.id,
+            disabled = _props3.disabled,
+            dragable = _props3.dragable,
+            others = _objectWithoutProperties(_props3, ['accept', 'multiple', 'children', 'id', 'disabled', 'dragable']);
+
+        var cleanOthers = (0, _nextUtil.pickAttrs)(others);
+        var events = disabled ? {} : dragable ? {
+            onClick: this.onClick,
+            onKeyDown: this.onKeyDown,
+            onDrop: this.onFileDrop,
+            onDragOver: this.onFileDrop,
+            tabIndex: '0'
+        } : {
+            onClick: this.onClick,
+            onKeyDown: this.onKeyDown,
+            tabIndex: '0'
+        };
+        return _react2['default'].createElement(
+            'span',
+            _extends({
+                role: 'upload'
+            }, events, cleanOthers),
+            _react2['default'].createElement('input', { type: 'file',
+                id: id,
+                key: this.state.uid,
+                ref: 'file',
+                style: { display: 'none' },
+                accept: accept,
+                multiple: multiple,
+                onChange: this.onChange,
+                disabled: disabled
+            }),
+            children
+        );
+    };
+
+    return Html5Uploader;
+}(_react.Component), _class.propTypes = {
+    id: _propTypes2['default'].string,
+    /**
+     * 可选参数，自定义样式
+     */
+    style: _propTypes2['default'].object,
+    /**
+     * 必选参数，上传的地址
+     */
+    action: _propTypes2['default'].string.isRequired,
+    resize: _propTypes2['default'].object,
+    /**
+     * 可选参数，传递给服务器的文件参数
+     */
+    name: _propTypes2['default'].string.isRequired,
+    /**
+     * 可选参数，是否禁用上传功能
+     */
+    disabled: _propTypes2['default'].bool,
+    /**
+     * 可选参数，是否支持多选文件，`ie10+` 支持。开启后按住 ctrl 可选择多个文件
+     */
+    multiple: _propTypes2['default'].bool,
+    /**
+     * 可选参数，是否支持拖拽上传，`ie10+` 支持。
+     */
+    dragable: _propTypes2['default'].bool,
+    limit: _propTypes2['default'].number,
+    children: _propTypes2['default'].node,
+    fileList: _propTypes2['default'].array,
+    /**
+     * 可选参数，接受上传的文件类型，详见 [input accept attribute](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input#attr-accept)， [兼容性见](http://caniuse.com/#feat=input-file-accept)
+     */
+    accept: _propTypes2['default'].string,
+    /**
+     * 上传额外传参
+     */
+    data: _propTypes2['default'].oneOfType([_propTypes2['default'].object, _propTypes2['default'].func]),
+    multipart: _propTypes2['default'].oneOfType([_propTypes2['default'].object, _propTypes2['default'].func]),
+    /**
+     * 可选参数，设置上传的请求头部
+     */
+    headers: _propTypes2['default'].object,
+    /**
+     * 可选参数，是否允许请求携带 cookie
+     */
+    withCredentials: _propTypes2['default'].bool,
+    /**
+     * 可选参数，上传文件之前的钩子，参数为上传的文件，若返回 `false` 则停止上传
+     */
+    beforeUpload: _propTypes2['default'].func,
+    /**
+     * 可选参数，开始上传文件的钩子，参数为上传的文件。如果开启了 `multiple`，参数为文件列表
+     */
+    onStart: _propTypes2['default'].func,
+    /**
+     * 可选参数，正在上传文件的钩子，参数为上传的事件以及文件
+     */
+    onProgress: _propTypes2['default'].func,
+    /**
+     * 可选参数，上传成功回调函数，参数为请求下响应信息以及文件
+     */
+    onSuccess: _propTypes2['default'].func,
+    /**
+     * 可选参数，上传失败回调函数，参数为上传失败的信息、响应信息以及文件
+     */
+    onError: _propTypes2['default'].func,
+    /**
+     * 可选参数，中断上传请求回调函数，参数为中断事件以及文件
+     */
+    onAbort: _propTypes2['default'].func
+}, _class.defaultProps = {
+    name: 'file',
+    multiple: false,
+    withCredentials: false,
+    beforeUpload: empty,
+    onStart: empty,
+    onProgress: empty,
+    onSuccess: empty,
+    onError: empty,
+    onAbort: empty
+}, _temp);
+Html5Uploader.displayName = 'Html5Uploader';
+exports['default'] = Html5Uploader;
+module.exports = exports['default'];
