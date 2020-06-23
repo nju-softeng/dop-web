@@ -10,7 +10,7 @@ const {toast} = Feedback;
 
 class App extends Component {
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             time: null
         }
@@ -36,8 +36,8 @@ class App extends Component {
                             content: "Token失效, 请重新登陆",
                             duration: 5000
                         });
-                        window.location.replace("#/login");
-                        window.location.reload();
+                   //     window.location.replace("#/login");
+                   //     window.location.reload();
                         break;
                     }
                     case 500: {
@@ -49,8 +49,8 @@ class App extends Component {
                                 content: "Token失效, 请重新登陆",
                                 duration: 5000
                             });
-                            window.location.replace("#/login");
-                            window.location.reload();
+                     //       window.location.replace("#/login");
+                     //       window.location.reload();
                         }
                         break;
                     }

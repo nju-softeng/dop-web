@@ -10,11 +10,13 @@ const imageConfig =[
         path: '/image/projects/:projectId/repos',
         layout: BasicLayout,
         component: Repos,
+        // isLogin: true
     },
     {
         path: '/image/projects',
         layout: BasicLayout,
         component: Image,
+        isLogin: true
     },
     {
         path: '/repos/:projectName/:repoName/images',
