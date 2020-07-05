@@ -33,7 +33,8 @@ const API = {
     alert: host + alert,
     scan: host + scan,
     link: host + link,
-    baas: host + baas
+    baas:  "localhost:14800"
+
 };
 
 export default API;

@@ -17,6 +17,7 @@ import {
 import './CreateBaas.scss'
 import Axios from "axios";
 import API from "../../API";
+
 const {toast} = Feedback;
 
 
@@ -44,7 +45,38 @@ class CreateBaas extends Component {
             tls: true,
             orderVisible: false,
             peerVisible: false,
-            newPort: "8051"
+            newPort: "8051",
+            testNet:
+                {
+                    "name": "nnnn",
+                    "order": [
+                        {
+                            "orderName": "orderer0",
+                            "orderPort": "7050"
+                        }
+                    ],
+                    "org": [
+                        {
+                            "orgName": "org1",
+                            "peers": [
+                                {
+                                    "peerName": "peer0-org1",
+                                    "ports": ["7051", "8052", "8053", "9443"]
+                                }
+                            ]
+                        }, {
+                            "orgName": "org2",
+                            "peers": [
+                                {
+                                    "peerName": "peer0-org2",
+                                    "ports": ["7051", "8052", "8053", "9443"]
+                                }
+                            ]
+                        }
+                    ],
+                    "consensus": "etcdraft",
+                    "tls": true
+                }
         }
     }
 
@@ -56,18 +88,19 @@ class CreateBaas extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let result = {
-            name: this.state.name,
-            order: this.state.order,
-            org: this.state.org,
-            consensus: this.state.consensus,
-            tls: this.state.tls,
-        };
-        alert("提交请求");
+        // let result = {
+        //     name: this.state.name,
+        //     order: this.state.order,
+        //     org: this.state.org,
+        //     consensus: this.state.consensus,
+        //     tls: this.state.tls,
+        // };
+        let netWorkJson = this.state.testNet;
         //TODO: 提交请求
         // let url = API.pipeline + "/v1/pipeline/jenkinsfile";
-        let url = "";
-        Axios.post(url, result).then((response) => {
+        let url = API.baas + '/v2/baas/createFabricNet';
+        console.log(url)
+        Axios.post(url, netWorkJson).then((response) => {
             if (response.status === 200) {
                 toast.show({
                     type: "success",
@@ -227,16 +260,18 @@ class CreateBaas extends Component {
     };
 
 
-    onConsensusChange(value){
+    onConsensusChange(value) {
         this.setState({
             consensus: value
         })
     }
-    onTlsChange(value){
+
+    onTlsChange(value) {
         this.setState({
             tls: value
         })
     }
+
     render() {
         const {Row, Col} = Grid;
         const FormItem = Form.Item;
