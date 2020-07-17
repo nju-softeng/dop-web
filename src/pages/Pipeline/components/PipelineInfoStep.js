@@ -205,8 +205,8 @@ class PipelineInfoStep extends Component {
                                             className="label">{this.props.intl.messages["pipeline.info.stage.name.title"]}: </span>
                                         <FormBinder name="name" required
                                                     message={this.props.intl.messages["pipeline.info.stage.name"]}>
-                                            <Input
-                                                value={this.state.stage.name}
+                                            {/*2020.7.17修改不能输出中文的bug:加type="text" defaultValue成为非受控组件 可优化placeholder={this.state.stage.name}*/}
+                                            <Input type="text"  placeholder="请输入阶段名称" defaultValue={this.state.stage.name}
                                             />
                                         </FormBinder>
                                         <FormError className="form-item-error" name="name"/>
