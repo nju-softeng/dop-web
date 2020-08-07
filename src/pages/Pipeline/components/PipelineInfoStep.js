@@ -24,7 +24,7 @@ class PipelineInfoStep extends Component {
                 this.props.intl.messages['pipeline.info.step.pull'],
                 this.props.intl.messages['pipeline.info.step.maven'],
                 this.props.intl.messages['pipeline.info.step.node'],
-                this.props.intl.messages['pipeline.info.step.djanggo'],
+                this.props.intl.messages['pipeline.info.step.django'],
                 this.props.intl.messages['pipeline.info.step.buildDocker'],
                 this.props.intl.messages['pipeline.info.step.pushDocker'],
                 this.props.intl.messages['pipeline.info.step.custom'],

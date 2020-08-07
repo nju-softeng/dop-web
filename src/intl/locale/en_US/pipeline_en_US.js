@@ -57,7 +57,7 @@ const PIPELINE_EN_US = {
     'pipeline.info.step.pull': 'Pull code',
     'pipeline.info.step.maven': 'Build maven project',
     'pipeline.info.step.node': 'Build node project',
-    'pipeline.info.step.djanggo': 'Build djanggo project',
+    'pipeline.info.step.django': 'Build django project',
     'pipeline.info.step.buildDocker': 'Build docker image',
     'pipeline.info.step.pushDocker': 'Push docker image',
     'pipeline.info.step.custom': 'Custom script',
