@@ -39,14 +39,22 @@ class CodeProjectAside extends Component {
               access_level:0,
               visibility:"private",
           },
+          isempty:true
       };
   }
 
     loadAccess(){
         let url = API.code+"/projects/"+this.state.projectid+"/access";
+
         Axios.get(url).then(response=>{
             this.setState({
                 accessInfo:response.data
+            });
+        });
+        url=API.code+"/projects/"+this.state.projectid+"/branches";
+        Axios.get(url).then(response=>{
+            this.setState({
+                isempty:response.data.length===0
             });
         });
     }
@@ -114,6 +122,7 @@ class CodeProjectAside extends Component {
     const editLink="/code/"+username+"/"+projectname+"/edit";
 
     const accessInfo=this.state.accessInfo;
+    const isempty=this.state.isempty;
 
     return (
         <Menu mode="inline" selectedKeys={[pathname]} className="ice-menu-custom">
@@ -131,7 +140,7 @@ class CodeProjectAside extends Component {
             </MenuItem>
             {
                 (()=>{
-                    if(accessInfo.visibility==="public"||accessInfo.access_level>10){
+                    if((accessInfo.visibility==="public"||accessInfo.access_level>10)&&!isempty){
                         let res=[];
                         res.push(
                             <MenuItem>
@@ -165,21 +174,25 @@ class CodeProjectAside extends Component {
                                 </Link>
                             </MenuItem>
                         );
-                        res.push(
+                        return res;
+                    }
+                })()
+            }
+
+            {
+                (()=>{
+                    if(accessInfo.visibility==="public"||accessInfo.access_level>10){
+                        return (
                             <MenuItem key={mergeRequestLink}>
                                 <Link to={mergeRequestLink} className="ice-menu-link">
                                     <img src={imgMergeRequest}/>
                                     <span className="ice-menu-item-text"><FormattedMessage id="code.projectaside.mergerequests"/></span>
                                 </Link>
                             </MenuItem>
-                        );
-
-                        return res;
+                        )
                     }
                 })()
             }
-
-
 
             {
                 (()=>{

@@ -1,6 +1,6 @@
 .container{
     background-color: rgb(255, 255, 255);
-    height: 600px;
+    height: 610px;
     position: relative;
     padding-top: 1px;
 }
@@ -142,7 +142,7 @@
 .div_page{
     position: absolute;
     width: 95%;
-    top:550px;
+    bottom: 20px;
 }
 
 .btn_page{
@@ -155,6 +155,7 @@
 
 button{
     outline:none;
+    border: none;
 }
 
 .text_new{
