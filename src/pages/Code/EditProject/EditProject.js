@@ -5,10 +5,13 @@ import Axios from 'axios';
 import API from "../../API";
 import {Feedback} from '@icedesign/base';
 import { Dialog } from '@icedesign/base';
-import {injectIntl } from 'react-intl';
+import {FormattedMessage, injectIntl} from 'react-intl';
 
 
 import './EditProject.css'
+import {Item as MenuItem} from "@icedesign/menu";
+import {Link} from "react-router-dom";
+import imgProtect from "../../../components/CodeSettingAside/imgs/protect.png";
 
 const {Group: RadioGroup} = Radio;
 const {toast} = Feedback;
@@ -34,8 +37,11 @@ class EditProject extends React.Component{
         let url=API.code+"/projects/"+this.state.projectid+"/editinfo?userId="+sessionStorage.getItem("user-id");
         let self=this;
         Axios.get(url).then(response=>{
+            let data=response.data;
+            if(data.default_branch===null)
+                data.default_branch="null";
             self.setState({
-                editInfo:response.data
+                editInfo:data
             })
         });
 
@@ -50,18 +56,10 @@ class EditProject extends React.Component{
 
     updateProject(){
 
-        let editInfo=this.state.editInfo;
-
         Axios({
             method: "PUT",
             url: API.code+ "/projects/"+this.state.projectid,
-            params: {
-                userId:sessionStorage.getItem("user-id"),
-                name:editInfo.name,
-                description:editInfo.description,
-                default_branch:editInfo.default_branch,
-                visibility:editInfo.visibility
-            },
+            params: this.state.editInfo,
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded',
             },
@@ -138,10 +136,18 @@ class EditProject extends React.Component{
                         <label className="edit-project-label-left">{this.props.intl.messages["code.editproject.description"]}</label>
                         <textarea value={this.state.editInfo.description} className="edit-project-input-description" onChange={this.changeDescription.bind(this)}/>
                     </div>
-                    <div className="edit-project-input-div">
-                        <label className="edit-project-label-branch">{this.props.intl.messages["code.editproject.defaultbranch"]}</label>
-                        <Select value={this.state.editInfo.default_branch} dataSource={this.state.branches} className="edit-project-select-branch" size="large" onChange={this.changeDefaultBranch.bind(this)} />
-                    </div>
+                    {
+                        (()=>{
+                            if(this.state.branches.length!==0){
+                                return (
+                                    <div className="edit-project-input-div">
+                                        <label className="edit-project-label-branch">{this.props.intl.messages["code.editproject.defaultbranch"]}</label>
+                                        <Select value={this.state.editInfo.default_branch} dataSource={this.state.branches} className="edit-project-select-branch" size="large" onChange={this.changeDefaultBranch.bind(this)} />
+                                    </div>
+                                )
+                            }
+                        })()
+                    }
                     <div className="edit-project-choose-div">
                         <label className="edit-project-label-left">{this.props.intl.messages["code.editproject.visibility"]}</label>
                         <div className="edit-project-visibility-div">
