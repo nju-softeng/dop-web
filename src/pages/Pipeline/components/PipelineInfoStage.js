@@ -41,7 +41,7 @@ class PipelineInfoStage extends Component {
             <Icon type="add"/>
         );
     }
-
+    //渲染阶段名称
     title(value, index) {
         return  this.state.currentStage === index?(
             <div>
@@ -55,6 +55,7 @@ class PipelineInfoStage extends Component {
             </div>
         )
     }
+
     close(index) {
         let stages = this.state.stages;
         stages.splice(index, 1);
@@ -86,6 +87,7 @@ class PipelineInfoStage extends Component {
     }
     addStage() {
         let newStage = {
+
             name: this.props.intl.messages["pipeline.info.stage.name"],
             steps: []
         };
