@@ -12,6 +12,8 @@ import imgBack from './imgs/back.png';
 import imgEdit from './imgs/edit.png';
 import imgProtect from './imgs/protect.png';
 import imgMembers from './imgs/members.png';
+import API from "../../pages/API";
+import Axios from "axios";
 
 // @withRouter
 
@@ -28,7 +30,17 @@ class CodeSettingProjectAside extends Component {
             username:username,
             projectname:projectname,
             projectid:username+"/"+projectname,
+            isempty:true,
         };
+    }
+
+    componentWillMount() {
+        let url=API.code+"/projects/"+this.state.projectid+"/branches";
+        Axios.get(url).then(response=>{
+            this.setState({
+                isempty:response.data.length===0
+            });
+        });
     }
 
 
@@ -59,12 +71,22 @@ class CodeSettingProjectAside extends Component {
                         <span className="ice-menu-item-text"><FormattedMessage id="code.settingaside.basicinfo"/></span>
                     </Link>
                 </MenuItem>
-                <MenuItem key={protectBranchLink}>
-                    <Link to={protectBranchLink} className="ice-menu-link">
-                        <img src={imgProtect}/>
-                        <span className="ice-menu-item-text"><FormattedMessage id="code.settingaside.protectbranch"/></span>
-                    </Link>
-                </MenuItem>
+
+                {
+                    (()=>{
+                        if(!this.state.isempty){
+                            return (
+                                <MenuItem key={protectBranchLink}>
+                                    <Link to={protectBranchLink} className="ice-menu-link">
+                                        <img src={imgProtect}/>
+                                        <span className="ice-menu-item-text"><FormattedMessage id="code.settingaside.protectbranch"/></span>
+                                    </Link>
+                                </MenuItem>
+                            )
+                        }
+                    })()
+                }
+
                 <MenuItem key={memberLink}>
                     <Link to={memberLink} className="ice-menu-link">
                         <img src={imgMembers}/>
