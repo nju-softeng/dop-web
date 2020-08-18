@@ -32,6 +32,12 @@
     text-align: center;
 }
 
+.label-readme{
+    font-size: 15px;
+    text-align: right;
+    width: 300px;
+}
+
 .input-new-project-name{
     width: 85%;
     height: 40px;

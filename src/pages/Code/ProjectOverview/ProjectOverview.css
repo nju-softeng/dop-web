@@ -9,7 +9,7 @@
     padding-top: 50px;
 }
 
-.loading-project-md{
+.loading-project{
     width:100%;
     min-height: 300px;
 }
@@ -45,7 +45,7 @@
     top:8px;
     left: 8px;
     height: 45px;
-    width:95px;
+    width:100px;
 }
 
 .btn-project-edit{
@@ -204,4 +204,13 @@
 
 .div-project-md table tr:nth-child(2n) {
     background: #f6f8fa;
+}
+
+.div-project-md h5{
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.div-project-md span{
+    font-size: 13px;
 }

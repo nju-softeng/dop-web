@@ -31,6 +31,7 @@ const CODE_ZH_CN = {
     'code.newproject.public':'公开的',
     'code.newproject.add':'创建项目',
     'code.newproject.cancel':'取消',
+    'code.newproject.readme':'用readme文件初始化该仓库',
     'code.projectaside.back':'返回',
     'code.projectaside.project':'项目',
     'code.projectaside.files':'文件',
