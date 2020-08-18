@@ -3,8 +3,8 @@ pipeline{
 	agent any
 
 	environment {
-        REPOSITORY = "https://github.com/doporg/dop.git"
-		SERVICE_DIR="dop-web"
+        REPOSITORY = "https://gitee.com/MrZCoding/dop-web.git"
+		SERVICE_DIR="./"
         DOCKER_REGISTRY_HOST = "registry.dop.clsaa.com"
         DOCKER_REGISTRY = "registry.dop.clsaa.com/dop/dop-web"
 	}
