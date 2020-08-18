@@ -1,8 +1,8 @@
 // 配置所有接口的API文件
 
 
-// const host = "http://open.dop.clsaa.com";
-const host = "http://localhost:8888";
+const host = "http://open.dop.clsaa.com";
+//const host = "http://localhost:8888";
 
 const pipeline = "/pipeline-server";
 const application = "/application-server";
