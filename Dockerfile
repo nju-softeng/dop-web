@@ -10,7 +10,7 @@ WORKDIR /var/www/html
 #	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
 # RUN ls
-COPY ./build/* .
+COPY ./build/* ./
 EXPOSE 80
 # RUN cp -r build/* /var/www/html \
 #    && rm -rf /user/src/app
