@@ -35,6 +35,18 @@ class NewProject extends React.Component {
         })
     }
 
+    changeReadme(checked){
+        if(checked) {
+            this.setState({
+                initialize_with_readme: "true"
+            })
+        }else {
+            this.setState({
+                initialize_with_readme: "false"
+            })
+        }
+    }
+
     createProject() {
 
         this.setState({
@@ -98,9 +110,10 @@ class NewProject extends React.Component {
                                     {this.props.intl.messages["code.newproject.private"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </Radio>
                                 <Radio id="public" value="public">
-                                    {this.props.intl.messages["code.newproject.public"]}
+                                    {this.props.intl.messages["code.newproject.public"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </Radio>
                             </RadioGroup>
+                            <Checkbox onChange={this.changeReadme.bind(this)}>{this.props.intl.messages["code.newproject.readme"]}</Checkbox>
                         </div>
                     </div>
                     <div className="div-new-project-submit">

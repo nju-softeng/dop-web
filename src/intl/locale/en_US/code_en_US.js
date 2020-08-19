@@ -31,6 +31,7 @@ const CODE_EN_US = {
     'code.newproject.public':'PUBLIC',
     'code.newproject.add':'Add Project',
     'code.newproject.cancel':'Cancel',
+    'code.newproject.readme':'Initialize repository with a README',
     'code.projectaside.back':'Back',
     'code.projectaside.project':'Project',
     'code.projectaside.files':'Files',
