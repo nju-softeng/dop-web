@@ -11,6 +11,7 @@ WORKDIR /var/www/html
 
 # RUN ls
 COPY ./build/* ./
+RUN ls
 EXPOSE 80
 # RUN cp -r build/* /var/www/html \
 #    && rm -rf /user/src/app
