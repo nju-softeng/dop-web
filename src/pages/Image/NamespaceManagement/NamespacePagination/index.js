@@ -52,7 +52,13 @@ class NamespacePagination extends Component {
 
     //获取最新数据并刷新
     refreshList(current, searchKey,select) {
-
+        // 如果这三个参数没有接收到，那么使用他们的默认值
+        if(current===undefined)
+            var current = 1;
+        if(searchKey===undefined)
+            var searchKey = "";
+        if(select===undefined)
+            var select = "all";
         let url = API.image + '/v1/projects';
         let _this = this;
 
