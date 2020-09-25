@@ -34,7 +34,7 @@ const API = {
     scan: host + scan,
     link: host + link,
     fuzz: "http://localhost:8080/fuzz",
-    demo: "http://118.24.13.51:8080/fuzz",
+    //demo: "http://118.24.13.51:8080/fuzz",
     baas:  "localhost:14800",
 
 };
