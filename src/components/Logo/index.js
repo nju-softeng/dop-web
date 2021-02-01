@@ -6,7 +6,7 @@ import logo from './images/logo.png'
 export default class Logo extends PureComponent {
     render() {
         return (
-            <Link to="/" style={{...styles.logoStyle, ...this.props.style}}>
+            <Link to="/project" style={{...styles.logoStyle, ...this.props.style}}>
                 {(() => {
                     if (this.props.img) {
                         return (
