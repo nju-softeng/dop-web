@@ -3,7 +3,7 @@ import { FormattedMessage} from 'react-intl';
 const permissionAsideMenuConfig=[
     {
         name: <FormattedMessage id="permission.home" defaultMessage="首页"/>,
-        path: '/',
+        path: '/project',
         icon: 'home2'
     },
     {
