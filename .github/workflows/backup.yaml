@@ -9,4 +9,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.DOPORG_RSA_PRIVATE_KEY }}
         with:
           source-repo: "git@github.com:nju-softeng/dop-web.git"
-          destination-repo: "git@github.org:doporg/dop-web.git"
+          destination-repo: "git@github.com:doporg/dop-web.git"
