@@ -1,5 +1,5 @@
 {
-  "name": "DevopsPlatform",
+  "name": "devops-platform",
   "version": "1.0.0",
   "description": "该项目基于 create-react-app 创建，使用 react-app-rewired 进行自定义配置，是南京大学软件学院Devops运行平台",
   "dependencies": {
@@ -66,11 +66,11 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "ice-scripts": "^1.8.10",
+    "ice.js": "^1.0.0",
     "ice-skin-loader": "^0.1.1",
     "jsencrypt": "^3.0.0-rc.1",
     "koa-logger": "^3.2.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^7.0.1",
     "nodemon": "^1.18.4",
     "react-app-rewired": "^1.5.0",
     "react-scripts": "^1.1.1",
