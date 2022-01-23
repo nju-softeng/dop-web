@@ -15,21 +15,21 @@ spec:
     spec:
       containers:
         - name: dop-web
-          image: registry.dop.clsaa.com/dop/dop-web:<BUILD_TAG>
-          volumeMounts:
-            - name: host-time
-              mountPath: /etc/localtime
-            - name: host-timezone
-              mountPath: /etc/timezone
+          image: 172.29.7.157:85/dop/dop-web:<BUILD_TAG>
+#          volumeMounts:
+#            - name: host-time
+#              mountPath: /etc/localtime
+#            - name: host-timezone
+#              mountPath: /etc/timezone
           ports:
             - containerPort: 80
-      volumes:
-        - name: host-time
-          hostPath:
-            path: /etc/localtime
-        - name: host-timezone
-          hostPath:
-            path: /etc/timezone
+#      volumes:
+#        - name: host-time
+#          hostPath:
+#            path: /etc/localtime
+#        - name: host-timezone
+#          hostPath:
+#            path: /etc/timezone
 ---
 apiVersion: v1
 kind: Service
@@ -46,16 +46,20 @@ spec:
   selector:
     app: dop-web
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
  name: dop-web
  namespace: dop
 spec:
  rules:
-   - host: www.dop.clsaa.com
+   - host: www.dop.devops-plus.com
      http:
        paths:
-         - backend:
-             serviceName: dop-web
-             servicePort: 14237
+         - path: /
+           pathType: Prefix
+           backend:
+             service:
+               name: dop-web
+               port:
+                 number: 14237

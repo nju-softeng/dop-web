@@ -2,7 +2,7 @@
 
 
 // const host = "http://open.dop.clsaa.com";
-const host = "http://localhost:8888";
+const host = "http://gateway-server:14258";
 
 const pipeline = "/pipeline-server";
 const application = "/application-server";
@@ -21,7 +21,7 @@ const link = "/link-server";
 
 
 const API = {
-    address: "http://www.dop.clsaa.com/#/",
+    address: "http://www.dop.devops-plus.com:30393/#/",
     gateway: host,
     pipeline: host + pipeline,
     application: host + application,
