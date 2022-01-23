@@ -5,7 +5,7 @@
  * */
 
 import API from '../../pages/API'
-import UUIDV4 from 'uuid/v4'
+import { v4 as UUIDV4 } from 'uuid';
 import CryptoJS from 'crypto-js'
 import Axios from 'axios'
 import Qs from 'qs'
