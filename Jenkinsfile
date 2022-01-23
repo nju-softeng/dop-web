@@ -29,7 +29,7 @@ pipeline{
                 echo "image tag : ${build_tag}"
                 dir(SERVICE_DIR){
                     sh "ls -l"
-                    sh "docker build -t ${DOCKER_REGISTRY}:${build_tag} ."
+                    sh "docker build -t ${DOCKER_REGISTRY}:${build_tag} --network host ."
                 }
 			}
 		}

@@ -1,18 +1,17 @@
-FROM node:8-slim
-RUN apt-get update  && apt-get install -y nginx
-WORKDIR /var/www/html
-# WORKDIR /usr/src/app
-# COPY ["package.json",  "./"]
-# RUN npm install
-# COPY . .
-# RUN npm run build
-# RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-#	&& ln -sf /dev/stderr /var/log/nginx/error.log
+FROM node:16-slim
 
-# RUN ls
-COPY ./build/ ./
-RUN ls
+WORKDIR /root
+COPY ["package.json", "package-lock.json", "yarn.lock", "rewire-scss.js", "config-overrides.js", "./"]
+COPY ["src", "./src"]
+COPY ["public", "./public"]
+
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    yarn install && \
+    yarn build
+
+WORKDIR /var/www/html
+RUN cp -r /root/build/* /var/www/html
+
 EXPOSE 80
-# RUN cp -r build/* /var/www/html \
-#    && rm -rf /user/src/app
 CMD ["nginx","-g","daemon off;"]
