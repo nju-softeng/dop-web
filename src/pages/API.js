@@ -1,8 +1,4 @@
-// 配置所有接口的API文件
-
-
-// const host = "http://open.dop.clsaa.com";
-const host = "http://gateway-server:14258";
+const host = "http://open.dop.devops-plus.com:30393";
 
 const pipeline = "/pipeline-server";
 const application = "/application-server";
@@ -15,10 +11,7 @@ const alert = "/alert-server";
 
 const scan = "/testing-server";
 const baas = "/baas-server";
-// const gateway = "/v2/api";
-const gateway = "/gateway-server";
 const link = "/link-server";
-
 
 const API = {
     address: "http://www.dop.devops-plus.com:30393/#/",
