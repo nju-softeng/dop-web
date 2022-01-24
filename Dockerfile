@@ -1,7 +1,7 @@
 FROM node:16-slim
 
 WORKDIR /root
-COPY ["package.json", "yarn.lock", "rewire-scss.js", "config-overrides.js", "./"]
+COPY ["package.json", "rewire-scss.js", "config-overrides.js", "./"]
 COPY ["src", "./src"]
 COPY ["public", "./public"]
 
