@@ -186,9 +186,6 @@ class Login extends Component {
                         </div>
                     </div>
                     <div className="right">
-                        <Loading shape="fusion-reactor" visible={false}
-                                 className="next-loading my-loading"
-                        >
                             <div className="form">
                                 <div className="title">
                                     {this.props.intl.messages["login.login.title"]}
@@ -244,7 +241,6 @@ class Login extends Component {
                                     </FormItem>
                                 </Form>
                             </div>
-                        </Loading>
                     </div>
 
                 </div>
