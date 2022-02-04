@@ -7,6 +7,7 @@ import API from "../../API";
 import Axios from "axios/index";
 import {Encryption, PublicKey} from '../index'
 import {injectIntl} from "react-intl";
+import base64url from "base64url";
 
 
 const {Item: FormItem} = Form;
@@ -53,14 +54,13 @@ class Register extends Component {
             duration: 5000
         });
         PublicKey().then((publicKey) => {
-            console.log(data.passwd)
-            data.password = Encryption(data.passwd, publicKey);
-            delete data.passwd;
-            console.log(data);
+            let { name, email } = data;
+            let password = Encryption(data.passwd, publicKey);
+
             Axios({
                 url: url,
                 method: 'post',
-                data: data
+                data: { name, email, password },
             }).then((response) => {
                 if (response.status === 200) {
                     toast.show({
