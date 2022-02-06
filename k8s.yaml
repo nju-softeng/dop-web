@@ -53,7 +53,7 @@ metadata:
  namespace: dop
 spec:
  rules:
-   - host: www.devopsplus.com.cn
+   - host: www.devopsplus.com
      http:
        paths:
          - path: /
