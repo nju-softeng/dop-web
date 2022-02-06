@@ -12,7 +12,7 @@ pipeline{
 	stages {
         stage('pull code') {
 			steps {
-				echo "start fetch code from git:${REPOSITORY}"
+				echo "fetching code from git:${REPOSITORY}"
 				deleteDir()
 				//git "${REPOSITORY}"
                 checkout([$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: "${REPOSITORY}"]]])
@@ -24,9 +24,20 @@ pipeline{
 			}
 		}
 
-        stage('build docker') {
+		stage('build') {
+            steps {
+                echo "building"
+                dir(SERVICE_DIR){
+                    sh "ls -l"
+                    sh "yarn install"
+                    sh "yarn build"
+                }
+            }
+        }
+
+        stage('build image') {
 			steps {
-                echo "start build image"
+                echo "building image"
                 echo "image tag : ${build_tag}"
                 dir(SERVICE_DIR){
                     sh "ls -l"
@@ -37,7 +48,7 @@ pipeline{
 
         stage('push docker') {
             steps {
-                echo "start push image"
+                echo "pushing image"
                 dir(SERVICE_DIR){
                   sh "ls -l"
                   withCredentials([usernamePassword(credentialsId: 'docker_registry', passwordVariable: 'password', usernameVariable: 'username')]) {
@@ -50,7 +61,7 @@ pipeline{
 
         stage('update yaml') {
             steps{
-                echo "start change yaml image tag"
+                echo "changing yaml image tag"
                 dir(SERVICE_DIR){
                     sh "ls -l"
                     sh "sed -i 's/<BUILD_TAG>/${build_tag}/' k8s.yaml"
@@ -61,7 +72,7 @@ pipeline{
 
         stage('deploy') {
 			steps {
-				echo "start deploy"
+				echo "deploying"
 				dir(SERVICE_DIR){
 				    sh "ls -l"
 				    sh "kubectl apply -f k8s.yaml"

@@ -1,17 +1,10 @@
 FROM node:16-slim
 
-WORKDIR /root
-COPY ["package.json", "rewire-scss.js", "config-overrides.js", "./"]
-COPY ["src", "./src"]
-COPY ["public", "./public"]
+WORKDIR /var/www/html
+COPY ["build", "/var/www/html"]
 
 RUN apt-get update && \
-    apt-get install -y nginx && \
-    yarn install && \
-    yarn build
-
-WORKDIR /var/www/html
-RUN cp -r /root/build/* /var/www/html
+    apt-get install -y nginx
 
 EXPOSE 80
-CMD ["nginx","-g","daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
