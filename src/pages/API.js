@@ -1,4 +1,4 @@
-const host = "http://open.dop.devops-plus.com:30393";
+const host = "http://open.devopsplus.com.cn:30393";
 
 const pipeline = "/pipeline-server";
 const application = "/application-server";

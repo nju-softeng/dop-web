@@ -22,8 +22,8 @@ function RSA() {
 }
 
 function Encryption(data, publicKey){
-    let encrypt = new JSEncrypt();
-    encrypt.setPublicKey(publicKey);
+    let encrypt = new JSEncrypt.JSEncrypt();
+    encrypt.setPublicKey(base64url.toBase64(publicKey));
     return base64url.fromBase64(encrypt.encrypt(data));
 }
 
