@@ -22,14 +22,14 @@ function RSA() {
 }
 
 function Encryption(data, publicKey){
-    let encrypt = new JSEncrypt.JSEncrypt();
+    let encrypt = new JSEncrypt();
     encrypt.setPublicKey(base64url.toBase64(publicKey));
     return base64url.fromBase64(encrypt.encrypt(data));
 }
 
 function PublicKey() {
     let url = API.gateway + '/user-server/v1/account/RSAPublicKey';
-    return Axios.get(url);
+    return Axios.get(url).then(data => data.data);
 }
 
 
