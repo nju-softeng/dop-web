@@ -158,7 +158,6 @@ class Commit extends React.Component{
                         return <DiffFile diffItem={item}/>;
                     })
                 }
-                <Loading visible={this.state.loadingVisible} className="loading-diff" tip={spinner}/>
              </div>
         )
     }

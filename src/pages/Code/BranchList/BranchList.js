@@ -156,7 +156,6 @@ class BranchList extends React.Component{
 
                     <input value={this.state.nameInput} onChange={this.changeBranchName.bind(this)} className="input-branch-list-name" placeholder={this.props.intl.messages["code.branchlist.placeholder"]}/>
                 </div>
-                <Loading visible={this.state.loadingVisible} className="loading-branch-list" tip={spinner}>
                     <div>
                         {
                             this.state.showData.map(item=>{
@@ -229,7 +228,6 @@ class BranchList extends React.Component{
                         }
 
                     </div>
-                </Loading>
 
 
 

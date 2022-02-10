@@ -142,7 +142,6 @@ class MemberList extends React.Component{
     render(){
         return (
             <div className="member-list-container">
-                <Loading className="loading-member-list" visible={this.state.loadingVisible} tip={spinner}>
                     <div className="div-member-list-top">
                         {this.props.intl.messages["code.memberlist.top"]}
                     </div>
@@ -195,7 +194,6 @@ class MemberList extends React.Component{
                             )
                         })
                     }
-                </Loading>
             </div>
         )
     }

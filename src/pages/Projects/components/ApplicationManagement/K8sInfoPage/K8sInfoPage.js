@@ -1090,13 +1090,7 @@ class K8sInfoPage extends Component {
         return (
             <div className="form-loading-container">
                 <Form className="form">
-                    <Loading visible={this.state.loading} shape="dot-circle"
-                             color="#2077FF" className="form-loading">
-
-
                         {this.k8sBasicRender()}
-
-
                         {this.yamlInfoRender()}
                         <Button
                             className={this.state.editMode ? "save-button" : "save-button hide"}
@@ -1113,7 +1107,6 @@ class K8sInfoPage extends Component {
 
 
                         {this.yamlEditorRender()}
-                    </Loading>
                 </Form>
             </div>
         )

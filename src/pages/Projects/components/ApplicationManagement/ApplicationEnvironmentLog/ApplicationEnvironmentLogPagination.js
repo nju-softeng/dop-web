@@ -95,12 +95,10 @@ class ApplicationEnvironmentLogPagination extends Component {
          */
         return (
             <div>
-                <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                     <ApplicationEnvironmentLogList
                         appEnvId={this.state.appEnvId}
                         currentData={this.state.currentData}
                     />
-                </Loading>
 
                 <Pagination
                     locale={{

@@ -217,7 +217,7 @@ class DockerImage extends Component {
             }
         };
         return (
-            <Loading shape="fusion-reactor" visible={this.state.visible}>
+            <>
                 <h3 className="chosen-task-detail-title">{this.props.intl.messages["pipeline.info.step.docker.title"]}</h3>
                 <Form
                     labelAlign="left"
@@ -283,7 +283,7 @@ class DockerImage extends Component {
                         />
                     </FormItem>
                 </Form>
-            </Loading>
+            </>
         )
     }
 }

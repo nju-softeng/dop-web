@@ -199,8 +199,7 @@ class ApplicationVariable extends Component {
         }
 
         return (
-            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF"
-            >
+            <>
                 <TopBar
 
                     extraBefore={<Breadcrumb>
@@ -225,9 +224,8 @@ class ApplicationVariable extends Component {
                             <Table.Column cell={valueRender}
                                           title={this.props.intl.messages['projects.text.Value']}/>
                         </Table>
-
                 </div>
-            </Loading>
+            </>
         )
     }
 

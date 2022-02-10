@@ -86,7 +86,6 @@ class NewTag extends React.Component{
     render(){
         return (
             <div className="new-tag-container">
-                <Loading className="creating-new-tag" visible={this.state.creatingVisible} tip={spinner}>
                     <div className="div-new-tag-top">
                         {this.props.intl.messages["code.newtag.top"]}
                     </div>
@@ -101,16 +100,12 @@ class NewTag extends React.Component{
                         </div>
                         <div className="div-new-tag-input">
                             <span className="text-new-tag-source">{this.props.intl.messages["code.newtag.source"]}</span>
-                            <Loading className="loading-new-tag" visible={this.state.loadingVisible} tip={spinner}>
-                                <Select language={this.props.intl.messages["code.language"]} onChange={this.selectRef.bind(this)} className="select-new-tag" size='large' dataSource={this.state.refOptions}/>
-                            </Loading>
                         </div>
                     </div>
                     <div className="div-new-tag-submit">
                         <button onClick={this.addTag.bind(this)} className="btn-new-tag-add">{this.props.intl.messages["code.newtag.add"]}</button>
                         <button onClick={this.cancel.bind(this)} className="btn-new-tag-cancel">{this.props.intl.messages["code.newtag.cancel"]}</button>
                     </div>
-                </Loading>
             </div>
         )
     }

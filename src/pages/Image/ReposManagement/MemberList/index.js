@@ -138,7 +138,6 @@ class MemberList extends Component{
                             <DeleteMemberDialog deleteKeys={this.state.rowSelection.selectedRowKeys} projectId={this.state.id}  refreshList={this.refreshList.bind(this)}/>
                         </Col>
                     </Row>
-                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.currentData}
                                rowSelection={this.state.rowSelection}
                                isLoading={this.state.isLoading}
@@ -154,7 +153,6 @@ class MemberList extends Component{
                             <Table.Column title={this.props.intl.messages["image.memberTable.userType"]}
                                           dataIndex="entityType"/>
                         </Table>
-                    </Loading>
 
                     <Pagination language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
                                 className={"body"}

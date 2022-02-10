@@ -140,8 +140,6 @@ class ClusterInfoForm extends Component {
         if (!(this.state.loading)) {
             return (
                 <Form className="card-form">
-                    <Loading visible={this.state.loading} size='small' className="form-loading"
-                             shape="dot-circle" color="#2077FF">
                         <FormItem label={this.props.intl.messages['projects.text.clusterUrl']}
                                   {...formItemLayout}
                                   validateStatus={getError("targetClusterUrl") ? "error" : ""}
@@ -198,7 +196,6 @@ class ClusterInfoForm extends Component {
                         < Button
                             className={this.state.editMode ? "cancel-button" : "cancel-button hide"}
                             onClick={this.toggleEditMode.bind(this)}>{this.props.intl.messages['projects.button.cancel']} </Button>
-                    </Loading>
 
                 </Form>)
         }

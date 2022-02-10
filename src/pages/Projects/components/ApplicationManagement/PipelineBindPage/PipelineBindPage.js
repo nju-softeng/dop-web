@@ -203,11 +203,6 @@ class PipelineBindPage extends Component {
             return (
 
                 <Form className="pipeline-bind-form">
-                    <Loading
-                        className="pipeline-bind-form-loading"
-                        visible={this.state.loading} size='small' shape="dot-circle"
-                        color="#2077FF"
-                    >
                         <FormItem
                             className="pipeline-bind-form-item"
                             {...formItemLayout}
@@ -218,14 +213,8 @@ class PipelineBindPage extends Component {
                                     className="pipeline-bind-text">{this.state.currentPipeline === "" ? this.props.intl.messages['projects.text.bindPipeline'] : this.state.currentPipeline.name}</div>
                             </Link>
                         </FormItem>
-
-
-                    </Loading>
-
                 </Form>
-
             )
-        // }
     }
 
     render() {

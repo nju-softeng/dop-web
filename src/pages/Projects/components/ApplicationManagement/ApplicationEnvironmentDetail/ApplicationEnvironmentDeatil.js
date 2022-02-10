@@ -96,9 +96,6 @@ class ApplicationEnvironmentDetail extends Component {
                 <div className="app-env-detail-form-container">
 
                         <Form className="deployment-strategy-form">
-                            <Loading className="form-loading" visible={this.state.loading} shape="dot-circle"
-                                     color="#2077FF"
-                            >
                             <FormItem label={this.props.intl.messages['projects.text.deploymentStrategy']}
                                       className="deployment-strategy-form-item"
                                       {...formItemLayout}
@@ -124,7 +121,6 @@ class ApplicationEnvironmentDetail extends Component {
                     </FormItem>
 
 
-                            </Loading>
                 </Form>
 
                     <PipelineBindPage appId={this.state.appId} appEnvId={this.state.appEnvId}/>

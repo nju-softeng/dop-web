@@ -149,7 +149,6 @@ class ProjectList extends React.Component {
                             <span className="text_new">+<FormattedMessage id="code.projectlist.new"/></span>
                         </button>
                     </div>
-                    <Loading visible={this.state.loadingVisible} className="loading-project-list" tip={spinner}>
                         <div>
                             <ul>
                                 {(() => {
@@ -189,7 +188,6 @@ class ProjectList extends React.Component {
                             </ul>
 
                         </div>
-                    </Loading>
                 </div>
 
                 <div className="div_page">

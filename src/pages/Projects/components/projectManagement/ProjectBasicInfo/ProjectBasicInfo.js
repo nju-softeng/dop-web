@@ -94,7 +94,6 @@ class ProjectBasicInfo extends Component {
 
     render() {
         return (
-            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                 <div>
                     <TopBar
                         extraBefore={<Breadcrumb>
@@ -118,7 +117,6 @@ class ProjectBasicInfo extends Component {
         </span>
                     </Card>
                 </div>
-            </Loading>
         )
     }
 }
