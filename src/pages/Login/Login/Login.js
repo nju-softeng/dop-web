@@ -190,8 +190,7 @@ class Login extends Component {
                                 <div className="title">
                                     {this.props.intl.messages["login.login.title"]}
                                 </div>
-                                <Form field={this.field} className="form-body">
-
+                                    <Form field={this.field} className="form-body">
                                     <FormItem
                                         label={this.props.intl.messages["login.login.email"]+ "："}
                                         {...formItemLayout} hasFeedback
@@ -242,7 +241,6 @@ class Login extends Component {
                                 </Form>
                             </div>
                     </div>
-
                 </div>
                 <Footer/>
             </div>

@@ -47,19 +47,20 @@
                 height: 35px;
                 margin-left: 100px;
               }
-              .register-content {
-                margin-top: 15px;
-                cursor: pointer;
-                text-align: right;
-                span {
-                  text-align: right;
-                  margin-left: 20px;
-                }
-              }
             }
           }
         }
       }
     }
+  }
+}
+
+.register-content {
+  margin-top: 15px;
+  cursor: pointer;
+  text-align: right;
+  span {
+    text-align: right;
+    margin-left: 20px;
   }
 }

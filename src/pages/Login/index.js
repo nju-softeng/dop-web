@@ -10,15 +10,7 @@ import Axios from "axios/index";
 import {JSEncrypt} from "jsencrypt";
 
 function RSA() {
-    return new Promise((resolve, reject) => {
-        getTimeStamp().then((data) => {
-            return oauth(data)
-        }).then((data) => {
-            resolve(data)
-        }).catch((error) => {
-            reject(error)
-        })
-    })
+    return getTimeStamp().then(oauth)
 }
 
 function Encryption(data, publicKey){
@@ -31,7 +23,6 @@ function PublicKey() {
     let url = API.gateway + '/user-server/v1/account/RSAPublicKey';
     return Axios.get(url).then(data => data.data);
 }
-
 
 const loginConfig = [
     {
