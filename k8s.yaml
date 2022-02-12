@@ -16,20 +16,8 @@ spec:
       containers:
         - name: dop-web
           image: 172.29.7.157:85/dop/dop-web:<BUILD_TAG>
-#          volumeMounts:
-#            - name: host-time
-#              mountPath: /etc/localtime
-#            - name: host-timezone
-#              mountPath: /etc/timezone
           ports:
             - containerPort: 80
-#      volumes:
-#        - name: host-time
-#          hostPath:
-#            path: /etc/localtime
-#        - name: host-timezone
-#          hostPath:
-#            path: /etc/timezone
 ---
 apiVersion: v1
 kind: Service
@@ -53,7 +41,7 @@ metadata:
  namespace: dop
 spec:
  rules:
-   - host: www.devopsplus.com.cn
+   - host: dop.devopsplus.com.cn
      http:
        paths:
          - path: /
