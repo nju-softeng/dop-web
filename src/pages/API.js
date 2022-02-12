@@ -1,4 +1,4 @@
-const host = "http://open.devopsplus.com.cn:30393";
+const host = "http://open.devopsplus.com.cn";
 
 const pipeline = "/pipeline-server";
 const application = "/application-server";
@@ -14,7 +14,7 @@ const baas = "/baas-server";
 const link = "/link-server";
 
 const API = {
-    address: "http://www.dop.devops-plus.com:30393/#/",
+    address: "http://www.dop.devops-plus.com/#/",
     gateway: host,
     pipeline: host + pipeline,
     application: host + application,
@@ -28,7 +28,7 @@ const API = {
     link: host + link,
     fuzz: "http://localhost:8080/fuzz",
     demo: "http://localhost:8080/fuzz",
-    baas:  "localhost:14800",
+    baas: "localhost:14800",
 
 };
 
