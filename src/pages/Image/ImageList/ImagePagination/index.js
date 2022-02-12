@@ -124,7 +124,7 @@ class ImagePagination extends Component{
     pullRender=(value,index,record)=>{
         let pull = <CopyToClipboard onCopy={this.onCopy}
                                     text={"docker pull registry.dop.clsaa.com/" + this.state.repoName + ":" + record.name}>
-                         <img className={"imgStyle"} src={require('../../img/copy.png')} alt="" />
+                         <img className={"imgStyle"} src={require('../../img/copy.png').default} alt="" />
                     </CopyToClipboard>
         return(
             <Balloon trigger={pull} triggerType="hover">
@@ -136,7 +136,7 @@ class ImagePagination extends Component{
         let digest = <CopyToClipboard className="copyDigest" onCopy={this.onCopy} text={value}>
             <span>
                 <span>{value.toString().substr(0,10)+'...'}</span>
-                <img className={"imgStyle"} src={require('../../img/copy.png')} alt="" />
+                <img className={"imgStyle"} src={require('../../img/copy.png').default} alt="" />
             </span>
         </CopyToClipboard>;
         return (

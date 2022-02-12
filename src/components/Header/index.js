@@ -203,7 +203,7 @@ class Header extends Component {
                                     <IceImg
                                         height={40}
                                         width={40}
-                                        src={require('./images/avatar.png')}
+                                        src={require('./images/avatar.png').default}
                                         className="user-avatar"
                                     />
                                     <div className="user-profile">

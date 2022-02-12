@@ -174,11 +174,11 @@ class Login extends Component {
                             {(()=>{
                                 if(window.sessionStorage.getItem('language') === "zh-CN"){
                                     return (
-                                        <img src={require('./images/logo-zh.png')} alt="logo" width="100%"/>
+                                        <img src={require('./images/logo-zh.png').default} alt="logo" width="100%"/>
                                     )
                                 }else{
                                     return (
-                                        <img src={require('./images/logo-en.png')} alt="logo" width="100%"/>
+                                        <img src={require('./images/logo-en.png').default} alt="logo" width="100%"/>
                                     )
                                 }
                             })()}
