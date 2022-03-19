@@ -32,8 +32,12 @@ class PipelineInfoStage extends Component {
     /**
      * stage数字显示
      * */
-    stepItemRender(index) {
-        return index + 1
+    stageItemRender(index) {
+        return () => (
+            <div className="next-step-item-node">
+                <div className="next-step-item-node-circle"> { index + 1 } </div>
+            </div>
+        );
     }
 
     stepItemAdd() {
@@ -77,7 +81,7 @@ class PipelineInfoStage extends Component {
     addStageMid(index){
         let stages = this.state.stages;
         let newStage = {
-            name: this.props.intl.messages["pipeline.info.stage.name"],
+            name: `New Stage`,
             steps: []
         };
         stages.splice(index+1, 0, newStage);
@@ -87,7 +91,7 @@ class PipelineInfoStage extends Component {
     }
     addStage() {
         let newStage = {
-            name: `Step #${this.state.stages.length+1}`,
+            name: `Stage #${this.state.stages.length+1}`,
             steps: []
         };
         this.state.stages.push(newStage);
@@ -120,21 +124,27 @@ class PipelineInfoStage extends Component {
     render() {
         return (
             <div className="pipeline-info-stage-step">
-                <Step className="pipeline-info-stage" shape="circle" animation={true}
-                      current={this.state.currentStage}
+                <Step
+                    className="pipeline-info-stage"
+                    shape="circle"
+                    current={this.state.currentStage}
                 >
                     {this.state.stages.map((stage, index) => {
                         return (
-                            <Step.Item key={index} title={this.title(stage.name, index)}
-                                       className="pipeline-info-stage-stepItem"
-                                       onClick={this.changeStage.bind(this, index)}
+                            <Step.Item
+                                key={index}
+                                title={this.title(stage.name, index)}
+                                className="pipeline-info-stage-stepItem"
+                                itemRender={this.stageItemRender(index)}
+                                onClick={this.changeStage.bind(this, index)}
                             />
                         )
                     })}
-                    <Step.Item title={this.props.intl.messages["pipeline.info.stage.add"]}
-                               icon="add"
-                               className="pipeline-info-stage-stepItem"
-                               onClick={this.addStage.bind(this, this.state.stages.length)}
+                    <Step.Item
+                        title={this.props.intl.messages["pipeline.info.stage.add"]}
+                        icon="add"
+                        className="pipeline-info-stage-stepItem"
+                        onClick={this.addStage.bind(this, this.state.stages.length)}
                     />
                 </Step>
 

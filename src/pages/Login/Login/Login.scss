@@ -56,7 +56,8 @@
 }
 
 .register-content {
-  margin-top: 15px;
+  float: right;
+  margin-top: 5px;
   cursor: pointer;
   text-align: right;
   span {
@@ -64,3 +65,4 @@
     margin-left: 20px;
   }
 }
+

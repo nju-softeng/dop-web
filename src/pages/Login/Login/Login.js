@@ -227,7 +227,6 @@ class Login extends Component {
                                     <FormItem className="submit">
                                         <Button type="primary"
                                                 onClick={this.handleSubmit.bind(this)}
-
                                                 size="large"
                                                 className="login-form-button"
                                         >

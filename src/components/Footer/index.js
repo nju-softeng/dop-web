@@ -13,7 +13,10 @@ export default class Footer extends PureComponent {
         className={cx('ice-design-layout-footer', className)}
         style={{
           ...style,
-          lineHeight: '36px',
+          lineHeight: '20px',
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
         }}
       >
         <div className="ice-design-layout-footer-body">
