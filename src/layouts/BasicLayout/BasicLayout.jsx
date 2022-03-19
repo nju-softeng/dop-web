@@ -4,6 +4,8 @@ import Layout from '@icedesign/layout';
 import Header from '../../components/Header';
 import Aside from '../../components/Aside';
 import Footer from '../../components/Footer';
+import '@alifd/next/dist/next.css';
+import '@alifd/next/variables.scss';
 
 import './BasicLayout.scss';
 
