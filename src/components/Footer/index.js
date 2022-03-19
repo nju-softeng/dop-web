@@ -14,9 +14,6 @@ export default class Footer extends PureComponent {
         style={{
           ...style,
           lineHeight: '20px',
-          position: "absolute",
-          bottom: 0,
-          width: "100%",
         }}
       >
         <div className="ice-design-layout-footer-body">
