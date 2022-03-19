@@ -9,8 +9,8 @@ import {injectIntl} from "react-intl";
 const FormItem = Form.Item;
 const Toast = Feedback.toast;
 const formItemLayout = {
-    labelCol: {span: 8},
-    wrapperCol: {span: 16}
+    labelCol: {span: 4},
+    wrapperCol: {span: 20}
 };
 
 class ClusterInfoForm extends Component {
@@ -202,27 +202,17 @@ class ClusterInfoForm extends Component {
     }
 
     render() {
-
         return (
-
             <Card
                 className="card"
                 title={this.props.intl.messages['projects.text.kubernetesEnvInfo']}
                 bodyHeight="40%"
             >
-
-                {this.clusterDataRender()}
-
-
-                {
-                    this.k8sInfoRender()
-                }
-
+                { this.clusterDataRender() }
+                { this.k8sInfoRender() }
             </Card>
-
         )
     }
-
 }
 
 export default injectIntl(ClusterInfoForm)

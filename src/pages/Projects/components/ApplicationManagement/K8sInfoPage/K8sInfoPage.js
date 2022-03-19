@@ -21,8 +21,8 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const Toast = Feedback.toast;
 const formItemLayout = {
-    labelCol: {span: 8},
-    wrapperCol: {span: 16}
+    labelCol: {span: 4},
+    wrapperCol: {span: 20}
 };
 const {Combobox} = Select;
 
@@ -1099,7 +1099,7 @@ class K8sInfoPage extends Component {
                         >
                             {this.props.intl.messages['projects.button.Save']}
                         </Button>
-                        < Button
+                        <Button
                             className={this.state.editMode ? "cancel-button" : "cancel-button hide"}
                             onClick={this.toggleEditMode.bind(this)}>
                             {this.props.intl.messages['projects.button.cancel']}

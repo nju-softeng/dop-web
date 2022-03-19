@@ -57,10 +57,6 @@ class ApplicationEnvironmentDetail extends Component {
             })
     }
 
-
-
-
-
     componentDidMount() {
         this.getenvData();
 
@@ -71,17 +67,14 @@ class ApplicationEnvironmentDetail extends Component {
     }
 
     clusterInfoRender() {
-        if (this.field.getValue('deploymentStrategy') === 'KUBERNETES' && this.state.appEnvId !== undefined) {
-            return (<ClusterInfoForm
-
-                appEnvId={this.state.appEnvId}/>)
-        }
+        if (this.field.getValue('deploymentStrategy') === 'KUBERNETES' && this.state.appEnvId !== undefined)
+            return <ClusterInfoForm appEnvId={this.state.appEnvId}/>
     }
+
     render() {
         const {init} = this.field;
         return (
             <div>
-
                 <TopBar
                     extraBefore={<Breadcrumb>
                         <Breadcrumb.Item
@@ -94,41 +87,41 @@ class ApplicationEnvironmentDetail extends Component {
                     </Breadcrumb>}
                 />
                 <div className="app-env-detail-form-container">
-
                         <Form className="deployment-strategy-form">
                             <FormItem label={this.props.intl.messages['projects.text.deploymentStrategy']}
                                       className="deployment-strategy-form-item"
                                       {...formItemLayout}
                                       validateStatus={this.field.getError("deploymentStrategy") ? "error" : ""}
                                       help={this.field.getError("deploymentStrategy") ? this.props.intl.messages['projects.check.deploymentStrategy'] : ""}
-                    >
-
+                            >
                                 <Select placeholder={this.props.intl.messages['projects.check.deploymentStrategy']}
                                         onChange={this.onChange.bind(this)}
-
-                                        {...init('deploymentStrategy', {
-                                    initValue: this.state.envData.deploymentStrategy,
-                                            rules: [{
-                                                required: true,
-                                                message: this.props.intl.messages['projects.message.cantNull']
-                                            }]
-                                })}>
-                                    <Option
-                                        value="KUBERNETES">{this.props.intl.messages['projects.text.deploymentByKubernetes']}</Option>
-                            <Option value="test">测试</Option>
-                        </Select>
-
-                    </FormItem>
-
-
-                </Form>
+                                        {...init('deploymentStrategy',
+                                            {
+                                                initValue: this.state.envData.deploymentStrategy,
+                                                rules: [{
+                                                    required: true,
+                                                    message: this.props.intl.messages['projects.message.cantNull']
+                                                }]
+                                            })
+                                        }
+                                >
+                                    <Option value="KUBERNETES">
+                                        {this.props.intl.messages['projects.text.deploymentByKubernetes']}
+                                    </Option>
+                                    <Option value="test">
+                                        测试
+                                    </Option>
+                                </Select>
+                            </FormItem>
+                        </Form>
 
                     <PipelineBindPage appId={this.state.appId} appEnvId={this.state.appEnvId}/>
-                {this.clusterInfoRender()}
-
+                    {this.clusterInfoRender()}
                     <Button onClick={this.state.switchPage.bind(this, "envList")}
-                            type="primary">{this.props.intl.messages['projects.button.returnToEnvList']}</Button>
-
+                            type="primary">
+                        {this.props.intl.messages['projects.button.returnToEnvList']}
+                    </Button>
                 </div>
             </div>
         );

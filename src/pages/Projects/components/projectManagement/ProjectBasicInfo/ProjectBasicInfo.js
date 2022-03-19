@@ -34,10 +34,6 @@ class ProjectBasicInfo extends Component {
         // this.getMemberData()
     }
 
-
-
-
-
     getData() {
         this.setState({
             loading: true
@@ -78,45 +74,36 @@ class ProjectBasicInfo extends Component {
             })
             .catch((response) => {
                     console.log(response)
-                _this.setState({
-                    loading: false
-                })
+                    _this.setState({
+                        loading: false
+                    })
                 }
             )
-
-
     }
-
-
-
-
-
 
     render() {
         return (
-                <div>
-                    <TopBar
-                        extraBefore={<Breadcrumb>
-                            <Breadcrumb.Item
-                                link="#/project">{this.props.intl.messages['projects.bread.allProject']}</Breadcrumb.Item>
-                            <Breadcrumb.Item
-                                link={"#/projectDetail?projectId=" + this.state.projectId}>{this.props.intl.messages['projects.bread.project'] + this.state.projectId}</Breadcrumb.Item>
-                        </Breadcrumb>}/>
-                    <Card
-                        className="user-card"
-                        title={this.state.userData.name}
-                        bodyHeight="100%"
-                        subTitle={this.props.intl.messages["projects.text.projectOwner"]}
-                        extra={<a href="">{this.props.intl.messages["projects.text.handOverApplication"]}&gt;</a>}
-                    >
-                        <img alt="avatar"
-                             src={this.state.userData.avatarURL === "" ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURcHBwb+/v7+/v76+vujo6OHh4cnJydTU1IOqnXYAAAADdFJOUxPppyMYpxkAAAD6SURBVEjH7dfbDYIwFAbguoHRCYwTKLcBOIUBaHQAIAxQwvwSEQpyaH/FFxP+5y89vacV4uQBOQix86DsxRmDV3HE4EV4YDa4QQRWSjYILKnNzQ0jekY7Yd3B1AVDeiV3wKCHsQPWPUwdkIbYYWSgtsLAwMwKfQNjFCZWWPwBhEcNz+NoZfLfrLXZPYkD+gtd/H6H97UT5+EK0FPY1ZbABaDYygysuTEvtqg9sI9AiyV/o8xgRNj0DLtHaiuszOahxgJLGueeL8Gpa8vnPHx30yEZGKo5lBwMiEnGwIKDKQMVB+UaSGzWwO2psMGPIfxgh78A8KcC/aY8ACmMo3JtJ3ljAAAAAElFTkSuQmCC" : this.state.userData.avatarURL}
-                             className="avatar"/>
-                        <span>
-
-        </span>
-                    </Card>
-                </div>
+            <div>
+                <TopBar
+                    extraBefore={<Breadcrumb>
+                        <Breadcrumb.Item
+                            link="#/project">{this.props.intl.messages['projects.bread.allProject']}</Breadcrumb.Item>
+                        <Breadcrumb.Item
+                            link={"#/projectDetail?projectId=" + this.state.projectId}>{this.props.intl.messages['projects.bread.project'] + this.state.projectId}</Breadcrumb.Item>
+                    </Breadcrumb>}/>
+                <Card
+                    className="user-card"
+                    title={this.state.userData.name}
+                    bodyHeight="100%"
+                    subTitle={this.props.intl.messages["projects.text.projectOwner"]}
+                    extra={<a href="">{this.props.intl.messages["projects.text.handOverApplication"]}&gt;</a>}
+                >
+                    <img alt="avatar"
+                         src={this.state.userData.avatarURL === "" ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQBAMAAAB8P++eAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAYUExURcHBwb+/v7+/v76+vujo6OHh4cnJydTU1IOqnXYAAAADdFJOUxPppyMYpxkAAAD6SURBVEjH7dfbDYIwFAbguoHRCYwTKLcBOIUBaHQAIAxQwvwSEQpyaH/FFxP+5y89vacV4uQBOQix86DsxRmDV3HE4EV4YDa4QQRWSjYILKnNzQ0jekY7Yd3B1AVDeiV3wKCHsQPWPUwdkIbYYWSgtsLAwMwKfQNjFCZWWPwBhEcNz+NoZfLfrLXZPYkD+gtd/H6H97UT5+EK0FPY1ZbABaDYygysuTEvtqg9sI9AiyV/o8xgRNj0DLtHaiuszOahxgJLGueeL8Gpa8vnPHx30yEZGKo5lBwMiEnGwIKDKQMVB+UaSGzWwO2psMGPIfxgh78A8KcC/aY8ACmMo3JtJ3ljAAAAAElFTkSuQmCC" : this.state.userData.avatarURL}
+                         className="avatar"/>
+                    <span/>
+                </Card>
+            </div>
         )
     }
 }

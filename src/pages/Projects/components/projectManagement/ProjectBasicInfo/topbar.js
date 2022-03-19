@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 export default class TopBar extends PureComponent {
 
-
     render() {
         const {title, buttonText, extraBefore, extraAfter, style} = this.props;
 
@@ -49,7 +48,6 @@ const styles = {
         justifyContent: 'space-between',
         height: '60px',
         padding: '0 20px',
-        zIndex: '99',
         background: '#fff',
         boxShadow: 'rgba(0, 0, 0, 0.2) 2px 0px 4px',
     },

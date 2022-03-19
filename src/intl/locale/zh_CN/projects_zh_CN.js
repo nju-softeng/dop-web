@@ -60,7 +60,7 @@ const projects_zh_CN = {
     'projects.text.dialog.memberId': '成员ID',
     'projects.text.dialog.memberName': '成员名称',
     'projects.text.projectId': '项目Id',
-    'projects.text.createTime': '创建时间',
+    'projects.text.createTime': '创建时间：',
     'projects.text.creator': '创建人',
     'projects.text.projectInfo': '项目信息',
     'projects.text.application': '应用',

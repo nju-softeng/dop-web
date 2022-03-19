@@ -232,7 +232,7 @@ class Login extends Component {
                                         >
                                             {this.props.intl.messages["login.login.login"]}
                                         </Button>
-                                        <div className="register-content">
+                                        <div className="register-btns">
                                             <span onClick={this.modify.bind(this)}>{this.props.intl.messages["login.login.forget"]}</span>
                                             <span onClick={this.register.bind(this)}>{this.props.intl.messages["login.login.register"]}</span>
                                         </div>
