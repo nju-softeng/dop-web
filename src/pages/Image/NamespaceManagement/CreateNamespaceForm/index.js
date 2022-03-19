@@ -7,8 +7,8 @@ import {injectIntl,FormattedMessage} from 'react-intl'
 
 const FormItem = Form.Item;
 const formItemLayout = {
-    labelCol: {span: 14},
-    wrapperCol: {span: 16}
+    labelCol: {span: 5},
+    wrapperCol: {span: 19}
 };
 
 /**
