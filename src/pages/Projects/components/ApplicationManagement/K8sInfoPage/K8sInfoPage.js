@@ -887,7 +887,8 @@ class K8sInfoPage extends Component {
                                {...this.yamlPathField.init("yamlFilePath", {
                                    initValue: this.state.yamlData.yamlFilePath,
                                    rules: [{
-                                       pattern: "^[a-z0-9]([a-z0-9-]*[a-z0-9])?(/[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$",
+                                       // pattern: "^[a-z0-9]([a-z0-9-]*[a-z0-9])?(/[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$",
+                                       pattern: "[a-zA-z]+://[^\s]*",
                                        required: true,
                                        message: this.props.intl.messages['projects.message.cantNull']
                                    }]
