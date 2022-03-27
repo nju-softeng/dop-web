@@ -37,23 +37,25 @@ const asideMenuConfig = [
         name: <FormattedMessage id="gateway.name" defaultMessage="API管理"/>,
         path: '/gateway',
         icon: 'ol-list',
+        disabled: true,
     },
     {
         name: <FormattedMessage id="test.name" defaultMessage="测试管理"/>,
         path: '/testCases',
         icon: 'repair',
+        disabled: true,
     },
     {
-
         name: <FormattedMessage id="permission.permissionManagement" defaultMessage="权限管理"/>,
         path: '/permission/permissions',
         icon: 'account' ,
+        disabled: true,
     },
-
     {
         name: <FormattedMessage id="code.name" defaultMessage="代码管理"/>,
         path: '/code/projects/personal',
         icon: 'code',
+        disabled: true,
     },
     {
         name: <FormattedMessage id="image.name" defaultMessage="镜像管理"/>,
@@ -64,14 +66,14 @@ const asideMenuConfig = [
         name: <FormattedMessage id="alert.name" defaultMessage="告警管理"/>,
         path: '/alert',
         icon: 'notice',
+        disabled: true,
     },
     {
         name: <FormattedMessage id="demo.help" defaultMessage="demo"/>,
         path: '/demo',
         icon: 'key',
+        disabled: true,
     }
-
-
 ];
 
 export {headerMenuConfig, asideMenuConfig};
