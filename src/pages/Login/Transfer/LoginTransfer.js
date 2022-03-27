@@ -20,7 +20,13 @@ class LoginTransfer extends Component {
                         {this.props.intl.messages["login.transfer.loginTransfer.tip"]}...
                     </div>
                 </div>
-                <Footer/>
+                <Footer
+                    style={{
+                        position: "absolute",
+                        bottom: 0,
+                        width: "100%",
+                    }}
+                />
             </div>
         )
     }
