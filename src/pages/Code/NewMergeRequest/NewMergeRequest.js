@@ -100,7 +100,6 @@ class NewMergeRequest extends React.Component{
     render(){
         return (
             <div className="new-mr-container">
-                <Loading visible={this.state.loadingVisible} className="loading-new-mr" tip={spinner}>
                     <div className="div-new-mr-top">
                         {this.props.intl.messages["code.newmergerequest.top"]}
                     </div>
@@ -126,7 +125,6 @@ class NewMergeRequest extends React.Component{
                         <button className="btn-new-mr-add" onClick={this.addMergeRequest.bind(this)}>{this.props.intl.messages["code.newmergerequest.add"]}</button>
                         <button className="btn-new-mr-cancel" onClick={this.cancelLink.bind(this)}>{this.props.intl.messages["code.newmergerequest.cancel"]}</button>
                     </div>
-                </Loading>
             </div>
         );
     }

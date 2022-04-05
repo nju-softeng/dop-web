@@ -160,9 +160,6 @@ class ApplicationForm extends Component {
                         labelAlign={"left"}
                         className="create-app-form"
                     >
-                        <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF"
-                                 className="create-app-form-loading">
-
                             <FormItem {...formItemLayout}
                                       validateStatus={this.field.getError("title") ? "error" : ""}
                                       help={this.field.getError("title") ? this.props.intl.messages['projects.placeholder.applicationName'] : ""}
@@ -240,7 +237,6 @@ class ApplicationForm extends Component {
                                     {...init('description')} multiple
                                     placeholder={this.props.intl.messages['projects.placeHolder.applicationDescription']}/>
                             </FormItem>
-                        </Loading>
                     </Form>
                 </div>
         )

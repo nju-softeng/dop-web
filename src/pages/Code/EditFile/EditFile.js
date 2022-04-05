@@ -107,7 +107,6 @@ class EditFile extends React.Component{
 
     render(){
         return (
-            <Loading className="loading-edit-file" visible={this.state.loadingVisible} tip={spinner}>
                 <div className="edit-file-container">
                     <div className="edit-file-section">
                         <div className="div-edit-file-top">
@@ -143,7 +142,6 @@ class EditFile extends React.Component{
                     </div>
                     <button className="btn-edit-file-commit" onClick={this.commitUpdate.bind(this)}>{this.props.intl.messages["code.editfile.commit"]}</button>
                 </div>
-            </Loading>
         )
     }
 }

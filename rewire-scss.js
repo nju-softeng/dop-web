@@ -10,9 +10,9 @@ function rewireSass(config, env, sassOptions = {}) {
   const rules = getRules(config);
 
   // find the file-loader and add a rule excluding sass files from being loaded as text
-  // config.module.rules[1].oneOf
-  //   .find(findFileLoaderRuleFn)
-  //   .exclude.push(/\.scss$/);
+  config.module.rules[1].oneOf
+    .find(findFileLoaderRuleFn)
+    .exclude.push(/\.scss$/);
 
   // find the current rule for loading css files
   const styleLoaderRule = rules.find(findStyleLoaderRuleFn);

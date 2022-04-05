@@ -101,7 +101,6 @@ class MergeRequestList extends React.Component{
                         })()
                     }
                 </div>
-                <Loading visible={this.state.loadingVisible} className="loading-mr-list" tip={spinner}>
                     <div>
                         {
                             this.state.mrListInfo.map(item=>{
@@ -122,7 +121,6 @@ class MergeRequestList extends React.Component{
                         }
 
                     </div>
-                </Loading>
             </div>
         )
     }

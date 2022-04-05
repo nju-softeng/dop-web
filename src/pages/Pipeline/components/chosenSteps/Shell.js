@@ -31,7 +31,7 @@ class Shell extends Component {
             }
         };
         return (
-            <Loading shape="fusion-reactor" visible={this.state.visible}>
+            <>
                 <h3 className="chosen-task-detail-title">{this.props.intl.messages["pipeline.info.step.shell.title"]}</h3>
                 <Form
                     labelAlign="left"
@@ -62,7 +62,7 @@ class Shell extends Component {
                         />
                     </FormItem>
                 </Form>
-            </Loading>
+        </>
         )
     }
 }

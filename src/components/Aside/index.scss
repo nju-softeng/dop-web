@@ -5,6 +5,9 @@
     background: #001529 !important;
     box-shadow: 4px 1px 12px rgba(0, 55, 107, 0.04);
 
+    .ice-menu-item-disabled > .ice-menu-link {
+      color: gray !important;
+    }
     .ice-menu-item {
       height: auto;
       line-height: normal;

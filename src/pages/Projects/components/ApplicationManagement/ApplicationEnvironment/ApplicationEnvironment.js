@@ -154,11 +154,7 @@ class ApplicationEnvironment extends Component {
     render() {
 
         return (
-
-            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF"
-            >
-
-
+            <>
                 <div>
                     <TopBar
                         extraBefore={<Breadcrumb>
@@ -170,23 +166,16 @@ class ApplicationEnvironment extends Component {
                                 link={"#/applicationDetail?appId=" + this.state.appId + "&projectId=" + this.state.projectId}>{this.props.intl.messages['projects.bread.app'] + this.state.appId}</Breadcrumb.Item>
                         </Breadcrumb>}
                         extraAfter={<CreateApplicationEnvironmentDialog type="primary"
-
                                                                         refreshApplicationEnvironmentList={this.refreshApplicationEnvironmentList.bind(this)}
                                                                         appId={this.state.appId}>
                             {this.props.intl.messages['projects.button.createEnv']}
                         </CreateApplicationEnvironmentDialog>}
                     />
-
-
                     {this.cardRender()}
-
-
                 </div>
-            </Loading>
+            </>
         )
     }
-
-
 }
 
 export default injectIntl(ApplicationEnvironment)

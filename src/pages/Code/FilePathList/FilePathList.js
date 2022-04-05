@@ -143,9 +143,7 @@ class FilePathList extends React.Component{
         return (
             <div className="file-list-container">
                 <div className="div-file-list-top">
-                    <Loading visible={this.state.loadingVisible} className="loading-ref-file-list" tip={spinner}>
                         <CascaderSelect className="select-ref-file-list"  size='large' value={this.state.ref} dataSource={this.state.refOptions} onChange={this.changeRef.bind(this)}/>
-                    </Loading>
                     <a onClick={this.treeRootLink.bind(this)}>{this.props.intl.messages["code.filepathlist.root"]}</a>
                     <span className="text-file-list-separator">/</span>
                     <input className="input-file-list-search" placeholder={this.props.intl.messages["code.filepathlist.placeholder"]} value={this.state.path} onChange={this.changePath.bind(this)}/>

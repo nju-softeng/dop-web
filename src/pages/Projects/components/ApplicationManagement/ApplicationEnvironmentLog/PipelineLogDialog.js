@@ -67,9 +67,7 @@ class PipelineLogDialog extends Component {
      )}
      onClose={this.onClose.bind(this)}
      visible={this.state.visible}>
-            <Loading visible={this.state.isLoading} shape="dot-circle" color="#2077FF">
             <pre className="pre">{this.state.isLoading ? "" : this.state.logData}</pre>
-    </Loading>
     </Dialog>
             </span>
 

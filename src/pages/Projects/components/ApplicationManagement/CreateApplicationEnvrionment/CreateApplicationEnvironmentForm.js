@@ -89,10 +89,7 @@ class ApplicationEnvironmentForm extends Component {
     render() {
         const {init} = this.field;
         return (
-            <Loading visible={this.state.loading}
-                     shape="dot-circle"
-                     color="#2077FF"
-                     className="form-container">
+            <>
                 <Form
                     labelAlign={"left"}
                     className="create-app-env-form"
@@ -150,7 +147,8 @@ class ApplicationEnvironmentForm extends Component {
                     </FormItem>
 
                 </Form>
-            </Loading>)
+            </>
+        )
     }
 }
 

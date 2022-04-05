@@ -124,7 +124,7 @@ class ImagePagination extends Component{
     pullRender=(value,index,record)=>{
         let pull = <CopyToClipboard onCopy={this.onCopy}
                                     text={"docker pull registry.dop.clsaa.com/" + this.state.repoName + ":" + record.name}>
-                         <img className={"imgStyle"} src={require('../../img/copy.png')} alt="" />
+                         <img className={"imgStyle"} src={require('../../img/copy.png').default} alt="" />
                     </CopyToClipboard>
         return(
             <Balloon trigger={pull} triggerType="hover">
@@ -136,7 +136,7 @@ class ImagePagination extends Component{
         let digest = <CopyToClipboard className="copyDigest" onCopy={this.onCopy} text={value}>
             <span>
                 <span>{value.toString().substr(0,10)+'...'}</span>
-                <img className={"imgStyle"} src={require('../../img/copy.png')} alt="" />
+                <img className={"imgStyle"} src={require('../../img/copy.png').default} alt="" />
             </span>
         </CopyToClipboard>;
         return (
@@ -161,7 +161,6 @@ class ImagePagination extends Component{
                             <DeleteImageDialog repoName={this.state.repoName} deleteKeys={this.state.rowSelection.selectedRowKeys} refreshImageList={this.refreshImageList.bind(this)}/>
                         </Col>
                     </Row>
-                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.imageData}
                                rowSelection={this.state.rowSelection}
                                isLoading={this.state.isLoading}
@@ -191,7 +190,6 @@ class ImagePagination extends Component{
                                           title={this.props.intl.messages["image.imageTable.digest"]}
                                           dataIndex="digest"/>
                         </Table>
-                    </Loading>
 
                     <Pagination language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
                                 className={"body"}

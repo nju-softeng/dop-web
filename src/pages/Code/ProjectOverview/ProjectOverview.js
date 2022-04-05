@@ -165,9 +165,6 @@ class ProjectOverview extends React.Component {
         return (
 
             <div className="project-container">
-                <Loading className="loading-project"
-                         visible={!(this.state.projectInfoLoading && this.state.readmeInfoLoading && this.state.accessInfoLoading)}
-                         tip={spinner}>
                     <div className="div-project">
                         {
                             (() => {
@@ -293,7 +290,6 @@ class ProjectOverview extends React.Component {
                         }
 
                     </div>
-                </Loading>
 
             </div>
         );

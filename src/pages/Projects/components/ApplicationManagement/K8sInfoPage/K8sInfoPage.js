@@ -21,8 +21,8 @@ const FormItem = Form.Item;
 const Option = Select.Option;
 const Toast = Feedback.toast;
 const formItemLayout = {
-    labelCol: {span: 8},
-    wrapperCol: {span: 16}
+    labelCol: {span: 4},
+    wrapperCol: {span: 20}
 };
 const {Combobox} = Select;
 
@@ -887,7 +887,8 @@ class K8sInfoPage extends Component {
                                {...this.yamlPathField.init("yamlFilePath", {
                                    initValue: this.state.yamlData.yamlFilePath,
                                    rules: [{
-                                       pattern: "^[a-z0-9]([a-z0-9-]*[a-z0-9])?(/[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$",
+                                       // pattern: "^[a-z0-9]([a-z0-9-]*[a-z0-9])?(/[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$",
+                                       pattern: "[a-zA-z]+://[^\s]*",
                                        required: true,
                                        message: this.props.intl.messages['projects.message.cantNull']
                                    }]
@@ -1090,13 +1091,7 @@ class K8sInfoPage extends Component {
         return (
             <div className="form-loading-container">
                 <Form className="form">
-                    <Loading visible={this.state.loading} shape="dot-circle"
-                             color="#2077FF" className="form-loading">
-
-
                         {this.k8sBasicRender()}
-
-
                         {this.yamlInfoRender()}
                         <Button
                             className={this.state.editMode ? "save-button" : "save-button hide"}
@@ -1105,7 +1100,7 @@ class K8sInfoPage extends Component {
                         >
                             {this.props.intl.messages['projects.button.Save']}
                         </Button>
-                        < Button
+                        <Button
                             className={this.state.editMode ? "cancel-button" : "cancel-button hide"}
                             onClick={this.toggleEditMode.bind(this)}>
                             {this.props.intl.messages['projects.button.cancel']}
@@ -1113,7 +1108,6 @@ class K8sInfoPage extends Component {
 
 
                         {this.yamlEditorRender()}
-                    </Loading>
                 </Form>
             </div>
         )

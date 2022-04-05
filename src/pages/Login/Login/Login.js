@@ -174,11 +174,11 @@ class Login extends Component {
                             {(()=>{
                                 if(window.sessionStorage.getItem('language') === "zh-CN"){
                                     return (
-                                        <img src={require('./images/logo-zh.png')} alt="logo" width="100%"/>
+                                        <img src={require('./images/logo-zh.png').default} alt="logo" width="100%"/>
                                     )
                                 }else{
                                     return (
-                                        <img src={require('./images/logo-en.png')} alt="logo" width="100%"/>
+                                        <img src={require('./images/logo-en.png').default} alt="logo" width="100%"/>
                                     )
                                 }
                             })()}
@@ -186,15 +186,11 @@ class Login extends Component {
                         </div>
                     </div>
                     <div className="right">
-                        <Loading shape="fusion-reactor" visible={false}
-                                 className="next-loading my-loading"
-                        >
                             <div className="form">
                                 <div className="title">
                                     {this.props.intl.messages["login.login.title"]}
                                 </div>
-                                <Form field={this.field} className="form-body">
-
+                                    <Form field={this.field} className="form-body">
                                     <FormItem
                                         label={this.props.intl.messages["login.login.email"]+ "："}
                                         {...formItemLayout} hasFeedback
@@ -231,24 +227,27 @@ class Login extends Component {
                                     <FormItem className="submit">
                                         <Button type="primary"
                                                 onClick={this.handleSubmit.bind(this)}
-
                                                 size="large"
                                                 className="login-form-button"
                                         >
                                             {this.props.intl.messages["login.login.login"]}
                                         </Button>
-                                        <div className="register-content">
+                                        <div className="register-btns">
                                             <span onClick={this.modify.bind(this)}>{this.props.intl.messages["login.login.forget"]}</span>
                                             <span onClick={this.register.bind(this)}>{this.props.intl.messages["login.login.register"]}</span>
                                         </div>
                                     </FormItem>
                                 </Form>
                             </div>
-                        </Loading>
                     </div>
-
                 </div>
-                <Footer/>
+                <Footer
+                    style={{
+                        position: "absolute",
+                        bottom: 0,
+                        width: "100%",
+                    }}
+                />
             </div>
         )
     }

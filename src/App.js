@@ -28,13 +28,14 @@ class App extends Component {
         Axios.interceptors.response.use((response) => {
             return Promise.resolve(response);
         }, (error) => {
-            if (error.response) {
-                switch (error.response.status) {
+            let resp = error.response;
+            if (resp) {
+                switch (resp.status) {
                     case 403: {
                         window.sessionStorage.clear();
                         toast.show({
                             type: "error",
-                            content: "Token失效, 请重新登陆",
+                            content: `请求错误: ${resp.data.message}`,
                             duration: 5000
                         });
                    //     window.location.replace("#/login");
@@ -47,7 +48,7 @@ class App extends Component {
                             RSA();
                             toast.show({
                                 type: "error",
-                                content: "Token失效, 请重新登陆",
+                                content: `服务器错误: ${resp.data.message}`,
                                 duration: 5000
                             });
                      //       window.location.replace("#/login");
@@ -58,7 +59,7 @@ class App extends Component {
                     default : {
                         toast.show({
                             type: "error",
-                            content: error.response.data.message,
+                            content: resp.data.message,
                             duration: 1000
                         });
                     }

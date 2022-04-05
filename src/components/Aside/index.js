@@ -26,22 +26,24 @@ class BasicLayout extends Component {
 
     return (
       <Menu mode="inline" selectedKeys={[pathname]} className="ice-menu-custom">
-        {Array.isArray(asideMenuConfig) &&
-          asideMenuConfig.length > 0 &&
-          asideMenuConfig.map((nav) => {
-            return (
-              <MenuItem key={nav.path}>
+        {
+          asideMenuConfig.map(nav => {
+            const link = (
                 <Link to={nav.path} className="ice-menu-link">
                   {nav.icon ? (
                       <FoundationSymbol size="small" type={nav.icon} >
-                          <Icon size="small" type={nav.icon} />
+                        <Icon size="small" type={nav.icon} />
                       </FoundationSymbol>
                   ) : null}
                   <span className="ice-menu-item-text">{nav.name}</span>
                 </Link>
-              </MenuItem>
             );
-          })}
+
+            if (nav.disabled)
+              return <MenuItem key={nav.path} disabled> { link } </MenuItem>
+            return <MenuItem key={nav.path}> { link } </MenuItem>
+          })
+        }
       </Menu>
     );
   }

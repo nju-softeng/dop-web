@@ -261,7 +261,6 @@ class PipelineProject extends Component {
                         />
                     </Button>
                 </div>
-                <Loading tip={this.projectLoading()} visible={this.state.visible} className="next-loading my-loading">
                     {(() => {
                         if (this.state.notRunning) {
                             return <NotPermission/>
@@ -274,7 +273,6 @@ class PipelineProject extends Component {
                             )
                         }
                     })()}
-                </Loading>
             </div>
 
         );

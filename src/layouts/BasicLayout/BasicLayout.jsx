@@ -4,6 +4,8 @@ import Layout from '@icedesign/layout';
 import Header from '../../components/Header';
 import Aside from '../../components/Aside';
 import Footer from '../../components/Footer';
+import '@alifd/next/dist/next.css';
+import '@alifd/next/variables.scss';
 
 import './BasicLayout.scss';
 
@@ -24,9 +26,16 @@ export default class BasicLayout extends Component {
             <Aside />
           </Layout.Aside>
 
-          <Layout.Main scrollable>
-            {this.props.children}
-            <Footer />
+          <Layout.Main
+              scrollable
+              style={{ backgroundColor: "gainsboro" }}
+          >
+            <div
+                style={{ backgroundColor: "white", padding: "15px" }}
+            >
+              {this.props.children}
+              <Footer />
+            </div>
           </Layout.Main>
         </Layout.Section>
       </Layout>

@@ -95,13 +95,6 @@ class CreateForm extends React.Component {
     const messages = this.props.intl.messages;
     const languageTip = messages["scan.quick.language.tip"];
     return (
-      <Loading
-        shape="fusion-reactor"
-        visible={this.state.visible}
-        className="next-loading my-loading"
-        style={{ width: "100%" }}
-        tip={messages['scan.quick.tip']}
-      >
         <Form
           field={this.field}
           style={{ background: "white", align: "center" }}
@@ -191,7 +184,6 @@ class CreateForm extends React.Component {
           </FormItem>
           <br />
         </Form>
-      </Loading>
     );
   }
 }

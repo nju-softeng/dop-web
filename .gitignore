@@ -5,6 +5,7 @@
 .idea/
 
 # dop-web
+yarn.lock
 node_modules/
 build/
 dist/

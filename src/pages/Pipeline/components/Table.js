@@ -182,14 +182,12 @@ class PipelineTable extends Component {
         }];
         return (
             <div>
-                <Loading shape="fusion-reactor" visible={this.state.visible} className="next-loading my-loading">
                     <Table
                         dataSource={this.state.dataSource}
                         columns={columns}
                         pagination={{pageSize: 10}}
                         style={{"background": "white"}}
                     />
-                </Loading>
             </div>
         )
     }

@@ -73,7 +73,7 @@ class ApplicationDetail extends Component {
                     appId={this.state.appId}/>
             )
         } else {
-            return (<div></div>)
+            return (<div/>)
         }
     }
 
@@ -98,44 +98,40 @@ class ApplicationDetail extends Component {
                 <Tab contentStyle={{padding: 20}}
                      className="Tab"
                      lazyLoad={false}>
-
-
-                    <TabPane tab={this.props.intl.messages['projects.text.BasicInfo']}
-                             key={"basic"}
-                             className="TabPane"
+                    <TabPane
+                        tab={this.props.intl.messages['projects.text.BasicInfo']}
+                        key={"basic"}
+                        className="TabPane"
                     >
-
                         <ApplicationBasicInfo
                             projectId={this.state.projectId}
-                            appId={this.state.appId}/>
+                            appId={this.state.appId}
+                        />
                     </TabPane>
 
-                    <TabPane tab={this.props.intl.messages['projects.text.EnvironmentProfile']}
-                             key={"env"}
-                             className="TabPane">
-
-
+                    <TabPane
+                        tab={this.props.intl.messages['projects.text.EnvironmentProfile']}
+                        key={"env"}
+                        className="TabPane"
+                    >
                         {this.envRender()}
                         {this.envLogRender()}
                         {this.envDetailRender()}
                     </TabPane>
 
-                    <TabPane tab={this.props.intl.messages['projects.text.variableManagement']}
-                             key={"var"}
-                             className="TabPane"
+                    <TabPane
+                        tab={this.props.intl.messages['projects.text.variableManagement']}
+                        key={"var"}
+                        className="TabPane"
                     >
                         <ApplicationVariable
                             projectId={this.state.projectId}
-                            appId={this.state.appId}/>
-
+                            appId={this.state.appId}
+                        />
                     </TabPane>
-
                 </Tab>
-
-
             </div>
         )
-
     }
 }
 

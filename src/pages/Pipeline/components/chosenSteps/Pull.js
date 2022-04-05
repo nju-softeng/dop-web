@@ -117,7 +117,7 @@ class Pull extends Component {
             }
         };
         return (
-            <Loading shape="fusion-reactor" visible={this.state.visible}>
+            <>
                 <h3 className="chosen-task-detail-title">{this.props.intl.messages["pipeline.info.step.pull.title"]}</h3>
                 <Form
                     labelAlign="left"
@@ -149,7 +149,7 @@ class Pull extends Component {
                         />
                     </FormItem>
                 </Form>
-            </Loading>
+        </>
         )
     }
 }
