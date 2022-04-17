@@ -151,6 +151,7 @@ class RepoList extends Component {
                             <DeleteRepoDialog deleteKeys={this.state.rowSelection.selectedRowKeys} refreshRepoList={this.refreshList.bind(this)}/>
                         </Col>
                     </Row>
+                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.currentData}
                                rowSelection={this.state.rowSelection}
                                isLoading={this.state.isLoading}
@@ -166,6 +167,7 @@ class RepoList extends Component {
                             <Table.Column title={this.props.intl.messages["image.repoTable.pullCount"]}
                                           dataIndex="pullCount"/>
                         </Table>
+                    </Loading>
 
                     <Pagination language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
                                 className={"body"}

@@ -158,7 +158,9 @@ class Tree extends React.Component{
         return (
             <div className="file-container">
                 <div className="div-tree-top">
+                    <Loading visible={this.state.loadingVisible} className="loading-ref-tree" tip={spinner}>
                         <CascaderSelect className="select-ref-tree"  size='large' value={this.state.ref} dataSource={this.state.refOptions} onChange={this.changeRef.bind(this)}/>
+                    </Loading>
                     {
                         (()=>{
                             let path=this.state.path;
@@ -283,6 +285,7 @@ class Tree extends React.Component{
                                                 if(treeCommitInfo.length===0){
                                                     if(index===0){
                                                         return [
+                                                            <Loading className="loading-tree-update" tip={spinner}></Loading>,
                                                             <span className="text-tree-update-loading">{this.props.intl.messages["code.tree.loadingcommit"]}</span>
                                                         ];
                                                     }else {

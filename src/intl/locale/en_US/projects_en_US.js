@@ -137,7 +137,7 @@ const projects_EN_US = {
     'projects.text.submitConfirm': 'Save confirm',
     'projects.text.submitSuccessful': 'Saved successfully',
     'projects.check.clusterUrl': 'Please check the cluster url：',
-    'projects.check.createNewService': 'services must start/end with [a-z], and can only contains[a-z0-9]',
+    'projects.check.createNewService': 'util must start/end with [a-z], and can only contains[a-z0-9]',
     'projects.check.nameSpace': 'Please choose the namespace',
     'projects.text.createServiceSuccessful': 'Successfully created the service',
     'projects.placeholder.service': 'Service',

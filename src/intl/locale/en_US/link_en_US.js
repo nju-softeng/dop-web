@@ -86,7 +86,7 @@ const LINK_EN_US = {
     'link.trace.not.exist': 'The trace you are looking for does not exist',
     'link.detail.overview': 'Overview',
     'link.detail.duration': 'Duration: ',
-    'link.detail.serviceNum': 'Number of services: ',
+    'link.detail.serviceNum': 'Number of util: ',
     'link.detail.depth': 'Depth: ',
     'link.detail.spanNum': 'Number of spans: ',
 

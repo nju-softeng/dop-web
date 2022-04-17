@@ -75,9 +75,6 @@ class ApplicationEnvironmentForm extends Component {
 
             }
         });
-
-        //
-        // console.log("handleSubmit");
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -89,7 +86,10 @@ class ApplicationEnvironmentForm extends Component {
     render() {
         const {init} = this.field;
         return (
-            <>
+            <Loading visible={this.state.loading}
+                     shape="dot-circle"
+                     color="#2077FF"
+                     className="form-container">
                 <Form
                     labelAlign={"left"}
                     className="create-app-env-form"
@@ -145,10 +145,8 @@ class ApplicationEnvironmentForm extends Component {
                                 value="KUBERNETES">{this.props.intl.messages['projects.text.deploymentByKubernetes']}</Option>
                         </Select>
                     </FormItem>
-
                 </Form>
-            </>
-        )
+            </Loading>)
     }
 }
 

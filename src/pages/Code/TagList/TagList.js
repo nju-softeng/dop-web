@@ -121,6 +121,7 @@ class TagList extends React.Component{
                     }
                     <input value={this.state.nameInput} onChange={this.changetTagName.bind(this)} className="input-tag-list-name" placeholder={this.props.intl.messages["code.taglist.placeholder"]}/>
                 </div>
+                <Loading visible={this.state.loadingVisible} className="loading-tag-list" tip={spinner}>
                     <div>
                         {
                             this.state.showData.map(item=>{
@@ -160,6 +161,7 @@ class TagList extends React.Component{
                             })
                         }
                     </div>
+                </Loading>
             </div>
         )
     }

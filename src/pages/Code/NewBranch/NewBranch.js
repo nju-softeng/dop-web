@@ -79,6 +79,7 @@ class NewBranch extends React.Component {
     render() {
         return (
             <div className="new-branch-container">
+                <Loading className="creating-new-branch" visible={this.state.creatingVisible} tip={spinner}>
                     <div className="div-new-branch-top">
                         {this.props.intl.messages["code.newbranch.top"]}
                     </div>
@@ -89,12 +90,16 @@ class NewBranch extends React.Component {
                         </div>
                         <div className="div-new-branch-input">
                             <span className="text-new-branch-source">{this.props.intl.messages["code.newbranch.source"]}</span>
+                            <Loading className="loading-new-branch" visible={this.state.loadingVisible} tip={spinner}>
+                                <Select language={this.props.intl.messages["code.language"]} onChange={this.selectRef.bind(this)} className="select-new-branch" size='large' dataSource={this.state.refOptions}/>
+                            </Loading>
                         </div>
                     </div>
                     <div className="div-new-branch-submit">
                         <button onClick={this.addBranch.bind(this)} className="btn-new-branch-add">{this.props.intl.messages["code.newbranch.add"]}</button>
                         <button onClick={this.cancel.bind(this)} className="btn-new-branch-cancel">{this.props.intl.messages["code.newbranch.cancel"]}</button>
                     </div>
+                </Loading>
             </div>
         )
     }

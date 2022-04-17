@@ -1,6 +1,5 @@
 import Demo from './Demo/Demo'
 import BasicLayout from "../../layouts/BasicLayout";
-import Pipeline from "../Pipeline/Pipeline";
 
 const demoConfig = [
     {
