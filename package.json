@@ -30,7 +30,7 @@
     "foundation-symbol": "^0.1.0",
     "jsencrypt": "^3.0.0-rc.1",
     "jsonp": "^0.2.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "one-cron": "^0.3.18",
     "prop-types": "^15.5.8",
     "qs": "^6.6.0",
