@@ -281,6 +281,8 @@ declare module 'ice/plugins/router/types' {
         modifyRoutes?: IModifyRoutes;
         fallback?: React.ReactNode;
         history?: History;
+        initialIndex?: number;
+        initialEntries?: string[];
     }
     export interface IRouterConfig extends DefaultRouteProps {
         children?: IRouterConfig[];

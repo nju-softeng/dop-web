@@ -154,7 +154,7 @@ class ApplicationEnvironment extends Component {
     render() {
 
         return (
-            <>
+            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                 <div>
                     <TopBar
                         extraBefore={<Breadcrumb>
@@ -173,7 +173,7 @@ class ApplicationEnvironment extends Component {
                     />
                     {this.cardRender()}
                 </div>
-            </>
+            </Loading>
         )
     }
 }

@@ -146,12 +146,16 @@ class ProjectBranch extends React.Component{
     render(){
         return (
             <div className="protect-branch-container">
+                <Loading className="creating-protect-branch" visible={this.state.creatingVisible} tip={spinner}>
                     <div className="div-protect-branch-top">
                         {this.props.intl.messages["code.protectbranch.top"]}
                     </div>
                     <div>
                         <div className="div-protect-branch-input">
                             <span className="text-protect-branch-name">{this.props.intl.messages["code.protectbranch.name"]}</span>
+                            <Loading className="loading-protect-branch" visible={this.state.loadingVisible} tip={spinner}>
+                                <Select value={this.state.ref} onChange={this.selectRef.bind(this)} className="select-protect-branch" size='large' dataSource={this.state.refOptions} />
+                            </Loading>
                         </div>
                         <div className="div-protect-branch-input">
                             <span className="text-protect-branch-name"/>
@@ -199,9 +203,12 @@ class ProjectBranch extends React.Component{
                         }
 
                     </div>
+                </Loading>
             </div>
         )
     }
+
+
 }
 
 

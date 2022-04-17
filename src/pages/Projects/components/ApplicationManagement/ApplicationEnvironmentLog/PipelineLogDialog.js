@@ -52,28 +52,25 @@ class PipelineLogDialog extends Component {
     }
 
     render() {
-
         return (
             <span>
              <div className="runningId" onClick={this.toggleVisible.bind(this)}>
                  {this.state.runningId}
              </div>
- <Dialog
+                <Dialog
+                    shouldUpdatePosition
+                    className='pipeline-log-dialog'
+                    footer={( <div/> )}
+                    onClose={this.onClose.bind(this)}
+                    visible={this.state.visible}>
 
-     shouldUpdatePosition
-     className='pipeline-log-dialog'
-     footer={(
-         <div/>
-     )}
-     onClose={this.onClose.bind(this)}
-     visible={this.state.visible}>
-            <pre className="pre">{this.state.isLoading ? "" : this.state.logData}</pre>
-    </Dialog>
+                    <Loading visible={this.state.isLoading} shape="dot-circle" color="#2077FF">
+                        <pre className="pre">{this.state.isLoading ? "" : this.state.logData}</pre>
+                    </Loading>
+                </Dialog>
             </span>
-
         )
     }
-
 }
 
 export default injectIntl(PipelineLogDialog)

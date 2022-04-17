@@ -95,6 +95,7 @@ class ImageInfo extends Component{
                     {this.state.namespace+"/"+this.state.repoName}
                 </div>
                 <IceContainer title={this.props.intl.messages["image.imageInfo.imageInfo"]}>
+                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.imageData}
                                isLoading={this.state.isLoading}
                                primaryKey="name"
@@ -121,6 +122,7 @@ class ImageInfo extends Component{
                             <Table.Column title={this.props.intl.messages["image.imageTable.digest"]}
                                           dataIndex="digest"/>
                         </Table>
+                    </Loading>
                 </IceContainer>
             </div>
 

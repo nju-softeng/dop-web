@@ -89,6 +89,7 @@ class NewProject extends React.Component {
     render() {
 
         return (
+            <Loading className="loading-new-project" visible={this.state.loadingVisible} tip={spinner}>
                 <div className="new-project-container">
                     <div className="div-new-project-top">
                         {this.props.intl.messages["code.newproject.top"]}
@@ -121,6 +122,7 @@ class NewProject extends React.Component {
                     </div>
 
                 </div>
+            </Loading>
         );
     }
 }

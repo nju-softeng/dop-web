@@ -1,0 +1,19 @@
+.screen {
+}
+
+.actionBar {
+  position: fixed;
+  top: 68px;
+  left: 160px;
+  right: 20px;
+  height: 60px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bolder;
+}

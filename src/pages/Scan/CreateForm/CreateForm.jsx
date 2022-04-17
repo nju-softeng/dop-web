@@ -3,26 +3,20 @@ import {
   Button,
   Radio,
   Select,
-  DatePicker,
-  NumberPicker,
   Field,
   Input,
   Feedback,
   Loading,
 } from "@icedesign/base";
 
-import Axois from "axios";
 import { API_CREATE_SCAN } from "../utility";
 
 import React from "react";
-import { injectIntl } from "react-intl";
 import Axios from "axios";
-import qs from "qs";
-
-import {Link, withRouter} from "react-router-dom";
+import { injectIntl } from "react-intl";
+import { withRouter } from "react-router-dom";
 
 const { toast } = Feedback;
-
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 
@@ -95,6 +89,13 @@ class CreateForm extends React.Component {
     const messages = this.props.intl.messages;
     const languageTip = messages["scan.quick.language.tip"];
     return (
+      <Loading
+        shape="fusion-reactor"
+        visible={this.state.visible}
+        className="next-loading my-loading"
+        style={{ width: "100%" }}
+        tip={messages['scan.quick.tip']}
+      >
         <Form
           field={this.field}
           style={{ background: "white", align: "center" }}
@@ -184,6 +185,7 @@ class CreateForm extends React.Component {
           </FormItem>
           <br />
         </Form>
+      </Loading>
     );
   }
 }

@@ -69,6 +69,11 @@ const asideMenuConfig = [
         disabled: true,
     },
     {
+        name: <FormattedMessage id="defect-manange" defaultMessage="缺陷管理"/>,
+        icon: 'ol-list',
+        path: '/defect'
+    },
+    {
         name: <FormattedMessage id="demo.help" defaultMessage="demo"/>,
         path: '/demo',
         icon: 'key',

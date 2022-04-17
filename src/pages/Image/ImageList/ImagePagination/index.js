@@ -161,6 +161,7 @@ class ImagePagination extends Component{
                             <DeleteImageDialog repoName={this.state.repoName} deleteKeys={this.state.rowSelection.selectedRowKeys} refreshImageList={this.refreshImageList.bind(this)}/>
                         </Col>
                     </Row>
+                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.imageData}
                                rowSelection={this.state.rowSelection}
                                isLoading={this.state.isLoading}
@@ -190,6 +191,7 @@ class ImagePagination extends Component{
                                           title={this.props.intl.messages["image.imageTable.digest"]}
                                           dataIndex="digest"/>
                         </Table>
+                    </Loading>
 
                     <Pagination language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
                                 className={"body"}

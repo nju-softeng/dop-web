@@ -145,7 +145,9 @@ class ProjectPagination extends Component {
         * 将项目列表作为翻页器的子组件，数据由翻页器传递给应用列表显示
          */
             <div>
+                <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                     <ProjectList currentData={this.state.currentData}/>
+                </Loading>
                 <Pagination
                     locale={{
                         prev: this.props.intl.messages["projects.text.prev"],

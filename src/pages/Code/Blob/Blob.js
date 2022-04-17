@@ -235,7 +235,9 @@ class Blob extends React.Component{
         return (
             <div className="blob-container">
                 <div className="div-blob-top">
+                    <Loading visible={this.state.loadingVisible} className="loading-ref-blob" tip={spinner}>
                         <CascaderSelect className="select-ref-blob"  size='large' value={this.state.ref} dataSource={this.state.refOptions} onChange={this.changeRef.bind(this)}/>
+                    </Loading>
                     {
                         (()=>{
                             let path=this.state.path;
