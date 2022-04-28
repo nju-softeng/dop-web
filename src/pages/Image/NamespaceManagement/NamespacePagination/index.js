@@ -312,6 +312,7 @@ class NamespacePagination extends Component {
                             <DeleteNameSpaceDialog deleteKeys={this.state.rowSelection.selectedRowKeys} refreshProjectList={this.refreshList.bind(this)}/>
                         </Col>
                     </Row>
+                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.currentData}
                                rowSelection={this.state.rowSelection}
                                isLoading={this.state.isLoading}
@@ -334,6 +335,7 @@ class NamespacePagination extends Component {
                             <Table.Column title={this.props.intl.messages["image.creationTime"]}
                                           dataIndex="creationTime"/>
                         </Table>
+                    </Loading>
 
                     <Pagination language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
                                 style={styles.body}

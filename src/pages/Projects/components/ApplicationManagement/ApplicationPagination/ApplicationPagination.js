@@ -148,10 +148,12 @@ class ApplicationPagination extends Component {
          */
         return (
             <div>
+                <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                     <ApplicationList
                         projectId={this.state.projectId}
                         currentData={this.state.currentData}
                                      deletedCallRefresh={this.deletedCallRefresh.bind(this)}/>
+                </Loading>
 
                 <Pagination
                     locale={{

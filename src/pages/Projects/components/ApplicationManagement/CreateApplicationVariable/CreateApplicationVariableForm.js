@@ -61,23 +61,18 @@ class CreateApplicationVariableForm extends Component {
 
             }
         });
-
-        //
-        // console.log("handleSubmit");
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
         if (nextProps.isSubmit) {
             this.handleSubmit(nextProps);
-            // console.log((nextProps));
-
         }
     }
 
     render() {
         const {init} = this.field;
         return (
-            <>
+            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                 <div className="form-container">
                     <Form
                         labelAlign={"left"}
@@ -113,7 +108,7 @@ class CreateApplicationVariableForm extends Component {
                         </FormItem>
                     </Form>
                 </div>
-            </>
+            </Loading>
         )
     }
 }

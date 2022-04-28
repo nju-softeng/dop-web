@@ -1091,6 +1091,8 @@ class K8sInfoPage extends Component {
         return (
             <div className="form-loading-container">
                 <Form className="form">
+                    <Loading visible={this.state.loading} shape="dot-circle"
+                             color="#2077FF" className="form-loading">
                         {this.k8sBasicRender()}
                         {this.yamlInfoRender()}
                         <Button
@@ -1105,15 +1107,12 @@ class K8sInfoPage extends Component {
                             onClick={this.toggleEditMode.bind(this)}>
                             {this.props.intl.messages['projects.button.cancel']}
                         </Button>
-
-
                         {this.yamlEditorRender()}
+                    </Loading>
                 </Form>
             </div>
         )
     }
-
-
 }
 
 export default injectIntl(K8sInfoPage)

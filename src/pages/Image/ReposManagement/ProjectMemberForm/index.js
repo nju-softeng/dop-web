@@ -77,6 +77,7 @@ class ProjectMemberForm extends Component {
         const {init} = this.field;
 
         return (
+            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                 <div>
                     <Form
                         language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
@@ -103,6 +104,7 @@ class ProjectMemberForm extends Component {
                         </Col>
                     </Form>
                 </div>
+            </Loading>
         )
     }
 }

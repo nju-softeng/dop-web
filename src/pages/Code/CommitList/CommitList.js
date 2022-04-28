@@ -162,7 +162,9 @@ class CommitList extends React.Component{
         return (
             <div className="commit-list-container">
                 <div className="div-commit-list-top">
+                    <Loading visible={this.state.loadingVisible} className="loading-ref-commit-list" tip={spinner}>
                         <CascaderSelect className="select-ref-commit-list"  size='large' value={this.state.ref} dataSource={this.state.refOptions} onChange={this.changeRef.bind(this)}/>
+                    </Loading>
                     <a className="link-commit-root" onClick={this.rootLink.bind(this)}>{this.props.intl.messages["code.commitlist.root"]}</a>
                     <input value={this.state.msgInput} onChange={this.handleInputChange.bind(this)} className="input-commit-msg-right" placeholder={this.props.intl.messages["code.commitlist.placeholder"]}/>
                 </div>

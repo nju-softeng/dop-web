@@ -448,7 +448,7 @@ class ApplicationBasicInfo extends Component {
 
 
         return (
-            <>
+            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                 <TopBar
                     extraBefore={<Breadcrumb>
                         <Breadcrumb.Item
@@ -557,7 +557,7 @@ class ApplicationBasicInfo extends Component {
                         </Form>
                     </Card>
                 </div>
-            </>)
+            </Loading>)
     }
 }
 

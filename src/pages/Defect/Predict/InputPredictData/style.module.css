@@ -1,0 +1,84 @@
+.formCard {
+  width: 1100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 32px;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.formCard button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 24px;
+  margin-right: 24px;
+}
+
+.fullscreenLoader{
+  position: fixed;
+  top: 0;
+  left: 136px;
+  right: 0;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.resultWrapper {
+  width: 1024px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.resultWrapper::before {
+  content: 'Train result:';
+  padding: 12px 8px;
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background-color: rgba(128, 128, 128, 0.08);
+  overflow-x: auto;
+  max-height: 560px;
+  overflow-y: auto;
+}
+
+.resultWrapper code {
+  display: block;
+  font-size: 16px;
+  padding: 4px 8px;
+  color: black;
+  position: relative;
+  padding-left: 28px;
+}
+
+.lineNum {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  font-size: 12px;
+  top: 0;
+  display: inline-block;
+  bottom: 0;
+  opacity: .7;
+  width: 24px;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 4px;
+  background-color: rgba(128, 128, 128, 0.08);
+}
+
+.resultWrapper code:nth-child(2n) {
+}

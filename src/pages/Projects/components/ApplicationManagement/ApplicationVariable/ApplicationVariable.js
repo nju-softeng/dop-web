@@ -199,9 +199,8 @@ class ApplicationVariable extends Component {
         }
 
         return (
-            <>
+            <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                 <TopBar
-
                     extraBefore={<Breadcrumb>
                         <Breadcrumb.Item
                             link="#/project">{this.props.intl.messages['projects.bread.allProject']}</Breadcrumb.Item>
@@ -225,11 +224,9 @@ class ApplicationVariable extends Component {
                                           title={this.props.intl.messages['projects.text.Value']}/>
                         </Table>
                 </div>
-            </>
+            </Loading>
         )
     }
-
-
 }
 
 export default injectIntl(ApplicationVariable)

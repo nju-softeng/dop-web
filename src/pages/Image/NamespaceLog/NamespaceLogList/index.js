@@ -473,6 +473,7 @@ class NamespaceLogList extends Component{
                 </IceContainer>
 
                 <IceContainer title={this.props.intl.messages["image.accessLog"]}>
+                    <Loading visible={this.state.loading} shape="dot-circle" color="#2077FF">
                         <Table dataSource={this.state.currentData}
                                isLoading={this.state.isLoading}
                                primaryKey="logId"
@@ -491,6 +492,7 @@ class NamespaceLogList extends Component{
                             <Table.Column title={this.props.intl.messages["image.logTable.time"]}
                                           dataIndex="opTime"/>
                         </Table>
+                    </Loading>
 
                     <Pagination language={this.props.intl.locale==='zh-CN'?'zh-cn':'en-us'}
                                 className={"body"}
