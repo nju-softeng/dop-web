@@ -85,14 +85,7 @@ const InputPredictData = (props) => {
         >
           <Input type="text" />
         </FormItem>
-        <FormItem
-          name="commitId"
-          rules={[{ required: false, message: "Please input commit id" }]}
-          label="Commit id"
-          labelCol={{ flex: "0 0 100px" }}
-        >
-          <Input type="text" />
-        </FormItem>
+
       </Form>
       <div>
         <Button
