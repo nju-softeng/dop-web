@@ -8,10 +8,10 @@ const user = "/user-server";
 const image = "/image-server";
 const test = "/test-server";
 const alert = "/alert-server";
-
 const scan = "/testing-server";
 const baas = "/baas-server";
 const link = "/link-server";
+const defect = "/defect-location-server";
 
 const API = {
     address: "http://www.dop.devops-plus.com/#/",
@@ -29,7 +29,7 @@ const API = {
     fuzz: "http://localhost:8080/fuzz",
     demo: "http://localhost:8080/fuzz",
     baas: "localhost:14800",
-
+    defect: host + defect,
 };
 
 export default API;

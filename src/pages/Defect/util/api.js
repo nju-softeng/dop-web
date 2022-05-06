@@ -1,7 +1,8 @@
 import axois from "axios";
+import API from "../../API";
 
 // TODO: replace this hostname to dop defect service name
-const API_HOST = "http://localhost:8081";
+const API_HOST = API.defect;
 
 const getData = ({ data: res }) => {
   if (res.success) {
