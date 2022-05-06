@@ -89,25 +89,7 @@ const AddPredictModal = (props) => {
             ]}
           />
         </FormItem>
-        <FormItem
-          name="rule"
-          rules={[{ required: false, message: "Pleade select" }]}
-          label="Rule"
-          labelCol={{ span: 6 }}
-        >
-          <Select
-            options={[
-              {
-                label: "none",
-                value: "none",
-              },
-              {
-                label: "mincoverage",
-                value: "mincoverage",
-              },
-            ]}
-          />
-        </FormItem>
+
       </Form>
     </Modal>
   );

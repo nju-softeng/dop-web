@@ -21,13 +21,7 @@ const children = [
     name: "缺陷定位",
     color: '#0050b3',
     icon: <BugOutlined />
-  },
-  {
-    path: "/defect/history",
-    name: "历史管理",
-    color: '#9e1068',
-    icon: <HistoryOutlined />
-  },
+  }
 ];
 
 export default () => {
