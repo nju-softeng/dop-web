@@ -12,6 +12,7 @@ const scan = "/testing-server";
 const baas = "/baas-server";
 const link = "/link-server";
 const defect = "/defect-location-server";
+const cipipeline="/cipipeline-server"
 
 const API = {
     address: "http://www.dop.devops-plus.com/#/",
@@ -30,6 +31,7 @@ const API = {
     demo: "http://localhost:8080/fuzz",
     baas: "localhost:14800",
     defect: host + defect,
+    cipipeline: host+cipipeline
 };
 
 export default API;

@@ -16,6 +16,7 @@ import {linkConfig} from "../pages/Link";
 import {demoConfig} from "../pages/Demo";
 import {baasConfig} from "../pages/Baas";
 import {defectConfig} from '../pages/Defect';
+import {ciPipelineConfig} from "../pages/CIPipeline";
 
 const baseConfig = [
     {
@@ -46,6 +47,7 @@ const routerConfig = [
     ...baasConfig,
     ...gatewayConfig,
     ...defectConfig,
+    ...ciPipelineConfig,
     ...baseConfig
 ];
 

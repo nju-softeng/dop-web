@@ -74,6 +74,11 @@ const asideMenuConfig = [
         path: '/defect'
     },
     {
+        name: <FormattedMessage id="cipipeline" defaultMessage="持续集成流水线管理"/>,
+        icon: 'ol-list',
+        path: '/cipipeline/configInfos'
+    },
+    {
         name: <FormattedMessage id="demo.help" defaultMessage="demo"/>,
         path: '/demo',
         icon: 'key',

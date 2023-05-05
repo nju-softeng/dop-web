@@ -32,6 +32,9 @@ class PrivateRoute extends Component {
                 {...rest}
             /> ) :
             (<LoginTransfer />)
+        // return <Route
+        //         key={this.props.routePath}
+        //         {...rest} />
 
     }
 }

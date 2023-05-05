@@ -14,6 +14,7 @@ import DEMO_ZH_CN from "./zh_CN/demo_zh_CN";
 import LINK_ZH_CN from './zh_CN/link_zh_CN';
 import BAAS_ZH_CN from "./zh_CN/baas_zh_CN";
 import PREDICT_ZH_CN from "./zh_CN/predict.zh_CN";
+import cipipeline_zh_CN from "./zh_CN/cipipeline_zh_CN";
 
 const zh_CN = {
     ...ALERT_ZH_CN,
@@ -30,7 +31,8 @@ const zh_CN = {
     ...LINK_ZH_CN,
     ...SCAN_ZH_CN,
     ...GATEWAY_ZH_CN,
-    ...PREDICT_ZH_CN
+    ...PREDICT_ZH_CN,
+    ...cipipeline_zh_CN
 };
 
 export default zh_CN;
