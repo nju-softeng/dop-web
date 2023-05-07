@@ -80,7 +80,7 @@ class ConfigInfo extends Component {
                 let fileContent=e.target.result
                 let url = API.cipipeline + '/v1/cipipeline/configInfo/uploadConfigFile';
                 let self = this;
-                Axios.post(url,{fileContent},{headers:{'x-login-user': 1}}).then((response) => {
+                Axios.post(url,{fileContent}).then((response) => {
                     if(response.status===200){
                         this.getConfigInfo();
                         this.setState({
