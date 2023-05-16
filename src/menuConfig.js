@@ -79,6 +79,11 @@ const asideMenuConfig = [
         path: '/cipipeline/configInfos'
     },
     {
+        name: <FormattedMessage id="agent.name" defaultMessage="测试节点管理"/>,
+        path: '/agent',
+        icon: 'image',
+    },
+    {
         name: <FormattedMessage id="demo.help" defaultMessage="demo"/>,
         path: '/demo',
         icon: 'key',
