@@ -13,7 +13,7 @@ const baas = "/baas-server";
 const link = "/link-server";
 const defect = "/defect-location-server";
 const cipipeline="/cipipeline-server"
-const agent="/masteragent"
+const agent="/master-agent-server"
 
 const API = {
     address: "http://www.dop.devops-plus.com/#/",
