@@ -1,4 +1,3 @@
-// import {Dialog,Button,} from "@icedesign/base";
 import React, {Component} from 'react'
 import "../../Style.scss"
 import {injectIntl,FormattedMessage} from 'react-intl'

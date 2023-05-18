@@ -4,14 +4,12 @@ import Axios from "axios";
 import {Input, Table, Grid, Pagination, Loading, Switch, Feedback, Select, Button, Icon} from '@icedesign/base';
 import {Link} from 'react-router-dom';
 import IceContainer from '@icedesign/container';
-import DeleteNameSpaceDialog from "../DeleteNameSpaceDialog";
 import CreateNamespaceDialog from "../CreateSlaveAgentDialog";
 import "../../Style.scss"
-import {injectIntl,FormattedMessage} from 'react-intl';
+import {injectIntl} from 'react-intl';
 import CreateToolsDialog from "../CreateToolsDialog";
 import {Modal} from "antd";
 const {Row,Col} = Grid;
-const Toast = Feedback.toast;
 const styles = {
     body: {
         position: 'relative',

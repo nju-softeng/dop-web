@@ -1,5 +1,3 @@
-// import {Dialog,Button,} from "@icedesign/base";
-import NamespaceForm from "../CreateNamespaceForm/index"
 import React, {Component} from 'react'
 import "../../Style.scss"
 import {injectIntl,FormattedMessage} from 'react-intl'
