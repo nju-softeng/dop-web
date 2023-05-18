@@ -18,7 +18,7 @@ class CreateNamespaceDialog extends Component {
         this.state = {
             //是否已经提交
             name: "",
-            url:"",
+            urlAndPort: "",
             isSubmit: false,
             footerAlign: "center",
             visible: false,
@@ -54,7 +54,7 @@ class CreateNamespaceDialog extends Component {
         Axios.get(url,{
             params:{
                 name:this.state.name,
-                url:this.state.url
+                urlAndPort:this.state.urlAndPort
             }
         })
             .then(function(response) {
@@ -76,7 +76,7 @@ class CreateNamespaceDialog extends Component {
     urlOnChange(value) {
         // console.log(value);
         this.setState({
-            url: value
+            urlAndPort: value
         })
     }
 
