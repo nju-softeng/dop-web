@@ -136,7 +136,7 @@ class CreateNamespaceDialog extends Component {
                         <FormItem  label="节点名称：" >
                             <Input htmlType="text" onChange={this.nameOnChange.bind(this)}/>
                         </FormItem>
-                        <FormItem  label="节点url和端口（ip+端口）：" >
+                        <FormItem  label="节点url和端口（ip:端口）：" >
                             <Input htmlType="text" onChange={this.urlOnChange.bind(this)}/>
                         </FormItem>
                     </Form>

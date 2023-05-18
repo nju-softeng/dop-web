@@ -92,23 +92,21 @@ class NamespacePagination extends Component {
         let url = API.agent+'/getslaveAttributes';
         let _this = this;
 
-        let intervalId = setInterval(function() {
-            Axios.get(url,{
-                params:{
-                    agentId:1
-                }
-            })
-                .then(function(response) {
-                    // console.log("agent信息");
-                    // console.log(response.data);
-                    _this.setState({
-                        currentData: response.data,
-                        loading:false,
-                        current:current
-                    });
+        Axios.get(url,{
+            params:{
+                agentId:1
+            }
+        })
+            .then(function(response) {
+                // console.log("agent信息");
+                // console.log(response.data);
+                _this.setState({
+                    currentData: response.data,
+                    loading:false,
+                    current:current
+                });
 
-                })
-        }, 1000);
+            })
 
     }
 
