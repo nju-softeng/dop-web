@@ -8,7 +8,6 @@ import DeleteNameSpaceDialog from "../DeleteNameSpaceDialog";
 import CreateNamespaceDialog from "../CreateSlaveAgentDialog";
 import "../../Style.scss"
 import {injectIntl,FormattedMessage} from 'react-intl';
-import PublicStatus from '../PublicStatus'
 import CreateToolsDialog from "../CreateToolsDialog";
 import {Modal} from "antd";
 const {Row,Col} = Grid;
@@ -179,11 +178,6 @@ class NamespacePagination extends Component {
             </div>
         );
     }
-
-    //命名空间公开状态监听
-    renderSwitch = (value,index,record) => {
-        return <PublicStatus refreshList={this.refreshList.bind(this)} value={value} record={record}/>
-    };
 
     register(record){
         let url=API.agent+'/registerAgent';
