@@ -241,8 +241,7 @@ class NamespacePagination extends Component {
                         </Table>
                     </Loading>
 
-                    <Pagination language={this.props.intl.locale==='zh-cn'}
-                                style={styles.body}
+                    <Pagination style={styles.body}
                                 current={this.state.current}
                                 onChange={this.handleChange.bind(this)}
                                 pageSize={this.state.pageSize}
@@ -285,8 +284,7 @@ class NamespacePagination extends Component {
                         </Table>
                     </Loading>
 
-                    <Pagination language={this.props.intl.locale==='zh-cn'}
-                                style={styles.body}
+                    <Pagination style={styles.body}
                                 current={this.state.current}
                                 onChange={this.handleChange.bind(this)}
                                 pageSize={this.state.pageSize}
