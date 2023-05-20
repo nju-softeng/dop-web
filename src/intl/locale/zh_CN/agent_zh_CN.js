@@ -2,7 +2,7 @@ const ALERT_ZH_CN = {
     'agent.toolName': 'toolname',
     'agent.downUrl': 'toolurl',
     'agent.management': 'AgentManagement',
-    'agent.agentId': 'agent_id',
+    'agent.agentid': 'agent_id',
     'agent.agentName': 'agent_name',
     'agent.memory': 'agent_memory',
     'agent.agentOs': 'agent_os',

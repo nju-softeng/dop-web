@@ -260,7 +260,7 @@ class NamespacePagination extends Component {
                                rowSelection={this.state.rowSelection}
                                isLoading={this.state.isLoading}
                                primaryKey='projectId'>
-                            <Table.Column title={this.props.intl.messages["agent.agentId"]}
+                            <Table.Column title={this.props.intl.messages["agent.agentid"]}
                                           dataIndex="agent_id"/>
 
                             <Table.Column cell={this.nameRender}
